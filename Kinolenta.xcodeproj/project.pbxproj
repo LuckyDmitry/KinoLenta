@@ -1,0 +1,631 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6614904D276119780084DCC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614904C276119780084DCC7 /* AppDelegate.swift */; };
+		6614904F276119780084DCC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614904E276119780084DCC7 /* SceneDelegate.swift */; };
+		66149051276119780084DCC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66149050276119780084DCC7 /* ViewController.swift */; };
+		66149054276119780084DCC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66149052276119780084DCC7 /* Main.storyboard */; };
+		661490562761197A0084DCC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 661490552761197A0084DCC7 /* Assets.xcassets */; };
+		661490592761197A0084DCC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 661490572761197A0084DCC7 /* LaunchScreen.storyboard */; };
+		661490642761197A0084DCC7 /* KinolentaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661490632761197A0084DCC7 /* KinolentaTests.swift */; };
+		6614906E2761197A0084DCC7 /* KinolentaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614906D2761197A0084DCC7 /* KinolentaUITests.swift */; };
+		661490702761197A0084DCC7 /* KinolentaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614906F2761197A0084DCC7 /* KinolentaUITestsLaunchTests.swift */; };
+		6614907D27611F210084DCC7 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6614907C27611F210084DCC7 /* .gitignore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		661490602761197A0084DCC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66149041276119780084DCC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66149048276119780084DCC7;
+			remoteInfo = Kinolenta;
+		};
+		6614906A2761197A0084DCC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66149041276119780084DCC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66149048276119780084DCC7;
+			remoteInfo = Kinolenta;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		66149049276119780084DCC7 /* Kinolenta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kinolenta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6614904C276119780084DCC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6614904E276119780084DCC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		66149050276119780084DCC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		66149053276119780084DCC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		661490552761197A0084DCC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		661490582761197A0084DCC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6614905A2761197A0084DCC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6614905F2761197A0084DCC7 /* KinolentaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KinolentaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		661490632761197A0084DCC7 /* KinolentaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinolentaTests.swift; sourceTree = "<group>"; };
+		661490692761197A0084DCC7 /* KinolentaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KinolentaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6614906D2761197A0084DCC7 /* KinolentaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinolentaUITests.swift; sourceTree = "<group>"; };
+		6614906F2761197A0084DCC7 /* KinolentaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinolentaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6614907C27611F210084DCC7 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		66149046276119780084DCC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6614905C2761197A0084DCC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		661490662761197A0084DCC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		66149040276119780084DCC7 = {
+			isa = PBXGroup;
+			children = (
+				6614904B276119780084DCC7 /* Kinolenta */,
+				661490622761197A0084DCC7 /* KinolentaTests */,
+				6614906C2761197A0084DCC7 /* KinolentaUITests */,
+				6614907C27611F210084DCC7 /* .gitignore */,
+				6614904A276119780084DCC7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6614904A276119780084DCC7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66149049276119780084DCC7 /* Kinolenta.app */,
+				6614905F2761197A0084DCC7 /* KinolentaTests.xctest */,
+				661490692761197A0084DCC7 /* KinolentaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6614904B276119780084DCC7 /* Kinolenta */ = {
+			isa = PBXGroup;
+			children = (
+				6614904C276119780084DCC7 /* AppDelegate.swift */,
+				6614904E276119780084DCC7 /* SceneDelegate.swift */,
+				66149050276119780084DCC7 /* ViewController.swift */,
+				66149052276119780084DCC7 /* Main.storyboard */,
+				661490552761197A0084DCC7 /* Assets.xcassets */,
+				661490572761197A0084DCC7 /* LaunchScreen.storyboard */,
+				6614905A2761197A0084DCC7 /* Info.plist */,
+			);
+			path = Kinolenta;
+			sourceTree = "<group>";
+		};
+		661490622761197A0084DCC7 /* KinolentaTests */ = {
+			isa = PBXGroup;
+			children = (
+				661490632761197A0084DCC7 /* KinolentaTests.swift */,
+			);
+			path = KinolentaTests;
+			sourceTree = "<group>";
+		};
+		6614906C2761197A0084DCC7 /* KinolentaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6614906D2761197A0084DCC7 /* KinolentaUITests.swift */,
+				6614906F2761197A0084DCC7 /* KinolentaUITestsLaunchTests.swift */,
+			);
+			path = KinolentaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		66149048276119780084DCC7 /* Kinolenta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 661490732761197A0084DCC7 /* Build configuration list for PBXNativeTarget "Kinolenta" */;
+			buildPhases = (
+				66149045276119780084DCC7 /* Sources */,
+				66149046276119780084DCC7 /* Frameworks */,
+				66149047276119780084DCC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kinolenta;
+			productName = Kinolenta;
+			productReference = 66149049276119780084DCC7 /* Kinolenta.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6614905E2761197A0084DCC7 /* KinolentaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 661490762761197A0084DCC7 /* Build configuration list for PBXNativeTarget "KinolentaTests" */;
+			buildPhases = (
+				6614905B2761197A0084DCC7 /* Sources */,
+				6614905C2761197A0084DCC7 /* Frameworks */,
+				6614905D2761197A0084DCC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				661490612761197A0084DCC7 /* PBXTargetDependency */,
+			);
+			name = KinolentaTests;
+			productName = KinolentaTests;
+			productReference = 6614905F2761197A0084DCC7 /* KinolentaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		661490682761197A0084DCC7 /* KinolentaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 661490792761197A0084DCC7 /* Build configuration list for PBXNativeTarget "KinolentaUITests" */;
+			buildPhases = (
+				661490652761197A0084DCC7 /* Sources */,
+				661490662761197A0084DCC7 /* Frameworks */,
+				661490672761197A0084DCC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6614906B2761197A0084DCC7 /* PBXTargetDependency */,
+			);
+			name = KinolentaUITests;
+			productName = KinolentaUITests;
+			productReference = 661490692761197A0084DCC7 /* KinolentaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		66149041276119780084DCC7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					66149048276119780084DCC7 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					6614905E2761197A0084DCC7 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 66149048276119780084DCC7;
+					};
+					661490682761197A0084DCC7 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 66149048276119780084DCC7;
+					};
+				};
+			};
+			buildConfigurationList = 66149044276119780084DCC7 /* Build configuration list for PBXProject "Kinolenta" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 66149040276119780084DCC7;
+			productRefGroup = 6614904A276119780084DCC7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				66149048276119780084DCC7 /* Kinolenta */,
+				6614905E2761197A0084DCC7 /* KinolentaTests */,
+				661490682761197A0084DCC7 /* KinolentaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		66149047276119780084DCC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6614907D27611F210084DCC7 /* .gitignore in Resources */,
+				661490592761197A0084DCC7 /* LaunchScreen.storyboard in Resources */,
+				661490562761197A0084DCC7 /* Assets.xcassets in Resources */,
+				66149054276119780084DCC7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6614905D2761197A0084DCC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		661490672761197A0084DCC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		66149045276119780084DCC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66149051276119780084DCC7 /* ViewController.swift in Sources */,
+				6614904D276119780084DCC7 /* AppDelegate.swift in Sources */,
+				6614904F276119780084DCC7 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6614905B2761197A0084DCC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				661490642761197A0084DCC7 /* KinolentaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		661490652761197A0084DCC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				661490702761197A0084DCC7 /* KinolentaUITestsLaunchTests.swift in Sources */,
+				6614906E2761197A0084DCC7 /* KinolentaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		661490612761197A0084DCC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66149048276119780084DCC7 /* Kinolenta */;
+			targetProxy = 661490602761197A0084DCC7 /* PBXContainerItemProxy */;
+		};
+		6614906B2761197A0084DCC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66149048276119780084DCC7 /* Kinolenta */;
+			targetProxy = 6614906A2761197A0084DCC7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		66149052276119780084DCC7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66149053276119780084DCC7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		661490572761197A0084DCC7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				661490582761197A0084DCC7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		661490712761197A0084DCC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		661490722761197A0084DCC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		661490742761197A0084DCC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F59T87TWR8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Kinolenta/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Kinolenta;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sirius.Kinolenta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		661490752761197A0084DCC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F59T87TWR8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Kinolenta/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Kinolenta;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sirius.Kinolenta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		661490772761197A0084DCC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sirius.KinolentaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kinolenta.app/Kinolenta";
+			};
+			name = Debug;
+		};
+		661490782761197A0084DCC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sirius.KinolentaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kinolenta.app/Kinolenta";
+			};
+			name = Release;
+		};
+		6614907A2761197A0084DCC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sirius.KinolentaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Kinolenta;
+			};
+			name = Debug;
+		};
+		6614907B2761197A0084DCC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sirius.KinolentaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Kinolenta;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		66149044276119780084DCC7 /* Build configuration list for PBXProject "Kinolenta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				661490712761197A0084DCC7 /* Debug */,
+				661490722761197A0084DCC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		661490732761197A0084DCC7 /* Build configuration list for PBXNativeTarget "Kinolenta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				661490742761197A0084DCC7 /* Debug */,
+				661490752761197A0084DCC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		661490762761197A0084DCC7 /* Build configuration list for PBXNativeTarget "KinolentaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				661490772761197A0084DCC7 /* Debug */,
+				661490782761197A0084DCC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		661490792761197A0084DCC7 /* Build configuration list for PBXNativeTarget "KinolentaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6614907A2761197A0084DCC7 /* Debug */,
+				6614907B2761197A0084DCC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 66149041276119780084DCC7 /* Project object */;
+}
