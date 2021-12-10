@@ -1,0 +1,672 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4B218B9F2762245700C41939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218B9E2762245700C41939 /* AppDelegate.swift */; };
+		4B218BA12762245700C41939 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218BA02762245700C41939 /* SceneDelegate.swift */; };
+		4B218BA32762245700C41939 /* FilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218BA22762245700C41939 /* FilmsViewController.swift */; };
+		4B218BA82762245800C41939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B218BA72762245800C41939 /* Assets.xcassets */; };
+		4B218BAB2762245800C41939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B218BA92762245800C41939 /* LaunchScreen.storyboard */; };
+		4B218BB62762245800C41939 /* KinoLentaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218BB52762245800C41939 /* KinoLentaTests.swift */; };
+		4B218BC12762245900C41939 /* KinoLentaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218BC02762245900C41939 /* KinoLentaUITests.swift */; };
+		4B218BCF2762269900C41939 /* MainGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218BCE2762269900C41939 /* MainGraph.swift */; };
+		4B218BD52762288D00C41939 /* Films.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B218BD42762288D00C41939 /* Films.storyboard */; };
+		4B218BD727622A3200C41939 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B218BD627622A3200C41939 /* RatingView.xib */; };
+		4B218BD927622A9700C41939 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218BD827622A9700C41939 /* RatingView.swift */; };
+		4B218BDB27622CED00C41939 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B218BDA27622CED00C41939 /* MovieTableViewCell.xib */; };
+		4B218BDD27622D1C00C41939 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218BDC27622D1C00C41939 /* MovieTableViewCell.swift */; };
+		4B218BE3276235C400C41939 /* GenreItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B218BE2276235C400C41939 /* GenreItem.xib */; };
+		4B4FAE8E2762504C008A910C /* GenreItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4FAE8D2762504C008A910C /* GenreItemCollectionViewCell.swift */; };
+		4B4FAE9627627FEA008A910C /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4FAE9527627FEA008A910C /* ColorExtension.swift */; };
+		4BAE5AD227629CB4002C8673 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE5AD127629CB4002C8673 /* CollectionViewLayout.swift */; };
+		4BAE5AD42762A3EF002C8673 /* ItemsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE5AD32762A3EF002C8673 /* ItemsPickerView.swift */; };
+		4BAE5AD627634440002C8673 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE5AD527634440002C8673 /* StringExtension.swift */; };
+		4BAE5AD827634564002C8673 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BAE5AD727634564002C8673 /* SearchView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4B218BB22762245800C41939 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B218B932762245700C41939 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B218B9A2762245700C41939;
+			remoteInfo = KinoLenta;
+		};
+		4B218BBD2762245900C41939 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B218B932762245700C41939 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B218B9A2762245700C41939;
+			remoteInfo = KinoLenta;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4B218B9B2762245700C41939 /* KinoLenta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KinoLenta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B218B9E2762245700C41939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4B218BA02762245700C41939 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		4B218BA22762245700C41939 /* FilmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsViewController.swift; sourceTree = "<group>"; };
+		4B218BA72762245800C41939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4B218BAA2762245800C41939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4B218BAC2762245800C41939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B218BB12762245800C41939 /* KinoLentaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KinoLentaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B218BB52762245800C41939 /* KinoLentaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinoLentaTests.swift; sourceTree = "<group>"; };
+		4B218BB72762245800C41939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B218BBC2762245900C41939 /* KinoLentaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KinoLentaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B218BC02762245900C41939 /* KinoLentaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinoLentaUITests.swift; sourceTree = "<group>"; };
+		4B218BC22762245900C41939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B218BCE2762269900C41939 /* MainGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGraph.swift; sourceTree = "<group>"; };
+		4B218BD42762288D00C41939 /* Films.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Films.storyboard; sourceTree = "<group>"; };
+		4B218BD627622A3200C41939 /* RatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
+		4B218BD827622A9700C41939 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		4B218BDA27622CED00C41939 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		4B218BDC27622D1C00C41939 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		4B218BE2276235C400C41939 /* GenreItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreItem.xib; sourceTree = "<group>"; };
+		4B4FAE8D2762504C008A910C /* GenreItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		4B4FAE9527627FEA008A910C /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		4BAE5AD127629CB4002C8673 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
+		4BAE5AD32762A3EF002C8673 /* ItemsPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsPickerView.swift; sourceTree = "<group>"; };
+		4BAE5AD527634440002C8673 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		4BAE5AD727634564002C8673 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4B218B982762245700C41939 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B218BAE2762245800C41939 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B218BB92762245900C41939 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4B218B922762245700C41939 = {
+			isa = PBXGroup;
+			children = (
+				4B218B9D2762245700C41939 /* KinoLenta */,
+				4B218BB42762245800C41939 /* KinoLentaTests */,
+				4B218BBF2762245900C41939 /* KinoLentaUITests */,
+				4B218B9C2762245700C41939 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4B218B9C2762245700C41939 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B218B9B2762245700C41939 /* KinoLenta.app */,
+				4B218BB12762245800C41939 /* KinoLentaTests.xctest */,
+				4B218BBC2762245900C41939 /* KinoLentaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4B218B9D2762245700C41939 /* KinoLenta */ = {
+			isa = PBXGroup;
+			children = (
+				4B218BE02762359B00C41939 /* Common */,
+				4B218BDE2762355400C41939 /* SearchedMovieList */,
+				4B218B9E2762245700C41939 /* AppDelegate.swift */,
+				4B218BA02762245700C41939 /* SceneDelegate.swift */,
+				4B218BA72762245800C41939 /* Assets.xcassets */,
+				4B218BA92762245800C41939 /* LaunchScreen.storyboard */,
+				4B218BAC2762245800C41939 /* Info.plist */,
+				4B218BCE2762269900C41939 /* MainGraph.swift */,
+			);
+			path = KinoLenta;
+			sourceTree = "<group>";
+		};
+		4B218BB42762245800C41939 /* KinoLentaTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B218BB52762245800C41939 /* KinoLentaTests.swift */,
+				4B218BB72762245800C41939 /* Info.plist */,
+			);
+			path = KinoLentaTests;
+			sourceTree = "<group>";
+		};
+		4B218BBF2762245900C41939 /* KinoLentaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4B218BC02762245900C41939 /* KinoLentaUITests.swift */,
+				4B218BC22762245900C41939 /* Info.plist */,
+			);
+			path = KinoLentaUITests;
+			sourceTree = "<group>";
+		};
+		4B218BDE2762355400C41939 /* SearchedMovieList */ = {
+			isa = PBXGroup;
+			children = (
+				4B218BDF2762357900C41939 /* Interface */,
+				4B218BA22762245700C41939 /* FilmsViewController.swift */,
+				4B218BD827622A9700C41939 /* RatingView.swift */,
+				4B218BDC27622D1C00C41939 /* MovieTableViewCell.swift */,
+			);
+			path = SearchedMovieList;
+			sourceTree = "<group>";
+		};
+		4B218BDF2762357900C41939 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				4B218BD42762288D00C41939 /* Films.storyboard */,
+				4B218BDA27622CED00C41939 /* MovieTableViewCell.xib */,
+				4B218BD627622A3200C41939 /* RatingView.xib */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		4B218BE02762359B00C41939 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4B218BE1276235A000C41939 /* Interface */,
+				4B4FAE8D2762504C008A910C /* GenreItemCollectionViewCell.swift */,
+				4B4FAE9527627FEA008A910C /* ColorExtension.swift */,
+				4BAE5AD127629CB4002C8673 /* CollectionViewLayout.swift */,
+				4BAE5AD32762A3EF002C8673 /* ItemsPickerView.swift */,
+				4BAE5AD527634440002C8673 /* StringExtension.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4B218BE1276235A000C41939 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				4B218BE2276235C400C41939 /* GenreItem.xib */,
+				4BAE5AD727634564002C8673 /* SearchView.xib */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4B218B9A2762245700C41939 /* KinoLenta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B218BC52762245900C41939 /* Build configuration list for PBXNativeTarget "KinoLenta" */;
+			buildPhases = (
+				4B218B972762245700C41939 /* Sources */,
+				4B218B982762245700C41939 /* Frameworks */,
+				4B218B992762245700C41939 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KinoLenta;
+			productName = KinoLenta;
+			productReference = 4B218B9B2762245700C41939 /* KinoLenta.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4B218BB02762245800C41939 /* KinoLentaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B218BC82762245900C41939 /* Build configuration list for PBXNativeTarget "KinoLentaTests" */;
+			buildPhases = (
+				4B218BAD2762245800C41939 /* Sources */,
+				4B218BAE2762245800C41939 /* Frameworks */,
+				4B218BAF2762245800C41939 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B218BB32762245800C41939 /* PBXTargetDependency */,
+			);
+			name = KinoLentaTests;
+			productName = KinoLentaTests;
+			productReference = 4B218BB12762245800C41939 /* KinoLentaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4B218BBB2762245900C41939 /* KinoLentaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B218BCB2762245900C41939 /* Build configuration list for PBXNativeTarget "KinoLentaUITests" */;
+			buildPhases = (
+				4B218BB82762245900C41939 /* Sources */,
+				4B218BB92762245900C41939 /* Frameworks */,
+				4B218BBA2762245900C41939 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B218BBE2762245900C41939 /* PBXTargetDependency */,
+			);
+			name = KinoLentaUITests;
+			productName = KinoLentaUITests;
+			productReference = 4B218BBC2762245900C41939 /* KinoLentaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4B218B932762245700C41939 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					4B218B9A2762245700C41939 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					4B218BB02762245800C41939 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 4B218B9A2762245700C41939;
+					};
+					4B218BBB2762245900C41939 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 4B218B9A2762245700C41939;
+					};
+				};
+			};
+			buildConfigurationList = 4B218B962762245700C41939 /* Build configuration list for PBXProject "KinoLenta" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4B218B922762245700C41939;
+			productRefGroup = 4B218B9C2762245700C41939 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4B218B9A2762245700C41939 /* KinoLenta */,
+				4B218BB02762245800C41939 /* KinoLentaTests */,
+				4B218BBB2762245900C41939 /* KinoLentaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4B218B992762245700C41939 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BAE5AD827634564002C8673 /* SearchView.xib in Resources */,
+				4B218BAB2762245800C41939 /* LaunchScreen.storyboard in Resources */,
+				4B218BDB27622CED00C41939 /* MovieTableViewCell.xib in Resources */,
+				4B218BE3276235C400C41939 /* GenreItem.xib in Resources */,
+				4B218BD52762288D00C41939 /* Films.storyboard in Resources */,
+				4B218BA82762245800C41939 /* Assets.xcassets in Resources */,
+				4B218BD727622A3200C41939 /* RatingView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B218BAF2762245800C41939 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B218BBA2762245900C41939 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4B218B972762245700C41939 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B218BA32762245700C41939 /* FilmsViewController.swift in Sources */,
+				4B4FAE8E2762504C008A910C /* GenreItemCollectionViewCell.swift in Sources */,
+				4B218BCF2762269900C41939 /* MainGraph.swift in Sources */,
+				4B4FAE9627627FEA008A910C /* ColorExtension.swift in Sources */,
+				4BAE5AD42762A3EF002C8673 /* ItemsPickerView.swift in Sources */,
+				4BAE5AD227629CB4002C8673 /* CollectionViewLayout.swift in Sources */,
+				4B218BDD27622D1C00C41939 /* MovieTableViewCell.swift in Sources */,
+				4B218BD927622A9700C41939 /* RatingView.swift in Sources */,
+				4B218B9F2762245700C41939 /* AppDelegate.swift in Sources */,
+				4BAE5AD627634440002C8673 /* StringExtension.swift in Sources */,
+				4B218BA12762245700C41939 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B218BAD2762245800C41939 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B218BB62762245800C41939 /* KinoLentaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B218BB82762245900C41939 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B218BC12762245900C41939 /* KinoLentaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B218BB32762245800C41939 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B218B9A2762245700C41939 /* KinoLenta */;
+			targetProxy = 4B218BB22762245800C41939 /* PBXContainerItemProxy */;
+		};
+		4B218BBE2762245900C41939 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B218B9A2762245700C41939 /* KinoLenta */;
+			targetProxy = 4B218BBD2762245900C41939 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4B218BA92762245800C41939 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B218BAA2762245800C41939 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4B218BC32762245900C41939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4B218BC42762245900C41939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4B218BC62762245900C41939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5XWDYYG67;
+				INFOPLIST_FILE = KinoLenta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.trifonov.KinoLenta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4B218BC72762245900C41939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5XWDYYG67;
+				INFOPLIST_FILE = KinoLenta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.trifonov.KinoLenta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4B218BC92762245900C41939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5XWDYYG67;
+				INFOPLIST_FILE = KinoLentaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.trifonov.KinoLentaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KinoLenta.app/KinoLenta";
+			};
+			name = Debug;
+		};
+		4B218BCA2762245900C41939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5XWDYYG67;
+				INFOPLIST_FILE = KinoLentaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.trifonov.KinoLentaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KinoLenta.app/KinoLenta";
+			};
+			name = Release;
+		};
+		4B218BCC2762245900C41939 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5XWDYYG67;
+				INFOPLIST_FILE = KinoLentaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.trifonov.KinoLentaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KinoLenta;
+			};
+			name = Debug;
+		};
+		4B218BCD2762245900C41939 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5XWDYYG67;
+				INFOPLIST_FILE = KinoLentaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.trifonov.KinoLentaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KinoLenta;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4B218B962762245700C41939 /* Build configuration list for PBXProject "KinoLenta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B218BC32762245900C41939 /* Debug */,
+				4B218BC42762245900C41939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B218BC52762245900C41939 /* Build configuration list for PBXNativeTarget "KinoLenta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B218BC62762245900C41939 /* Debug */,
+				4B218BC72762245900C41939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B218BC82762245900C41939 /* Build configuration list for PBXNativeTarget "KinoLentaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B218BC92762245900C41939 /* Debug */,
+				4B218BCA2762245900C41939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B218BCB2762245900C41939 /* Build configuration list for PBXNativeTarget "KinoLentaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B218BCC2762245900C41939 /* Debug */,
+				4B218BCD2762245900C41939 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4B218B932762245700C41939 /* Project object */;
+}
