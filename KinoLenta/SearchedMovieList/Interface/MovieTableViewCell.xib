@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MovieTableViewCell" customModule="KinoLenta" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="583" height="229"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gnt-Oc-Mtq">
+                    <rect key="frame" x="165" y="0.0" width="408" height="229"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Приключения шерлока" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdQ-lk-gYV">
+                            <rect key="frame" x="0.0" y="0.0" width="408" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Приключения, ужасы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrV-OR-u07">
+                            <rect key="frame" x="0.0" y="21.5" width="408" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fuy-mf-3Dh">
+                            <rect key="frame" x="0.0" y="42" width="408" height="157"/>
+                            <string key="text">Эксцентричный лондонский изобретатель Филеас Фогг раскрыл тайны полетов, электричества и многие другие, но общество не принимает его, считая сумасшедшим. Фоггу  ...Эксцентричный лондонский изобретатель Филеас Фогг раскрыл тайны полетов, электричества и многие другие, но общество не принимает его, считая сумасшедшим. Фоггу  ...Эксцентричный лондонский изобретатель Филеас Фогг раскрыл тайны полетов, электричества и многие другие, но общество не принимает его, считая сумасшедшим. Фоггу  ...</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KT7-45-YYL">
+                            <rect key="frame" x="0.0" y="199" width="408" height="30"/>
+                            <color key="backgroundColor" red="0.95686274510000002" green="0.92941176469999998" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <state key="normal" title="Смотреть позже">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.92941176469999998" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ij-pi-g09" userLabel="RatingView" customClass="UIImageView">
+                    <rect key="frame" x="20" y="5" width="125" height="219"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1J-fs-arZ" customClass="RatingView" customModule="KinoLenta" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="189" width="30" height="30"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="HoF-4W-jfn"/>
+                                <constraint firstAttribute="width" constant="30" id="P3J-d0-jb1"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="0Ij-pi-g09" secondAttribute="height" multiplier="1:1.5" priority="999" id="7JM-DE-gnc"/>
+                        <constraint firstAttribute="bottom" secondItem="h1J-fs-arZ" secondAttribute="bottom" id="Kzx-mJ-QaU"/>
+                        <constraint firstItem="h1J-fs-arZ" firstAttribute="leading" secondItem="0Ij-pi-g09" secondAttribute="leading" id="SnN-U9-W6n"/>
+                        <constraint firstAttribute="width" constant="125" id="bbh-pM-tOX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.95686274510000002" green="0.92941176469999998" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Gnt-Oc-Mtq" secondAttribute="bottom" id="1oP-C7-Big"/>
+                <constraint firstAttribute="bottom" secondItem="0Ij-pi-g09" secondAttribute="bottom" constant="5" id="Fzo-ni-ZnR"/>
+                <constraint firstItem="0Ij-pi-g09" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Hrb-SD-YbI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Gnt-Oc-Mtq" secondAttribute="trailing" constant="10" id="LPb-Zb-lhC"/>
+                <constraint firstItem="0Ij-pi-g09" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Toi-sz-Fam"/>
+                <constraint firstItem="Gnt-Oc-Mtq" firstAttribute="leading" secondItem="0Ij-pi-g09" secondAttribute="trailing" constant="20" id="r9h-rM-1y7"/>
+                <constraint firstItem="Gnt-Oc-Mtq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zMz-lb-lmz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="movieDescription" destination="Fuy-mf-3Dh" id="OSe-P3-H0F"/>
+                <outlet property="movieGenre" destination="hrV-OR-u07" id="a3x-xA-sUh"/>
+                <outlet property="movieTitle" destination="sdQ-lk-gYV" id="UdF-f0-GRn"/>
+                <outlet property="posterImageView" destination="0Ij-pi-g09" id="JhX-8f-qff"/>
+                <outlet property="ratingView" destination="h1J-fs-arZ" id="Zc1-Hj-aMf"/>
+                <outlet property="watchLaterButton" destination="KT7-45-YYL" id="a7i-ev-WLv"/>
+            </connections>
+            <point key="canvasLocation" x="494.92753623188412" y="291.62946428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
