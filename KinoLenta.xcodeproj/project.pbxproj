@@ -61,11 +61,16 @@
 		66A67006276394F60011C544 /* DataAccessProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A67000276394F60011C544 /* DataAccessProtocols.swift */; };
 		66A67007276394F60011C544 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A67002276394F60011C544 /* MovieModel.swift */; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> f0c1d74 (Add data access layer, movie model WIP)
 =======
 		66A6700B276399530011C544 /* api-key.txt in Resources */ = {isa = PBXBuildFile; fileRef = 66A6700A276399530011C544 /* api-key.txt */; };
 		66A6700D276399A00011C544 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 66A6700C276399A00011C544 /* .gitignore */; };
 >>>>>>> 6088745 (Add api-key to .gitignore)
+=======
+		66A6700B276399530011C544 /* api-key.txt in Resources */ = {isa = PBXBuildFile; fileRef = 66A6700A276399530011C544 /* api-key.txt */; };
+		66A6700D276399A00011C544 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 66A6700C276399A00011C544 /* .gitignore */; };
+>>>>>>> 0302152 (Add api-key to .gitignore)
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,11 +151,16 @@
 		66A67000276394F60011C544 /* DataAccessProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAccessProtocols.swift; sourceTree = "<group>"; };
 		66A67002276394F60011C544 /* MovieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> f0c1d74 (Add data access layer, movie model WIP)
 =======
 		66A6700A276399530011C544 /* api-key.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "api-key.txt"; sourceTree = "<group>"; };
 		66A6700C276399A00011C544 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 >>>>>>> 6088745 (Add api-key to .gitignore)
+=======
+		66A6700A276399530011C544 /* api-key.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "api-key.txt"; sourceTree = "<group>"; };
+		66A6700C276399A00011C544 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+>>>>>>> 0302152 (Add api-key to .gitignore)
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 <<<<<<< HEAD
+<<<<<<< HEAD
 				7E07C7D42767709E0052A5F9 /* FilterScreenViewController.xib in Resources */,
 				4B218BAB2762245800C41939 /* LaunchScreen.storyboard in Resources */,
 				4B0BA6832764D751008507EE /* SearchView.xib in Resources */,
@@ -530,6 +541,8 @@
 				4B0BA6392764C4FF008507EE /* Assets.xcassets in Resources */,
 				7E07C7C3276770930052A5F9 /* YearFilterTableCell.xib in Resources */,
 =======
+=======
+>>>>>>> 0302152 (Add api-key to .gitignore)
 				66A6700D276399A00011C544 /* .gitignore in Resources */,
 				4BAE5AD827634564002C8673 /* SearchView.xib in Resources */,
 				4B218BAB2762245800C41939 /* LaunchScreen.storyboard in Resources */,
