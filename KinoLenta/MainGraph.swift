@@ -12,7 +12,7 @@ final class MainGraph {
     
     func start(with tabBarController: UITabBarController) {
         let navigationController = UINavigationController()
-        let rating = UIStoryboard(name: "SearchedMovies", bundle: nil).instantiateViewController(withIdentifier: "FilmId")
+        let rating = UIStoryboard(name: "MovieList", bundle: nil).instantiateViewController(withIdentifier: "MovieList")
         rating.tabBarItem = UITabBarItem(title: "Searched", image: nil, selectedImage: nil)
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -20,6 +20,7 @@ final class MainGraph {
         
         tabBarController.tabBar.standardAppearance = appearance
         tabBarController.viewControllers = [rating]
+
     }
 }
 

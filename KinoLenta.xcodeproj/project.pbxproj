@@ -150,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				4B0BA61A2764C4FF008507EE /* LaunchScreen.storyboard */,
+				4B0BA60A2764C4FE008507EE /* InterfaceBuilder */,
 			);
 			path = Base.lproj;
 			sourceTree = "<group>";
@@ -161,6 +162,7 @@
 				4B0BA66E2764D743008507EE /* SearchedMoviesViewController.swift */,
 				4B0BA66F2764D743008507EE /* SearchedMovieViewItem.swift */,
 				4B0BA6702764D743008507EE /* SearchedMovieTableViewCell.swift */,
+				C6BFB9392764DA8100F3456C /* MovieList.storyboard */,
 			);
 			path = SearchedMovieList;
 			sourceTree = "<group>";
@@ -186,6 +188,7 @@
 			sourceTree = "<group>";
 		};
 		4B0BA6772764D751008507EE /* InterfaceBuilder */ = {
+		4B0BA6192764C4FF008507EE /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
 				4B0BA6782764D751008507EE /* GenreQuickFilterCell.xib */,
@@ -245,6 +248,9 @@
 				4B0BA66A2764D743008507EE /* SearchedMovieList */,
 				4B0BA6182764C4FF008507EE /* Assets.xcassets */,
 				4B0BA6192764C4FF008507EE /* Base.lproj */,
+				4B0BA6042764C4FE008507EE /* Common */,
+				C6BFB93B2764DAE900F3456C /* MovieListViewController.swift */,
+				C6BFB93D2764DB1600F3456C /* PosterCell.swift */,
 				4B218B9E2762245700C41939 /* AppDelegate.swift */,
 				4B218BA02762245700C41939 /* SceneDelegate.swift */,
 				4B218BA92762245800C41939 /* LaunchScreen.storyboard */,
@@ -478,6 +484,7 @@
 				7E07C7C9276770930052A5F9 /* FiltersHeaderView.xib in Resources */,
 				4B0BA6822764D751008507EE /* GenreQuickFilterCell.xib in Resources */,
 				4B0BA6712764D743008507EE /* SearchedMovies.storyboard in Resources */,
+				C6BFB93A2764DA8100F3456C /* MovieList.storyboard in Resources */,
 				4B0BA63A2764C4FF008507EE /* LaunchScreen.storyboard in Resources */,
 				7E07C7C8276770930052A5F9 /* FiltersFooterView.xib in Resources */,
 				7E07C7C6276770930052A5F9 /* PickerFilterTableCell.xib in Resources */,
