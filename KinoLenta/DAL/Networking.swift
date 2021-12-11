@@ -11,3 +11,5 @@ typealias Networking =  MovieSearchService &
                         MovieInfoService &
                         MovieCompilationService &
                         SavedMovieService
+
+typealias Datasource = Networking

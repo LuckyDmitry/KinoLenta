@@ -21,14 +21,10 @@ class DataManager {
 
 // MARK: Search
 extension DataManager: MovieSearchService {
-    func search(str: String) -> [MovieModel] { [] }
+    func search(query: String) -> [MovieModel] { [] }
     
-    func search(genre: Genre,
-                   sortBy: SortOption = .rating,
-                   yearRange: Range<Int>?,
-                   ratingRange: Range<Int>?) -> [MovieModel] {
-        return []
-    }
+    func discover(genre: [Genre], yearRange: Range<Int>?, ratingRange: Range<Int>?) -> [MovieModel] { [] }
+
 }
 
 // MARK: Compilation
@@ -42,7 +38,7 @@ extension DataManager: MovieCompilationService {
 
 // MARK: Movie
 extension DataManager: MovieInfoService {
-    func getById(id: Int) -> [MovieModel] { return [] }
+    func getById(_ id: Int) -> [MovieModel] { return [] }
     
     func getRecommendations(for movie: MovieModel) -> [MovieModel] { return [] }
     
