@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SearchedMovieTableViewCell" customModule="KinoLenta" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="699" height="247"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxS-Yt-R9d" userLabel="Poster View" customClass="RatingView" customModule="KinoLenta" customModuleProvider="target">
+                    <rect key="frame" x="10" y="10" width="128" height="230"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="128" id="c6G-1d-R8a"/>
+                        <constraint firstAttribute="height" constant="230" id="w9S-wE-bK6"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Gnt-Oc-Mtq">
+                    <rect key="frame" x="148" y="10" width="541" height="237"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Приключения шерлока" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdQ-lk-gYV">
+                            <rect key="frame" x="0.0" y="0.0" width="541" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Приключения, ужасы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrV-OR-u07">
+                            <rect key="frame" x="0.0" y="21.5" width="541" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fuy-mf-3Dh">
+                            <rect key="frame" x="0.0" y="42" width="541" height="165"/>
+                            <string key="text">Эксцентричный лондонский изобретатель Филеас Фогг раскрыл тайны полетов, электричества и многие другие, но общество не принимает его, считая сумасшедшим. Фоггу  ...Эксцентричный лондонский изобретатель Филеас Фогг раскрыл тайны полетов, электричества и многие другие, но общество не принимает его, считая сумасшедшим. Фоггу  ...Эксцентричный лондонский изобретатель Филеас Фогг раскрыл тайны полетов, электричества и многие другие, но общество не принимает его, считая сумасшедшим. Фоггу  ...</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KT7-45-YYL">
+                            <rect key="frame" x="0.0" y="207" width="541" height="30"/>
+                            <color key="backgroundColor" red="0.95686274510000002" green="0.92941176469999998" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <state key="normal" title="Смотреть позже">
+                                <color key="titleColor" systemColor="labelColor"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.92941176469999998" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.95686274510000002" green="0.92941176469999998" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="kxS-Yt-R9d" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Bf2-w8-PTi"/>
+                <constraint firstItem="Gnt-Oc-Mtq" firstAttribute="leading" secondItem="kxS-Yt-R9d" secondAttribute="trailing" constant="10" id="DfV-OS-Ewl"/>
+                <constraint firstItem="kxS-Yt-R9d" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="EdS-dm-jJv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Gnt-Oc-Mtq" secondAttribute="trailing" constant="10" id="LPb-Zb-lhC"/>
+                <constraint firstAttribute="bottom" secondItem="Gnt-Oc-Mtq" secondAttribute="bottom" id="N3D-l0-kvi"/>
+                <constraint firstItem="Gnt-Oc-Mtq" firstAttribute="top" secondItem="kxS-Yt-R9d" secondAttribute="top" id="QLA-va-yLK"/>
+                <constraint firstAttribute="bottom" secondItem="kxS-Yt-R9d" secondAttribute="bottom" priority="999" constant="10" id="Xck-1c-sOn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="movieDescription" destination="Fuy-mf-3Dh" id="OSe-P3-H0F"/>
+                <outlet property="movieGenre" destination="hrV-OR-u07" id="a3x-xA-sUh"/>
+                <outlet property="movieTitle" destination="sdQ-lk-gYV" id="UdF-f0-GRn"/>
+                <outlet property="ratingView" destination="kxS-Yt-R9d" id="08j-BR-L3a"/>
+                <outlet property="watchLaterButton" destination="KT7-45-YYL" id="a7i-ev-WLv"/>
+            </connections>
+            <point key="canvasLocation" x="578.98550724637687" y="297.65625"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

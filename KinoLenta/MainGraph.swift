@@ -10,9 +10,16 @@ import UIKit
 
 final class MainGraph {
     
-    func start(with controller: UINavigationController) {
-        let rating = UIStoryboard(name: "Films", bundle: nil).instantiateViewController(withIdentifier: "FilmId")
-        controller.pushViewController(rating, animated: true)
+    func start(with tabBarController: UITabBarController) {
+        let navigationController = UINavigationController()
+        let rating = UIStoryboard(name: "SearchedMovies", bundle: nil).instantiateViewController(withIdentifier: "FilmId")
+        rating.tabBarItem = UITabBarItem(title: "Searched", image: nil, selectedImage: nil)
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        
+        tabBarController.tabBar.standardAppearance = appearance
+        tabBarController.viewControllers = [rating]
     }
 }
 
