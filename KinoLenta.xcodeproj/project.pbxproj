@@ -55,6 +55,9 @@
 		4BAE5AD42762A3EF002C8673 /* ItemsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE5AD32762A3EF002C8673 /* ItemsPickerView.swift */; };
 		4BAE5AD627634440002C8673 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE5AD527634440002C8673 /* StringExtension.swift */; };
 		4BAE5AD827634564002C8673 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BAE5AD727634564002C8673 /* SearchView.xib */; };
+		66318F512764C7230088DE92 /* TVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318F502764C7230088DE92 /* TVModel.swift */; };
+		66318F532764C80A0088DE92 /* CommonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318F522764C80A0088DE92 /* CommonModels.swift */; };
+		66318F552764CE270088DE92 /* MovieDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318F542764CE270088DE92 /* MovieDomainModel.swift */; };
 		66A67003276394F60011C544 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A66FFD276394F60011C544 /* DataManager.swift */; };
 		66A67004276394F60011C544 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A66FFE276394F60011C544 /* Networking.swift */; };
 		66A67005276394F60011C544 /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A66FFF276394F60011C544 /* Caching.swift */; };
@@ -145,6 +148,9 @@
 		4BAE5AD32762A3EF002C8673 /* ItemsPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsPickerView.swift; sourceTree = "<group>"; };
 		4BAE5AD527634440002C8673 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		4BAE5AD727634564002C8673 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
+		66318F502764C7230088DE92 /* TVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVModel.swift; sourceTree = "<group>"; };
+		66318F522764C80A0088DE92 /* CommonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModels.swift; sourceTree = "<group>"; };
+		66318F542764CE270088DE92 /* MovieDomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDomainModel.swift; sourceTree = "<group>"; };
 		66A66FFD276394F60011C544 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		66A66FFE276394F60011C544 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		66A66FFF276394F60011C544 /* Caching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
@@ -418,6 +424,9 @@
 			isa = PBXGroup;
 			children = (
 				66A67002276394F60011C544 /* MovieModel.swift */,
+				66318F502764C7230088DE92 /* TVModel.swift */,
+				66318F522764C80A0088DE92 /* CommonModels.swift */,
+				66318F542764CE270088DE92 /* MovieDomainModel.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -586,7 +595,9 @@
 =======
 				4B218BA32762245700C41939 /* FilmsViewController.swift in Sources */,
 				66A67005276394F60011C544 /* Caching.swift in Sources */,
+				66318F512764C7230088DE92 /* TVModel.swift in Sources */,
 				66A67003276394F60011C544 /* DataManager.swift in Sources */,
+				66318F532764C80A0088DE92 /* CommonModels.swift in Sources */,
 				4B4FAE8E2762504C008A910C /* GenreItemCollectionViewCell.swift in Sources */,
 				66A67004276394F60011C544 /* Networking.swift in Sources */,
 				4B218BCF2762269900C41939 /* MainGraph.swift in Sources */,
@@ -607,11 +618,15 @@
 				7E07C7D52767709E0052A5F9 /* FilterScreenViewController.swift in Sources */,
 				4B8C1A58276515D9002A637C /* QuickItemFilterCollectionViewCell.swift in Sources */,
 				4B218BA12762245700C41939 /* SceneDelegate.swift in Sources */,
+<<<<<<< HEAD
 				4B0BA6852764D751008507EE /* ColorExtension.swift in Sources */,
 				4B0BA6742764D743008507EE /* SearchedMovieViewItem.swift in Sources */,
 				7E07C7C7276770930052A5F9 /* FiltersFooterView.swift in Sources */,
 				7E07C7C4276770930052A5F9 /* YearFilterTableCell.swift in Sources */,
 				7E07C7CA276770930052A5F9 /* FiltersHeaderView.swift in Sources */,
+=======
+				66318F552764CE270088DE92 /* MovieDomainModel.swift in Sources */,
+>>>>>>> 9cebbad (Add separate DTOs for movie and tv)
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
