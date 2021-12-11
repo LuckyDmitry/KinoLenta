@@ -33,7 +33,7 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
         collectionView.dataSource = self
         quickItemFilter = QuickItemFilterView(frame: placeHolderView.bounds)
         
-        placeHolderView.addSubview(quickItemFilter)
+//        placeHolderView.addSubview(quickItemFilter)
         // Do any additional setup after loading the view.
     }
     
@@ -52,13 +52,13 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
         let cellPadding: CGFloat = Constants.isLandscape ? (cvWidth - floor(cvWidth / 180) * 180) / 2 : (cvWidth - cellWidth * 2) / 2
         collectionView.contentInset.left = cellPadding
         collectionView.contentInset.right = cellPadding
-        let quickItemWidth = quickItemFilter.collectionView.collectionViewLayout.collectionViewContentSize.width
-        let leftMargin = (view.frame.width - quickItemWidth) / 2
-        
-        
-        quickItemFilter.frame = CGRect(origin: CGPoint(x: leftMargin, y: 0),
-                                       size: CGSize(width: placeHolderView.bounds.width - leftMargin,
-                                                    height: placeHolderView.bounds.height))
+//        let quickItemWidth = quickItemFilter.collectionView.collectionViewLayout.collectionViewContentSize.width
+//        let leftMargin = (view.frame.width - quickItemWidth) / 2
+//
+//
+//        quickItemFilter.frame = CGRect(origin: CGPoint(x: leftMargin, y: 0),
+//                                       size: CGSize(width: placeHolderView.bounds.width - leftMargin,
+//                                                    height: placeHolderView.bounds.height))
 //        placeHolderView.bounds = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: placeHolderView.frame.height)
 //        placeHolderView.
         print(cellPadding, cvWidth, cellWidth)
