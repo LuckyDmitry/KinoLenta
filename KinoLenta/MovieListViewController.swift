@@ -21,25 +21,30 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     private enum Constants {
-        static let reuseId: String = "Poster"
-        static let isLandscape: Bool = UIDevice.current.orientation.isLandscape
+        static let reuseId: String = String(describing: PosterCell.self)
+        static var isLandscape: Bool { UIDevice.current.orientation.isLandscape }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
  
     override func viewDidLayoutSubviews() {
-        let isLandscape: Bool = UIDevice.current.orientation.isLandscape
+        super.viewDidLayoutSubviews()
+        
         let cvWidth = collectionView.bounds.width
-        let cellWidth: CGFloat = isLandscape ? 180 : min(floor(cvWidth / 2), 180)
+        let cellWidth: CGFloat = Constants.isLandscape ? 180 : min(floor(cvWidth / 2), 180)
         print(cellWidth)
-        let cellPadding: CGFloat = isLandscape ? (cvWidth - floor(cvWidth / 180) * 180) / 2 : (cvWidth - cellWidth * 2) / 2
+        let cellPadding: CGFloat = Constants.isLandscape ? (cvWidth - floor(cvWidth / 180) * 180) / 2 : (cvWidth - cellWidth * 2) / 2
         collectionView.contentInset.left = cellPadding
         collectionView.contentInset.right = cellPadding
         print(cellPadding, cvWidth, cellWidth)
@@ -65,7 +70,6 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
         let rating = ratings[indexPath.row]
         cell.posterRating.text = rating
         cell.posterRating.isHidden = cell.showRating
-        // if we're still here it means we got a PersonCell, so we can return it
         return cell
     }
 
@@ -77,8 +81,8 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellWidth: CGFloat = Constants.isLandscape ? 180 : min(collectionView.bounds.width / 2, 180)
-//        let width = Constants.cellWidth     //UIScreen.main.bounds.width / 2 - Constants.cellPadding
+        let cvWidth = collectionView.bounds.width
+        let cellWidth: CGFloat = Constants.isLandscape ? 180 : min(floor(cvWidth / 2), 180)
         return .init(width: cellWidth, height: 270)
     }
 }
