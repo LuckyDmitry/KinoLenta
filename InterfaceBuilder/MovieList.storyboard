@@ -18,12 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgi-ml-HF9">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
-                                <color key="backgroundColor" red="0.94117647059999998" green="0.92941176469999998" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgi-ml-HF9" userLabel="PlaceHolderView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Xni-Q5-zz1"/>
+                                </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XJi-BO-DgX">
-                                <rect key="frame" x="0.0" y="144" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="812"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.92941176469999998" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Yng-Yw-Ac8">
                                     <size key="itemSize" width="180" height="270"/>
@@ -67,17 +70,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="XJi-BO-DgX" firstAttribute="top" secondItem="Tgi-ml-HF9" secondAttribute="bottom" id="31P-3U-cvb"/>
-                            <constraint firstItem="XJi-BO-DgX" firstAttribute="top" secondItem="vwc-bi-Fas" secondAttribute="top" constant="100" id="5Dz-R6-hae"/>
                             <constraint firstItem="XJi-BO-DgX" firstAttribute="trailing" secondItem="vwc-bi-Fas" secondAttribute="trailing" id="5zN-mO-KIv"/>
                             <constraint firstAttribute="bottom" secondItem="XJi-BO-DgX" secondAttribute="bottom" id="AJR-5Q-0Ms"/>
                             <constraint firstItem="XJi-BO-DgX" firstAttribute="leading" secondItem="vwc-bi-Fas" secondAttribute="leading" id="DmP-aI-NZw"/>
-                            <constraint firstItem="Tgi-ml-HF9" firstAttribute="top" secondItem="wgP-yz-c2P" secondAttribute="top" id="JRr-Zn-xpz"/>
+                            <constraint firstItem="Tgi-ml-HF9" firstAttribute="top" secondItem="vwc-bi-Fas" secondAttribute="top" id="JRr-Zn-xpz"/>
                             <constraint firstItem="Tgi-ml-HF9" firstAttribute="centerX" secondItem="wgP-yz-c2P" secondAttribute="centerX" id="T0d-vG-e7l"/>
-                            <constraint firstItem="Tgi-ml-HF9" firstAttribute="leading" secondItem="XJi-BO-DgX" secondAttribute="leading" id="VYh-CF-BBm"/>
+                            <constraint firstItem="Tgi-ml-HF9" firstAttribute="leading" secondItem="vwc-bi-Fas" secondAttribute="leading" id="cBV-dW-Oeg"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="XJi-BO-DgX" id="7RM-3E-iR8"/>
+                        <outlet property="placeHolderView" destination="Tgi-ml-HF9" id="Rqk-he-8Nm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kDn-4u-pS5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
