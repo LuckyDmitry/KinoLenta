@@ -113,3 +113,4 @@ extension QuickItemFilterView {
         static let marginBetweenCells: CGFloat = 10
     }
 }
+
