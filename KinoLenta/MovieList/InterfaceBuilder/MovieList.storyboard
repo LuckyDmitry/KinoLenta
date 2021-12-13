@@ -20,7 +20,38 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgi-ml-HF9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMG-rG-o3j">
+                                        <rect key="frame" x="30" y="71.5" width="325" height="41"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbR-Ge-H7s">
+                                                <rect key="frame" x="0.0" y="0.0" width="162.5" height="41"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Посмотреть">
+                                                    <fontDescription key="titleFontDescription" name="Menlo-Bold" family="Menlo" pointSize="23"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="watchButton:" destination="7HR-7t-CNE" eventType="touchUpInside" id="Ex1-WI-0wT"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5i-TY-nrc" userLabel="Watched Button">
+                                                <rect key="frame" x="162.5" y="0.0" width="162.5" height="41"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Посмотрено">
+                                                    <fontDescription key="titleFontDescription" name="Menlo-Regular" family="Menlo" pointSize="23"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.92941176469999998" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="jMG-rG-o3j" firstAttribute="centerY" secondItem="Tgi-ml-HF9" secondAttribute="centerY" constant="20" id="H1h-oB-2cg"/>
+                                    <constraint firstAttribute="trailing" secondItem="jMG-rG-o3j" secondAttribute="trailing" constant="59" id="RBl-gI-nLT"/>
+                                    <constraint firstItem="jMG-rG-o3j" firstAttribute="leading" secondItem="Tgi-ml-HF9" secondAttribute="leading" constant="30" id="mTT-vG-xiS"/>
+                                </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XJi-BO-DgX">
                                 <rect key="frame" x="0.0" y="144" width="414" height="752"/>
@@ -71,13 +102,17 @@
                     <connections>
                         <outlet property="collectionView" destination="XJi-BO-DgX" id="7RM-3E-iR8"/>
                         <outlet property="placeHolderView" destination="Tgi-ml-HF9" id="Rqk-he-8Nm"/>
+                        <outlet property="watchButton" destination="RbR-Ge-H7s" id="AC9-dz-y49"/>
+                        <outlet property="watchedButton" destination="a5i-TY-nrc" id="Brj-1K-5Eg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kDn-4u-pS5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="7HR-7t-CNE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-539.13043478260875" y="0.6696428571428571"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.86274509803921573" green="0.74117647058823533" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

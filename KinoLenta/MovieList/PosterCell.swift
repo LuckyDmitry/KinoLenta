@@ -11,6 +11,4 @@ class PosterCell: UICollectionViewCell {
     
     @IBOutlet var ratingView: RatingView!
     
-    var showRating: Bool = false
-    
 }

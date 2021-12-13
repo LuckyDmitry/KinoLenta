@@ -9,9 +9,10 @@ import UIKit
 
 class MovieListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet var watchButton: UIButton!
+    @IBOutlet var watchedButton: UIButton!
     @IBOutlet var placeHolderView: UIView!
     @IBOutlet var collectionView: UICollectionView!
-//    var quickItemFilter: QuickItemFilterView!
     
     var images = (0...11).compactMap { number -> UIImage? in
         let image = UIImage(named: "poster\(number)")
@@ -22,20 +23,42 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
         return Int.random(in: 1...5)
     }
     
+    var showRating: Bool = false
+    
     private enum Constants {
         static let reuseId: String = String(describing: PosterCell.self)
         static var isLandscape: Bool { UIDevice.current.orientation.isLandscape }
+        static let backGroundColor: UIColor = UIColor(named: "mainBackground") ?? .white
+        static let seletctedItemColor: UIColor = UIColor(named: "selectedItemBackground") ?? .black
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-//        quickItemFilter = QuickItemFilterView(frame: placeHolderView.bounds)
+        watchButton.addTarget(
+            self,
+            action: #selector(selectWatchButton),
+            for: .touchUpInside)
         
-//        placeHolderView.addSubview(quickItemFilter)
-        // Do any additional setup after loading the view.
+        watchedButton.addTarget(
+            self,
+            action: #selector(selectWatchedButton),
+            for: .touchUpInside)
+        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        watchedButton.layer.cornerRadius = 10
+        watchButton.layer.cornerRadius = 10
+        watchButton.clipsToBounds = true
+        watchedButton.clipsToBounds = true
+        self.watchButton.tintColor = Constants.seletctedItemColor
+        self.watchedButton.tintColor = Constants.backGroundColor
+        self.watchedButton.setTitleColor(Constants.seletctedItemColor, for: .normal)
     }
+    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -52,16 +75,6 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
         let cellPadding: CGFloat = Constants.isLandscape ? (cvWidth - floor(cvWidth / 180) * 180) / 2 : (cvWidth - cellWidth * 2) / 2
         collectionView.contentInset.left = cellPadding
         collectionView.contentInset.right = cellPadding
-//        let quickItemWidth = quickItemFilter.collectionView.collectionViewLayout.collectionViewContentSize.width
-//        let leftMargin = (view.frame.width - quickItemWidth) / 2
-//
-//
-//        quickItemFilter.frame = CGRect(origin: CGPoint(x: leftMargin, y: 0),
-//                                       size: CGSize(width: placeHolderView.bounds.width - leftMargin,
-//                                                    height: placeHolderView.bounds.height))
-//        placeHolderView.bounds = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: placeHolderView.frame.height)
-//        placeHolderView.
-        print(cellPadding, cvWidth, cellWidth)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -84,10 +97,35 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
         
         cell.ratingView.rating = Double(ratingText)
         
-        cell.ratingView.isHidden = cell.showRating
+        cell.ratingView.ratingView.isHidden = !showRating
         return cell
     }
 
+    @objc func selectWatchButton() {
+        self.showRating = false
+        self.watchButton.tintColor = Constants.seletctedItemColor
+        self.watchButton.setTitleColor(.white, for: .normal)
+        self.watchedButton.tintColor = Constants.backGroundColor
+        self.watchedButton.setTitleColor(Constants.seletctedItemColor, for: .normal)
+        let indices = self.collectionView.indexPathsForVisibleItems
+        self.collectionView.reloadItems(at: indices)
+        
+        self.images.shuffle()
+        self.collectionView.reloadData()
+    }
+    
+    @objc func selectWatchedButton() {
+        self.showRating = true
+        self.watchedButton.tintColor = Constants.seletctedItemColor
+        self.watchedButton.setTitleColor(.white, for: .normal)
+        self.watchButton.tintColor = Constants.backGroundColor
+        self.watchButton.setTitleColor(Constants.seletctedItemColor, for: .normal)
+        let indices = self.collectionView.indexPathsForVisibleItems
+        self.collectionView.reloadItems(at: indices)
+        self.images.shuffle()
+        self.collectionView.reloadData()
+        
+    }
 
 }
 

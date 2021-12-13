@@ -17,7 +17,7 @@ final class RatingView: UIView {
         return ratingLabel
     }()
     
-    private lazy var ratingView: UIView = {
+    var ratingView: UIView = {
         let ratingView = UIView()
         ratingView.clipsToBounds = true
         return ratingView
