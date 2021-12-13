@@ -8,7 +8,5 @@
 import UIKit
 
 class PosterCell: UICollectionViewCell {
-    
     @IBOutlet var ratingView: RatingView!
-    
 }

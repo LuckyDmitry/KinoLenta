@@ -17,10 +17,9 @@ final class MainGraph {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
-        
+    
         tabBarController.tabBar.standardAppearance = appearance
         tabBarController.viewControllers = [rating]
-
     }
 }
 
