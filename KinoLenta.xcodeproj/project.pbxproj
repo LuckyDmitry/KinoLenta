@@ -58,7 +58,6 @@
 		66318F512764C7230088DE92 /* TVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318F502764C7230088DE92 /* TVModel.swift */; };
 		66318F532764C80A0088DE92 /* CommonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318F522764C80A0088DE92 /* CommonModels.swift */; };
 		66318F552764CE270088DE92 /* MovieDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318F542764CE270088DE92 /* MovieDomainModel.swift */; };
-		66318F592764E7260088DE92 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318F582764E7260088DE92 /* MockDataManager.swift */; };
 		66A67003276394F60011C544 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A66FFD276394F60011C544 /* DataManager.swift */; };
 		66A67004276394F60011C544 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A66FFE276394F60011C544 /* Networking.swift */; };
 		66A67005276394F60011C544 /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A66FFF276394F60011C544 /* Caching.swift */; };
@@ -69,6 +68,7 @@
 >>>>>>> f0c1d74 (Add data access layer, movie model WIP)
 =======
 		66A6700B276399530011C544 /* api-key.txt in Resources */ = {isa = PBXBuildFile; fileRef = 66A6700A276399530011C544 /* api-key.txt */; };
+<<<<<<< HEAD
 		66A6700D276399A00011C544 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 66A6700C276399A00011C544 /* .gitignore */; };
 <<<<<<< HEAD
 >>>>>>> 6088745 (Add api-key to .gitignore)
@@ -77,6 +77,8 @@
 		66A6700D276399A00011C544 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 66A6700C276399A00011C544 /* .gitignore */; };
 >>>>>>> 0302152 (Add api-key to .gitignore)
 =======
+=======
+>>>>>>> 39c325b (Remove unnecessary files)
 		66A962BE2767648700576F02 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A962BD2767648700576F02 /* SearchModel.swift */; };
 >>>>>>> 0b86b2b (Add SearchModel)
 /* End PBXBuildFile section */
@@ -156,7 +158,6 @@
 		66318F502764C7230088DE92 /* TVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVModel.swift; sourceTree = "<group>"; };
 		66318F522764C80A0088DE92 /* CommonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModels.swift; sourceTree = "<group>"; };
 		66318F542764CE270088DE92 /* MovieDomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDomainModel.swift; sourceTree = "<group>"; };
-		66318F582764E7260088DE92 /* MockDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataManager.swift; sourceTree = "<group>"; };
 		66A66FFD276394F60011C544 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		66A66FFE276394F60011C544 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		66A66FFF276394F60011C544 /* Caching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
@@ -167,6 +168,7 @@
 >>>>>>> f0c1d74 (Add data access layer, movie model WIP)
 =======
 		66A6700A276399530011C544 /* api-key.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "api-key.txt"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		66A6700C276399A00011C544 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 <<<<<<< HEAD
 >>>>>>> 6088745 (Add api-key to .gitignore)
@@ -175,6 +177,8 @@
 		66A6700C276399A00011C544 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 >>>>>>> 0302152 (Add api-key to .gitignore)
 =======
+=======
+>>>>>>> 39c325b (Remove unnecessary files)
 		66A962BD2767648700576F02 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 >>>>>>> 0b86b2b (Add SearchModel)
 /* End PBXFileReference section */
@@ -274,8 +278,6 @@
 		4B218B922762245700C41939 = {
 			isa = PBXGroup;
 			children = (
-				66318F5A2764E7970088DE92 /* mock_data */,
-				66A6700C276399A00011C544 /* .gitignore */,
 				66A6700A276399530011C544 /* api-key.txt */,
 				4B218B9D2762245700C41939 /* KinoLenta */,
 				4B218BB42762245800C41939 /* KinoLentaTests */,
@@ -420,20 +422,12 @@
 			path = Filter;
 			sourceTree = "<group>";
 		};
-		66318F5A2764E7970088DE92 /* mock_data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = mock_data;
-			sourceTree = "<group>";
-		};
 		66A66FFC276394F60011C544 /* DAL */ = {
 			isa = PBXGroup;
 			children = (
 				66A66FFD276394F60011C544 /* DataManager.swift */,
 				66A66FFE276394F60011C544 /* Networking.swift */,
 				66A67000276394F60011C544 /* DataAccessProtocols.swift */,
-				66318F582764E7260088DE92 /* MockDataManager.swift */,
 				66A66FFF276394F60011C544 /* Caching.swift */,
 			);
 			path = DAL;
@@ -556,6 +550,7 @@
 			files = (
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				7E07C7D42767709E0052A5F9 /* FilterScreenViewController.xib in Resources */,
 				4B218BAB2762245800C41939 /* LaunchScreen.storyboard in Resources */,
 				4B0BA6832764D751008507EE /* SearchView.xib in Resources */,
@@ -573,6 +568,8 @@
 =======
 >>>>>>> 0302152 (Add api-key to .gitignore)
 				66A6700D276399A00011C544 /* .gitignore in Resources */,
+=======
+>>>>>>> 39c325b (Remove unnecessary files)
 				4BAE5AD827634564002C8673 /* SearchView.xib in Resources */,
 				4B218BAB2762245800C41939 /* LaunchScreen.storyboard in Resources */,
 				4B218BDB27622CED00C41939 /* MovieTableViewCell.xib in Resources */,
@@ -624,7 +621,6 @@
 				4B4FAE9627627FEA008A910C /* ColorExtension.swift in Sources */,
 				4BAE5AD42762A3EF002C8673 /* ItemsPickerView.swift in Sources */,
 				4BAE5AD227629CB4002C8673 /* CollectionViewLayout.swift in Sources */,
-				66318F592764E7260088DE92 /* MockDataManager.swift in Sources */,
 				4B218BDD27622D1C00C41939 /* MovieTableViewCell.swift in Sources */,
 				66A67006276394F60011C544 /* DataAccessProtocols.swift in Sources */,
 				4B218BD927622A9700C41939 /* RatingView.swift in Sources */,
