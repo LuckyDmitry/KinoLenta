@@ -7,31 +7,27 @@
 
 import Foundation
 
-enum MovieType {
-    case tv
-    case movie
-}
 
 protocol MovieSearchService {
-    func search(query: String) -> [MovieModel]
+    func search(query: String) -> [MovieDomainModel]
     
     func discover(
         genre: [Genre],
         yearRange: Range<Int>?,
         ratingRange: Range<Int>?
-    ) -> [MovieModel]
+    ) -> [MovieDomainModel]
 }
 
 protocol MovieCompilationService {
-    func getPopular() -> [MovieModel]
-    func getTopRated() -> [MovieModel]
-    func getTrending() -> [MovieModel]
+    func getPopular() -> [MovieDomainModel]
+    func getTopRated() -> [MovieDomainModel]
+    func getTrending() -> [MovieDomainModel]
 }
 
 protocol MovieInfoService {
-    func getById(_ id: Int) -> [MovieModel]
-    func getRecommendations(for movie: MovieModel) -> [MovieModel]
-    func getSimilar(to movie: MovieModel) -> [MovieModel]
+    func getById(_ id: Int) -> [MovieDomainModel]
+    func getRecommendations(for movie: MovieDomainModel) -> [MovieDomainModel]
+    func getSimilar(to movie: MovieDomainModel) -> [MovieDomainModel]
 }
 
 enum SavedMovieOption {
@@ -40,6 +36,6 @@ enum SavedMovieOption {
 }
 
 protocol SavedMovieService {
-    func getSavedMovies(option: SavedMovieOption) -> [MovieModel]
+    func getSavedMovies(option: SavedMovieOption) -> [MovieDomainModel]
 }
 

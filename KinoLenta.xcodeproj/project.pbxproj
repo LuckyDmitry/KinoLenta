@@ -58,6 +58,7 @@
 		66318F512764C7230088DE92 /* TVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318F502764C7230088DE92 /* TVModel.swift */; };
 		66318F532764C80A0088DE92 /* CommonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318F522764C80A0088DE92 /* CommonModels.swift */; };
 		66318F552764CE270088DE92 /* MovieDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318F542764CE270088DE92 /* MovieDomainModel.swift */; };
+		66318F592764E7260088DE92 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318F582764E7260088DE92 /* MockDataManager.swift */; };
 		66A67003276394F60011C544 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A66FFD276394F60011C544 /* DataManager.swift */; };
 		66A67004276394F60011C544 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A66FFE276394F60011C544 /* Networking.swift */; };
 		66A67005276394F60011C544 /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A66FFF276394F60011C544 /* Caching.swift */; };
@@ -151,6 +152,7 @@
 		66318F502764C7230088DE92 /* TVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVModel.swift; sourceTree = "<group>"; };
 		66318F522764C80A0088DE92 /* CommonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModels.swift; sourceTree = "<group>"; };
 		66318F542764CE270088DE92 /* MovieDomainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDomainModel.swift; sourceTree = "<group>"; };
+		66318F582764E7260088DE92 /* MockDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataManager.swift; sourceTree = "<group>"; };
 		66A66FFD276394F60011C544 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		66A66FFE276394F60011C544 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		66A66FFF276394F60011C544 /* Caching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		4B218B922762245700C41939 = {
 			isa = PBXGroup;
 			children = (
+				66318F5A2764E7970088DE92 /* mock_data */,
 				66A6700C276399A00011C544 /* .gitignore */,
 				66A6700A276399530011C544 /* api-key.txt */,
 				4B218B9D2762245700C41939 /* KinoLenta */,
@@ -409,6 +412,13 @@
 			path = Filter;
 			sourceTree = "<group>";
 		};
+		66318F5A2764E7970088DE92 /* mock_data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = mock_data;
+			sourceTree = "<group>";
+		};
 		66A66FFC276394F60011C544 /* DAL */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +426,7 @@
 				66A66FFE276394F60011C544 /* Networking.swift */,
 				66A66FFF276394F60011C544 /* Caching.swift */,
 				66A67000276394F60011C544 /* DataAccessProtocols.swift */,
+				66318F582764E7260088DE92 /* MockDataManager.swift */,
 			);
 			path = DAL;
 			sourceTree = "<group>";
@@ -604,6 +615,7 @@
 				4B4FAE9627627FEA008A910C /* ColorExtension.swift in Sources */,
 				4BAE5AD42762A3EF002C8673 /* ItemsPickerView.swift in Sources */,
 				4BAE5AD227629CB4002C8673 /* CollectionViewLayout.swift in Sources */,
+				66318F592764E7260088DE92 /* MockDataManager.swift in Sources */,
 				4B218BDD27622D1C00C41939 /* MovieTableViewCell.swift in Sources */,
 				66A67006276394F60011C544 /* DataAccessProtocols.swift in Sources */,
 				4B218BD927622A9700C41939 /* RatingView.swift in Sources */,
@@ -803,7 +815,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K5XWDYYG67;
+				DEVELOPMENT_TEAM = F59T87TWR8;
 				INFOPLIST_FILE = KinoLenta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -823,7 +835,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K5XWDYYG67;
+				DEVELOPMENT_TEAM = F59T87TWR8;
 				INFOPLIST_FILE = KinoLenta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -843,7 +855,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K5XWDYYG67;
+				DEVELOPMENT_TEAM = F59T87TWR8;
 				INFOPLIST_FILE = KinoLentaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -865,7 +877,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K5XWDYYG67;
+				DEVELOPMENT_TEAM = F59T87TWR8;
 				INFOPLIST_FILE = KinoLentaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -886,7 +898,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K5XWDYYG67;
+				DEVELOPMENT_TEAM = F59T87TWR8;
 				INFOPLIST_FILE = KinoLentaUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -906,7 +918,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K5XWDYYG67;
+				DEVELOPMENT_TEAM = F59T87TWR8;
 				INFOPLIST_FILE = KinoLentaUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -21,31 +21,31 @@ class DataManager {
 
 // MARK: Search
 extension DataManager: MovieSearchService {
-    func search(query: String) -> [MovieModel] { [] }
+    func search(query: String) -> [MovieDomainModel] { [] }
     
-    func discover(genre: [Genre], yearRange: Range<Int>?, ratingRange: Range<Int>?) -> [MovieModel] { [] }
+    func discover(genre: [Genre], yearRange: Range<Int>?, ratingRange: Range<Int>?) -> [MovieDomainModel] { [] }
 
 }
 
 // MARK: Compilation
 extension DataManager: MovieCompilationService {
-    func getPopular() -> [MovieModel] { return [] }
+    func getPopular() -> [MovieDomainModel] { return [] }
     
-    func getTopRated() -> [MovieModel] { return [] }
+    func getTopRated() -> [MovieDomainModel] { return [] }
     
-    func getTrending() -> [MovieModel] { return [] }
+    func getTrending() -> [MovieDomainModel] { return [] }
 }
 
 // MARK: Movie
 extension DataManager: MovieInfoService {
-    func getById(_ id: Int) -> [MovieModel] { return [] }
+    func getById(_ id: Int) -> [MovieDomainModel] { return [] }
     
-    func getRecommendations(for movie: MovieModel) -> [MovieModel] { return [] }
+    func getRecommendations(for movie: MovieDomainModel) -> [MovieDomainModel] { return [] }
     
-    func getSimilar(to movie: MovieModel) -> [MovieModel] { return [] }
+    func getSimilar(to movie: MovieDomainModel) -> [MovieDomainModel] { return [] }
 }
 
 // MARK: User movies
 extension DataManager: SavedMovieService {
-    func getSavedMovies(option: SavedMovieOption) -> [MovieModel] { [] }
+    func getSavedMovies(option: SavedMovieOption) -> [MovieDomainModel] { [] }
 }
