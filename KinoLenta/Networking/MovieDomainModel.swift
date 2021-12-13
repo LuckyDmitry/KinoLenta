@@ -13,7 +13,7 @@ struct MovieDomainModel: Decodable {
     let id: Int
     let title: String
     let overview: String
-    let genres: [Int]
+    let genres: [Genre]
     let popularity: Double
     let voteAverage: Double
     let voteCount: Int
@@ -26,7 +26,7 @@ struct MovieDomainModel: Decodable {
         self.id = movieDTO.id
         self.title = movieDTO.title
         self.overview = movieDTO.overview
-        self.genres = movieDTO.genres.map { $0.id }
+        self.genres = movieDTO.genres
         self.popularity = movieDTO.popularity
         self.voteAverage = movieDTO.voteAverage
         self.voteCount = movieDTO.voteCount
@@ -40,7 +40,7 @@ struct MovieDomainModel: Decodable {
         self.id = tvDTO.id
         self.title = tvDTO.name
         self.overview = tvDTO.overview
-        self.genres = tvDTO.genres.map { $0.id }
+        self.genres = tvDTO.genres
         self.popularity = tvDTO.popularity
         self.voteAverage = tvDTO.voteAverage
         self.voteCount = tvDTO.voteCount

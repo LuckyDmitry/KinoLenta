@@ -10,7 +10,8 @@ import Foundation
 
 // MARK: - ProductionCountry
 struct ProductionCountry: Codable {
-    let iso3166_1, name: String?
+    let iso3166_1: String?
+    let name: String?
 
     enum CodingKeys: String, CodingKey {
         case iso3166_1 = "iso_3166_1"
@@ -28,7 +29,8 @@ struct Genre: Codable {
 struct ProductionCompany: Codable {
     let id: Int?
     let logoPath: String?
-    let name, originCountry: String?
+    let name: String?
+    let originCountry: String?
 
     enum CodingKeys: String, CodingKey {
         case id
