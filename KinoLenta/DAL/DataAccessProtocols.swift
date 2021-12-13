@@ -9,13 +9,13 @@ import Foundation
 
 
 protocol MovieSearchService {
-    func search(query: String) -> [MovieDomainModel]
+    func search(query: String) -> [SearchModel]
     
     func discover(
         genre: [Genre],
         yearRange: Range<Int>?,
         ratingRange: Range<Int>?
-    ) -> [MovieDomainModel]
+    ) -> [SearchModel]
 }
 
 protocol MovieCompilationService {

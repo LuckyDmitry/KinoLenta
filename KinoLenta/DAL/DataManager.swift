@@ -21,9 +21,9 @@ class DataManager {
 
 // MARK: Search
 extension DataManager: MovieSearchService {
-    func search(query: String) -> [MovieDomainModel] { [] }
+    func search(query: String) -> [SearchModel] { [] }
     
-    func discover(genre: [Genre], yearRange: Range<Int>?, ratingRange: Range<Int>?) -> [MovieDomainModel] { [] }
+    func discover(genre: [Genre], yearRange: Range<Int>?, ratingRange: Range<Int>?) -> [SearchModel] { [] }
 
 }
 

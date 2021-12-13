@@ -70,11 +70,15 @@
 =======
 		66A6700B276399530011C544 /* api-key.txt in Resources */ = {isa = PBXBuildFile; fileRef = 66A6700A276399530011C544 /* api-key.txt */; };
 		66A6700D276399A00011C544 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 66A6700C276399A00011C544 /* .gitignore */; };
+<<<<<<< HEAD
 >>>>>>> 6088745 (Add api-key to .gitignore)
 =======
 		66A6700B276399530011C544 /* api-key.txt in Resources */ = {isa = PBXBuildFile; fileRef = 66A6700A276399530011C544 /* api-key.txt */; };
 		66A6700D276399A00011C544 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 66A6700C276399A00011C544 /* .gitignore */; };
 >>>>>>> 0302152 (Add api-key to .gitignore)
+=======
+		66A962BE2767648700576F02 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A962BD2767648700576F02 /* SearchModel.swift */; };
+>>>>>>> 0b86b2b (Add SearchModel)
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,11 +168,15 @@
 =======
 		66A6700A276399530011C544 /* api-key.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "api-key.txt"; sourceTree = "<group>"; };
 		66A6700C276399A00011C544 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+<<<<<<< HEAD
 >>>>>>> 6088745 (Add api-key to .gitignore)
 =======
 		66A6700A276399530011C544 /* api-key.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "api-key.txt"; sourceTree = "<group>"; };
 		66A6700C276399A00011C544 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 >>>>>>> 0302152 (Add api-key to .gitignore)
+=======
+		66A962BD2767648700576F02 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+>>>>>>> 0b86b2b (Add SearchModel)
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -424,9 +432,9 @@
 			children = (
 				66A66FFD276394F60011C544 /* DataManager.swift */,
 				66A66FFE276394F60011C544 /* Networking.swift */,
-				66A66FFF276394F60011C544 /* Caching.swift */,
 				66A67000276394F60011C544 /* DataAccessProtocols.swift */,
 				66318F582764E7260088DE92 /* MockDataManager.swift */,
+				66A66FFF276394F60011C544 /* Caching.swift */,
 			);
 			path = DAL;
 			sourceTree = "<group>";
@@ -438,6 +446,7 @@
 				66318F502764C7230088DE92 /* TVModel.swift */,
 				66318F522764C80A0088DE92 /* CommonModels.swift */,
 				66318F542764CE270088DE92 /* MovieDomainModel.swift */,
+				66A962BD2767648700576F02 /* SearchModel.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -622,6 +631,7 @@
 				66A67007276394F60011C544 /* MovieModel.swift in Sources */,
 >>>>>>> f0c1d74 (Add data access layer, movie model WIP)
 				4B218B9F2762245700C41939 /* AppDelegate.swift in Sources */,
+<<<<<<< HEAD
 				4B0BA6732764D743008507EE /* SearchedMoviesViewController.swift in Sources */,
 				7E07C7C5276770930052A5F9 /* PickerFilterTableCell.swift in Sources */,
 				4B8C1A57276515D9002A637C /* QuickItemFilterCollectionViewLayout.swift in Sources */,
@@ -629,6 +639,10 @@
 				4B0BA6862764D751008507EE /* StringExtension.swift in Sources */,
 				7E07C7D52767709E0052A5F9 /* FilterScreenViewController.swift in Sources */,
 				4B8C1A58276515D9002A637C /* QuickItemFilterCollectionViewCell.swift in Sources */,
+=======
+				4BAE5AD627634440002C8673 /* StringExtension.swift in Sources */,
+				66A962BE2767648700576F02 /* SearchModel.swift in Sources */,
+>>>>>>> 0b86b2b (Add SearchModel)
 				4B218BA12762245700C41939 /* SceneDelegate.swift in Sources */,
 <<<<<<< HEAD
 				4B0BA6852764D751008507EE /* ColorExtension.swift in Sources */,
