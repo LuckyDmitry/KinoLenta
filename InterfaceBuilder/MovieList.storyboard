@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yWy-gz-ijr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yWy-gz-ijr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -30,34 +30,26 @@
                                     <size key="estimatedItemSize" width="180" height="270"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PosterCell" id="o1M-ol-TTU" customClass="PosterCell" customModule="KinoLenta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="10" width="180" height="270"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="270"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zFu-cP-nqN">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zFu-cP-nqN" customClass="RatingView" customModule="KinoLenta" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="270"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lSg-Pf-jJM">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P3t-fC-yz2" userLabel="RatingView" customClass="RatingView" customModule="KinoLenta" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="270"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fj9-Ei-ZAc" userLabel="Rating">
-                                                    <rect key="frame" x="0.0" y="246" width="35" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.69019607843137254" green="0.50588235294117645" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="14"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="PosterImage" destination="lSg-Pf-jJM" id="7me-h5-Y2N"/>
-                                            <outlet property="posterRating" destination="Fj9-Ei-ZAc" id="Lg8-rV-rk9"/>
+                                            <outlet property="ratingView" destination="P3t-fC-yz2" id="kjf-SR-Wy7"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -67,7 +59,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="XJi-BO-DgX" firstAttribute="top" secondItem="Tgi-ml-HF9" secondAttribute="bottom" id="31P-3U-cvb"/>
-
                             <constraint firstItem="XJi-BO-DgX" firstAttribute="top" secondItem="vwc-bi-Fas" secondAttribute="top" constant="100" id="5Dz-R6-hae"/>
                             <constraint firstItem="XJi-BO-DgX" firstAttribute="trailing" secondItem="vwc-bi-Fas" secondAttribute="trailing" id="5zN-mO-KIv"/>
                             <constraint firstAttribute="bottom" secondItem="XJi-BO-DgX" secondAttribute="bottom" id="AJR-5Q-0Ms"/>

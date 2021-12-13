@@ -11,15 +11,15 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBOutlet var placeHolderView: UIView!
     @IBOutlet var collectionView: UICollectionView!
-    var quickItemFilter: QuickItemFilterView!
+//    var quickItemFilter: QuickItemFilterView!
     
     var images = (0...11).compactMap { number -> UIImage? in
         let image = UIImage(named: "poster\(number)")
         return image
     }
     
-    var ratings = (0...11).compactMap { number -> String in
-        return "\(Int.random(in: 1...5))"
+    var ratings = (0...11).compactMap { number -> Int in
+        return Int.random(in: 1...5)
     }
     
     private enum Constants {
@@ -31,7 +31,7 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        quickItemFilter = QuickItemFilterView(frame: placeHolderView.bounds)
+//        quickItemFilter = QuickItemFilterView(frame: placeHolderView.bounds)
         
 //        placeHolderView.addSubview(quickItemFilter)
         // Do any additional setup after loading the view.
@@ -77,13 +77,14 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         
         let image = images[indexPath.row]
-        cell.posterImage.image = image
-        cell.posterImage.contentMode = .scaleAspectFill
+        let ratingText = ratings[indexPath.row]
+        
+        cell.ratingView.image = image
         cell.layer.cornerRadius = 5
         
-        let rating = ratings[indexPath.row]
-        cell.posterRating.text = rating
-        cell.posterRating.isHidden = cell.showRating
+        cell.ratingView.rating = Double(ratingText)
+        
+        cell.ratingView.isHidden = cell.showRating
         return cell
     }
 

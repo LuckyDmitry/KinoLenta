@@ -9,8 +9,8 @@ import UIKit
 
 class PosterCell: UICollectionViewCell {
     
-    @IBOutlet var posterRating: UILabel!
-    @IBOutlet var posterImage: UIImageView!
+    @IBOutlet var ratingView: RatingView!
     
     var showRating: Bool = false
+    
 }
