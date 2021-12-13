@@ -71,10 +71,6 @@ extension SearchedMoviesViewController: UITableViewDataSource {
         cell.ratingView.layer.cornerRadius = 10
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
-    }
 }
 
 extension SearchedMoviesViewController {

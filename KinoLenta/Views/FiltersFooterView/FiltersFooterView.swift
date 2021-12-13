@@ -7,7 +7,7 @@ final class FiltersFooterView: UIView {
     
     @IBOutlet private weak var filterButton: UIButton! {
         didSet {
-            filterButton?.layer.cornerRadius = 10
+            filterButton.layer.cornerRadius = 10
         }
     }
     @IBAction private func showAction(_ sender: Any) {

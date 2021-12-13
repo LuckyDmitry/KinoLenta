@@ -6,29 +6,32 @@ public struct TableViewCellDescription {
     public let height: CGFloat
     public var object: Any?
     
-    public init(cellType: BaseTableViewCell.Type, height: CGFloat = UITableView.automaticDimension, object: Any?) {
+    public init(
+        cellType: BaseTableViewCell.Type,
+        height: CGFloat = UITableView.automaticDimension
+    ) {
         self.cellType = cellType
         self.height = height
-        self.object = object
     }
 }
 
 extension UITableView {
     
     public func register<T: BaseTableViewCell>(_ classType: T.Type) {
-        register(UINib(nibName: classType.cellIdentifier(), bundle: nil),
-                 forCellReuseIdentifier: classType.cellIdentifier())
+        register(UINib(nibName: classType.cellIdentifier, bundle: nil),
+                 forCellReuseIdentifier: classType.cellIdentifier)
     }
 }
 
 public protocol BaseTableViewCell {
     
-    static func cellIdentifier() -> String
+    static var cellIdentifier: String { get }
 }
 
 extension BaseTableViewCell where Self: UITableViewCell {
     
-    public static func cellIdentifier() -> String {
-        return String(describing: self)
+    
+    public static var cellIdentifier: String {
+        String(describing: self)
     }
 }

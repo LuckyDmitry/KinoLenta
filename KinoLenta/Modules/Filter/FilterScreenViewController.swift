@@ -19,7 +19,10 @@ final class FilterScreenViewController: UIViewController {
     
     private lazy var headerView: FiltersHeaderView? = {
         guard let headerView = UINib(nibName: "FiltersHeaderView", bundle: nil)
-                .instantiate(withOwner: nil, options: nil)[0] as? FiltersHeaderView else { return nil }
+                .instantiate(withOwner: nil, options: nil)[0] as? FiltersHeaderView else {
+                    assertionFailure()
+                    return nil
+                }
         headerView.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 150)
         headerView.delegate = self
         return headerView
@@ -28,7 +31,10 @@ final class FilterScreenViewController: UIViewController {
     
     private lazy var footerView: FiltersFooterView? = {
         guard let footerView = UINib(nibName: "FiltersFooterView", bundle: nil)
-                .instantiate(withOwner: nil, options: nil)[0] as? FiltersFooterView else { return nil }
+                .instantiate(withOwner: nil, options: nil)[0] as? FiltersFooterView else {
+                    assertionFailure()
+                    return nil
+                }
         footerView.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 150)
         footerView.delegate = self
         return footerView
