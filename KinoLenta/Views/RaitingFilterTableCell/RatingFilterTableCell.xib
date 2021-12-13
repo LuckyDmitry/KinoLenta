@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RatingFilterTableCell" rowHeight="112" id="V9S-ll-srq" customClass="RatingFilterTableCell" customModule="Kinolenta" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V9S-ll-srq" id="Bej-t2-RFE">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wg3-2a-flC">
+                        <rect key="frame" x="15" y="15" width="65" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="ClZ-U8-iW2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="xVp-OT-8AW">
+                        <rect key="frame" x="18" y="36" width="339" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="height" id="VQ3-do-FZE"/>
+                        </constraints>
+                        <color key="minimumTrackTintColor" name="OrangeDarkColor"/>
+                        <color key="maximumTrackTintColor" name="GreyColor"/>
+                        <color key="thumbTintColor" name="OrangeDarkColor"/>
+                        <connections>
+                            <action selector="raitingSliderAction:" destination="V9S-ll-srq" eventType="valueChanged" id="dDe-4F-rk1"/>
+                        </connections>
+                    </slider>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHq-3h-bkK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
+                        <inset key="titleEdgeInsets" minX="0.0" minY="15" maxX="15" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="☆">
+                            <color key="titleColor" name="GreyColor"/>
+                        </state>
+                        <connections>
+                            <action selector="showSliderAction:" destination="V9S-ll-srq" eventType="touchUpInside" id="aYx-04-L5T"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xVp-OT-8AW" firstAttribute="top" secondItem="oHq-3h-bkK" secondAttribute="bottom" id="0LX-es-s19"/>
+                    <constraint firstAttribute="trailing" secondItem="oHq-3h-bkK" secondAttribute="trailing" id="24i-LR-658"/>
+                    <constraint firstItem="Wg3-2a-flC" firstAttribute="leading" secondItem="Bej-t2-RFE" secondAttribute="leading" constant="15" id="EhQ-MK-c9p"/>
+                    <constraint firstItem="xVp-OT-8AW" firstAttribute="leading" secondItem="Bej-t2-RFE" secondAttribute="leadingMargin" id="OFK-XM-tru"/>
+                    <constraint firstItem="xVp-OT-8AW" firstAttribute="top" secondItem="Wg3-2a-flC" secondAttribute="bottom" id="Szo-VP-Pu8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="xVp-OT-8AW" secondAttribute="trailing" id="UEp-ii-dJ2"/>
+                    <constraint firstItem="oHq-3h-bkK" firstAttribute="top" secondItem="Bej-t2-RFE" secondAttribute="top" id="Wog-Od-iD9"/>
+                    <constraint firstItem="Wg3-2a-flC" firstAttribute="top" secondItem="Bej-t2-RFE" secondAttribute="top" constant="15" id="WwE-oa-cKL"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="xVp-OT-8AW" secondAttribute="bottom" priority="250" constant="2" id="nGO-vO-NmJ"/>
+                    <constraint firstItem="oHq-3h-bkK" firstAttribute="leading" secondItem="Bej-t2-RFE" secondAttribute="leading" id="qQM-k3-Cso"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="ratingSlider" destination="xVp-OT-8AW" id="R4P-Kd-wpZ"/>
+                <outlet property="sliderHeight" destination="VQ3-do-FZE" id="JIb-vX-9Kc"/>
+                <outlet property="sliderTopConstraint" destination="Szo-VP-Pu8" id="pbB-5A-5Wk"/>
+                <outlet property="valueButton" destination="oHq-3h-bkK" id="Myl-eR-xp2"/>
+            </connections>
+            <point key="canvasLocation" x="39.855072463768117" y="22.767857142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="GreyColor">
+            <color red="0.71372549019607845" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="OrangeDarkColor">
+            <color red="0.69019607843137254" green="0.4823529411764706" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

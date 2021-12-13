@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="YearFilterTableCell" rowHeight="226" id="M1G-Xv-erY" userLabel="Picker Filter Table Cell" customClass="YearFilterTableCell" customModule="Kinolenta" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="226"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M1G-Xv-erY" id="4UF-JS-gQR">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="226"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Год" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpa-HW-qWj">
+                        <rect key="frame" x="15" y="10" width="345" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="BFt-Bk-IEd"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="DarkColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyT-lp-cVX">
+                        <rect key="frame" x="15" y="10" width="345" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="от 2000 до 2005">
+                            <color key="titleColor" name="GreyColor"/>
+                        </state>
+                        <connections>
+                            <action selector="showPickerAction:" destination="M1G-Xv-erY" eventType="touchUpInside" id="48A-SZ-O7T"/>
+                        </connections>
+                    </button>
+                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="606-ZL-Izd">
+                        <rect key="frame" x="25" y="50" width="325" height="0.0"/>
+                        <constraints>
+                            <constraint firstAttribute="height" id="v7b-Mp-Bzf"/>
+                        </constraints>
+                    </pickerView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yyT-lp-cVX" firstAttribute="leading" secondItem="4UF-JS-gQR" secondAttribute="leading" constant="15" id="2Ls-0g-mee"/>
+                    <constraint firstAttribute="bottom" secondItem="606-ZL-Izd" secondAttribute="bottom" priority="250" id="2qX-Ku-JvK"/>
+                    <constraint firstItem="yyT-lp-cVX" firstAttribute="top" secondItem="4UF-JS-gQR" secondAttribute="top" constant="10" id="88Z-qD-f1o"/>
+                    <constraint firstAttribute="trailing" secondItem="rpa-HW-qWj" secondAttribute="trailing" constant="15" id="9f7-Ua-ysJ"/>
+                    <constraint firstItem="rpa-HW-qWj" firstAttribute="leading" secondItem="4UF-JS-gQR" secondAttribute="leading" constant="15" id="Amc-QT-A8Z"/>
+                    <constraint firstItem="rpa-HW-qWj" firstAttribute="top" secondItem="4UF-JS-gQR" secondAttribute="top" constant="10" id="Awq-zR-C6O"/>
+                    <constraint firstItem="606-ZL-Izd" firstAttribute="top" secondItem="rpa-HW-qWj" secondAttribute="bottom" constant="10" id="FcH-kt-I1A"/>
+                    <constraint firstItem="606-ZL-Izd" firstAttribute="leading" secondItem="4UF-JS-gQR" secondAttribute="leading" constant="25" id="KpL-4B-F72"/>
+                    <constraint firstAttribute="trailing" secondItem="606-ZL-Izd" secondAttribute="trailing" constant="25" id="Tlq-FF-N5b"/>
+                    <constraint firstItem="yyT-lp-cVX" firstAttribute="bottom" secondItem="rpa-HW-qWj" secondAttribute="bottom" id="hH4-3r-qg0"/>
+                    <constraint firstItem="yyT-lp-cVX" firstAttribute="top" secondItem="rpa-HW-qWj" secondAttribute="top" id="sMt-GM-7O7"/>
+                    <constraint firstAttribute="trailing" secondItem="yyT-lp-cVX" secondAttribute="trailing" constant="15" id="uss-BY-zDq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="dateButton" destination="yyT-lp-cVX" id="1br-Oc-sKO"/>
+                <outlet property="datePicker" destination="606-ZL-Izd" id="jzV-Bh-hvl"/>
+                <outlet property="datePickerHeight" destination="v7b-Mp-Bzf" id="Oju-l0-gMv"/>
+            </connections>
+            <point key="canvasLocation" x="68.840579710144937" y="-142.63392857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="DarkColor">
+            <color red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GreyColor">
+            <color red="0.71372549019607845" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
