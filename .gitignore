@@ -3,3 +3,10 @@
 
 # Xcode
 xcuserdata/
+
+# api-key
+<<<<<<< HEAD
+api-key.txt
+=======
+api-key
+>>>>>>> 0302152 (Add api-key to .gitignore)

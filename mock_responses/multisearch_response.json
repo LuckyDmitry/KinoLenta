@@ -1,0 +1,417 @@
+{
+  "results": [
+    {
+      "backdrop_path": "/f307veKEFZqvFRkMkffDEXf280w.jpg",
+      "first_air_date": "1999-01-04",
+      "genre_ids": [
+        16,
+        35,
+        10751
+      ],
+      "id": 606,
+      "media_type": "tv",
+      "name": "Ed, Edd n Eddy",
+      "origin_country": [
+        "CA",
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Ed, Edd n Eddy",
+      "overview": "Three adolescent boys, Ed, Edd \"Double D\", and Eddy, collectively known as \"the Eds\", constantly invent schemes to make money from their peers to purchase their favorite confectionery, jawbreakers. Their plans usually fail though, leaving them in various predicaments.",
+      "popularity": 43.076,
+      "poster_path": "/8BguP5zLyf3AzlTgRRhpXdz9bnS.jpg",
+      "vote_average": 8,
+      "vote_count": 507
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/6SnFa3qfCvh4aARg6y3UevKLROh.jpg",
+      "genre_ids": [
+        18,
+        80
+      ],
+      "id": 650,
+      "media_type": "movie",
+      "original_language": "en",
+      "original_title": "Boyz n the Hood",
+      "overview": "Boyz n the Hood is the popular and successful film and social criticism from John Singleton about the conditions in South Central Los Angeles where teenagers are involved in gun fights and drug dealing on a daily basis.",
+      "popularity": 33.383,
+      "poster_path": "/v4ox4aSCNT5vyLXl4Q71JiWwCXW.jpg",
+      "release_date": "1991-07-12",
+      "title": "Boyz n the Hood",
+      "video": false,
+      "vote_average": 7.6,
+      "vote_count": 1323
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/m7MyzQhcM2qVbPW5uxcOi1bfDMX.jpg",
+      "genre_ids": [
+        16,
+        10402,
+        10751
+      ],
+      "id": 355111,
+      "media_type": "movie",
+      "original_language": "en",
+      "original_title": "Barbie in Rock 'N Royals",
+      "overview": "When royal Princess Courtney trades places with famous rock star Erika, two worlds collide while both learn to appreciate new friends and experiences.",
+      "popularity": 25.738,
+      "poster_path": "/aCKWWQpEijagMEfIOz0vW0aTDmv.jpg",
+      "release_date": "2015-08-12",
+      "title": "Barbie in Rock 'N Royals",
+      "video": false,
+      "vote_average": 7,
+      "vote_count": 221
+    },
+    {
+      "backdrop_path": "/mUVxncsIiLWcJPBbPOt02MXVFIE.jpg",
+      "first_air_date": "1989-03-04",
+      "genre_ids": [
+        16,
+        35,
+        10762,
+        10751
+      ],
+      "id": 1615,
+      "media_type": "tv",
+      "name": "Chip 'n' Dale Rescue Rangers",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Chip 'n' Dale Rescue Rangers",
+      "overview": "Chip 'n Dale: Rescue Rangers is an animated series produced by Walt Disney Television Animation. Created by Tad Stones and Alan Zaslove, it featured the established Disney characters Chip 'n' Dale in a new setting. The series premiered on the Disney Channel on March 4, 1989, after a preview episode was aired on August 27, 1988. The series premiered with a two-hour movie special, Rescue Rangers: To the Rescue, which was later broken up into five parts to air as part of the weekday run. The final episode aired on November 19, 1990.\n\nOn September 18, 1989, the series entered national syndication. From 1998 to 1999, reruns of the show were aired as a part of the Disney Afternoon line up.",
+      "popularity": 25.866,
+      "poster_path": "/x1HC92tUqrvif7zuRrjECCT88qU.jpg",
+      "vote_average": 7.6,
+      "vote_count": 345
+    },
+    {
+      "backdrop_path": "/ynmqC4oeUV515iG4EnogesnRZkV.jpg",
+      "first_air_date": "2021-07-28",
+      "genre_ids": [
+        16,
+        10762
+      ],
+      "id": 96715,
+      "media_type": "tv",
+      "name": "Chip 'n' Dale: Park Life",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Chip 'n' Dale: Park Life",
+      "overview": "A non-verbal, classic style comedy, following the ups and downs of the much-loved chipmunk troublemakers living life in the big city.",
+      "popularity": 22.424,
+      "poster_path": "/dLlTR43Fq5RZeqFC5eEWPeFg5md.jpg",
+      "vote_average": 6.7,
+      "vote_count": 45
+    },
+    {
+      "backdrop_path": "/fEyMyA4x5jZPUp3aHnRFlvmrItO.jpg",
+      "first_air_date": "2005-07-28",
+      "genre_ids": [
+        35
+      ],
+      "id": 2299,
+      "media_type": "tv",
+      "name": "Nick Cannon Presents: Wild 'N Out",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Nick Cannon Presents: Wild 'N Out",
+      "overview": "Nick Cannon and an A-list celebrity lead a team of improv comedians as they compete against each other.",
+      "popularity": 23.359,
+      "poster_path": "/9I00u4M54u5tulUQT6qVFOZKMvt.jpg",
+      "vote_average": 8.6,
+      "vote_count": 51
+    },
+    {
+      "backdrop_path": "/9m38iUBri4EqO5QxhUYhb4OUqLc.jpg",
+      "first_air_date": "2012-06-06",
+      "genre_ids": [
+        10764
+      ],
+      "id": 46874,
+      "media_type": "tv",
+      "name": "Fast N' Loud",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Fast N' Loud",
+      "overview": "Motor mastermind Richard Rawlings and mechanical prodigy Aaron Kaufman search for forgotten and neglected vintage cars. They need big projects and big profits to keep the doors open at Gas Monkey Garage in Dallas, TX.",
+      "popularity": 8.913,
+      "poster_path": "/976AyeDT1isz2uAnYuQrjRkS05D.jpg",
+      "vote_average": 6.5,
+      "vote_count": 37
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/n3guCVACMbY3YZ0hLQaBx4JNgsd.jpg",
+      "genre_ids": [
+        18,
+        80,
+        53
+      ],
+      "id": 300672,
+      "media_type": "movie",
+      "original_language": "en",
+      "original_title": "Vincent N Roxxy",
+      "overview": "A small town loner and a rebellious punk rocker unexpectedly fall in love as they are forced on the run and soon discover violence follows them everywhere.",
+      "popularity": 11.601,
+      "poster_path": "/pK5pEto2thTo8fRcSQIJc63IbSK.jpg",
+      "release_date": "2016-04-18",
+      "title": "Vincent N Roxxy",
+      "video": false,
+      "vote_average": 5.4,
+      "vote_count": 73
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/hpYFQg9R8jojh1ihA2zELgewLmi.jpg",
+      "genre_ids": [
+        35,
+        16,
+        12,
+        10770
+      ],
+      "id": 50300,
+      "media_type": "movie",
+      "original_language": "en",
+      "original_title": "Ed, Edd n Eddy's Big Picture Show",
+      "overview": "When a scam goes horribly wrong and leaves the neighborhood kids furious, the Eds embark on a journey to find Eddy's brother in the \"Ed, Edd, n Eddy\" series finale.",
+      "popularity": 23.012,
+      "poster_path": "/uVEk216PiUiGrG6Lxo71NqgdZ7Z.jpg",
+      "release_date": "2009-11-08",
+      "title": "Ed, Edd n Eddy's Big Picture Show",
+      "video": false,
+      "vote_average": 7.2,
+      "vote_count": 79
+    },
+    {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [
+        18,
+        10751
+      ],
+      "id": 105528,
+      "media_type": "movie",
+      "original_language": "en",
+      "original_title": "Cowgirls n' Angels",
+      "overview": "A group of rodeo trick-riders recruits a young girl to join them.",
+      "popularity": 7.046,
+      "poster_path": "/eTOqYI7mtsvrBra3UEUIKBzlxUt.jpg",
+      "release_date": "2012-05-25",
+      "title": "Cowgirls n' Angels",
+      "video": false,
+      "vote_average": 6.4,
+      "vote_count": 54
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/3Ywbn6XkpBBemuoThyUwr0opLmG.jpg",
+      "genre_ids": [
+        28,
+        53,
+        80,
+        18
+      ],
+      "id": 15362,
+      "media_type": "movie",
+      "original_language": "fr",
+      "original_title": "L'ennemi public n°1",
+      "overview": "The story of Jacques Mesrine, France's public enemy No. 1 during the 1970s. After nearly two decades of legendary criminal feats -- from multiple bank robberies and to prison breaks -- Mesrine was gunned down by the French police in Paris.",
+      "popularity": 8.555,
+      "poster_path": "/k9lhZ0PhY78nzwG034rNpsLXlpW.jpg",
+      "release_date": "2008-11-19",
+      "title": "Mesrine: Public Enemy #1",
+      "video": false,
+      "vote_average": 7.4,
+      "vote_count": 666
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/8nFmUlT0YzoKSsvHPVxPpBdBN9F.jpg",
+      "genre_ids": [
+        10749,
+        18
+      ],
+      "id": 16004,
+      "media_type": "movie",
+      "original_language": "en",
+      "original_title": "Love n' Dancing",
+      "overview": "When a bored-with-life English teacher meets a West Coast Swing champion dancer, they have an instant connection. Both feel that the other can fulfill what was missing in their lives. Jake and Jessica must try to elude all obstacles, romantic or otherwise, to stay focused on the goal - winning the World Title and winning each other. Will they give in to the pressure or come out like champs?",
+      "popularity": 6.064,
+      "poster_path": "/xQoABMw15uFcrOrn2afBG4e5kQe.jpg",
+      "release_date": "2009-04-02",
+      "title": "Love n' Dancing",
+      "video": false,
+      "vote_average": 5.8,
+      "vote_count": 33
+    },
+    {
+      "backdrop_path": null,
+      "first_air_date": "1991-01-08",
+      "genre_ids": [],
+      "id": 45260,
+      "media_type": "tv",
+      "name": "Rod 'n' Emu",
+      "origin_country": [
+        "GB"
+      ],
+      "original_language": "en",
+      "original_name": "Rod 'n' Emu",
+      "overview": "Rod 'n' Emu was an animated series shown on CITV around 1991.\n\nIt starred the voices of Rod Hull who created and wrote all the episodes starring as himself, Carol Lee Scott starred as Grotbags and Freddy Stevens as her assistants Croc the crocodile and Redford the robot.\n\nThis was the last series to feature Hull, Emu and Scott before she starred in her own TV series Grotbags. The show was made by FilmFair for Central Independent Television and thirteen episodes were aired.",
+      "popularity": 5.317,
+      "poster_path": null,
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [
+        28,
+        37
+      ],
+      "id": 19989,
+      "media_type": "movie",
+      "original_language": "en",
+      "original_title": "Aces 'N' Eights",
+      "overview": "Already taking a gamble settling in the uncharted west, the peaceful settlers of a town destined for railroad greatness suddenly find themselves being ruthlessly gunned down. With no law and order to be found, justice falls onto the shoulders of an elderly rancher and an accomplished, but retired, gunslinger.",
+      "popularity": 5.247,
+      "poster_path": "/egPU1FS733070k2Gie97Z4F0VfY.jpg",
+      "release_date": "2008-03-15",
+      "title": "Aces 'N' Eights",
+      "video": false,
+      "vote_average": 6,
+      "vote_count": 16
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/nN3gVdM3vlmIMOSj5oYxmZrMWzs.jpg",
+      "genre_ids": [
+        35,
+        10402
+      ],
+      "id": 26326,
+      "media_type": "movie",
+      "original_language": "en",
+      "original_title": "Rock 'n' Roll High School",
+      "overview": "A group of rock-music-loving students, with the help of the Ramones, take over their school to combat its newly installed oppressive administration.",
+      "popularity": 8.261,
+      "poster_path": "/50G3vyNThNapoU5jq4UYSxj44JE.jpg",
+      "release_date": "1979-08-24",
+      "title": "Rock 'n' Roll High School",
+      "video": false,
+      "vote_average": 6.5,
+      "vote_count": 97
+    },
+    {
+      "backdrop_path": "/ppI6pQyUyJAyPX5zrCTCxrwtFh6.jpg",
+      "first_air_date": "2011-05-06",
+      "genre_ids": [
+        35
+      ],
+      "id": 34573,
+      "media_type": "tv",
+      "name": "A.N.T. Farm",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "A.N.T. Farm",
+      "overview": "Chyna Parks, an 11 year old musical prodigy, gets into a gifted program called Advanced Natural Talents at the local high school. Along with her fellow elementary school-aged 'ANTs', she must navigate the halls of a new school of older kids who are not particularly fond of grade-skipping newbies.",
+      "popularity": 20.316,
+      "poster_path": "/aY36imZmrZkDVjZB4mmhAHQpl3n.jpg",
+      "vote_average": 7.4,
+      "vote_count": 83
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/3Ro47ELRIRvCDSMHVgMe92G7mbY.jpg",
+      "genre_ids": [
+        35,
+        10752,
+        36
+      ],
+      "id": 24180,
+      "media_type": "movie",
+      "original_language": "it",
+      "original_title": "N. (Io e Napoleone)",
+      "overview": "Elba island, 1814. Martino is a young teacher, idealist and strongly anti Napoleon, in love with the beautiful and noble Baroness Emily. The young man finds himself serving as librarian to the Great Emperor in exile, whom he deeply hates, yet soon begins recording Napoleon's memoirs, getting to know and learning to value the man behind the myth. Among seductions and affairs, expectations and fears, he will craft a precise portrait that nevertheless will not manage to hide a final, inevitable, disappointment.",
+      "popularity": 5.826,
+      "poster_path": "/tLlXuyvVJqb6vanuLkZR2aGs4fq.jpg",
+      "release_date": "2006-10-13",
+      "title": "Napoleon and Me",
+      "video": false,
+      "vote_average": 6.1,
+      "vote_count": 90
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/1imeUZuvK9YL3nyqIjAB9MtjLm1.jpg",
+      "genre_ids": [
+        18,
+        53
+      ],
+      "id": 47471,
+      "media_type": "movie",
+      "original_language": "fr",
+      "original_title": "Monsieur N.",
+      "overview": "This film covers the last years of the Emperor's life, imprisoned by the British on St Helena, a remote island off the west coast of Africa. Napoleon retains a loyal entourage of officers who help him plot his escape and evade the attentions of the island's overzealous governor, Sir Hudson Lowe.",
+      "popularity": 2.597,
+      "poster_path": "/2ttGgjUr9KJq3dJv315qLW1bNlT.jpg",
+      "release_date": "2003-01-15",
+      "title": "Monsieur N.",
+      "video": false,
+      "vote_average": 6.6,
+      "vote_count": 15
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/bdTgZdpAVUOCwHLGt6YKOFrGBQv.jpg",
+      "genre_ids": [
+        10402,
+        18
+      ],
+      "id": 785864,
+      "media_type": "movie",
+      "original_language": "en",
+      "original_title": "Salt-N-Pepa",
+      "overview": "Salt-N-Pepa details the journey of Queensborough Community College students Cheryl “Salt” James and Sandra “Pepa” Denton as they enter the world of rap and hip hop, after recording a song for their friend Hurby Azor. Salt-N-Pepa made a huge impact as one of the first all-female rap groups, changing the look of hip hop and being unafraid to talk about sex and share their thoughts on men. The movie follows the group as they become the first female rap act to go platinum and experience ground-breaking success with multiple awards, including a Grammy award – paving the way for all female rappers to follow. The film will feature performances of Salt-N-Pepa’s greatest hits, including: “Let’s Talk About Sex”, “What a Man”, “Shoop” and “Push It”. The movie stars GG Townson as Cheryl “Salt” James, Laila Odom as Sandra “Pepa” Denton, Cleveland Berto as music producer “Hurby Azor,” Jermel Howard as rapper “Treach” and Monique Paul as “DJ Spinderella.”",
+      "popularity": 4.71,
+      "poster_path": "/t8TPdLXPazQNBFVSSaRUHVxI5NE.jpg",
+      "release_date": "2021-01-23",
+      "title": "Salt-N-Pepa",
+      "video": false,
+      "vote_average": 7,
+      "vote_count": 4
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/2dJyusaMWzFoEodHgGThQpypoxp.jpg",
+      "genre_ids": [
+        18,
+        35,
+        10749
+      ],
+      "id": 107774,
+      "media_type": "movie",
+      "original_language": "en",
+      "original_title": "Pete 'n' Tillie",
+      "overview": "A fun-loving bachelor woos and weds a secretary, but the bonds of this marriage aren't strong enough to stop his philandering from continuing.",
+      "popularity": 4.003,
+      "poster_path": "/itWUkwLlltZZdrmzSqBhPYdGdD9.jpg",
+      "release_date": "1972-12-17",
+      "title": "Pete 'n' Tillie",
+      "video": false,
+      "vote_average": 5.9,
+      "vote_count": 12
+    }
+  ]
+}
