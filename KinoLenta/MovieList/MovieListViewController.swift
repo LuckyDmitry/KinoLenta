@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MovieListViewController: UIViewController {
     
     @IBOutlet var watchButton: UIButton!
     @IBOutlet var watchedButton: UIButton!
@@ -24,13 +24,6 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     var showRating: Bool = false
-    
-    private enum Constants {
-        static let reuseId: String = String(describing: PosterCell.self)
-        static var isLandscape: Bool { UIDevice.current.orientation.isLandscape }
-        static let backGroundColor: UIColor = UIColor(named: "mainBackground") ?? .white
-        static let seletctedItemColor: UIColor = UIColor(named: "selectedItemBackground") ?? .black
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +43,13 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        watchedButton.layer.cornerRadius = 10
-        watchButton.layer.cornerRadius = 10
+        watchedButton.layer.cornerRadius = Constants.buttonCornerRadius
+        watchButton.layer.cornerRadius = Constants.buttonCornerRadius
         watchButton.clipsToBounds = true
         watchedButton.clipsToBounds = true
-        self.watchButton.tintColor = Constants.seletctedItemColor
+        self.watchButton.tintColor = Constants.selectedItemColor
         self.watchedButton.tintColor = Constants.backGroundColor
-        self.watchedButton.setTitleColor(Constants.seletctedItemColor, for: .normal)
+        self.watchedButton.setTitleColor(Constants.selectedItemColor, for: .normal)
     }
     
     
@@ -70,61 +63,33 @@ class MovieListViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLayoutSubviews()
         
         let cvWidth = collectionView.bounds.width
-        let cellWidth: CGFloat = Constants.isLandscape ? 180 : min(floor(cvWidth / 2), 180)
-        print(cellWidth)
-        let cellPadding: CGFloat = Constants.isLandscape ? (cvWidth - floor(cvWidth / 180) * 180) / 2 : (cvWidth - cellWidth * 2) / 2
+        let cellWidth: CGFloat = Constants.isLandscape ? Constants.defaultCellWidth : min(floor(cvWidth / 2), Constants.defaultCellWidth)
+        let cellPadding: CGFloat = Constants.isLandscape ? (cvWidth - floor(cvWidth / Constants.defaultCellWidth) * Constants.defaultCellWidth) / 2 : (cvWidth - cellWidth * 2) / 2
         collectionView.contentInset.left = cellPadding
         collectionView.contentInset.right = cellPadding
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.reuseId, for: indexPath)
-        
-        guard let cell = cell as? PosterCell else {
-            return cell
-        }
-        
-        let image = images[indexPath.row]
-        let ratingText = ratings[indexPath.row]
-        
-        cell.ratingView.image = image
-        cell.layer.cornerRadius = 5
-        
-        cell.ratingView.rating = Double(ratingText)
-        
-        cell.ratingView.ratingView.isHidden = !showRating
-        return cell
-    }
 
     @objc func selectWatchButton() {
         self.showRating = false
-        self.watchButton.tintColor = Constants.seletctedItemColor
-        self.watchButton.setTitleColor(.white, for: .normal)
-        self.watchedButton.tintColor = Constants.backGroundColor
-        self.watchedButton.setTitleColor(Constants.seletctedItemColor, for: .normal)
-        let indices = self.collectionView.indexPathsForVisibleItems
-        self.collectionView.reloadItems(at: indices)
-        
-        self.images.shuffle()
-        self.collectionView.reloadData()
+        watchButton.changeState(on: .selected)
+        watchedButton.changeState(on: .notSelected)
+        refreshView()
     }
     
     @objc func selectWatchedButton() {
         self.showRating = true
-        self.watchedButton.tintColor = Constants.seletctedItemColor
-        self.watchedButton.setTitleColor(.white, for: .normal)
-        self.watchButton.tintColor = Constants.backGroundColor
-        self.watchButton.setTitleColor(Constants.seletctedItemColor, for: .normal)
+        watchedButton.changeState(on: .selected)
+        watchButton.changeState(on: .notSelected)
+        refreshView()
+    }
+    
+    private func refreshView() {
         let indices = self.collectionView.indexPathsForVisibleItems
         self.collectionView.reloadItems(at: indices)
+        //temporary lines
         self.images.shuffle()
         self.collectionView.reloadData()
-        
     }
 
 }
@@ -135,8 +100,51 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let cvWidth = collectionView.bounds.width
-        let cellWidth: CGFloat = Constants.isLandscape ? 180 : min(floor(cvWidth / 2), 180)
-        return .init(width: cellWidth, height: 270)
+        let cellWidth: CGFloat = Constants.isLandscape ? Constants.defaultCellWidth : min(floor(cvWidth / 2), Constants.defaultCellWidth)
+        return .init(width: cellWidth, height: Constants.cellHeight)
+    }
+}
+
+extension MovieListViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.reuseId, for: indexPath)
+        
+        guard let cell = cell as? PosterCell else {
+            fatalError("Unable to dequeue PosterCell.")
+        }
+        
+        let image = images[indexPath.row]
+        let ratingText = ratings[indexPath.row]
+        
+        cell.ratingView.image = image
+        cell.layer.cornerRadius = Constants.cellCornerRadius
+        cell.ratingView.rating = Double(ratingText)
+        cell.ratingView.ratingView.isHidden = !showRating
+        return cell
+    }
+}
+
+extension UIButton {
+    
+    enum ButtonState {
+        case selected
+        case notSelected
+    }
+    
+    func changeState(on buttonState: ButtonState) {
+        switch buttonState {
+        case .selected:
+            self.tintColor = Constants.selectedItemColor
+            self.setTitleColor(.white, for: .normal)
+        case .notSelected:
+            self.tintColor = Constants.backGroundColor
+            self.setTitleColor(Constants.selectedItemColor, for: .normal)
+        }
     }
 }
 
