@@ -17,7 +17,7 @@ final class RatingView: UIView {
         return ratingLabel
     }()
     
-    private lazy var ratingView: UIView = {
+    var ratingView: UIView = {
         let ratingView = UIView()
         ratingView.clipsToBounds = true
         return ratingView
@@ -49,7 +49,7 @@ final class RatingView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.bounds = bounds
+        imageView.frame = bounds
         let ratingViewSize = CGSize(width: bounds.width / Consts.divider,
                                     height: bounds.width / Consts.divider)
         let ratingViewOrigin = CGPoint(x: bounds.minX, y: bounds.maxY - ratingViewSize.height)
