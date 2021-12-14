@@ -12,4 +12,11 @@ protocol CollectionViewCellDescriptor {
     var cellClass: UICollectionReusableView.Type { get }
     func sizeForItem(in collectionView: UICollectionView) -> CGSize
     func cell(in collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell
+    var cellIdentifier: String { get }
+}
+
+extension CollectionViewCellDescriptor {
+    var cellIdentifier: String {
+        String(describing: self.cellClass)
+    }
 }
