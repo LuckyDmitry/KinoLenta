@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class DetailMovieActorsCollectionViewCell: UICollectionViewCell {
+final class DetailMovieStarsCollectionViewCell: UICollectionViewCell {
     let primaryLabel = UILabel()
     let secondaryLabel = UILabel()
     
-    private let layoutManager = AnyLayoutManager<DetailMovieActorsCollectionViewCell>(DetailMovieActorsLayoutManager())
+    private let layoutManager = AnyLayoutManager<DetailMovieStarsCollectionViewCell>(DetailMovieStarsLayoutManager())
 
     override init(frame: CGRect) {
         super.init(frame: frame)
