@@ -1,10 +1,3 @@
-//
-//  ColorExtension.swift
-//  KinoLenta
-//
-//  Created by Dmitry Trifonov on 09.12.2021.
-//
-
 import UIKit
 
 extension UIColor {
@@ -20,6 +13,10 @@ extension UIColor {
         UIColor(named: "pickerUnselectedBackground") ?? .clear
     }
     
+    static var buttonActiveBackground: UIColor {
+        UIColor(named: "buttonActiveBackground") ?? .clear
+    }
+    
     static var pickerTextForeground: UIColor {
         UIColor(named: "mainTextForeground") ?? .clear
     }
@@ -28,6 +25,17 @@ extension UIColor {
         UIColor(named: "unselectedTextForeground") ?? .clear
     }
     
+    static var darkTextForeground: UIColor {
+        UIColor(named: "darkTextForeground") ?? .clear
+    }
+    
+    static var textPlaceholderForeground: UIColor {
+        UIColor(named: "textPlaceholderForeground") ?? .clear
+    }
+    
+    static var darkOrangeTextForeground: UIColor {
+        UIColor(named: "darkOrangeTextForeground") ?? .clear
+    }
     
     static var greenRating: UIColor {
         UIColor(named: "greenRating") ?? .clear

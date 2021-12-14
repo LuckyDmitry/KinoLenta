@@ -197,6 +197,7 @@
 		4B0BA67B2764D751008507EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7E07C7CE276770990052A5F9 /* TableViewExtension.swift */,
 				4B0BA67C2764D751008507EE /* ColorExtension.swift */,
 				4B0BA67D2764D751008507EE /* StringExtension.swift */,
 			);
@@ -239,7 +240,6 @@
 				66852C9E276794AA0055E4A1 /* DAL */,
 				66852C93276794860055E4A1 /* Networking */,
 				7E07C7D02767709E0052A5F9 /* Modules */,
-				7E07C7CD276770990052A5F9 /* Utils */,
 				7E07C7B3276770930052A5F9 /* Views */,
 				4B0BA6762764D751008507EE /* Common */,
 				4B0BA66A2764D743008507EE /* SearchedMovieList */,
@@ -350,14 +350,6 @@
 				7E07C7C2276770930052A5F9 /* RatingFilterTableCell.xib */,
 			);
 			path = RaitingFilterTableCell;
-			sourceTree = "<group>";
-		};
-		7E07C7CD276770990052A5F9 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				7E07C7CE276770990052A5F9 /* TableViewExtension.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		7E07C7D02767709E0052A5F9 /* Modules */ = {

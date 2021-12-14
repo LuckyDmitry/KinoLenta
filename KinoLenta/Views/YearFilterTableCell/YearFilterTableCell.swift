@@ -61,7 +61,7 @@ extension YearFilterTableCell: UIPickerViewDataSource, UIPickerViewDelegate {
         dateButton.setTitleColor(
             allYears[fromDate] > allYears[toDate]
             ? .red
-            : UIColor(named: "OrangeDarkColor"),
+            : UIColor.darkOrangeTextForeground,
             for: .normal
         )
     }
