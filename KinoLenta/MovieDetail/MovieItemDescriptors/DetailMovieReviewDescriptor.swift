@@ -76,8 +76,7 @@ struct DetailMovieReviewDescriptor: CollectionViewCellDescriptor {
     }
     
     func cell(in collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
-        let identifier = String(describing: cellClass)
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         guard let cell = cell as? DetailMovieReviewCollectionViewCell else { fatalError("Incorrect cell type") }
         cell.nickname.text = nickname
         cell.nickname.font = nicknameFont
