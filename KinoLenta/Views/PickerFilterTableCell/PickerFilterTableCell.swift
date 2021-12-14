@@ -61,9 +61,7 @@ extension PickerFilterTableCell: UIPickerViewDataSource, UIPickerViewDelegate {
         guard row < pickerData.count else { return assertionFailure() }
         selectionButton.setTitle(pickerData[row], for: .normal)
         selectionButton.setTitleColor(
-            row == 0
-            ? UIColor.textPlaceholderForeground
-            : UIColor.darkOrangeTextForeground,
+            row == 0 ? .textPlaceholderForeground : .darkOrangeTextForeground,
             for: .normal
         )
     }
