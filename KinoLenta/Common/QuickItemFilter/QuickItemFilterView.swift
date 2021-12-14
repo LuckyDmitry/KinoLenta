@@ -7,12 +7,16 @@
 
 import UIKit
 
+protocol QuickItemFilterDelegate: AnyObject {
+    func itemPressed(at index: Int)
+}
+
+struct QuickItem {
+    var isSelected: Bool = false
+    var title: String
+}
+
 final class QuickItemFilterView: UIView {
-    private struct QuickItem {
-        var isSelected: Bool = false
-        var title: String
-    }
-    
     private enum QuickItemLayoutConfig {
         static let font: UIFont = UIFont.boldSystemFont(ofSize: 17)
         static let textPadding: CGFloat = 20
@@ -29,30 +33,32 @@ final class QuickItemFilterView: UIView {
         }
     }
     
-    private lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = QuickItemFilterCollectionViewLayout()
         layout.intersectionMargin = Consts.marginBetweenCells
         layout.delegate = self
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.contentInset = .init(top: 0, left: 10, bottom: 0, right: 10)
+        collectionView.contentInset = insets
         collectionView.backgroundColor = .mainBackground
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellWithReuseIdentifier: Consts.cellIdentifier)
         return collectionView
     }()
     
-    // TODO: Will be removed
-    private var items: [QuickItem] = [QuickItem(title: "First"),
-                                      QuickItem(title: "Second"),
-                                      QuickItem(title: "Second"),
-                                      QuickItem(title: "Second"),
-                                      QuickItem(title: "Second"),
-                                      QuickItem(title: "Second"),
-                                      QuickItem(title: "Second")]
+    var items: [QuickItem] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
-    override init(frame: CGRect) {
+    let insets: UIEdgeInsets
+    
+    weak var delegate: QuickItemFilterDelegate?
+    
+    init(frame: CGRect, insets: UIEdgeInsets = .zero) {
+        self.insets = insets
         super.init(frame: frame)
         configureView()
     }
@@ -106,6 +112,7 @@ extension QuickItemFilterView: UICollectionViewDelegate {
             QuickItem(isSelected: $0 == indexPath.row ? !$1.isSelected : false, title: $1.title)
         }
         collectionView.reloadData()
+        delegate?.itemPressed(at: indexPath.row)
     }
 }
 
