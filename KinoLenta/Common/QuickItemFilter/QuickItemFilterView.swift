@@ -29,28 +29,23 @@ final class QuickItemFilterView: UIView {
         }
     }
     
-    private lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = QuickItemFilterCollectionViewLayout()
         layout.intersectionMargin = Consts.marginBetweenCells
         layout.delegate = self
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.contentInset = .init(top: 0, left: 10, bottom: 0, right: 10)
-        collectionView.backgroundColor = .mainBackground
+        collectionView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 10)
+        collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellWithReuseIdentifier: Consts.cellIdentifier)
         return collectionView
     }()
     
     // TODO: Will be removed
-    private var items: [QuickItem] = [QuickItem(title: "First"),
-                                      QuickItem(title: "Second"),
-                                      QuickItem(title: "Second"),
-                                      QuickItem(title: "Second"),
-                                      QuickItem(title: "Second"),
-                                      QuickItem(title: "Second"),
-                                      QuickItem(title: "Second")]
+    private var items: [QuickItem] = [QuickItem(title: "Посмотреть"),
+                                      QuickItem(title: "Посмотренно")]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -118,3 +113,4 @@ extension QuickItemFilterView {
         static let marginBetweenCells: CGFloat = 10
     }
 }
+
