@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ZU-YC-Cqt">
                         <rect key="frame" x="0.0" y="0.0" width="306" height="150"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I8e-0t-VoL">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="I8e-0t-VoL">
                                 <rect key="frame" x="0.0" y="0.0" width="306" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
@@ -74,6 +74,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="movie_placeholder" width="171" height="129"/>
         <namedColor name="darkTextForeground">
             <color red="0.125" green="0.125" blue="0.125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

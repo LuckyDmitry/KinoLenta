@@ -18,7 +18,7 @@ final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
             collectionView.backgroundColor = .clear
             collectionView.showsHorizontalScrollIndicator = false
             collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-            collectionView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellWithReuseIdentifier: Consts.cellIdentifier)
+            collectionView.register(UINib(nibName: Consts.cellDescribing, bundle: nil), forCellWithReuseIdentifier: Consts.cellDescribing)
         }
     }
     
@@ -53,8 +53,7 @@ final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
 
 extension MovieSampleTableCell {
     private enum Consts {
-        static let cellIdentifier = String(describing: CarouselCollectionCell.self)
-        static let nibFile = "CarouselCollectionCell"
+        static let cellDescribing = String(describing: CarouselCollectionCell.self)
         static let marginBetweenCells: CGFloat = 20
         static let padding: CGFloat = 5
     }
@@ -74,7 +73,7 @@ extension MovieSampleTableCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.cellIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.cellDescribing, for: indexPath)
         guard let cell = cell as? CarouselCollectionCell else { fatalError("Invalid cell type") }
         
         let item = items[indexPath.row]
