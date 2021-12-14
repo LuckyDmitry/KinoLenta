@@ -21,19 +21,19 @@ class DataManager {
 
 // MARK: Search
 extension DataManager: MovieSearchService {
-    func search(query: String) -> [SearchModel] { [] }
+    func search(query: String) -> [QueryMovieModel] { [] }
     
-    func discover(genre: [Genre], yearRange: Range<Int>?, ratingRange: Range<Int>?) -> [SearchModel] { [] }
+    func discover(genre: [Genre], yearRange: ClosedRange<Int>?, ratingRange: ClosedRange<Int>?) -> [QueryMovieModel] { [] }
 
 }
 
 // MARK: Compilation
 extension DataManager: MovieCompilationService {
-    func getPopular() -> [MovieDomainModel] { return [] }
+    func getPopular() -> [QueryMovieModel] { return [] }
     
-    func getTopRated() -> [MovieDomainModel] { return [] }
+    func getTopRated() -> [QueryMovieModel] { return [] }
     
-    func getTrending() -> [MovieDomainModel] { return [] }
+    func getTrending() -> [QueryMovieModel] { return [] }
 }
 
 // MARK: Movie
