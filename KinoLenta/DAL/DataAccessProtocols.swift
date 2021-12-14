@@ -13,8 +13,8 @@ protocol MovieSearchService {
     
     func discover(
         genre: [Genre],
-        yearRange: Range<Int>?,
-        ratingRange: Range<Int>?
+        yearRange: ClosedRange<Int>?,
+        ratingRange: ClosedRange<Int>?
     ) -> [SearchModel]
 }
 

@@ -23,7 +23,7 @@ class DataManager {
 extension DataManager: MovieSearchService {
     func search(query: String) -> [SearchModel] { [] }
     
-    func discover(genre: [Genre], yearRange: Range<Int>?, ratingRange: Range<Int>?) -> [SearchModel] { [] }
+    func discover(genre: [Genre], yearRange: ClosedRange<Int>?, ratingRange: ClosedRange<Int>?) -> [SearchModel] { [] }
 
 }
 
