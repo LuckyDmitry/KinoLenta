@@ -13,13 +13,13 @@ protocol QuickItemFilterCollectionViewLayoutDelegate: AnyObject {
                         widthForIndexPath indexPath: IndexPath) -> CGFloat
 }
 
-protocol QuickItemFilterLifeCycleDelegate: AnyObject {
-    func prepareDidFinish(contentSize: CGSize)
+protocol QuickItemFilterLayoutLifeCycleDelegate: AnyObject {
+    func prepareLayoutDidFinish(contentSize: CGSize)
 }
 
 final class QuickItemFilterCollectionViewLayout: UICollectionViewLayout {
     weak var delegate: QuickItemFilterCollectionViewLayoutDelegate?
-    weak var lifeCycleDelegate: QuickItemFilterLifeCycleDelegate?
+    weak var lifeCycleDelegate: QuickItemFilterLayoutLifeCycleDelegate?
     var intersectionMargin: CGFloat = 0
     
     private var cache: [UICollectionViewLayoutAttributes] = []
@@ -68,7 +68,7 @@ final class QuickItemFilterCollectionViewLayout: UICollectionViewLayout {
         }
         
         contentWidth += trailingInset
-        lifeCycleDelegate?.prepareDidFinish(contentSize: collectionViewContentSize)
+        lifeCycleDelegate?.prepareLayoutDidFinish(contentSize: collectionViewContentSize)
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {

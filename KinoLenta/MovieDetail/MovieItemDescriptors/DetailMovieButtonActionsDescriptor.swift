@@ -30,12 +30,11 @@ struct DetailMovieButtonActionsDescriptor: CollectionViewCellDescriptor {
     }
     
     func cell(in collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
-        let identifier = String(describing: cellClass)
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         guard let cell = cell as? DetailMovieButtonActionsCollectionViewCell else {
             fatalError("Invalid cell type")
         }
-        cell.filterComponent.items = items
+        cell.items = items
         return cell 
     }
 }

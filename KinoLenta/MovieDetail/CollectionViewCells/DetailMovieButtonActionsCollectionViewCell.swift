@@ -8,8 +8,13 @@
 import UIKit
 
 final class DetailMovieButtonActionsCollectionViewCell: UICollectionViewCell {
-    let filterComponent = QuickItemFilterView(frame: .zero)
+    var items: [QuickItem] = [] {
+        didSet {
+            filterComponent.items = items
+        }
+    }
     
+    let filterComponent = QuickItemFilterView(frame: .zero)
     private let layoutManager = AnyLayoutManager<DetailMovieButtonActionsCollectionViewCell>(DetailMovieButtonActionsLayoutManager())
     
     override init(frame: CGRect) {
@@ -30,8 +35,8 @@ final class DetailMovieButtonActionsCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension DetailMovieButtonActionsCollectionViewCell: QuickItemFilterLifeCycleDelegate {
-    func prepareDidFinish(contentSize: CGSize) {
+extension DetailMovieButtonActionsCollectionViewCell: QuickItemFilterLayoutLifeCycleDelegate {
+    func prepareLayoutDidFinish(contentSize: CGSize) {
         let contentWidth = contentSize.width
         
         let availableWidth = bounds.width - contentWidth
