@@ -19,7 +19,7 @@ final class RatingFilterTableCell: UITableViewCell, BaseTableViewCell {
         let text = String(repeating: "★", count: value) +  String(repeating: "☆", count: 10 - value)
         
         valueButton.setTitle(text, for: .normal)
-        valueButton.setTitleColor(UIColor(named: "OrangeDarkColor"), for: .normal)
+        valueButton.setTitleColor(UIColor.darkOrangeTextForeground, for: .normal)
     }
     
     @IBOutlet weak var sliderHeight: NSLayoutConstraint!

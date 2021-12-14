@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -9,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="YearFilterTableCell" rowHeight="226" id="M1G-Xv-erY" userLabel="Picker Filter Table Cell" customClass="YearFilterTableCell" customModule="Kinolenta" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="YearFilterTableCell" rowHeight="226" id="M1G-Xv-erY" userLabel="Picker Filter Table Cell" customClass="YearFilterTableCell" customModule="KinoLenta" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="226"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M1G-Xv-erY" id="4UF-JS-gQR">
@@ -22,7 +23,7 @@
                             <constraint firstAttribute="height" constant="30" id="BFt-Bk-IEd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" name="DarkColor"/>
+                        <color key="textColor" name="darkTextForeground"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyT-lp-cVX">
@@ -30,7 +31,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="от 2000 до 2005">
-                            <color key="titleColor" name="GreyColor"/>
+                            <color key="titleColor" name="textPlaceholderForeground"/>
                         </state>
                         <connections>
                             <action selector="showPickerAction:" destination="M1G-Xv-erY" eventType="touchUpInside" id="48A-SZ-O7T"/>
@@ -68,10 +69,10 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="DarkColor">
+        <namedColor name="darkTextForeground">
             <color red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="GreyColor">
+        <namedColor name="textPlaceholderForeground">
             <color red="0.71372549019607845" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
