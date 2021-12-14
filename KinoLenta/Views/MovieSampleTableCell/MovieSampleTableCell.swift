@@ -77,9 +77,9 @@ extension MovieSampleTableCell: UICollectionViewDataSource {
         guard let cell = cell as? CarouselCollectionCell else { fatalError("Invalid cell type") }
         
         let item = items[indexPath.row]
-        cell.imageView.setImage(imagePath: item.image ?? "")
         cell.movieTitle.text = item.name
-        cell.setRating(rating: item.rating ?? 0)
+        cell.ratingView.image = UIImage(named: "poster6")
+        cell.ratingView.rating = item.rating
         return cell
     }
 }

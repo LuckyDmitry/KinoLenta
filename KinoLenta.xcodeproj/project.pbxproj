@@ -381,7 +381,7 @@
 		7E07C7D02767709E0052A5F9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				7E07C7D6276792660052A5F9 /* FilmsSampling */,
+				7E07C7D6276792660052A5F9 /* MoviesSampling */,
 				7E07C7D12767709E0052A5F9 /* Filter */,
 			);
 			path = Modules;
@@ -394,6 +394,33 @@
 				7E07C7D32767709E0052A5F9 /* FilterScreenViewController.swift */,
 			);
 			path = Filter;
+			sourceTree = "<group>";
+		};
+		7E07C7D6276792660052A5F9 /* MoviesSampling */ = {
+			isa = PBXGroup;
+			children = (
+				7E07C7D7276793560052A5F9 /* MoviesSamplingViewController.swift */,
+				7E07C7D92767936D0052A5F9 /* MoviesSamplingViewController.xib */,
+			);
+			path = MoviesSampling;
+			sourceTree = "<group>";
+		};
+		7E07C7DB276795C10052A5F9 /* CarouselCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				7EFA861927687E3500523248 /* CarouselCollectionCell.swift */,
+				7EFA861B27687E4C00523248 /* CarouselCollectionCell.xib */,
+			);
+			path = CarouselCollectionCell;
+			sourceTree = "<group>";
+		};
+		7EFA861427687A0900523248 /* MovieSampleTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				7EFA861527687A4400523248 /* MovieSampleTableCell.swift */,
+				7EFA861727687A4E00523248 /* MovieSampleTableCell.xib */,
+			);
+			path = MovieSampleTableCell;
 			sourceTree = "<group>";
 		};
 		C644C6FC2768BEEA0078E9FD /* MovieList */ = {
@@ -414,33 +441,6 @@
 				C644C7002768BEEA0078E9FD /* MovieList.storyboard */,
 			);
 			path = InterfaceBuilder;
-			sourceTree = "<group>";
-		};
-		7E07C7D6276792660052A5F9 /* FilmsSampling */ = {
-			isa = PBXGroup;
-			children = (
-				7E07C7D7276793560052A5F9 /* MoviesSamplingViewController.swift */,
-				7E07C7D92767936D0052A5F9 /* MoviesSamplingViewController.xib */,
-			);
-			path = FilmsSampling;
-			sourceTree = "<group>";
-		};
-		7E07C7DB276795C10052A5F9 /* CarouselCollectionCell */ = {
-			isa = PBXGroup;
-			children = (
-				7EFA861927687E3500523248 /* CarouselCollectionCell.swift */,
-				7EFA861B27687E4C00523248 /* CarouselCollectionCell.xib */,
-			);
-			path = CarouselCollectionCell;
-			sourceTree = "<group>";
-		};
-		7EFA861427687A0900523248 /* MovieSampleTableCell */ = {
-			isa = PBXGroup;
-			children = (
-				7EFA861527687A4400523248 /* MovieSampleTableCell.swift */,
-				7EFA861727687A4E00523248 /* MovieSampleTableCell.xib */,
-			);
-			path = MovieSampleTableCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

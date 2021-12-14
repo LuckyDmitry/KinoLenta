@@ -18,33 +18,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="306" height="180"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ZU-YC-Cqt">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ZU-YC-Cqt" customClass="RatingView" customModule="KinoLenta" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="306" height="150"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="I8e-0t-VoL">
-                                <rect key="frame" x="0.0" y="0.0" width="306" height="150"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="487-sj-z8o">
-                                <rect key="frame" x="0.0" y="121" width="35" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="3Pg-8r-wVG"/>
-                                    <constraint firstAttribute="width" constant="35" id="6eO-We-MCl"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
-                                <color key="textColor" name="mainTextForeground"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="487-sj-z8o" secondAttribute="bottom" id="20e-zK-Dd8"/>
-                            <constraint firstAttribute="trailing" secondItem="I8e-0t-VoL" secondAttribute="trailing" id="4A5-NL-ojr"/>
-                            <constraint firstItem="I8e-0t-VoL" firstAttribute="leading" secondItem="2ZU-YC-Cqt" secondAttribute="leading" id="5r8-pi-Okm"/>
-                            <constraint firstItem="487-sj-z8o" firstAttribute="leading" secondItem="2ZU-YC-Cqt" secondAttribute="leading" id="JX7-f1-Nc4"/>
-                            <constraint firstItem="I8e-0t-VoL" firstAttribute="top" secondItem="2ZU-YC-Cqt" secondAttribute="top" id="MZL-Xw-ULX"/>
-                            <constraint firstAttribute="bottom" secondItem="I8e-0t-VoL" secondAttribute="bottom" id="Yrn-Ri-Jtu"/>
-                        </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKe-tV-G2p">
                         <rect key="frame" x="0.0" y="158" width="306" height="17"/>
@@ -65,21 +41,15 @@
             </collectionViewCellContentView>
             <size key="customSize" width="306" height="139"/>
             <connections>
-                <outlet property="containerView" destination="2ZU-YC-Cqt" id="HQf-fq-2fG"/>
-                <outlet property="imageView" destination="I8e-0t-VoL" id="0Ss-nC-Y4b"/>
                 <outlet property="movieTitle" destination="gKe-tV-G2p" id="OrP-Du-WOb"/>
-                <outlet property="ratingLabel" destination="487-sj-z8o" id="h6s-UM-bcI"/>
+                <outlet property="ratingView" destination="2ZU-YC-Cqt" id="9EY-I0-axS"/>
             </connections>
             <point key="canvasLocation" x="123.18840579710145" y="88.392857142857139"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="movie_placeholder" width="171" height="129"/>
         <namedColor name="darkTextForeground">
             <color red="0.125" green="0.125" blue="0.125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="mainTextForeground">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
