@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoviesSamplingViewController" customModule="KinoLenta" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="nQv-Ov-ux9" id="9I8-zp-MlX"/>
                 <outlet property="view" destination="iN0-l3-epB" id="H4I-Ah-f50"/>
             </connections>
         </placeholder>

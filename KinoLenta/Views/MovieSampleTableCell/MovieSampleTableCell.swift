@@ -2,8 +2,9 @@ import Foundation
 import UIKit
 
 struct CarouselData {
-    let image: UIImage?
-    let text: String
+    let image: String?
+    let rating: Double?
+    let name: String?
 }
 
 final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
@@ -12,36 +13,87 @@ final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.showsHorizontalScrollIndicator = false
-//            collectionView.dataSource = self
-//            collectionView.delegate = self
+            collectionView.dataSource = self
+            collectionView.delegate = self
             collectionView.backgroundColor = .clear
+            collectionView.showsHorizontalScrollIndicator = false
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+            collectionView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellWithReuseIdentifier: Consts.cellIdentifier)
         }
     }
     
     @IBAction func showAllAction(_ sender: Any) {
-        
+//        TODO: open movies screen
     }
-    var carouselData: [CarouselData] = []
-
+    
+    // TODO: Will be removed
+    private var items: [CarouselData] = [
+        CarouselData(
+            image: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png",
+            rating: 7,
+            name: "Название"
+        ),
+        CarouselData(
+            image: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png",
+            rating: 5,
+            name: "Название"
+        ),
+        CarouselData(
+            image: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png",
+            rating: 9,
+            name: "Название"
+        ),
+        CarouselData(
+            image: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png",
+            rating: 3,
+            name: "Название"
+        )]
 }
 
-//extension MovieSampleTableCell: UICollectionViewDataSource, UICollectionViewDelegate {
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return carouselData.count
-//    }
-//    
-////    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-////        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieSampleTableCell.cellId, for: indexPath) as? MovieSampleTableCell else { return UICollectionViewCell() }
-////
-////        let image = carouselData[indexPath.row].image
-////        let text = carouselData[indexPath.row].text
-////
-////        cell.configure(image: image, text: text)
-////
-////        return cell
-////    }
-//}
+
+extension MovieSampleTableCell {
+    private enum Consts {
+        static let cellIdentifier = String(describing: CarouselCollectionCell.self)
+        static let nibFile = "CarouselCollectionCell"
+        static let marginBetweenCells: CGFloat = 20
+        static let padding: CGFloat = 5
+    }
+}
+
+extension MovieSampleTableCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (bounds.width - 2 * Consts.padding - Consts.marginBetweenCells) / 2
+        let height = self.collectionView.bounds.height
+        return CGSize(width: width, height: height)
+    }
+}
+
+extension MovieSampleTableCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        items.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.cellIdentifier, for: indexPath)
+        guard let cell = cell as? CarouselCollectionCell else { fatalError("Invalid cell type") }
+        
+        let item = items[indexPath.row]
+        cell.imageView.setImage(imagePath: item.image ?? "")
+        cell.movieTitle.text = item.name
+        cell.setRating(rating: item.rating ?? 0)
+        return cell
+    }
+}
+
+extension MovieSampleTableCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        TODO: open here movie detail screen
+    }
+}
+
+extension MovieSampleTableCell {
+    func configured(action: (MovieSampleTableCell) -> Void) -> MovieSampleTableCell {
+        action(self)
+        return self
+    }
+}
