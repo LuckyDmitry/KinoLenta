@@ -20,7 +20,7 @@ enum MockJsonPaths {
     var fileURL: URL {
         switch self {
         case .search:
-//            TODO: переименовать файлы согласно какому-нибудь паттерну
+//            TODO: rename files using some naming pattern
             return getJsonResourceURL(resource: "multisearch_response")!
         case .movieTopRated:
             return getJsonResourceURL(resource: "top_rated_movies")!
@@ -32,65 +32,71 @@ enum MockJsonPaths {
     }
 }
 
-func readJsonData(fileURL: URL) -> Data? {
-    if let jsonData = try? Data(contentsOf: fileURL) {
-        return jsonData
-    }
-    return nil
+func readJsonData(fileURL: URL) throws -> Data {
+    return try Data(contentsOf: fileURL)
 }
 
 func parseQueryMovieModel(fileURL: URL) -> [QueryMovieModel] {
-    guard let rawData = readJsonData(fileURL: fileURL) else {
-        return []
-    }
-    
-    let topDict = try? JSONSerialization.jsonObject(with: rawData, options: []) as? [String: Any]
-    guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
-    
-    return container.compactMap {
-        guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
-        if let movie = try? JSONDecoder().decode(QueryMovieModel.self, from: data) {
-            return movie
+    do {
+        let rawData = try readJsonData(fileURL: fileURL)
+        let topDict = try? JSONSerialization.jsonObject(with: rawData, options: []) as? [String: Any]
+        guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
+        
+        return container.compactMap {
+            guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
+            if let movie = try? JSONDecoder().decode(QueryMovieModel.self, from: data) {
+                return movie
+            }
+            return nil
         }
-        return nil
+    }
+    catch {
+        print(error)
+        return []
     }
 }
 
 
 func parseMovieModel(fileURL: URL) -> [MovieDomainModel] {
-    guard let rawData = readJsonData(fileURL: fileURL) else {
-        return []
+    do {
+        let rawData = try readJsonData(fileURL: fileURL)
+        let topDict = try? JSONSerialization.jsonObject(with: rawData, options: []) as? [String: Any]
+        guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
+        
+        return container.compactMap {
+            guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
+            if let movie = try? JSONDecoder().decode(MovieModel.self, from: data) {
+                return MovieDomainModel(movieDTO: movie)
+            }
+            if let tvShow = try? JSONDecoder().decode(TVModel.self, from: data) {
+                return MovieDomainModel(tvDTO: tvShow)
+            }
+            return nil
+        }
     }
-    
-    let topDict = try? JSONSerialization.jsonObject(with: rawData, options: []) as? [String: Any]
-    guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
-    
-    return container.compactMap {
-        guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
-        if let movie = try? JSONDecoder().decode(MovieModel.self, from: data) {
-            return MovieDomainModel(movieDTO: movie)
-        }
-        if let tvShow = try? JSONDecoder().decode(TVModel.self, from: data) {
-            return MovieDomainModel(tvDTO: tvShow)
-        }
-        return nil
+    catch {
+        print(error)
+        return []
     }
 }
 
 func parseSearchResults(fileURL: URL) -> [SearchModel] {
-    guard let rawData = readJsonData(fileURL: fileURL) else {
-        return []
-    }
-    
-    let topDict = try? JSONSerialization.jsonObject(with: rawData, options: []) as? [String: Any]
-    guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
-
-    return container.compactMap {
-        guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
-        if let searchModel = try? JSONDecoder().decode(SearchModel.self, from: data) {
-            return searchModel
+    do {
+        let rawData = try readJsonData(fileURL: fileURL)
+        let topDict = try? JSONSerialization.jsonObject(with: rawData, options: []) as? [String: Any]
+        guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
+        
+        return container.compactMap {
+            guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
+            if let searchModel = try? JSONDecoder().decode(SearchModel.self, from: data) {
+                return searchModel
+            }
+            return nil
         }
-        return nil
+    }
+    catch {
+        print(error)
+        return []
     }
 }
 
