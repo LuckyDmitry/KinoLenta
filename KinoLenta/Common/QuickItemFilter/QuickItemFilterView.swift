@@ -7,12 +7,16 @@
 
 import UIKit
 
+protocol QuickItemFilterDelegate: AnyObject {
+    func itemPressed(at index: Int)
+}
+
+struct QuickItem {
+    var isSelected: Bool = false
+    var title: String
+}
+
 final class QuickItemFilterView: UIView {
-    private struct QuickItem {
-        var isSelected: Bool = false
-        var title: String
-    }
-    
     private enum QuickItemLayoutConfig {
         static let font: UIFont = UIFont.boldSystemFont(ofSize: 17)
         static let textPadding: CGFloat = 20
@@ -36,18 +40,25 @@ final class QuickItemFilterView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 10)
-        collectionView.backgroundColor = .white
+        collectionView.contentInset = insets
+        collectionView.backgroundColor = .mainBackground
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellWithReuseIdentifier: Consts.cellIdentifier)
         return collectionView
     }()
     
-    // TODO: Will be removed
-    private var items: [QuickItem] = [QuickItem(title: "Посмотреть"),
-                                      QuickItem(title: "Посмотренно")]
+    var items: [QuickItem] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
-    override init(frame: CGRect) {
+    let insets: UIEdgeInsets
+    
+    weak var delegate: QuickItemFilterDelegate?
+    
+    init(frame: CGRect, insets: UIEdgeInsets = .zero) {
+        self.insets = insets
         super.init(frame: frame)
         configureView()
     }
@@ -101,6 +112,7 @@ extension QuickItemFilterView: UICollectionViewDelegate {
             QuickItem(isSelected: $0 == indexPath.row ? !$1.isSelected : false, title: $1.title)
         }
         collectionView.reloadData()
+        delegate?.itemPressed(at: indexPath.row)
     }
 }
 
@@ -113,4 +125,3 @@ extension QuickItemFilterView {
         static let marginBetweenCells: CGFloat = 10
     }
 }
-
