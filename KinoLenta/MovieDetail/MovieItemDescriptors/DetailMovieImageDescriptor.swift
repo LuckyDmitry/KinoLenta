@@ -16,14 +16,18 @@ struct DetailMovieImageLayoutManager: LayoutManager {
     }
     
     func calculateHeight(width: CGFloat) -> CGSize {
-        let height = width * 0.7
+        let height = floor(width * Consts.ratio)
         return CGSize(width: width, height: height)
+    }
+    
+    private enum Consts {
+        static let ratio = 0.7
     }
 }
 
 struct DetailMovieImageDescriptor: CollectionViewCellDescriptor {
     let cellClass: UICollectionReusableView.Type = DetailMovieImageCollectionViewCell.self
-    var image: UIImage?
+    let image: UIImage?
     var inset: UIEdgeInsets = .zero
     private let layoutManager = DetailMovieImageLayoutManager()
     
