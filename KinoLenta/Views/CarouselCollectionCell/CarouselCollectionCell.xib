@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CarouselCollectionCell" id="bHJ-eZ-zqk" customClass="CarouselCollectionCell" customModule="KinoLenta" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="306" height="180"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zgY-k5-QJp">
+                <rect key="frame" x="0.0" y="0.0" width="306" height="180"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ZU-YC-Cqt" customClass="RatingView" customModule="KinoLenta" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="306" height="150"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKe-tV-G2p">
+                        <rect key="frame" x="0.0" y="158" width="306" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <color key="textColor" name="darkTextForeground"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="2ZU-YC-Cqt" secondAttribute="bottom" constant="30" id="5d7-R2-t9e"/>
+                    <constraint firstAttribute="trailing" secondItem="2ZU-YC-Cqt" secondAttribute="trailing" id="HeQ-6b-bwP"/>
+                    <constraint firstAttribute="bottom" secondItem="gKe-tV-G2p" secondAttribute="bottom" constant="5" id="Itd-Tg-1JZ"/>
+                    <constraint firstItem="2ZU-YC-Cqt" firstAttribute="leading" secondItem="zgY-k5-QJp" secondAttribute="leading" id="NVZ-A7-dNR"/>
+                    <constraint firstAttribute="trailing" secondItem="gKe-tV-G2p" secondAttribute="trailing" id="Qh8-Qj-iGV"/>
+                    <constraint firstItem="gKe-tV-G2p" firstAttribute="leading" secondItem="zgY-k5-QJp" secondAttribute="leading" id="asb-g3-1DS"/>
+                    <constraint firstItem="2ZU-YC-Cqt" firstAttribute="top" secondItem="zgY-k5-QJp" secondAttribute="top" id="seB-L8-OEq"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="306" height="139"/>
+            <connections>
+                <outlet property="movieTitle" destination="gKe-tV-G2p" id="OrP-Du-WOb"/>
+                <outlet property="ratingView" destination="2ZU-YC-Cqt" id="9EY-I0-axS"/>
+            </connections>
+            <point key="canvasLocation" x="123.18840579710145" y="88.392857142857139"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="darkTextForeground">
+            <color red="0.125" green="0.125" blue="0.125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
