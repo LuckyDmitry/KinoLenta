@@ -7,18 +7,6 @@
 
 import Foundation
 
-
-//enum MockJsonPaths: String {
-//    case search = "/Users/user/Data/swift/kinolenta/mock_responses/multisearch_response.json"
-//    case movieTopRated = "/Users/user/Data/swift/kinolenta/mock_responses/top_rated_movies.json"
-//    case moviePopular = "/Users/user/Data/swift/kinolenta/mock_responses/popular_movies.json"
-//    case movieDiscoverHorrorRuRegion = "/Users/user/Data/swift/kinolenta/mock_responses/discover_horrors_ru_region.json"
-//
-//    var fileURL: URL {
-//        return URL(fileURLWithPath: self.rawValue)
-//    }
-//}
-
 fileprivate func getJsonResourceURL(resource: String) -> URL? {
     return Bundle.main.url(forResource: resource, withExtension: "json")
 }
@@ -32,7 +20,7 @@ enum MockJsonPaths {
     var fileURL: URL {
         switch self {
         case .search:
-//            TODO:вынести в приватный методы, переименовать файлы согласно какому-нибудь паттерну
+//            TODO: переименовать файлы согласно какому-нибудь паттерну
             return getJsonResourceURL(resource: "multisearch_response")!
         case .movieTopRated:
             return getJsonResourceURL(resource: "top_rated_movies")!
