@@ -9,19 +9,19 @@ import Foundation
 
 
 protocol MovieSearchService {
-    func search(query: String) -> [SearchModel]
+    func search(query: String) -> [QueryMovieModel]
     
     func discover(
         genre: [Genre],
         yearRange: ClosedRange<Int>?,
         ratingRange: ClosedRange<Int>?
-    ) -> [SearchModel]
+    ) -> [QueryMovieModel]
 }
 
 protocol MovieCompilationService {
-    func getPopular() -> [MovieDomainModel]
-    func getTopRated() -> [MovieDomainModel]
-    func getTrending() -> [MovieDomainModel]
+    func getPopular() -> [QueryMovieModel]
+    func getTopRated() -> [QueryMovieModel]
+    func getTrending() -> [QueryMovieModel]
 }
 
 protocol MovieInfoService {

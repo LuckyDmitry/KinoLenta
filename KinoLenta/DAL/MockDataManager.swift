@@ -39,6 +39,24 @@ func readJsonData(fileURL: URL) -> Data? {
     return nil
 }
 
+func parseQueryMovieModel(fileURL: URL) -> [QueryMovieModel] {
+    guard let rawData = readJsonData(fileURL: fileURL) else {
+        return []
+    }
+    
+    let topDict = try? JSONSerialization.jsonObject(with: rawData, options: []) as? [String: Any]
+    guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
+    
+    return container.compactMap {
+        guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
+        if let movie = try? JSONDecoder().decode(QueryMovieModel.self, from: data) {
+            return movie
+        }
+        return nil
+    }
+}
+
+
 func parseMovieModel(fileURL: URL) -> [MovieDomainModel] {
     guard let rawData = readJsonData(fileURL: fileURL) else {
         return []
@@ -83,13 +101,14 @@ class MockDataManager {
 
 // MARK: Search
 extension MockDataManager: MovieSearchService {
-    func search(query: String) -> [SearchModel] {
-        let result = parseSearchResults(fileURL: MockJsonPaths.search.fileURL)
+    
+    func search(query: String) -> [QueryMovieModel] {
+        let result = parseQueryMovieModel(fileURL: MockJsonPaths.search.fileURL)
         return result
     }
     
-    func discover(genre: [Genre], yearRange: ClosedRange<Int>?, ratingRange: ClosedRange<Int>?) -> [SearchModel] {
-        let result = parseSearchResults(fileURL: MockJsonPaths.movieDiscoverHorrorRuRegion.fileURL)
+    func discover(genre: [Genre], yearRange: ClosedRange<Int>?, ratingRange: ClosedRange<Int>?) -> [QueryMovieModel] {
+        let result = parseQueryMovieModel(fileURL: MockJsonPaths.movieDiscoverHorrorRuRegion.fileURL)
         return result
     }
 
@@ -97,18 +116,18 @@ extension MockDataManager: MovieSearchService {
 
 // MARK: Compilation
 extension MockDataManager: MovieCompilationService {
-    func getPopular() -> [MovieDomainModel] {
-        let result = parseMovieModel(fileURL: MockJsonPaths.moviePopular.fileURL)
+    func getPopular() -> [QueryMovieModel] {
+        let result = parseQueryMovieModel(fileURL: MockJsonPaths.moviePopular.fileURL)
         
         return result
     }
     
-    func getTopRated() -> [MovieDomainModel] {
-        let result = parseMovieModel(fileURL: MockJsonPaths.movieTopRated.fileURL)
+    func getTopRated() -> [QueryMovieModel] {
+        let result = parseQueryMovieModel(fileURL: MockJsonPaths.movieTopRated.fileURL)
         return result
     }
     
-    func getTrending() -> [MovieDomainModel] { return [] }
+    func getTrending() -> [QueryMovieModel] { return [] }
 }
 
 // MARK: Movie
