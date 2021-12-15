@@ -12,17 +12,37 @@ final class SearchedMoviesViewController: UIViewController {
     @IBOutlet private var moviesTableView: UITableView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     private var collectionView: QuickItemFilterView!
+<<<<<<< HEAD
     var coordinator: Coordinator?
     
     var movies: [SearchedMovieViewItem] = []
     var filterItems = [QuickItem]()
+=======
+        
+    var displayedItems: [SearchedMovieViewItem] = []
+    
+    func setDisplayedItems(queryResults: [QueryMovieModel]) {
+        self.displayedItems = queryResults.map { item in
+            let title = item.title
+            let genre: String = String(item.genreIDS?.first ?? -10)
+            let desc: String = item.overview ?? "EMPTY"
+            let rating: Double = item.voteAverage ?? 0
+            
+            return SearchedMovieViewItem(image: UIImage(named: "poster\(Int.random(in: 0..<12))"),
+                                         title: title,
+                                         genre: genre,
+                                         description: desc,
+                                         rating: rating)
+        }
+    }
+>>>>>>> 079e435 (Add datasource array to SearchedMoviesVC)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         moviesTableView.backgroundColor = .mainBackground
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
-        movies = populateMovies()
+        
         moviesTableView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellReuseIdentifier: Consts.cellIdentifier)
         collectionView = QuickItemFilterView(frame: placeHolderView.bounds)
         collectionView.items = [QuickItem(title: "Ужасы"), QuickItem(title: "Фантастика"), QuickItem(title: "Боеквик"), QuickItem(title: "Драма")]
@@ -31,6 +51,7 @@ final class SearchedMoviesViewController: UIViewController {
         navigationItem.title = "Title"
     }
     
+<<<<<<< HEAD
     // TODO: Will be removed
     private func populateMovies() -> [SearchedMovieViewItem] {
         var movies: [SearchedMovieViewItem] = []
@@ -45,6 +66,8 @@ final class SearchedMoviesViewController: UIViewController {
         return movies
     }
     
+=======
+>>>>>>> 079e435 (Add datasource array to SearchedMoviesVC)
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = CGRect(x: collectionView.frame.minX,
@@ -63,12 +86,12 @@ extension SearchedMoviesViewController: UITableViewDelegate {
 
 extension SearchedMoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return displayedItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Consts.cellIdentifier, for: indexPath) as? SearchedMovieTableViewCell else { fatalError("Invalid cell type") }
-        let movie = movies[indexPath.row]
+        let movie = displayedItems[indexPath.row]
         
         cell.backgroundColor = .mainBackground
         cell.movieTitle.text = movie.title

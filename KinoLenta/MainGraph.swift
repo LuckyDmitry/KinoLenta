@@ -11,6 +11,7 @@ import UIKit
 final class MainGraph {
     var coordinator: Coordinator!
     func start(with tabBarController: UITabBarController) {
+<<<<<<< HEAD
         let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
         let movieListStoryboard = UIStoryboard(name: "MovieList", bundle: nil)
         configureTabBarAppearence()
@@ -37,6 +38,24 @@ final class MainGraph {
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             }
         }
+=======
+        let dataManager = MockDataManager()
+        
+        let navigationController = UINavigationController()
+        let rating = UIStoryboard(name: "MovieList", bundle: nil).instantiateViewController(withIdentifier: "MovieList") as! MovieListViewController
+        rating.tabBarItem = UITabBarItem(title: "Searched", image: nil, selectedImage: nil)
+        
+        let search = UIStoryboard(name: "SearchedMovies", bundle: nil).instantiateViewController(withIdentifier: "FilmId") as! SearchedMoviesViewController
+        search.tabBarItem = UITabBarItem(title: "Searched2", image: nil, selectedImage: nil)
+        
+        search.setDisplayedItems(queryResults: dataManager.search(query: ""))
+
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        tabBarController.tabBar.standardAppearance = appearance
+        tabBarController.viewControllers = [rating, search]
+>>>>>>> 079e435 (Add datasource array to SearchedMoviesVC)
     }
 }
 
