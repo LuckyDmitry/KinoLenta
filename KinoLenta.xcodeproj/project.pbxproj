@@ -80,10 +80,10 @@
 		C644C7042768BEEA0078E9FD /* MovieList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C644C7002768BEEA0078E9FD /* MovieList.storyboard */; };
 		C644C7052768BEEA0078E9FD /* MovieListConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644C7012768BEEA0078E9FD /* MovieListConstants.swift */; };
 		CEAE404C2768D95D008CC273 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE404B2768D95D008CC273 /* MockDataManager.swift */; };
-		CEAE40522768DADD008CC273 /* popular_movies.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE404E2768DADD008CC273 /* popular_movies.json */; };
-		CEAE40532768DADD008CC273 /* multisearch_response.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE404F2768DADD008CC273 /* multisearch_response.json */; };
-		CEAE40542768DADD008CC273 /* top_rated_movies.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE40502768DADD008CC273 /* top_rated_movies.json */; };
-		CEAE40552768DADD008CC273 /* discover_horrors_ru_region.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE40512768DADD008CC273 /* discover_horrors_ru_region.json */; };
+		CEAE40522768DADD008CC273 /* movies_popular.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE404E2768DADD008CC273 /* movies_popular.json */; };
+		CEAE40532768DADD008CC273 /* tv_movies_multisearch.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE404F2768DADD008CC273 /* tv_movies_multisearch.json */; };
+		CEAE40542768DADD008CC273 /* movies_top_rated.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE40502768DADD008CC273 /* movies_top_rated.json */; };
+		CEAE40552768DADD008CC273 /* movie_discover_horrors_ru_region.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE40512768DADD008CC273 /* movie_discover_horrors_ru_region.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,10 +185,10 @@
 		C644C7002768BEEA0078E9FD /* MovieList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MovieList.storyboard; sourceTree = "<group>"; };
 		C644C7012768BEEA0078E9FD /* MovieListConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListConstants.swift; sourceTree = "<group>"; };
 		CEAE404B2768D95D008CC273 /* MockDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataManager.swift; sourceTree = "<group>"; };
-		CEAE404E2768DADD008CC273 /* popular_movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = popular_movies.json; sourceTree = "<group>"; };
-		CEAE404F2768DADD008CC273 /* multisearch_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = multisearch_response.json; sourceTree = "<group>"; };
-		CEAE40502768DADD008CC273 /* top_rated_movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = top_rated_movies.json; sourceTree = "<group>"; };
-		CEAE40512768DADD008CC273 /* discover_horrors_ru_region.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = discover_horrors_ru_region.json; sourceTree = "<group>"; };
+		CEAE404E2768DADD008CC273 /* movies_popular.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies_popular.json; sourceTree = "<group>"; };
+		CEAE404F2768DADD008CC273 /* tv_movies_multisearch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tv_movies_multisearch.json; sourceTree = "<group>"; };
+		CEAE40502768DADD008CC273 /* movies_top_rated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies_top_rated.json; sourceTree = "<group>"; };
+		CEAE40512768DADD008CC273 /* movie_discover_horrors_ru_region.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movie_discover_horrors_ru_region.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -540,10 +540,10 @@
 		CEAE404D2768DADD008CC273 /* mock_responses */ = {
 			isa = PBXGroup;
 			children = (
-				CEAE404E2768DADD008CC273 /* popular_movies.json */,
-				CEAE404F2768DADD008CC273 /* multisearch_response.json */,
-				CEAE40502768DADD008CC273 /* top_rated_movies.json */,
-				CEAE40512768DADD008CC273 /* discover_horrors_ru_region.json */,
+				CEAE404E2768DADD008CC273 /* movies_popular.json */,
+				CEAE404F2768DADD008CC273 /* tv_movies_multisearch.json */,
+				CEAE40502768DADD008CC273 /* movies_top_rated.json */,
+				CEAE40512768DADD008CC273 /* movie_discover_horrors_ru_region.json */,
 			);
 			path = mock_responses;
 			sourceTree = "<group>";
@@ -651,7 +651,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEAE40532768DADD008CC273 /* multisearch_response.json in Resources */,
+				CEAE40532768DADD008CC273 /* tv_movies_multisearch.json in Resources */,
 				7E07C7D42767709E0052A5F9 /* FilterScreenViewController.xib in Resources */,
 				4B218BAB2762245800C41939 /* LaunchScreen.storyboard in Resources */,
 				4B0BA6832764D751008507EE /* SearchView.xib in Resources */,
@@ -659,13 +659,18 @@
 				4B0BA6822764D751008507EE /* GenreQuickFilterCell.xib in Resources */,
 				7EFA861C27687E4C00523248 /* CarouselCollectionCell.xib in Resources */,
 				4B0BA6712764D743008507EE /* SearchedMovies.storyboard in Resources */,
+<<<<<<< HEAD
 				7EFA861827687A4E00523248 /* MovieSampleTableCell.xib in Resources */,
 				CEAE40552768DADD008CC273 /* discover_horrors_ru_region.json in Resources */,
 				CEAE40542768DADD008CC273 /* top_rated_movies.json in Resources */,
+=======
+				CEAE40552768DADD008CC273 /* movie_discover_horrors_ru_region.json in Resources */,
+				CEAE40542768DADD008CC273 /* movies_top_rated.json in Resources */,
+>>>>>>> 4c09716 (Rename mock response files)
 				4B0BA63A2764C4FF008507EE /* LaunchScreen.storyboard in Resources */,
 				7E07C7C8276770930052A5F9 /* FiltersFooterView.xib in Resources */,
 				7E07C7C6276770930052A5F9 /* PickerFilterTableCell.xib in Resources */,
-				CEAE40522768DADD008CC273 /* popular_movies.json in Resources */,
+				CEAE40522768DADD008CC273 /* movies_popular.json in Resources */,
 				C644C7042768BEEA0078E9FD /* MovieList.storyboard in Resources */,
 				4B0BA6722764D743008507EE /* SearchedMovieTableViewCell.xib in Resources */,
 				7E07C7CC276770930052A5F9 /* RatingFilterTableCell.xib in Resources */,
