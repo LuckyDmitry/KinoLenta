@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 struct CarouselData {
-    let image: String?
+    let image: URL?
     let rating: Double?
     let name: String?
 }
@@ -29,22 +29,22 @@ final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
     // TODO: Will be removed
     private var items: [CarouselData] = [
         CarouselData(
-            image: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png",
+            image: URL(string: "https://img.buzzfeed.com/buzzfeed-static/static/2018-10/2/18/campaign_images/buzzfeed-prod-web-06/15-of-the-weirdest-and-darkest-stock-photos-that--2-21628-1538520564-0_dblbig.jpg"),
             rating: 7,
             name: "Название"
         ),
         CarouselData(
-            image: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png",
+            image: URL(string: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png"),
             rating: 5,
             name: "Название"
         ),
         CarouselData(
-            image: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png",
+            image: URL(string: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png"),
             rating: 9,
             name: "Название"
         ),
         CarouselData(
-            image: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png",
+            image: URL(string: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png"),
             rating: 3,
             name: "Название"
         )]
@@ -78,8 +78,10 @@ extension MovieSampleTableCell: UICollectionViewDataSource {
         
         let item = items[indexPath.row]
         cell.movieTitle.text = item.name
-        cell.ratingView.image = UIImage(named: "poster6")
         cell.ratingView.rating = item.rating
+        if let url = item.image {
+            cell.ratingView.setImage(url: url)
+        }
         return cell
     }
 }

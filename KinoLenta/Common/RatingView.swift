@@ -34,6 +34,10 @@ final class RatingView: UIView {
         }
     }
     
+    func setImage(url: URL) {
+        imageView.setImage(url: url)
+    }
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true

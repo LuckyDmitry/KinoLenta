@@ -103,6 +103,11 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth: CGFloat = Constants.isLandscape ? Constants.defaultCellWidth : min(floor(cvWidth / 2), Constants.defaultCellWidth)
         return .init(width: cellWidth, height: Constants.cellHeight)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = MoviesSamplingViewController(nibName: "MoviesSamplingViewController", bundle: nil)
+        present(controller, animated: true)
+    }
 }
 
 extension MovieListViewController: UICollectionViewDataSource {

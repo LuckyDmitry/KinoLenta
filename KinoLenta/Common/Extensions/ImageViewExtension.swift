@@ -1,15 +1,10 @@
 import Foundation
 import UIKit
 
-extension UIImageView {
+extension UIImageView {    
     func setImage(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self?.image = image
-                }
-            }
-        }
+        ImageCache.shared.load(for: url) { image in
+            self.image = image
+       }
     }
 }
