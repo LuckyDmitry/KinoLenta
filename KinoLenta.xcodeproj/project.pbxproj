@@ -84,6 +84,8 @@
 		CEAE40532768DADD008CC273 /* tv_movies_multisearch.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE404F2768DADD008CC273 /* tv_movies_multisearch.json */; };
 		CEAE40542768DADD008CC273 /* movies_top_rated.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE40502768DADD008CC273 /* movies_top_rated.json */; };
 		CEAE40552768DADD008CC273 /* movie_discover_horrors_ru_region.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE40512768DADD008CC273 /* movie_discover_horrors_ru_region.json */; };
+		CEE808B0276A08E6002E0D61 /* Extension+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE808AF276A08E6002E0D61 /* Extension+Collection.swift */; };
+		CEE808B3276A1E2B002E0D61 /* GenreDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE808B2276A1E2B002E0D61 /* GenreDecode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +191,8 @@
 		CEAE404F2768DADD008CC273 /* tv_movies_multisearch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tv_movies_multisearch.json; sourceTree = "<group>"; };
 		CEAE40502768DADD008CC273 /* movies_top_rated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies_top_rated.json; sourceTree = "<group>"; };
 		CEAE40512768DADD008CC273 /* movie_discover_horrors_ru_region.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movie_discover_horrors_ru_region.json; sourceTree = "<group>"; };
+		CEE808AF276A08E6002E0D61 /* Extension+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Collection.swift"; sourceTree = "<group>"; };
+		CEE808B2276A1E2B002E0D61 /* GenreDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDecode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,7 +319,12 @@
 		4B218B9D2762245700C41939 /* KinoLenta */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				4B3492C7276B1F6000C9265F /* MovieDetail */,
+=======
+				CEE808B1276A1E1D002E0D61 /* Utils */,
+				CEE808AE276A08D5002E0D61 /* Extensions */,
+>>>>>>> c870deb (Add extension for model convertion, make some fields optional)
 				C644C6FC2768BEEA0078E9FD /* MovieList */,
 				66852C9E276794AA0055E4A1 /* DAL */,
 				66852C93276794860055E4A1 /* Networking */,
@@ -548,6 +557,22 @@
 			path = mock_responses;
 			sourceTree = "<group>";
 		};
+		CEE808AE276A08D5002E0D61 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CEE808AF276A08E6002E0D61 /* Extension+Collection.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CEE808B1276A1E1D002E0D61 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CEE808B2276A1E2B002E0D61 /* GenreDecode.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -707,6 +732,7 @@
 				4B3492D9276B1F6000C9265F /* MovieTextItemDescriptor.swift in Sources */,
 				4B3492E0276B1F6000C9265F /* MovieDetailViewController.swift in Sources */,
 				66852CA4276794AA0055E4A1 /* Networking.swift in Sources */,
+				CEE808B0276A08E6002E0D61 /* Extension+Collection.swift in Sources */,
 				4B218BCF2762269900C41939 /* MainGraph.swift in Sources */,
 				4B0BA6752764D743008507EE /* SearchedMovieTableViewCell.swift in Sources */,
 				7E07C7D8276793560052A5F9 /* MoviesSamplingViewController.swift in Sources */,
@@ -745,6 +771,7 @@
 				66852CA6276794AA0055E4A1 /* DataAccessProtocols.swift in Sources */,
 				7E92D7042769F4EC00220928 /* ImageCache.swift in Sources */,
 				66852C9B276794860055E4A1 /* SearchModel.swift in Sources */,
+				CEE808B3276A1E2B002E0D61 /* GenreDecode.swift in Sources */,
 				4B0BA6742764D743008507EE /* SearchedMovieViewItem.swift in Sources */,
 				66852CA3276794AA0055E4A1 /* DataManager.swift in Sources */,
 				7EFA861627687A4400523248 /* MovieSampleTableCell.swift in Sources */,

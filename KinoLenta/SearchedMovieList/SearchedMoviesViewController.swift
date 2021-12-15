@@ -21,19 +21,8 @@ final class SearchedMoviesViewController: UIViewController {
         
     var displayedItems: [SearchedMovieViewItem] = []
     
-    func setDisplayedItems(queryResults: [QueryMovieModel]) {
-        self.displayedItems = queryResults.map { item in
-            let title = item.title
-            let genre: String = String(item.genreIDS?.first ?? -10)
-            let desc: String = item.overview ?? "EMPTY"
-            let rating: Double = item.voteAverage ?? 0
-            
-            return SearchedMovieViewItem(image: UIImage(named: "poster\(Int.random(in: 0..<12))"),
-                                         title: title,
-                                         genre: genre,
-                                         description: desc,
-                                         rating: rating)
-        }
+    func setDisplayedItems(queryResults: [SearchedMovieViewItem]) {
+        displayedItems = queryResults
     }
 >>>>>>> 079e435 (Add datasource array to SearchedMoviesVC)
     

@@ -43,12 +43,18 @@ final class MainGraph {
         
         let navigationController = UINavigationController()
         let rating = UIStoryboard(name: "MovieList", bundle: nil).instantiateViewController(withIdentifier: "MovieList") as! MovieListViewController
-        rating.tabBarItem = UITabBarItem(title: "Searched", image: nil, selectedImage: nil)
+        rating.tabBarItem = UITabBarItem(title: "Сохраненные", image: nil, selectedImage: nil)
         
         let search = UIStoryboard(name: "SearchedMovies", bundle: nil).instantiateViewController(withIdentifier: "FilmId") as! SearchedMoviesViewController
-        search.tabBarItem = UITabBarItem(title: "Searched2", image: nil, selectedImage: nil)
         
-        search.setDisplayedItems(queryResults: dataManager.search(query: ""))
+//        only for display/testing purposes, shouldn't be placed as tabBarItem
+        search.tabBarItem = UITabBarItem(title: "Найденные", image: nil, selectedImage: nil)
+        
+        search.setDisplayedItems(
+            queryResults: dataManager
+                .search(query: "")
+                .convertToSearchedMovieViewItem()
+        )
 
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()

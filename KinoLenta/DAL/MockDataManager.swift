@@ -20,7 +20,6 @@ enum MockJsonPaths {
     var fileURL: URL {
         switch self {
         case .search:
-//            TODO: rename files using some naming pattern
             return getJsonResourceURL(resource: "tv_movies_multisearch")!
         case .movieTopRated:
             return getJsonResourceURL(resource: "movies_top_rated")!
