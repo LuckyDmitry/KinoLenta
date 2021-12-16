@@ -8,13 +8,19 @@ final class ImageCache {
     
     private let fileManager = FileManager()
     private let queue = DispatchQueue(label: "ImageCacheQueue", attributes: .concurrent)
-    private lazy var directory = getImageCacheDirectoryPath()
+    private let inMemoryCache = NSCache<NSString, UIImage>()
+    private lazy var directory: URL = {
+        let arrayPaths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
+        var cacheDirectoryPath = arrayPaths[0]
+        cacheDirectoryPath.appendPathComponent("ImageCache/")
+        return cacheDirectoryPath
+    }()
     
     init() {
         queue.async(flags: .barrier) { [weak self] in
             guard let self = self else { return }
             try? self.fileManager.createDirectory(
-                at: self.getImageCacheDirectoryPath(),
+                at: self.directory,
                 withIntermediateDirectories: false,
                 attributes: nil
             )
@@ -24,31 +30,45 @@ final class ImageCache {
     
     func load(for url: URL, callback: @escaping (UIImage?) -> Void) {
         let fileURL = directory.appendingPathComponent(url.nameForCaching())
-        
-        if fileManager.fileExists(atPath: fileURL.path) {
-            readFromCache(from: fileURL, callback: callback)
+
+        let imageKey = NSString(string: url.nameForCaching())
+        if let image = inMemoryCache.object(forKey: imageKey) {
+            callback(image)
             return
         }
-        loadFromNetwork(imageUrl: url) { [weak self] imageData in
-            if let imageData = imageData {
-                self?.addToCache(imageData, fileURL: fileURL)
+
+        readFromFileCache(from: fileURL) { [weak self] image in
+            if let image = image {
+                self?.inMemoryCache.setObject(image, forKey: imageKey)
+                callback(image)
+                return
             }
+
+            self?.downloadFromNetwork(imageUrl: url) { [weak self] imageData in
+                if let imageData = imageData {
+                    self?.addToFileCache(imageData, fileURL: fileURL)
+                }
+                let image = imageData?.toImage()
+                if let image = image {
+                    self?.inMemoryCache.setObject(image, forKey: imageKey)
+                }
+                callback(image)
+            }
+        }
+    }
+
+    private func readFromFileCache(from url: URL, callback: @escaping (UIImage?) -> Void) {
+        queue.async { [fileManager] in
+            let imageData = fileManager.fileExists(atPath: url.path) ? fileManager.contents(atPath: url.path) : nil
             DispatchQueue.main.async {
                 callback(imageData?.toImage())
             }
         }
     }
     
-    private func getImageCacheDirectoryPath() -> URL {
-        let arrayPaths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-        var cacheDirectoryPath = arrayPaths[0]
-        cacheDirectoryPath.appendPathComponent("ImageCache/")
-        return cacheDirectoryPath
-    }
-    
-    private func loadFromNetwork(imageUrl: URL, callback: @escaping (Data?) -> Void) {
+    private func downloadFromNetwork(imageUrl: URL, callback: @escaping (Data?) -> Void) {
         DispatchQueue.global().async {
-            self.getData(from: imageUrl) { data, _, error in
+            self.downloadData(from: imageUrl) { data, _, error in
                 if let error = error {
                     print(error)
                 }
@@ -57,20 +77,13 @@ final class ImageCache {
         }
     }
     
-    private func addToCache(_ imageData: Data, fileURL: URL) {
+    private func addToFileCache(_ imageData: Data, fileURL: URL) {
         queue.async(flags: .barrier) {
             try? imageData.write(to: fileURL)
         }
     }
     
-    private func readFromCache(from url: URL, callback: @escaping (UIImage?) -> Void) {
-        let imageData = self.fileManager.contents(atPath: url.path)
-        DispatchQueue.main.async {
-            callback(imageData?.toImage())
-        }
-    }
-    
-    private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+    private func downloadData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }
