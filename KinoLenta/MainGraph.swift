@@ -44,24 +44,17 @@ final class MainGraph {
         let navigationController = UINavigationController()
         let rating = UIStoryboard(name: "MovieList", bundle: nil).instantiateViewController(withIdentifier: "MovieList") as! MovieListViewController
         rating.tabBarItem = UITabBarItem(title: "Сохраненные", image: nil, selectedImage: nil)
-        
-        let search = UIStoryboard(name: "SearchedMovies", bundle: nil).instantiateViewController(withIdentifier: "FilmId") as! SearchedMoviesViewController
-        
-//        only for display/testing purposes, shouldn't be placed as tabBarItem
-        search.tabBarItem = UITabBarItem(title: "Найденные", image: nil, selectedImage: nil)
-        
-        search.setDisplayedItems(
-            queryResults: dataManager
-                .search(query: "")
-                .convertToSearchedMovieViewItem()
-        )
 
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
         tabBarController.tabBar.standardAppearance = appearance
+<<<<<<< HEAD
         tabBarController.viewControllers = [rating, search]
 >>>>>>> 079e435 (Add datasource array to SearchedMoviesVC)
+=======
+        tabBarController.viewControllers = [rating]
+>>>>>>> 2bcbc1e (Apply suggestions: convertion to higher order functions, create namespace)
     }
 }
 

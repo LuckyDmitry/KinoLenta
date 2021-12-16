@@ -7,14 +7,24 @@
 
 import Foundation
 
-final class GenreDecoderContainer {
-    
-    static let sharedMovieManager: GenreDecoder = .init(fileURL: MockJsonPaths.movieGenrePath.fileURL)
-    static let sharedTVManager: GenreDecoder = .init(fileURL: MockJsonPaths.tvGenrePath.fileURL)
-    
-    private init() {
-        
-    }
+
+//enum GenreDecoderContainer {
+//    case movies
+//    case tv
+//
+//    var shared: GenreDecoder {
+//        switch (self) {
+//        case .movies:
+//            return GenreDecoder(fileURL: MockJsonPaths.movieGenrePath.fileURL)
+//        case .tv:
+//            return GenreDecoder(fileURL: MockJsonPaths.tvGenrePath.fileURL)
+//        }
+//    }
+//}
+
+enum GenreDecoderContainer {
+    static let sharedMovieManager = GenreDecoder(fileURL: MockJsonPaths.movieGenrePath.fileURL)
+    static let sharedTVManager = GenreDecoder(fileURL: MockJsonPaths.tvGenrePath.fileURL)
 }
 
 
@@ -45,19 +55,12 @@ class GenreDecoder {
             self.init(genres: [:])
             return
         }
-
-        var genresDecoded: [Int: String] = [:]
-
-        container.forEach { genreItem in
-            guard let genreItemID = genreItem["id"] as? Int,
-                  let genreItemName = genreItem["name"] as? String
-            else {
-                return
-            }
-            genresDecoded[genreItemID] = genreItemName
-        }
-
-        self.init(genres: genresDecoded)
+        
+        self.init(genres: Dictionary(uniqueKeysWithValues: container.compactMap {
+                    guard let genreItemID = $0["id"] as? Int,
+                          let genreItemName = $0["name"] as? String else { return nil }
+                    return (genreItemID, genreItemName)
+                }))
     }
 }
 

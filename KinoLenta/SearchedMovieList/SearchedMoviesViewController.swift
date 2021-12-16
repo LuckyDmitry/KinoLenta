@@ -19,7 +19,7 @@ final class SearchedMoviesViewController: UIViewController {
     var filterItems = [QuickItem]()
 =======
         
-    var displayedItems: [SearchedMovieViewItem] = []
+    private var displayedItems: [SearchedMovieViewItem] = []
     
     func setDisplayedItems(queryResults: [SearchedMovieViewItem]) {
         displayedItems = queryResults
