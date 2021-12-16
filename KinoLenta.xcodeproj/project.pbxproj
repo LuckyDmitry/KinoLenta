@@ -87,6 +87,7 @@
 		CE1144C2276B61F800435D70 /* movies_popular.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144BC276B61F800435D70 /* movies_popular.json */; };
 		CE1144C5276B620100435D70 /* Extension+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1144C4276B620100435D70 /* Extension+Collection.swift */; };
 		CE1144C8276B620B00435D70 /* GenreDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1144C7276B620B00435D70 /* GenreDecode.swift */; };
+		CE1144CA276B728300435D70 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1144C9276B728300435D70 /* Extension+String.swift */; };
 		CEAE404C2768D95D008CC273 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE404B2768D95D008CC273 /* MockDataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +197,7 @@
 		CE1144BC276B61F800435D70 /* movies_popular.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies_popular.json; sourceTree = "<group>"; };
 		CE1144C4276B620100435D70 /* Extension+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Collection.swift"; sourceTree = "<group>"; };
 		CE1144C7276B620B00435D70 /* GenreDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreDecode.swift; sourceTree = "<group>"; };
+		CE1144C9276B728300435D70 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		CEAE404B2768D95D008CC273 /* MockDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -551,6 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1144C4276B620100435D70 /* Extension+Collection.swift */,
+				CE1144C9276B728300435D70 /* Extension+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				4B8C1A59276515D9002A637C /* QuickItemFilterView.swift in Sources */,
 				66852C9D276794860055E4A1 /* MovieDomainModel.swift in Sources */,
 				4B3492D9276B1F6000C9265F /* MovieTextItemDescriptor.swift in Sources */,
+				CE1144CA276B728300435D70 /* Extension+String.swift in Sources */,
 				4B3492E0276B1F6000C9265F /* MovieDetailViewController.swift in Sources */,
 				66852CA4276794AA0055E4A1 /* Networking.swift in Sources */,
 				4B218BCF2762269900C41939 /* MainGraph.swift in Sources */,

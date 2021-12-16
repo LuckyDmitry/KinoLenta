@@ -16,7 +16,7 @@ extension Collection where Element == QueryMovieModel {
                 title: $0.title,
                 genre: $0.genreIDS?.compactMap {
                     GenreDecoderContainer.sharedMovieManager.getByID($0)
-                }.joined(separator: genreSeparator),
+                }.joined(separator: genreSeparator).firstUppercased,
                 description: $0.overview,
                 rating: $0.voteAverage
             )
