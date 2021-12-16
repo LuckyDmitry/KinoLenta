@@ -16,6 +16,8 @@ enum MockJsonPaths {
     case movieTopRated
     case moviePopular
     case movieDiscoverHorrorRuRegion
+    case movieGenrePath
+    case tvGenrePath
     
     var fileURL: URL {
         switch self {
@@ -27,6 +29,10 @@ enum MockJsonPaths {
             return getJsonResourceURL(resource: "movies_popular")!
         case .movieDiscoverHorrorRuRegion:
             return getJsonResourceURL(resource: "movie_discover_horrors_ru_region")!
+        case .movieGenrePath:
+            return getJsonResourceURL(resource: "movie_genres_ru")!
+        case .tvGenrePath:
+            return getJsonResourceURL(resource: "tv_genres_ru")!
         }
     }
 }

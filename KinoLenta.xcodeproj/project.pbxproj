@@ -86,6 +86,8 @@
 		CEAE40552768DADD008CC273 /* movie_discover_horrors_ru_region.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE40512768DADD008CC273 /* movie_discover_horrors_ru_region.json */; };
 		CEE808B0276A08E6002E0D61 /* Extension+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE808AF276A08E6002E0D61 /* Extension+Collection.swift */; };
 		CEE808B3276A1E2B002E0D61 /* GenreDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE808B2276A1E2B002E0D61 /* GenreDecode.swift */; };
+		CEE808B5276A1FE8002E0D61 /* tv_genres_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = CEE808B4276A1FE8002E0D61 /* tv_genres_ru.json */; };
+		CEE808B7276A2690002E0D61 /* movie_genres_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = CEE808B6276A2690002E0D61 /* movie_genres_ru.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +195,8 @@
 		CEAE40512768DADD008CC273 /* movie_discover_horrors_ru_region.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movie_discover_horrors_ru_region.json; sourceTree = "<group>"; };
 		CEE808AF276A08E6002E0D61 /* Extension+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Collection.swift"; sourceTree = "<group>"; };
 		CEE808B2276A1E2B002E0D61 /* GenreDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDecode.swift; sourceTree = "<group>"; };
+		CEE808B4276A1FE8002E0D61 /* tv_genres_ru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tv_genres_ru.json; sourceTree = "<group>"; };
+		CEE808B6276A2690002E0D61 /* movie_genres_ru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movie_genres_ru.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -549,6 +553,8 @@
 		CEAE404D2768DADD008CC273 /* mock_responses */ = {
 			isa = PBXGroup;
 			children = (
+				CEE808B6276A2690002E0D61 /* movie_genres_ru.json */,
+				CEE808B4276A1FE8002E0D61 /* tv_genres_ru.json */,
 				CEAE404E2768DADD008CC273 /* movies_popular.json */,
 				CEAE404F2768DADD008CC273 /* tv_movies_multisearch.json */,
 				CEAE40502768DADD008CC273 /* movies_top_rated.json */,
@@ -678,8 +684,10 @@
 			files = (
 				CEAE40532768DADD008CC273 /* tv_movies_multisearch.json in Resources */,
 				7E07C7D42767709E0052A5F9 /* FilterScreenViewController.xib in Resources */,
+				CEE808B5276A1FE8002E0D61 /* tv_genres_ru.json in Resources */,
 				4B218BAB2762245800C41939 /* LaunchScreen.storyboard in Resources */,
 				4B0BA6832764D751008507EE /* SearchView.xib in Resources */,
+				CEE808B7276A2690002E0D61 /* movie_genres_ru.json in Resources */,
 				7E07C7C9276770930052A5F9 /* FiltersHeaderView.xib in Resources */,
 				4B0BA6822764D751008507EE /* GenreQuickFilterCell.xib in Resources */,
 				7EFA861C27687E4C00523248 /* CarouselCollectionCell.xib in Resources */,
