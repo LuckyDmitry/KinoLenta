@@ -11,14 +11,19 @@ import UIKit
 final class MainGraph {
     var coordinator: Coordinator!
     func start(with tabBarController: UITabBarController) {
+        let dataProvider = MockDataManager()
+        
         let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
         let movieListStoryboard = UIStoryboard(name: "MovieList", bundle: nil)
         configureTabBarAppearence()
         
         let searchedMovieViewController = searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
-        searchedMovieViewController.filterItems = [QuickItem(title: "Ужасы"), QuickItem(title: "Боевик"), QuickItem(title: "Драма"), QuickItem(title: "Фантастика"), QuickItem(title: "Комедии")]
+        searchedMovieViewController.filterItems = GenreDecoderContainer.sharedMovieManager.getGenreNames().map {
+            QuickItem(title: $0)
+        }
         searchedMovieViewController.tabBarItem = UITabBarItem(title: "Searched", image: nil, selectedImage: nil)
         searchedMovieViewController.coordinator = CoordinatorImpl()
+        searchedMovieViewController.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
         
         let movieListViewController = movieListStoryboard.instantiateViewController(withIdentifier: "MovieList")
         movieListViewController.tabBarItem = UITabBarItem(title: "Movie list", image: nil, selectedImage: nil)

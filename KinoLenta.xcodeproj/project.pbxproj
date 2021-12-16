@@ -79,11 +79,15 @@
 		C644C7032768BEEA0078E9FD /* PosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644C6FE2768BEEA0078E9FD /* PosterCell.swift */; };
 		C644C7042768BEEA0078E9FD /* MovieList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C644C7002768BEEA0078E9FD /* MovieList.storyboard */; };
 		C644C7052768BEEA0078E9FD /* MovieListConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644C7012768BEEA0078E9FD /* MovieListConstants.swift */; };
+		CE1144BD276B61F800435D70 /* movies_top_rated.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144B7276B61F800435D70 /* movies_top_rated.json */; };
+		CE1144BE276B61F800435D70 /* tv_genres_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144B8276B61F800435D70 /* tv_genres_ru.json */; };
+		CE1144BF276B61F800435D70 /* movie_discover_horrors_ru_region.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144B9276B61F800435D70 /* movie_discover_horrors_ru_region.json */; };
+		CE1144C0276B61F800435D70 /* tv_movies_multisearch.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144BA276B61F800435D70 /* tv_movies_multisearch.json */; };
+		CE1144C1276B61F800435D70 /* movie_genres_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144BB276B61F800435D70 /* movie_genres_ru.json */; };
+		CE1144C2276B61F800435D70 /* movies_popular.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144BC276B61F800435D70 /* movies_popular.json */; };
+		CE1144C5276B620100435D70 /* Extension+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1144C4276B620100435D70 /* Extension+Collection.swift */; };
+		CE1144C8276B620B00435D70 /* GenreDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1144C7276B620B00435D70 /* GenreDecode.swift */; };
 		CEAE404C2768D95D008CC273 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE404B2768D95D008CC273 /* MockDataManager.swift */; };
-		CEAE40522768DADD008CC273 /* popular_movies.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE404E2768DADD008CC273 /* popular_movies.json */; };
-		CEAE40532768DADD008CC273 /* multisearch_response.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE404F2768DADD008CC273 /* multisearch_response.json */; };
-		CEAE40542768DADD008CC273 /* top_rated_movies.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE40502768DADD008CC273 /* top_rated_movies.json */; };
-		CEAE40552768DADD008CC273 /* discover_horrors_ru_region.json in Resources */ = {isa = PBXBuildFile; fileRef = CEAE40512768DADD008CC273 /* discover_horrors_ru_region.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,11 +188,15 @@
 		C644C6FE2768BEEA0078E9FD /* PosterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterCell.swift; sourceTree = "<group>"; };
 		C644C7002768BEEA0078E9FD /* MovieList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MovieList.storyboard; sourceTree = "<group>"; };
 		C644C7012768BEEA0078E9FD /* MovieListConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListConstants.swift; sourceTree = "<group>"; };
+		CE1144B7276B61F800435D70 /* movies_top_rated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies_top_rated.json; sourceTree = "<group>"; };
+		CE1144B8276B61F800435D70 /* tv_genres_ru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tv_genres_ru.json; sourceTree = "<group>"; };
+		CE1144B9276B61F800435D70 /* movie_discover_horrors_ru_region.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movie_discover_horrors_ru_region.json; sourceTree = "<group>"; };
+		CE1144BA276B61F800435D70 /* tv_movies_multisearch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tv_movies_multisearch.json; sourceTree = "<group>"; };
+		CE1144BB276B61F800435D70 /* movie_genres_ru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movie_genres_ru.json; sourceTree = "<group>"; };
+		CE1144BC276B61F800435D70 /* movies_popular.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies_popular.json; sourceTree = "<group>"; };
+		CE1144C4276B620100435D70 /* Extension+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Collection.swift"; sourceTree = "<group>"; };
+		CE1144C7276B620B00435D70 /* GenreDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreDecode.swift; sourceTree = "<group>"; };
 		CEAE404B2768D95D008CC273 /* MockDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataManager.swift; sourceTree = "<group>"; };
-		CEAE404E2768DADD008CC273 /* popular_movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = popular_movies.json; sourceTree = "<group>"; };
-		CEAE404F2768DADD008CC273 /* multisearch_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = multisearch_response.json; sourceTree = "<group>"; };
-		CEAE40502768DADD008CC273 /* top_rated_movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = top_rated_movies.json; sourceTree = "<group>"; };
-		CEAE40512768DADD008CC273 /* discover_horrors_ru_region.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = discover_horrors_ru_region.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +323,8 @@
 		4B218B9D2762245700C41939 /* KinoLenta */ = {
 			isa = PBXGroup;
 			children = (
+				CE1144C6276B620B00435D70 /* Utils */,
+				CE1144C3276B620100435D70 /* Extensions */,
 				4B3492C7276B1F6000C9265F /* MovieDetail */,
 				C644C6FC2768BEEA0078E9FD /* MovieList */,
 				66852C9E276794AA0055E4A1 /* DAL */,
@@ -537,13 +547,31 @@
 			path = InterfaceBuilder;
 			sourceTree = "<group>";
 		};
+		CE1144C3276B620100435D70 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE1144C4276B620100435D70 /* Extension+Collection.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CE1144C6276B620B00435D70 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CE1144C7276B620B00435D70 /* GenreDecode.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		CEAE404D2768DADD008CC273 /* mock_responses */ = {
 			isa = PBXGroup;
 			children = (
-				CEAE404E2768DADD008CC273 /* popular_movies.json */,
-				CEAE404F2768DADD008CC273 /* multisearch_response.json */,
-				CEAE40502768DADD008CC273 /* top_rated_movies.json */,
-				CEAE40512768DADD008CC273 /* discover_horrors_ru_region.json */,
+				CE1144B9276B61F800435D70 /* movie_discover_horrors_ru_region.json */,
+				CE1144BB276B61F800435D70 /* movie_genres_ru.json */,
+				CE1144BC276B61F800435D70 /* movies_popular.json */,
+				CE1144B7276B61F800435D70 /* movies_top_rated.json */,
+				CE1144B8276B61F800435D70 /* tv_genres_ru.json */,
+				CE1144BA276B61F800435D70 /* tv_movies_multisearch.json */,
 			);
 			path = mock_responses;
 			sourceTree = "<group>";
@@ -651,22 +679,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEAE40532768DADD008CC273 /* multisearch_response.json in Resources */,
 				7E07C7D42767709E0052A5F9 /* FilterScreenViewController.xib in Resources */,
 				4B218BAB2762245800C41939 /* LaunchScreen.storyboard in Resources */,
+				CE1144BE276B61F800435D70 /* tv_genres_ru.json in Resources */,
+				CE1144C2276B61F800435D70 /* movies_popular.json in Resources */,
 				4B0BA6832764D751008507EE /* SearchView.xib in Resources */,
 				7E07C7C9276770930052A5F9 /* FiltersHeaderView.xib in Resources */,
+				CE1144C1276B61F800435D70 /* movie_genres_ru.json in Resources */,
 				4B0BA6822764D751008507EE /* GenreQuickFilterCell.xib in Resources */,
 				7EFA861C27687E4C00523248 /* CarouselCollectionCell.xib in Resources */,
 				4B0BA6712764D743008507EE /* SearchedMovies.storyboard in Resources */,
+				CE1144BD276B61F800435D70 /* movies_top_rated.json in Resources */,
 				7EFA861827687A4E00523248 /* MovieSampleTableCell.xib in Resources */,
-				CEAE40552768DADD008CC273 /* discover_horrors_ru_region.json in Resources */,
-				CEAE40542768DADD008CC273 /* top_rated_movies.json in Resources */,
 				4B0BA63A2764C4FF008507EE /* LaunchScreen.storyboard in Resources */,
 				7E07C7C8276770930052A5F9 /* FiltersFooterView.xib in Resources */,
 				7E07C7C6276770930052A5F9 /* PickerFilterTableCell.xib in Resources */,
-				CEAE40522768DADD008CC273 /* popular_movies.json in Resources */,
 				C644C7042768BEEA0078E9FD /* MovieList.storyboard in Resources */,
+				CE1144BF276B61F800435D70 /* movie_discover_horrors_ru_region.json in Resources */,
+				CE1144C0276B61F800435D70 /* tv_movies_multisearch.json in Resources */,
 				4B0BA6722764D743008507EE /* SearchedMovieTableViewCell.xib in Resources */,
 				7E07C7CC276770930052A5F9 /* RatingFilterTableCell.xib in Resources */,
 				7E07C7DA2767936D0052A5F9 /* MoviesSamplingViewController.xib in Resources */,
@@ -697,6 +727,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E07C7CB276770930052A5F9 /* RatingFilterTableCell.swift in Sources */,
+				CE1144C8276B620B00435D70 /* GenreDecode.swift in Sources */,
 				4B8C1A59276515D9002A637C /* QuickItemFilterView.swift in Sources */,
 				66852C9D276794860055E4A1 /* MovieDomainModel.swift in Sources */,
 				4B3492D9276B1F6000C9265F /* MovieTextItemDescriptor.swift in Sources */,
@@ -750,6 +781,7 @@
 				4B3492D6276B1F6000C9265F /* DetailMovieStarsDescriptor.swift in Sources */,
 				4B3492D7276B1F6000C9265F /* DetailMovieReviewDescriptor.swift in Sources */,
 				7E07C7CA276770930052A5F9 /* FiltersHeaderView.swift in Sources */,
+				CE1144C5276B620100435D70 /* Extension+Collection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

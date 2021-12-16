@@ -16,18 +16,23 @@ enum MockJsonPaths {
     case movieTopRated
     case moviePopular
     case movieDiscoverHorrorRuRegion
+    case movieGenrePath
+    case tvGenrePath
     
     var fileURL: URL {
         switch self {
         case .search:
-//            TODO: rename files using some naming pattern
-            return getJsonResourceURL(resource: "multisearch_response")!
+            return getJsonResourceURL(resource: "tv_movies_multisearch")!
         case .movieTopRated:
-            return getJsonResourceURL(resource: "top_rated_movies")!
+            return getJsonResourceURL(resource: "movies_top_rated")!
         case .moviePopular:
-            return getJsonResourceURL(resource: "popular_movies")!
+            return getJsonResourceURL(resource: "movies_popular")!
         case .movieDiscoverHorrorRuRegion:
-            return getJsonResourceURL(resource: "discover_horrors_ru_region")!
+            return getJsonResourceURL(resource: "movie_discover_horrors_ru_region")!
+        case .movieGenrePath:
+            return getJsonResourceURL(resource: "movie_genres_ru")!
+        case .tvGenrePath:
+            return getJsonResourceURL(resource: "tv_genres_ru")!
         }
     }
 }

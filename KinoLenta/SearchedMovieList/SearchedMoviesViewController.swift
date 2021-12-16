@@ -12,39 +12,31 @@ final class SearchedMoviesViewController: UIViewController {
     @IBOutlet private var moviesTableView: UITableView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     private var collectionView: QuickItemFilterView!
+
     var coordinator: Coordinator?
-    
     var movies: [SearchedMovieViewItem] = []
     var filterItems = [QuickItem]()
+        
+    private var displayedItems: [SearchedMovieViewItem] = []
+    
+    func setDisplayedItems(queryResults: [SearchedMovieViewItem]) {
+        displayedItems = queryResults
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         moviesTableView.backgroundColor = .mainBackground
         moviesTableView.delegate = self
         moviesTableView.dataSource = self
-        movies = populateMovies()
+        
         moviesTableView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellReuseIdentifier: Consts.cellIdentifier)
         collectionView = QuickItemFilterView(frame: placeHolderView.bounds)
-        collectionView.items = [QuickItem(title: "Ужасы"), QuickItem(title: "Фантастика"), QuickItem(title: "Боеквик"), QuickItem(title: "Драма")]
         placeHolderView.addSubview(collectionView)
         collectionView.items = filterItems
         navigationItem.title = "Title"
     }
-    
-    // TODO: Will be removed
-    private func populateMovies() -> [SearchedMovieViewItem] {
-        var movies: [SearchedMovieViewItem] = []
-        for i in 1...10 {
-            let movie = SearchedMovieViewItem(image: UIImage(named: "\(i % 5)"),
-                                              title: "Путешествие вокруг света",
-                                              genre: "Приключения, ужасы",
-                                              description: "Эксцентричный лондонский изобретатель Филеас Фогг раскрыл тайны полетов, электричества и многие другие, но общество не принимает его, считая сумасшедшим. Фоггу  ...",
-                                              rating: 7.0)
-            movies.append(movie)
-        }
-        return movies
-    }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = CGRect(x: collectionView.frame.minX,
@@ -63,12 +55,12 @@ extension SearchedMoviesViewController: UITableViewDelegate {
 
 extension SearchedMoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return displayedItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Consts.cellIdentifier, for: indexPath) as? SearchedMovieTableViewCell else { fatalError("Invalid cell type") }
-        let movie = movies[indexPath.row]
+        let movie = displayedItems[indexPath.row]
         
         cell.backgroundColor = .mainBackground
         cell.movieTitle.text = movie.title
