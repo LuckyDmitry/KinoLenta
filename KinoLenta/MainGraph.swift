@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 final class MainGraph {
+    var coordinator: Coordinator!
     func start(with tabBarController: UITabBarController) {
         let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
         let movieListStoryboard = UIStoryboard(name: "MovieList", bundle: nil)
@@ -17,6 +18,7 @@ final class MainGraph {
         let searchedMovieViewController = searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
         searchedMovieViewController.filterItems = [QuickItem(title: "Ужасы"), QuickItem(title: "Боевик"), QuickItem(title: "Драма"), QuickItem(title: "Фантастика"), QuickItem(title: "Комедии")]
         searchedMovieViewController.tabBarItem = UITabBarItem(title: "Searched", image: nil, selectedImage: nil)
+        searchedMovieViewController.coordinator = CoordinatorImpl()
         
         let movieListViewController = movieListStoryboard.instantiateViewController(withIdentifier: "MovieList")
         movieListViewController.tabBarItem = UITabBarItem(title: "Movie list", image: nil, selectedImage: nil)
@@ -45,15 +47,10 @@ protocol Coordinator {
 
 // TODO: Will be moved
 final class CoordinatorImpl: Coordinator {
-    
-    private let navigationController: UINavigationController
-    
-    init(_ navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
     func openDetailMovie(withMovieId id: Int, context: UIViewController) {
         let detailMovieViewController = MovieDetailViewController()
+        detailMovieViewController.buttonActions = [(.viewed, QuickItem(title: "Посмотреть")),
+                                                   (.all, QuickItem(title: "Посмотреть"))]
         context.present(detailMovieViewController, animated: true)
     }
 }
