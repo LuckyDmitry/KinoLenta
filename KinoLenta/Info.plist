@@ -22,6 +22,13 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SFProDisplay-Bold.ttf</string>
+		<string>SFProDisplay-Medium</string>
+		<string>SFCompactText-Light</string>
+		<string>SFCompactText-Medium</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

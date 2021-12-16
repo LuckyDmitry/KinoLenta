@@ -47,10 +47,9 @@ class MovieListViewController: UIViewController {
         watchButton.layer.cornerRadius = Constants.buttonCornerRadius
         watchButton.clipsToBounds = true
         watchedButton.clipsToBounds = true
-        self.watchButton.tintColor = Constants.selectedItemColor
-        self.watchedButton.tintColor = Constants.backGroundColor
-        self.watchedButton.setTitleColor(Constants.selectedItemColor, for: .normal)
-        self.watchButton.setTitleColor(.white, for: .normal)
+        self.watchButton.tintColor = .pickerItemBackground
+        self.watchedButton.tintColor = .mainBackground
+        self.watchedButton.setTitleColor(.pickerItemBackground, for: .normal)
     }
     
     
@@ -145,11 +144,11 @@ extension UIButton {
     func changeState(on buttonState: ButtonState) {
         switch buttonState {
         case .selected:
-            self.tintColor = Constants.selectedItemColor
+            self.tintColor = .pickerItemBackground
             self.setTitleColor(.white, for: .normal)
         case .notSelected:
-            self.tintColor = Constants.backGroundColor
-            self.setTitleColor(Constants.selectedItemColor, for: .normal)
+            self.tintColor = .mainBackground
+            self.setTitleColor(.pickerItemBackground, for: .normal)
         }
     }
 }
