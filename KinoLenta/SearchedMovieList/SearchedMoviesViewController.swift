@@ -12,8 +12,10 @@ final class SearchedMoviesViewController: UIViewController {
     @IBOutlet private var moviesTableView: UITableView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     private var collectionView: QuickItemFilterView!
+    var coordinator: Coordinator?
     
-    private var movies: [SearchedMovieViewItem] = []
+    var movies: [SearchedMovieViewItem] = []
+    var filterItems = [QuickItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +25,11 @@ final class SearchedMoviesViewController: UIViewController {
         movies = populateMovies()
         moviesTableView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellReuseIdentifier: Consts.cellIdentifier)
         collectionView = QuickItemFilterView(frame: placeHolderView.bounds)
+        collectionView.items = [QuickItem(title: "Ужасы"), QuickItem(title: "Фантастика"), QuickItem(title: "Боеквик"), QuickItem(title: "Драма")]
         placeHolderView.addSubview(collectionView)
+        collectionView.items = filterItems
         navigationItem.title = "Title"
     }
-    
     
     // TODO: Will be removed
     private func populateMovies() -> [SearchedMovieViewItem] {
@@ -51,7 +54,12 @@ final class SearchedMoviesViewController: UIViewController {
     }
 }
 
-extension SearchedMoviesViewController: UITableViewDelegate {}
+extension SearchedMoviesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        coordinator?.openDetailMovie(withMovieId: .zero, context: self)
+    }
+}
 
 extension SearchedMoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

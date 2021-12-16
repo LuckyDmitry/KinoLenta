@@ -7,12 +7,21 @@
 
 import UIKit
 
+enum Transition {
+    case singlePress(Int)
+    case transitionPress(Int, Int)
+}
+
+protocol QuickItemFilterDelegate: AnyObject {
+    func itemPressed(transition: Transition, isSelected: Bool)
+}
+
+struct QuickItem {
+    var isSelected: Bool = false
+    var title: String
+}
+
 final class QuickItemFilterView: UIView {
-    private struct QuickItem {
-        var isSelected: Bool = false
-        var title: String
-    }
-    
     private enum QuickItemLayoutConfig {
         static let font: UIFont = UIFont.boldSystemFont(ofSize: 17)
         static let textPadding: CGFloat = 20
@@ -36,18 +45,25 @@ final class QuickItemFilterView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 10)
-        collectionView.backgroundColor = .white
+        collectionView.contentInset = insets
+        collectionView.backgroundColor = .mainBackground
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellWithReuseIdentifier: Consts.cellIdentifier)
         return collectionView
     }()
     
-    // TODO: Will be removed
-    private var items: [QuickItem] = [QuickItem(title: "Посмотреть"),
-                                      QuickItem(title: "Посмотренно")]
+    var items: [QuickItem] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
-    override init(frame: CGRect) {
+    private let insets: UIEdgeInsets
+    
+    weak var delegate: QuickItemFilterDelegate?
+    
+    init(frame: CGRect, insets: UIEdgeInsets = .zero) {
+        self.insets = insets
         super.init(frame: frame)
         configureView()
     }
@@ -97,10 +113,21 @@ extension QuickItemFilterView: UICollectionViewDataSource {
 
 extension QuickItemFilterView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let selectedIndexBefore = items.enumerated().first(where: { $0.element.isSelected && indexPath.row != $0.offset})?.offset
+        
         items = items.enumerated().map {
             QuickItem(isSelected: $0 == indexPath.row ? !$1.isSelected : false, title: $1.title)
         }
         collectionView.reloadData()
+        let isSelected = items[indexPath.row].isSelected
+        let transition: Transition
+        if let selectedIndexBefore = selectedIndexBefore {
+            transition = .transitionPress(selectedIndexBefore, indexPath.row)
+        } else {
+            transition = .singlePress(indexPath.row)
+        }
+        delegate?.itemPressed(transition: transition, isSelected: isSelected)
     }
 }
 
@@ -113,4 +140,3 @@ extension QuickItemFilterView {
         static let marginBetweenCells: CGFloat = 10
     }
 }
-
