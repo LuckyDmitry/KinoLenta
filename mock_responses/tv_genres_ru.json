@@ -2,67 +2,67 @@
   "genres": [
     {
       "id": 10759,
-      "name": "Action & Adventure"
+      "name": "Боевик и Приключения"
     },
     {
       "id": 16,
-      "name": "Animation"
+      "name": "мультфильм"
     },
     {
       "id": 35,
-      "name": "Comedy"
+      "name": "комедия"
     },
     {
       "id": 80,
-      "name": "Crime"
+      "name": "криминал"
     },
     {
       "id": 99,
-      "name": "Documentary"
+      "name": "документальный"
     },
     {
       "id": 18,
-      "name": "Drama"
+      "name": "драма"
     },
     {
       "id": 10751,
-      "name": "Family"
+      "name": "семейный"
     },
     {
       "id": 10762,
-      "name": "Kids"
+      "name": "Детский"
     },
     {
       "id": 9648,
-      "name": "Mystery"
+      "name": "детектив"
     },
     {
       "id": 10763,
-      "name": "News"
+      "name": "Новости"
     },
     {
       "id": 10764,
-      "name": "Reality"
+      "name": "Реалити-шоу"
     },
     {
       "id": 10765,
-      "name": "Sci-Fi & Fantasy"
+      "name": "НФ и Фэнтези"
     },
     {
       "id": 10766,
-      "name": "Soap"
+      "name": "Мыльная опера"
     },
     {
       "id": 10767,
-      "name": "Talk"
+      "name": "Ток-шоу"
     },
     {
       "id": 10768,
-      "name": "War & Politics"
+      "name": "Война и Политика"
     },
     {
       "id": 37,
-      "name": "Western"
+      "name": "вестерн"
     }
   ]
 }
