@@ -11,45 +11,54 @@ class NetworkingService {
     let queue = DispatchQueue(label: "UrlQueue", attributes: .concurrent)
     
     func search(query: String, callback: @escaping ([QueryMovieModel]) -> Void) {
-        var queryInfo = giveUrlItems(for: .search)
-        let queryItemQuery = URLQueryItem(name: "query", value: query)
-        queryInfo.queryItems.append(queryItemQuery)
+        var queryInfo = getUrlItems(for: .search)
+        queryInfo.queryItems.append(
+            URLQueryItem(name: "query", value: query)
+        )
 
         queue.async {
             assert(!Thread.isMainThread)
-            makeRequest(with: queryInfo, using: callback)
+            makeRequest(with: queryInfo, callback: callback)
         }
     }
     
-    func discover(genre: [Int]?, yearRange: ClosedRange<Int>?, ratingGTE: Int?, country: String?, callback: @escaping ([QueryMovieModel]) -> Void) {
-        var queryInfo = giveUrlItems(for: .discover)
+    func discover(
+        genre: [Int]?,
+        yearRange: ClosedRange<Int>?,
+        ratingGTE: Int?, country: String?,
+        callback: @escaping ([QueryMovieModel]) -> Void
+    ) {
+        var queryInfo = getUrlItems(for: .discover)
         if let leftYearBound = yearRange?.lowerBound {
-            let queryItemLeftYear = URLQueryItem(name: "primary_release_date.gte", value: "\(leftYearBound)-01-01")
-            queryInfo.queryItems.append(queryItemLeftYear)
+            queryInfo.queryItems.append(
+                URLQueryItem(name: "primary_release_date.gte", value: "\(leftYearBound)-01-01")
+            )
         }
         if let rightYearBound = yearRange?.upperBound {
-            let queryItemRightYear = URLQueryItem(name: "primary_release_date.lte", value: "\(rightYearBound)-12-31")
-            queryInfo.queryItems.append(queryItemRightYear)
+            queryInfo.queryItems.append(
+                URLQueryItem(name: "primary_release_date.lte", value: "\(rightYearBound)-12-31")
+            )
         }
         if let ratingGTE = ratingGTE {
-            let queryItemRating = URLQueryItem(name: "vote_average.gte", value: "\(ratingGTE)")
-            queryInfo.queryItems.append(queryItemRating)
+            queryInfo.queryItems.append(
+                URLQueryItem(name: "vote_average.gte", value: "\(ratingGTE)")
+            )
         }
         if let country = country {
-            let queryItemCountry = URLQueryItem(name: "region", value: "\(country)")
-            queryInfo.queryItems.append(queryItemCountry)
+            queryInfo.queryItems.append(
+                URLQueryItem(name: "region", value: "\(country)")
+            )
         }
         if let genres = genre {
-            var genre_string = ""
-            for (i, gen) in genres.enumerated() {
-                genre_string += i != 0 ? ",\(gen)" : "\(gen)" //join
-            }
-            let queryItemGenres = URLQueryItem(name: "with_genres", value: genre_string)
-            queryInfo.queryItems.append(queryItemGenres)
+            let genresStringArray = genres.map({"\($0)"})
+            let genre_string = genresStringArray.joined(separator: ", ")
+            queryInfo.queryItems.append(
+                URLQueryItem(name: "with_genres", value: genre_string)
+            )
         }
         queue.async {
             assert(!Thread.isMainThread)
-            makeRequest(with: queryInfo, using: callback)
+            makeRequest(with: queryInfo, callback: callback)
         }
     }
     
@@ -98,18 +107,18 @@ struct QueryInfo {
 
 extension NetworkingService {
     func getCompilation(for requestType: RequestTypes, using callback:  @escaping ([QueryMovieModel]) -> Void) {
-        let queryInfo = giveUrlItems(for: requestType)
+        let queryInfo = getUrlItems(for: requestType)
         queue.async {
             assert(!Thread.isMainThread)
-            makeRequest(with: queryInfo, using: callback)
+            makeRequest(with: queryInfo, callback: callback)
         }
     }
 }
 
-func giveUrlItems(for requestType: RequestTypes) -> QueryInfo {
-    let token = loadApiKey()
+func getUrlItems(for requestType: RequestTypes) -> QueryInfo {
+    lazy var token: String = ApiKey.value
     var queryItems: [URLQueryItem] = []
-    let queryItemToken = URLQueryItem(name: "api_key", value: token) //read  from file
+    let queryItemToken = URLQueryItem(name: "api_key", value: token)
     let queryItemLang = URLQueryItem(name: "language", value: "ru")
     let queryItemPage = URLQueryItem(name: "page", value: "1")
     queryItems.append(queryItemToken)
@@ -139,7 +148,7 @@ func giveUrlItems(for requestType: RequestTypes) -> QueryInfo {
     return QueryInfo(pathItem: pathItem, queryItems: queryItems)
 }
 
-func makeRequest(with queryInfo: QueryInfo, using callback:  @escaping ([QueryMovieModel]) -> Void) {
+func makeRequest(with queryInfo: QueryInfo, callback:  @escaping ([QueryMovieModel]) -> Void) {
     let config = URLSessionConfiguration.default
     let session = URLSession(configuration: config)
 
@@ -150,7 +159,8 @@ func makeRequest(with queryInfo: QueryInfo, using callback:  @escaping ([QueryMo
     components.queryItems = queryInfo.queryItems
 
     guard let url = components.url else {
-      fatalError("url can't be composed")
+        print("url can't be composed")
+        return
     }
 
     let task = session.dataTask(with: url) { data, response, error in
