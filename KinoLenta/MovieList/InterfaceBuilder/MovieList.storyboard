@@ -71,6 +71,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="ratingView" destination="zFu-cP-nqN" id="IrH-y5-Py9"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
