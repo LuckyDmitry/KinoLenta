@@ -34,8 +34,13 @@ final class RatingView: UIView {
         }
     }
     
-    func setImage(url: URL) {
+    func setImage(url: URL) -> CancellationHandle {
         imageView.setImage(url: url)
+    }
+    
+    func reset() {
+        image = nil
+        ratingLabel.text = nil
     }
     
     private lazy var imageView: UIImageView = {

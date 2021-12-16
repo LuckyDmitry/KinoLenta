@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 final class CarouselCollectionCell: UICollectionViewCell {
+    var cancellationHandle: CancellationHandle?
     
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var ratingView: RatingView! {
@@ -9,5 +10,11 @@ final class CarouselCollectionCell: UICollectionViewCell {
             ratingView.layer.cornerRadius = 10
             ratingView.clipsToBounds = true
         }
+    }
+    
+    func reset() {
+        cancellationHandle?.isCancelled = true
+        movieTitle.text = nil
+        ratingView.reset()
     }
 }

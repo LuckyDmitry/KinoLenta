@@ -76,11 +76,13 @@ extension MovieSampleTableCell: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.cellDescribing, for: indexPath)
         guard let cell = cell as? CarouselCollectionCell else { fatalError("Invalid cell type") }
         
+        cell.reset()
+        
         let item = items[indexPath.row]
         cell.movieTitle.text = item.name
         cell.ratingView.rating = item.rating
         if let url = item.image {
-            cell.ratingView.setImage(url: url)
+            cell.cancellationHandle = cell.ratingView.setImage(url: url)
         }
         return cell
     }
