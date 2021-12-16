@@ -51,8 +51,7 @@ class MovieDetailViewController: UIViewController {
     
     private func populateElements() {
         for cellIndex in 0..<sections.count {
-            descriptors.append([MovieTextItemDescriptor(font: UIFont.systemFont(ofSize: 17),
-                                                          title: "MyTitle")])
+            descriptors.append([MovieTextItemDescriptor(title: "MyTitle", font: UIFont.systemFont(ofSize: 17))])
 
         }
     }

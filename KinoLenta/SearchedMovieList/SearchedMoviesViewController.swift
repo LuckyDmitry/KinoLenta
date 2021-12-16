@@ -13,7 +13,8 @@ final class SearchedMoviesViewController: UIViewController {
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     private var collectionView: QuickItemFilterView!
     
-    private var movies: [SearchedMovieViewItem] = []
+    var movies: [SearchedMovieViewItem] = []
+    var filterItems = [QuickItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ final class SearchedMoviesViewController: UIViewController {
         moviesTableView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellReuseIdentifier: Consts.cellIdentifier)
         collectionView = QuickItemFilterView(frame: placeHolderView.bounds)
         placeHolderView.addSubview(collectionView)
+        collectionView.items = filterItems
         navigationItem.title = "Title"
     }
     
