@@ -12,19 +12,17 @@ final class SearchedMoviesViewController: UIViewController {
     @IBOutlet private var moviesTableView: UITableView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     private var collectionView: QuickItemFilterView!
-<<<<<<< HEAD
+
     var coordinator: Coordinator?
-    
     var movies: [SearchedMovieViewItem] = []
     var filterItems = [QuickItem]()
-=======
         
     private var displayedItems: [SearchedMovieViewItem] = []
     
     func setDisplayedItems(queryResults: [SearchedMovieViewItem]) {
         displayedItems = queryResults
     }
->>>>>>> 079e435 (Add datasource array to SearchedMoviesVC)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,29 +32,11 @@ final class SearchedMoviesViewController: UIViewController {
         
         moviesTableView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellReuseIdentifier: Consts.cellIdentifier)
         collectionView = QuickItemFilterView(frame: placeHolderView.bounds)
-        collectionView.items = [QuickItem(title: "Ужасы"), QuickItem(title: "Фантастика"), QuickItem(title: "Боеквик"), QuickItem(title: "Драма")]
         placeHolderView.addSubview(collectionView)
         collectionView.items = filterItems
         navigationItem.title = "Title"
     }
-    
-<<<<<<< HEAD
-    // TODO: Will be removed
-    private func populateMovies() -> [SearchedMovieViewItem] {
-        var movies: [SearchedMovieViewItem] = []
-        for i in 1...10 {
-            let movie = SearchedMovieViewItem(image: UIImage(named: "\(i % 5)"),
-                                              title: "Путешествие вокруг света",
-                                              genre: "Приключения, ужасы",
-                                              description: "Эксцентричный лондонский изобретатель Филеас Фогг раскрыл тайны полетов, электричества и многие другие, но общество не принимает его, считая сумасшедшим. Фоггу  ...",
-                                              rating: 7.0)
-            movies.append(movie)
-        }
-        return movies
-    }
-    
-=======
->>>>>>> 079e435 (Add datasource array to SearchedMoviesVC)
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = CGRect(x: collectionView.frame.minX,

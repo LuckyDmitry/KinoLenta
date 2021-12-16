@@ -75,3 +75,7 @@ extension GenreDecoder {
         return solution
     }
 }
+
+extension GenreDecoder {
+    func getGenreNames() -> [String] { Array(intIndexed.values) }
+}
