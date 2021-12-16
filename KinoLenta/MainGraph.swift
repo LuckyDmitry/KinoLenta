@@ -11,6 +11,10 @@ import UIKit
 final class MainGraph {
     
     func start(with tabBarController: UITabBarController) {
+        let dataManager = NetworkingService()
+        dataManager.discover(genre: [16, 12], yearRange: 1998...2005, ratingGTE: 7, country: "US"){ model in
+            print(model)
+        }
         let navigationController = UINavigationController()
         let rating = UIStoryboard(name: "MovieList", bundle: nil).instantiateViewController(withIdentifier: "MovieList")
         rating.tabBarItem = UITabBarItem(title: "Searched", image: nil, selectedImage: nil)

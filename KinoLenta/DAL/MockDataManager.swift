@@ -36,19 +36,11 @@ func readJsonData(fileURL: URL) throws -> Data {
     return try Data(contentsOf: fileURL)
 }
 
-func parseQueryMovieModel(fileURL: URL) -> [QueryMovieModel] {
+func parseJsonFromData<T: Decodable>(fileURL: URL) -> [T] {
     do {
-        let rawData = try readJsonData(fileURL: fileURL)
-        let topDict = try? JSONSerialization.jsonObject(with: rawData, options: []) as? [String: Any]
-        guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
-        
-        return container.compactMap {
-            guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
-            if let movie = try? JSONDecoder().decode(QueryMovieModel.self, from: data) {
-                return movie
-            }
-            return nil
-        }
+        let data = try readJsonData(fileURL: fileURL)
+        let parsed: [T] = parseModelFromData(data: data)
+        return parsed
     }
     catch {
         print(error)
@@ -56,50 +48,18 @@ func parseQueryMovieModel(fileURL: URL) -> [QueryMovieModel] {
     }
 }
 
-
-func parseMovieModel(fileURL: URL) -> [MovieDomainModel] {
-    do {
-        let rawData = try readJsonData(fileURL: fileURL)
-        let topDict = try? JSONSerialization.jsonObject(with: rawData, options: []) as? [String: Any]
-        guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
-        
-        return container.compactMap {
-            guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
-            if let movie = try? JSONDecoder().decode(MovieModel.self, from: data) {
-                return MovieDomainModel(movieDTO: movie)
-            }
-            if let tvShow = try? JSONDecoder().decode(TVModel.self, from: data) {
-                return MovieDomainModel(tvDTO: tvShow)
-            }
-            return nil
+func parseModelFromData<T: Decodable>(data: Data) -> [T] {
+    let topDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+    guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
+    
+    return container.compactMap {
+        guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
+        if let movie = try? JSONDecoder().decode(T.self, from: data) {
+            return movie
         }
-    }
-    catch {
-        print(error)
-        return []
+        return nil
     }
 }
-
-func parseSearchResults(fileURL: URL) -> [SearchModel] {
-    do {
-        let rawData = try readJsonData(fileURL: fileURL)
-        let topDict = try? JSONSerialization.jsonObject(with: rawData, options: []) as? [String: Any]
-        guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
-        
-        return container.compactMap {
-            guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
-            if let searchModel = try? JSONDecoder().decode(SearchModel.self, from: data) {
-                return searchModel
-            }
-            return nil
-        }
-    }
-    catch {
-        print(error)
-        return []
-    }
-}
-
 
 class MockDataManager {
 
@@ -109,12 +69,12 @@ class MockDataManager {
 extension MockDataManager: MovieSearchService {
     
     func search(query: String) -> [QueryMovieModel] {
-        let result = parseQueryMovieModel(fileURL: MockJsonPaths.search.fileURL)
+        let result: [QueryMovieModel] = parseJsonFromData(fileURL: MockJsonPaths.search.fileURL)
         return result
     }
     
     func discover(genre: [Genre], yearRange: ClosedRange<Int>?, ratingRange: ClosedRange<Int>?) -> [QueryMovieModel] {
-        let result = parseQueryMovieModel(fileURL: MockJsonPaths.movieDiscoverHorrorRuRegion.fileURL)
+        let result: [QueryMovieModel] = parseJsonFromData(fileURL: MockJsonPaths.movieDiscoverHorrorRuRegion.fileURL)
         return result
     }
 
@@ -123,13 +83,12 @@ extension MockDataManager: MovieSearchService {
 // MARK: Compilation
 extension MockDataManager: MovieCompilationService {
     func getPopular() -> [QueryMovieModel] {
-        let result = parseQueryMovieModel(fileURL: MockJsonPaths.moviePopular.fileURL)
-        
+        let result: [QueryMovieModel] = parseJsonFromData(fileURL: MockJsonPaths.moviePopular.fileURL)
         return result
     }
     
     func getTopRated() -> [QueryMovieModel] {
-        let result = parseQueryMovieModel(fileURL: MockJsonPaths.movieTopRated.fileURL)
+        let result: [QueryMovieModel] = parseJsonFromData(fileURL: MockJsonPaths.movieTopRated.fileURL)
         return result
     }
     
