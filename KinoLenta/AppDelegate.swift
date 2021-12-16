@@ -4,12 +4,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        let fileManager = FileManager()
-        let pathString = ImageCache().getImageCacheDirectoryPath()
-        if !fileManager.fileExists(atPath: pathString.absoluteString) {
-            try? fileManager.createDirectory(at: pathString, withIntermediateDirectories: false, attributes: nil)
-        }
 
         return true
     }
