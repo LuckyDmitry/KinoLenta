@@ -18,7 +18,6 @@ class DataManager {
     }
 }
 
-
 // MARK: Search
 extension DataManager: MovieSearchService {
     func search(query: String) -> [QueryMovieModel] { [] }
