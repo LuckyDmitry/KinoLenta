@@ -7,8 +7,13 @@
 
 import UIKit
 
+enum Transition {
+    case singlePress(Int)
+    case transitionPress(Int, Int)
+}
+
 protocol QuickItemFilterDelegate: AnyObject {
-    func itemPressed(at index: Int)
+    func itemPressed(transition: Transition, isSelected: Bool)
 }
 
 struct QuickItem {
@@ -53,7 +58,7 @@ final class QuickItemFilterView: UIView {
         }
     }
     
-    let insets: UIEdgeInsets
+    private let insets: UIEdgeInsets
     
     weak var delegate: QuickItemFilterDelegate?
     
@@ -108,11 +113,21 @@ extension QuickItemFilterView: UICollectionViewDataSource {
 
 extension QuickItemFilterView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let selectedIndexBefore = items.enumerated().first(where: { $0.element.isSelected && indexPath.row != $0.offset})?.offset
+        
         items = items.enumerated().map {
             QuickItem(isSelected: $0 == indexPath.row ? !$1.isSelected : false, title: $1.title)
         }
         collectionView.reloadData()
-        delegate?.itemPressed(at: indexPath.row)
+        let isSelected = items[indexPath.row].isSelected
+        let transition: Transition
+        if let selectedIndexBefore = selectedIndexBefore {
+            transition = .transitionPress(selectedIndexBefore, indexPath.row)
+        } else {
+            transition = .singlePress(indexPath.row)
+        }
+        delegate?.itemPressed(transition: transition, isSelected: isSelected)
     }
 }
 

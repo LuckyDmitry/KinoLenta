@@ -63,7 +63,7 @@ struct DetailMovieReviewDescriptor: CollectionViewCellDescriptor {
     let reviewText: String
     let reviewFont: UIFont
     // If review is too long, we can hide it.
-    var threshold: CGFloat
+    var heightThreshold: CGFloat
     var openFullReviewButtonTitle: String = "Показать полностью"
     var openMoreHandler: (() -> ())? = nil
     
@@ -72,7 +72,7 @@ struct DetailMovieReviewDescriptor: CollectionViewCellDescriptor {
     func sizeForItem(in collectionView: UICollectionView) -> CGSize {
         let width = collectionView.widthWithInsets
         let height = layoutManager.calculateHeight(width: width, text: reviewText, font: reviewFont)
-        return CGSize(width: width, height: min(threshold, height))
+        return CGSize(width: width, height: min(heightThreshold, height))
     }
     
     func cell(in collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
@@ -86,7 +86,7 @@ struct DetailMovieReviewDescriptor: CollectionViewCellDescriptor {
         let height = layoutManager.calculateHeight(width: collectionView.widthWithInsets,
                                                    text: reviewText,
                                                    font: reviewFont)
-        let isHidden = height < threshold
+        let isHidden = height < heightThreshold
         cell.openFullReviewButton.isHidden = isHidden
         cell.openFullReviewButton.setTitle(openFullReviewButtonTitle, for: .normal)
         cell.openFullReviewButton.addAction(UIAction(handler: { action in

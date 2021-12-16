@@ -15,7 +15,6 @@ final class MovieDetailViewController: UIViewController {
         case description
         case actions
         case actors
-        case trailer
         case reviewTitle
         case review
     }
@@ -25,12 +24,15 @@ final class MovieDetailViewController: UIViewController {
                                              .details,
                                              .actions,
                                              .description,
-                                             .trailer,
                                              .actors,
                                              .reviewTitle,
                                              .review]
     
     private var descriptors: [MovieCellType: [CollectionViewCellDescriptor]] = [:]
+    var selectedMovie: MovieItem!
+    var cache: CacheService!
+    var buttonActions: [(optionType: SavedMovieOption, QuickItem)] = []
+    
     private lazy var movieDetailCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: createCollectionViewFlowLayout())
@@ -54,18 +56,14 @@ final class MovieDetailViewController: UIViewController {
         view.addSubview(movieDetailCollectionView)
         view.backgroundColor = .mainBackground
         populateElements()
-        movieDetailCollectionView.register(DetailMovieTextCollectionViewCell.self,
-                                           forCellWithReuseIdentifier: String(describing: DetailMovieTextCollectionViewCell.self))
-        movieDetailCollectionView.register(DetailMovieImageCollectionViewCell.self,
-                                           forCellWithReuseIdentifier: String(describing: DetailMovieImageCollectionViewCell.self))
-        movieDetailCollectionView.register(DetailMovieStarsCollectionViewCell.self,
-                                           forCellWithReuseIdentifier: String(describing: DetailMovieStarsCollectionViewCell.self))
-        movieDetailCollectionView.register(DetailMovieReviewCollectionViewCell.self,
-                                           forCellWithReuseIdentifier: String(describing: DetailMovieReviewCollectionViewCell.self))
-        movieDetailCollectionView.register(DetailMovieButtonActionsCollectionViewCell.self,
-                                           forCellWithReuseIdentifier: String(describing: DetailMovieButtonActionsCollectionViewCell.self))
-        movieDetailCollectionView.register(DetailMovieTrailerCollectionViewCell.self,
-                                           forCellWithReuseIdentifier: String(describing: DetailMovieTrailerCollectionViewCell.self))
+        movieDetailCollectionView.register(uniqueCells: [
+            DetailMovieTextCollectionViewCell.self,
+            DetailMovieImageCollectionViewCell.self,
+            DetailMovieStarsCollectionViewCell.self,
+            DetailMovieReviewCollectionViewCell.self,
+            DetailMovieButtonActionsCollectionViewCell.self,
+            DetailMovieTrailerCollectionViewCell.self
+        ])
     }
     
     override func viewWillLayoutSubviews() {
@@ -95,7 +93,7 @@ final class MovieDetailViewController: UIViewController {
                                                                      textColor: UIColor.black))
             case .poster:
                 descriptors[section]?.append(DetailMovieImageDescriptor(image: UIImage(named: "4"),
-                                                                            inset: UIEdgeInsets(top: 20, left: inset, bottom: 20, right: inset)))
+                                                                        inset: UIEdgeInsets(top: 20, left: inset, bottom: 20, right: inset)))
             case .details:
                 descriptors[section]?.append(MovieTextItemDescriptor(title: "2016, мюзикл, мелодрама США, Гонконг, 2 ч. 8 мин., 16+",
                                                                      font: UIFont.systemFont(ofSize: 18),
@@ -109,13 +107,13 @@ final class MovieDetailViewController: UIViewController {
                                                                     ))
             case .actors:
                 descriptors[section]?.append(contentsOf: [DetailMovieStarsDescriptor(primaryFont: UIFont.systemFont(ofSize: systemFontSize),
-                                                                                      primaryTitle: "В ролях:",
-                                                                                      secondaryFont: UIFont.systemFont(ofSize: systemFontSize),
-                                                                                      secondaryTitle: "Дэмьен Шазелл"),
+                                                                                     primaryTitle: "В ролях:",
+                                                                                     secondaryFont: UIFont.systemFont(ofSize: systemFontSize),
+                                                                                     secondaryTitle: "Дэмьен Шазелл"),
                                                           DetailMovieStarsDescriptor(primaryFont: UIFont.systemFont(ofSize: systemFontSize),
-                                                                                      primaryTitle: "Актеры:",
-                                                                                      secondaryFont: UIFont.systemFont(ofSize: systemFontSize),
-                                                                                      secondaryTitle: "Райан Гослинг, Эмма Стоун, Джон Ледженд, Дж.К. Симмонс, Розмари ДеУитт, Финн Уиттрок, Калли Эрнандес, Соноя Мидзуно, Джессика Рот, Том Эверетт Скотт")])
+                                                                                     primaryTitle: "Актеры:",
+                                                                                     secondaryFont: UIFont.systemFont(ofSize: systemFontSize),
+                                                                                     secondaryTitle: "Райан Гослинг, Эмма Стоун, Джон Ледженд, Дж.К. Симмонс, Розмари ДеУитт, Финн Уиттрок, Калли Эрнандес, Соноя Мидзуно, Джессика Рот, Том Эверетт Скотт")])
             case .reviewTitle:
                 descriptors[section]?.append(MovieTextItemDescriptor(title: "Отзывы",
                                                                      font: UIFont.boldSystemFont(ofSize: 26),
@@ -127,13 +125,13 @@ final class MovieDetailViewController: UIViewController {
                                                              nicknameFont: UIFont.systemFont(ofSize: systemFontSize),
                                                              reviewText: "Сотворив из рядовой подготовки к джазовому концерту неподдельный триллер с зашкаливающим эмоциональным бурлеском, режиссер и сценарист Дэмьен Шазелл сам того не подозревая превратился в одного из на 'Ла-Ла Ленд'. Питая теплые чувство к музыкеСотворив из рядовой подготовки к джазовому концерту неподдельный триллер с зашкаливающим",
                                                              reviewFont: UIFont.systemFont(ofSize: 14),
-                                                             threshold: Consts.minThreashold)
+                                                             heightThreshold: Consts.minHeightTextThreashold)
                     review.openMoreHandler = { [weak self, reviewIndex, review] in
                         let initialOffset = self?.movieDetailCollectionView.contentOffset ?? .zero
                         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: {
                             var updatedReview = review
                             updatedReview.openMoreHandler = nil
-                            updatedReview.threshold = Consts.maxThreashold
+                            updatedReview.heightThreshold = Consts.maxHeightTextThreashold
                             guard let section = self?.sections.firstIndex(of: .review) else { return }
                             let indexPath = IndexPath(row: reviewIndex, section: section)
                             self?.descriptors[.review]![reviewIndex] = updatedReview
@@ -148,9 +146,14 @@ final class MovieDetailViewController: UIViewController {
                 }
                 
             case .actions:
-                descriptors[section]?.append(DetailMovieButtonActionsDescriptor(items: [QuickItem(title: "Просмотрено"), QuickItem(title: "Посмотреть")]))
-            case .trailer:
-                descriptors[section]?.append(DetailMovieTrailerDescriptor(urlAsString: "https://www.youtube.com/embed/BY-aB72nONA?playsinline=1"))
+                let items = buttonActions.map { $1 }
+                descriptors[section]?.append(DetailMovieButtonActionsDescriptor(items: items,
+                                                                                componentDelegate: self))
+            }
+        }
+    }
+}
+
             }
         }
     }
@@ -158,7 +161,8 @@ final class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return descriptors[sections[indexPath.section]]?[indexPath.row].sizeForItem(in: collectionView) ?? .zero
+        guard let descriptor = descriptors[sections[indexPath.section]] else { fatalError("Invalid section") }
+        return descriptor[indexPath.row].sizeForItem(in: collectionView)
     }
 }
 
@@ -172,8 +176,8 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let descriptor = descriptors[sections[indexPath.section]]?[indexPath.row].cell(in: collectionView, at: indexPath)
-        return descriptor ?? UICollectionViewCell()
+        guard let descriptor = descriptors[sections[indexPath.section]] else { fatalError("Invalid section") }
+        return descriptor[indexPath.row].cell(in: collectionView, at: indexPath)
     }
 }
 
@@ -181,8 +185,8 @@ extension MovieDetailViewController: UICollectionViewDelegate {}
 
 extension MovieDetailViewController {
     private enum Consts {
-        static let minThreashold: CGFloat = 150
-        static let maxThreashold: CGFloat = 5000
+        static let minHeightTextThreashold: CGFloat = 150
+        static let maxHeightTextThreashold: CGFloat = 5000
         static let collectionViewInset = UIEdgeInsets(top: 0, left: 20, bottom: 50, right: 20)
         static let flowViewInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         static let minimumLineSpacing: CGFloat = 15
