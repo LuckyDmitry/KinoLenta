@@ -8,20 +8,6 @@
 import Foundation
 
 
-//enum GenreDecoderContainer {
-//    case movies
-//    case tv
-//
-//    var shared: GenreDecoder {
-//        switch (self) {
-//        case .movies:
-//            return GenreDecoder(fileURL: MockJsonPaths.movieGenrePath.fileURL)
-//        case .tv:
-//            return GenreDecoder(fileURL: MockJsonPaths.tvGenrePath.fileURL)
-//        }
-//    }
-//}
-
 enum GenreDecoderContainer {
     static let sharedMovieManager = GenreDecoder(fileURL: MockJsonPaths.movieGenrePath.fileURL)
     static let sharedTVManager = GenreDecoder(fileURL: MockJsonPaths.tvGenrePath.fileURL)
@@ -77,5 +63,5 @@ extension GenreDecoder {
 }
 
 extension GenreDecoder {
-    func getGenreNames() -> [String] { Array(intIndexed.values) }
+    func getGenreNames() -> [String] { Array(intIndexed.values.map { $0.firstUppercased }) }
 }
