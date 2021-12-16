@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class MovieDetailViewController: UIViewController {
+final class MovieDetailViewController: UIViewController, QuickItemFilterDelegate {
+    func itemPressed(transition: Transition, isSelected: Bool) {
+        
+    }
+    
     private enum MovieCellType {
         case title
         case poster
@@ -29,8 +33,6 @@ final class MovieDetailViewController: UIViewController {
                                              .review]
     
     private var descriptors: [MovieCellType: [CollectionViewCellDescriptor]] = [:]
-    var selectedMovie: MovieItem!
-    var cache: CacheService!
     var buttonActions: [(optionType: SavedMovieOption, QuickItem)] = []
     
     private lazy var movieDetailCollectionView: UICollectionView = {
@@ -61,8 +63,7 @@ final class MovieDetailViewController: UIViewController {
             DetailMovieImageCollectionViewCell.self,
             DetailMovieStarsCollectionViewCell.self,
             DetailMovieReviewCollectionViewCell.self,
-            DetailMovieButtonActionsCollectionViewCell.self,
-            DetailMovieTrailerCollectionViewCell.self
+            DetailMovieButtonActionsCollectionViewCell.self
         ])
     }
     
@@ -149,11 +150,6 @@ final class MovieDetailViewController: UIViewController {
                 let items = buttonActions.map { $1 }
                 descriptors[section]?.append(DetailMovieButtonActionsDescriptor(items: items,
                                                                                 componentDelegate: self))
-            }
-        }
-    }
-}
-
             }
         }
     }

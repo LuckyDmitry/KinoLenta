@@ -57,7 +57,7 @@ final class SearchedMoviesViewController: UIViewController {
 extension SearchedMoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        coordinator?.openDetailMovie(with: "", context: self)
+        coordinator?.openDetailMovie(withMovieId: .zero, context: self)
     }
 }
 
