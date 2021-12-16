@@ -36,8 +36,7 @@ struct MovieTextItemDescriptor: CollectionViewCellDescriptor {
     }
     
     func cell(in collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
-        let identifier = String(describing: cellClass)
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         guard let cell = cell as? DetailMovieTextCollectionViewCell else {
             fatalError("Invalid cell type")
         }

@@ -36,7 +36,7 @@ struct DetailMovieStarsLayoutManager: LayoutManager {
     }
     
     private enum Consts {
-        static let leadingMargin = 20.0
+        static let leadingMargin: CGFloat = 20.0
     }
 }
 

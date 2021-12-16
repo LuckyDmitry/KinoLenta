@@ -23,6 +23,7 @@ struct DetailMovieButtonActionsLayoutManager: LayoutManager {
 struct DetailMovieButtonActionsDescriptor: CollectionViewCellDescriptor {
     var cellClass: UICollectionReusableView.Type = DetailMovieButtonActionsCollectionViewCell.self
     let items: [QuickItem]
+    var componentDelegate: QuickItemFilterDelegate?
     private let layoutManager = DetailMovieButtonActionsLayoutManager()
     
     func sizeForItem(in collectionView: UICollectionView) -> CGSize {
@@ -35,6 +36,7 @@ struct DetailMovieButtonActionsDescriptor: CollectionViewCellDescriptor {
             fatalError("Invalid cell type")
         }
         cell.items = items
+        cell.filterComponent.delegate = componentDelegate
         return cell 
     }
 }
