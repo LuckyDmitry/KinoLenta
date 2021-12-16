@@ -313,6 +313,7 @@
 		4B218B922762245700C41939 = {
 			isa = PBXGroup;
 			children = (
+				C64D5355276A5BD50015F6DE /* api-key.txt */,
 				CEAE404D2768DADD008CC273 /* mock_responses */,
 				4B218B9D2762245700C41939 /* KinoLenta */,
 				4B218BB42762245800C41939 /* KinoLentaTests */,
@@ -427,6 +428,7 @@
 			children = (
 				CEAE404B2768D95D008CC273 /* MockDataManager.swift */,
 				66852C9F276794AA0055E4A1 /* DataManager.swift */,
+				C644C7062768EECB0078E9FD /* NetworkingService.swift */,
 				66852CA0276794AA0055E4A1 /* Networking.swift */,
 				66852CA1276794AA0055E4A1 /* Caching.swift */,
 				66852CA2276794AA0055E4A1 /* DataAccessProtocols.swift */,

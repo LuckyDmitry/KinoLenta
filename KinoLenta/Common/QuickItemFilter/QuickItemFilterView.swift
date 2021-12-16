@@ -38,7 +38,7 @@ final class QuickItemFilterView: UIView {
         }
     }
     
-    lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = QuickItemFilterCollectionViewLayout()
         layout.intersectionMargin = Consts.marginBetweenCells
         layout.delegate = self
