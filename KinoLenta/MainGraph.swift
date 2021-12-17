@@ -13,22 +13,20 @@ final class MainGraph {
     func start(with tabBarController: UITabBarController) {
         let dataProvider = MockDataManager()
         
-        let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
+        let movieSamplingVC = MoviesSamplingViewController()
+        movieSamplingVC.coordinator = CoordinatorImpl()
+        
         let movieListStoryboard = UIStoryboard(name: "MovieList", bundle: nil)
         configureTabBarAppearence()
+        let movieListViewController = movieListStoryboard.instantiateViewController(withIdentifier: "MovieList") as! MovieListViewController
+
+        movieListViewController.coordinator = CoordinatorImpl()
         
-        let searchedMovieViewController = searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
-        searchedMovieViewController.filterItems = GenreDecoderContainer.sharedMovieManager.getGenreNames().map {
-            QuickItem(title: $0)
-        }
-        searchedMovieViewController.tabBarItem = UITabBarItem(title: "Searched", image: nil, selectedImage: nil)
-        searchedMovieViewController.coordinator = CoordinatorImpl()
-        searchedMovieViewController.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
         
-        let movieListViewController = movieListStoryboard.instantiateViewController(withIdentifier: "MovieList")
-        movieListViewController.tabBarItem = UITabBarItem(title: "Movie list", image: nil, selectedImage: nil)
+        movieListViewController.tabBarItem = UITabBarItem(title: "Movie List", image: nil, selectedImage: nil)
+        movieSamplingVC.tabBarItem = UITabBarItem(title: "Movie Sampling", image: nil, selectedImage: nil)
         
-        tabBarController.viewControllers = [searchedMovieViewController, movieListViewController]
+        tabBarController.viewControllers = [movieSamplingVC, movieListViewController]
     }
     
     private func configureTabBarAppearence() {
@@ -48,14 +46,41 @@ final class MainGraph {
 // TODO: Will be moved
 protocol Coordinator {
     func openDetailMovie(withMovieId id: Int, context: UIViewController)
+    func openFilterWindow(context: UIViewController)
+    func openSearchWindow(context: UIViewController)
 }
+
 
 // TODO: Will be moved
 final class CoordinatorImpl: Coordinator {
+    
+    let dataProvider = MockDataManager()
+    
     func openDetailMovie(withMovieId id: Int, context: UIViewController) {
         let detailMovieViewController = MovieDetailViewController()
         detailMovieViewController.buttonActions = [(.viewed, QuickItem(title: "Посмотреть")),
                                                    (.all, QuickItem(title: "Посмотреть"))]
         context.present(detailMovieViewController, animated: true)
+    }
+    
+    func openFilterWindow(context: UIViewController) {
+        let filterVC = FilterScreenViewController()
+        
+        context.present(filterVC, animated: true)
+    }
+    
+    func openSearchWindow(context: UIViewController) {
+        let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
+
+        let searchedMovieViewController = searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
+        
+        searchedMovieViewController.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
+        searchedMovieViewController.coordinator = self
+
+        searchedMovieViewController.filterItems = GenreDecoderContainer.sharedMovieManager.getGenreNames().map {
+            QuickItem(title: $0)
+        }
+        
+        context.present(searchedMovieViewController, animated: true)
     }
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class MovieListViewController: UIViewController {
     
+    var coordinator: Coordinator!
+    
     @IBOutlet var watchButton: UIButton!
     @IBOutlet var watchedButton: UIButton!
     @IBOutlet var placeHolderView: UIView!
@@ -105,8 +107,8 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = MoviesSamplingViewController(nibName: "MoviesSamplingViewController", bundle: nil)
-        present(controller, animated: true)
+        #warning("Need to pass movieID")
+        coordinator.openDetailMovie(withMovieId: 0, context: self)
     }
 }
 
