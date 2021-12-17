@@ -80,3 +80,15 @@ extension SearchedMoviesViewController {
     }
 }
 
+extension SearchedMoviesViewController {
+    func getCoordinator() -> Coordinator? {
+        assert(coordinator != nil)
+        return coordinator
+    }
+    
+    func setCoordinator(_ coordinator: Coordinator) {
+        self.coordinator = coordinator
+    }
+}
+
+
