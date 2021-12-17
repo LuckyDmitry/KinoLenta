@@ -82,7 +82,7 @@ extension MovieSampleTableCell: UICollectionViewDataSource {
         cell.movieTitle.text = item.name
         cell.ratingView.rating = item.rating
         if let url = item.image {
-            cell.cancellationHandle = cell.ratingView.setImage(url: url)
+            cell.ratingView.setImage(url: url)
         }
         return cell
     }
