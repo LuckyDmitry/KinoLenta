@@ -29,6 +29,7 @@ struct DetailMovieImageDescriptor: CollectionViewCellDescriptor {
     let cellClass: UICollectionReusableView.Type = DetailMovieImageCollectionViewCell.self
     let image: UIImage?
     var inset: UIEdgeInsets = .zero
+    private let placeholderImage = UIImage(named: "movie_vertical_placeholder")
     private let layoutManager = DetailMovieImageLayoutManager()
     
     func sizeForItem(in collectionView: UICollectionView) -> CGSize {
@@ -40,7 +41,7 @@ struct DetailMovieImageDescriptor: CollectionViewCellDescriptor {
         guard let cell = cell as? DetailMovieImageCollectionViewCell else {
             fatalError("Invalid cell type")
         }
-        cell.imageView.image = image
+        cell.imageView.image = image ?? placeholderImage
         cell.insets = inset
         return cell
         

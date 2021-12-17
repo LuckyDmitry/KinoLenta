@@ -821,6 +821,7 @@
 				7E92D7022769EE6600220928 /* UrlExtension.swift in Sources */,
 				7E07C7C4276770930052A5F9 /* YearFilterTableCell.swift in Sources */,
 				4B3492D6276B1F6000C9265F /* DetailMovieStarsDescriptor.swift in Sources */,
+				7E9B0D00276CD70D00439B0F /* APIKey.swift in Sources */,
 				4B3492D7276B1F6000C9265F /* DetailMovieReviewDescriptor.swift in Sources */,
 				7E07C7CA276770930052A5F9 /* FiltersHeaderView.swift in Sources */,
 				CE1144C5276B620100435D70 /* Extension+Collection.swift in Sources */,

@@ -32,7 +32,7 @@ final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
     // TODO: Will be removed
     private var items: [CarouselData] = [
         CarouselData(
-            image: URL(string: "https://img.buzzfeed.com/buzzfeed-static/static/2018-10/2/18/campaign_images/buzzfeed-prod-web-06/15-of-the-weirdest-and-darkest-stock-photos-that--2-21628-1538520564-0_dblbig.jpg"),
+            image: nil,
             rating: 7,
             name: "Название"
         ),
