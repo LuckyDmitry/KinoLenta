@@ -16,7 +16,7 @@ final class RatingView: UIView {
         ratingLabel.font = UIFont.boldSystemFont(ofSize: Consts.ratingFontSize)
         return ratingLabel
     }()
-    
+
     var ratingView: UIView = {
         let ratingView = UIView()
         ratingView.clipsToBounds = true
@@ -33,9 +33,18 @@ final class RatingView: UIView {
             imageView.image = image
         }
     }
-    
+
+    private var cancellationHandle: CancellationHandle?
+
     func setImage(url: URL) {
-        imageView.setImage(url: url)
+        cancellationHandle = imageView.setImage(url: url)
+    }
+    
+    func reset() {
+        cancellationHandle?.isCancelled = true
+        
+        image = nil
+        ratingLabel.text = nil
     }
     
     private lazy var imageView: UIImageView = {

@@ -10,4 +10,9 @@ final class CarouselCollectionCell: UICollectionViewCell {
             ratingView.clipsToBounds = true
         }
     }
+    
+    func reset() {
+        movieTitle.text = nil
+        ratingView.reset()
+    }
 }
