@@ -96,7 +96,7 @@ class MovieListViewController: UIViewController {
 }
 
 extension MovieListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
+    func collectionViewLayout(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
