@@ -91,6 +91,7 @@
 		CE1144C5276B620100435D70 /* Extension+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1144C4276B620100435D70 /* Extension+Collection.swift */; };
 		CE1144C8276B620B00435D70 /* GenreDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1144C7276B620B00435D70 /* GenreDecode.swift */; };
 		CE1144CA276B728300435D70 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1144C9276B728300435D70 /* Extension+String.swift */; };
+		CE18E17E276CAA580044EC23 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE18E17D276CAA580044EC23 /* NetworkingService.swift */; };
 		CEAE404C2768D95D008CC273 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE404B2768D95D008CC273 /* MockDataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +204,7 @@
 		CE1144C4276B620100435D70 /* Extension+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Collection.swift"; sourceTree = "<group>"; };
 		CE1144C7276B620B00435D70 /* GenreDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreDecode.swift; sourceTree = "<group>"; };
 		CE1144C9276B728300435D70 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		CE18E17D276CAA580044EC23 /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		CEAE404B2768D95D008CC273 /* MockDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -431,6 +433,7 @@
 		66852C9E276794AA0055E4A1 /* DAL */ = {
 			isa = PBXGroup;
 			children = (
+				CE18E17D276CAA580044EC23 /* NetworkingService.swift */,
 				CEAE404B2768D95D008CC273 /* MockDataManager.swift */,
 				66852C9F276794AA0055E4A1 /* DataManager.swift */,
 				66852CA0276794AA0055E4A1 /* Networking.swift */,
@@ -775,6 +778,7 @@
 				4B3492D9276B1F6000C9265F /* MovieTextItemDescriptor.swift in Sources */,
 				CE1144CA276B728300435D70 /* Extension+String.swift in Sources */,
 				4B3492E0276B1F6000C9265F /* MovieDetailViewController.swift in Sources */,
+				CE18E17E276CAA580044EC23 /* NetworkingService.swift in Sources */,
 				66852CA4276794AA0055E4A1 /* Networking.swift in Sources */,
 				4B218BCF2762269900C41939 /* MainGraph.swift in Sources */,
 				4B349300276C711100C9265F /* StarsRatingDialogView.swift in Sources */,

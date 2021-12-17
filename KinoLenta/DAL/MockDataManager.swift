@@ -44,7 +44,7 @@ func readJsonData(fileURL: URL) throws -> Data {
 func parseJsonFromData<T: Decodable>(fileURL: URL) -> [T] {
     do {
         let data = try readJsonData(fileURL: fileURL)
-        let parsed: [T] = parseModelFromData(data: data)
+        let parsed: [T] = parseModelFromResponse(data: data)
         return parsed
     }
     catch {
@@ -53,11 +53,15 @@ func parseJsonFromData<T: Decodable>(fileURL: URL) -> [T] {
     }
 }
 
-func parseModelFromData<T: Decodable>(data: Data) -> [T] {
+func parseModelFromResponse<T: Decodable>(data: Data) -> [T] {
     let topDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-    guard let container = topDict?["results"] as? [[String: Any]] else { return [] }
-    
-    return container.compactMap {
+    guard let rawContainer = topDict?["results"] as? [[String: Any]] else { return [] }
+
+    return tryParseWithObj(data: rawContainer)
+}
+
+func tryParseWithObj<T: Decodable>(data: [[String: Any]]) -> [T] {
+    data.compactMap {
         guard let data = try? JSONSerialization.data(withJSONObject: $0, options: []) else { return nil }
         if let movie = try? JSONDecoder().decode(T.self, from: data) {
             return movie
@@ -65,6 +69,7 @@ func parseModelFromData<T: Decodable>(data: Data) -> [T] {
         return nil
     }
 }
+
 
 class MockDataManager {
 
