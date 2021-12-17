@@ -40,6 +40,8 @@
 		4B3492F0276B219C00C9265F /* CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3492EF276B219C00C9265F /* CollectionViewExtension.swift */; };
 		4B3492F3276B264300C9265F /* DetailMovieImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3492F1276B264300C9265F /* DetailMovieImageCollectionViewCell.swift */; };
 		4B3492F7276B264B00C9265F /* DetailMovieImageDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3492F5276B264B00C9265F /* DetailMovieImageDescriptor.swift */; };
+		4B3492FA276B38EF00C9265F /* StarsRatingDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3492F9276B38EF00C9265F /* StarsRatingDialogView.swift */; };
+		4B3492FC276B8D8300C9265F /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3492FB276B8D8300C9265F /* ImageCollectionViewCell.swift */; };
 		4B8C1A57276515D9002A637C /* QuickItemFilterCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C1A54276515D8002A637C /* QuickItemFilterCollectionViewLayout.swift */; };
 		4B8C1A58276515D9002A637C /* QuickItemFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C1A55276515D8002A637C /* QuickItemFilterCollectionViewCell.swift */; };
 		4B8C1A59276515D9002A637C /* QuickItemFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C1A56276515D9002A637C /* QuickItemFilterView.swift */; };
@@ -150,6 +152,8 @@
 		4B3492F2276B264300C9265F /* DetailMovieTrailerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMovieTrailerCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B3492F5276B264B00C9265F /* DetailMovieImageDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMovieImageDescriptor.swift; sourceTree = "<group>"; };
 		4B3492F6276B264B00C9265F /* DetailMovieTrailierDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMovieTrailierDescriptor.swift; sourceTree = "<group>"; };
+		4B3492F9276B38EF00C9265F /* StarsRatingDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsRatingDialogView.swift; sourceTree = "<group>"; };
+		4B3492FB276B8D8300C9265F /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B8C1A54276515D8002A637C /* QuickItemFilterCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickItemFilterCollectionViewLayout.swift; sourceTree = "<group>"; };
 		4B8C1A55276515D8002A637C /* QuickItemFilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickItemFilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B8C1A56276515D9002A637C /* QuickItemFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickItemFilterView.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 				4B0BA67B2764D751008507EE /* Extensions */,
 				4B0BA67E2764D751008507EE /* QuickItemFilter */,
 				7E92D7032769F4EC00220928 /* ImageCache.swift */,
+				4B3492F9276B38EF00C9265F /* StarsRatingDialogView.swift */,
+				4B3492FB276B8D8300C9265F /* ImageCollectionViewCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -736,6 +742,7 @@
 				4B3492D9276B1F6000C9265F /* MovieTextItemDescriptor.swift in Sources */,
 				CE1144CA276B728300435D70 /* Extension+String.swift in Sources */,
 				4B3492E0276B1F6000C9265F /* MovieDetailViewController.swift in Sources */,
+				4B3492FC276B8D8300C9265F /* ImageCollectionViewCell.swift in Sources */,
 				66852CA4276794AA0055E4A1 /* Networking.swift in Sources */,
 				4B218BCF2762269900C41939 /* MainGraph.swift in Sources */,
 				4B0BA6752764D743008507EE /* SearchedMovieTableViewCell.swift in Sources */,
@@ -779,6 +786,7 @@
 				66852CA3276794AA0055E4A1 /* DataManager.swift in Sources */,
 				7EFA861627687A4400523248 /* MovieSampleTableCell.swift in Sources */,
 				C644C7032768BEEA0078E9FD /* PosterCell.swift in Sources */,
+				4B3492FA276B38EF00C9265F /* StarsRatingDialogView.swift in Sources */,
 				7E07C7C7276770930052A5F9 /* FiltersFooterView.swift in Sources */,
 				7E92D7022769EE6600220928 /* UrlExtension.swift in Sources */,
 				7E07C7C4276770930052A5F9 /* YearFilterTableCell.swift in Sources */,
