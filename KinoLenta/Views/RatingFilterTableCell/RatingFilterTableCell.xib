@@ -48,7 +48,7 @@
                         <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="15"/>
                         <inset key="titleEdgeInsets" minX="0.0" minY="15" maxX="15" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" title="☆">
+                        <state key="normal" title="☆ ☆ ☆ ☆ ☆">
                             <color key="titleColor" name="textPlaceholderForeground"/>
                         </state>
                         <connections>
