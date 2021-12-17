@@ -50,6 +50,7 @@ class MovieListViewController: UIViewController {
         self.watchButton.tintColor = Constants.selectedItemColor
         self.watchedButton.tintColor = Constants.backGroundColor
         self.watchedButton.setTitleColor(Constants.selectedItemColor, for: .normal)
+        self.watchButton.setTitleColor(.white, for: .normal)
     }
     
     
