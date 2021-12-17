@@ -12,11 +12,19 @@ final class SearchedMoviesViewController: UIViewController {
     @IBOutlet private var moviesTableView: UITableView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     private var collectionView: QuickItemFilterView!
-
-    var coordinator: Coordinator?
+    
+    private var internalCoordinator: Coordinator?
+    var coordinator: Coordinator? {
+        get {
+            assert(internalCoordinator != nil)
+            return internalCoordinator
+        }
+        set { internalCoordinator = newValue }
+    }
+    
     var movies: [SearchedMovieViewItem] = []
     var filterItems = [QuickItem]()
-        
+    
     private var displayedItems: [SearchedMovieViewItem] = []
     
     func setDisplayedItems(queryResults: [SearchedMovieViewItem]) {
