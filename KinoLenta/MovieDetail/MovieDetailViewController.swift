@@ -103,7 +103,7 @@ final class MovieDetailViewController: UIViewController {
                                                                  inset: UIEdgeInsets(top: 20, left: inset, bottom: 20, right: inset))
                 descriptors[section]?.append(imageDescriptor)
             case .details:
-                let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.overview,
+                let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.overview ?? "",
                                                              font: UIFont.systemFont(ofSize: 18),
                                                              textColor: UIColor.black.withAlphaComponent(0.5))
                 descriptors[section]?.append(textDescriptor)

@@ -33,7 +33,7 @@ struct MovieDomainModel: Codable {
     let spokenLanguages: [SpokenLanguage]?
     let status: String?
     let tagline: String?
-    let title: String?
+    let title: String
     let video: Bool?
     let voteAverage: Double?
     let voteCount: Int?
