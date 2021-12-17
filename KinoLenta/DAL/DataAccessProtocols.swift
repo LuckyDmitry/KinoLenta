@@ -45,10 +45,10 @@ enum SavedMovieOption: String {
 }
 
 protocol SavedMovieService {
-    func getSavedMovies(option: SavedMovieOption, completion: ((Result<[MovieDomainModel], Error>) -> ())?)
+    func getSavedMovies(option: SavedMovieOption, completion: @escaping(Result<[MovieDomainModel], Error>) -> ())
     func removeMovies(_ movies: [MovieDomainModel], directoryType type: SavedMovieOption, completion: ((Error?) -> ())?)
     func saveMovies(_ movies: [MovieDomainModel], folderType type: SavedMovieOption, completion: ((Error?) -> ())?)
-    func moveMovies(_ movies: [MovieDomainModel],
+    func changeDirectoryMovies(_ movies: [MovieDomainModel],
                     from initType: SavedMovieOption,
                     to destType: SavedMovieOption,
                     completion: ((Error?) -> ())?)

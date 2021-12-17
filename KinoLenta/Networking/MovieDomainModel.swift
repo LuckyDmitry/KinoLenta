@@ -9,7 +9,7 @@ import Foundation
 
 
 
-struct MovieDomainModel: Decodable {
+struct MovieDomainModel: Codable {
     let id: Int
     let title: String
     let overview: String
