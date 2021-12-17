@@ -1,6 +1,13 @@
 import Foundation
 import UIKit
 
+struct FilterFields {
+    let genre: String?
+    let country: String?
+    let rating: Double?
+    let years: [ClosedRange<Int>]?
+}
+
 final class FilterScreenViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView! {
@@ -112,9 +119,26 @@ extension FilterScreenViewController: UpdateTableDelegate {
     }
 }
 
-extension FilterScreenViewController: CloseScreenDelegate {
+extension FilterScreenViewController: CloseScreenDelegate, SearchMoviesWithFilterDelegate {
     func closeScreen() {
         dismiss(animated: true)
+    }
+    
+    func searchMovies() {
+        guard let genreCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? PickerFilterTableCell,
+              let countryCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? PickerFilterTableCell,
+              let yearCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? YearFilterTableCell,
+              let ratingCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? RatingFilterTableCell else {
+                  return
+              }
+//        TODO: make here request
+        let filterFields = FilterFields(
+            genre: genreCell.selectedField,
+            country: countryCell.selectedField,
+            rating: ratingCell.selectedRating,
+            years: yearCell.selectedYears
+        )
+        print(filterFields)
     }
 }
 

@@ -4,7 +4,13 @@ import UIKit
 final class RatingFilterTableCell: UITableViewCell, BaseTableViewCell {
     
     weak var delegate: UpdateTableDelegate?
-    var isSliderShowing = false
+    
+    var selectedRating: Double? {
+        useThisFilter ? Double(ratingSlider.value) : nil
+    }
+    
+    private var useThisFilter = false
+    private var isSliderShowing = false
     
     @IBOutlet private weak var valueButton: UIButton!
     @IBOutlet private weak var ratingSlider: UISlider! {
@@ -20,6 +26,7 @@ final class RatingFilterTableCell: UITableViewCell, BaseTableViewCell {
         
         valueButton.setTitle(text, for: .normal)
         valueButton.setTitleColor(UIColor.darkOrangeTextForeground, for: .normal)
+        useThisFilter = true
         cancelButton.isHidden = false
     }
     
@@ -31,7 +38,7 @@ final class RatingFilterTableCell: UITableViewCell, BaseTableViewCell {
     @IBAction func cancelAction(_ sender: Any) {
         cancelButton.isHidden = true
         valueButton.setTitle("☆ ☆ ☆ ☆ ☆", for: .normal)
-        
+        useThisFilter = false
         valueButton.setTitleColor(UIColor.textPlaceholderForeground, for: .normal)
     }
     

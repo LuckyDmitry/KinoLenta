@@ -8,6 +8,11 @@ protocol UpdateTableDelegate: AnyObject {
 final class PickerFilterTableCell: UITableViewCell, BaseTableViewCell {
     
     var pickerData: [String] = []
+    var selectedField: String? {
+        let selectedRow = variantsPicker.selectedRow(inComponent: 0)
+        return selectedRow == 0 ? nil : pickerData[selectedRow]
+    }
+    
     weak var delegate: UpdateTableDelegate?
     
     @IBOutlet weak var titleLabel: UILabel!
