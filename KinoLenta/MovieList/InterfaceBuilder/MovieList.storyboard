@@ -22,10 +22,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMG-rG-o3j">
-                                        <rect key="frame" x="30" y="71.5" width="325" height="41.5"/>
+                                        <rect key="frame" x="49" y="71.5" width="316" height="41"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbR-Ge-H7s">
-                                                <rect key="frame" x="0.0" y="0.0" width="162.5" height="41.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="158" height="41"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Посмотреть">
@@ -36,7 +36,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5i-TY-nrc" userLabel="Watched Button">
-                                                <rect key="frame" x="162.5" y="0.0" width="162.5" height="41.5"/>
+                                                <rect key="frame" x="158" y="0.0" width="158" height="41"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Посмотрено">
