@@ -9,6 +9,8 @@ import UIKit
 
 class MovieListViewController: UIViewController {
     
+    private var coordinator: Coordinator?
+    
     @IBOutlet var watchButton: UIButton!
     @IBOutlet var watchedButton: UIButton!
     @IBOutlet var placeHolderView: UIView!
@@ -105,8 +107,8 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = MoviesSamplingViewController(nibName: "MoviesSamplingViewController", bundle: nil)
-        present(controller, animated: true)
+        #warning("Need to pass movieID")
+        getCoordinator()?.openDetailMovie(withMovieId: 0, context: self)
     }
 }
 
@@ -131,6 +133,17 @@ extension MovieListViewController: UICollectionViewDataSource {
         cell.ratingView.rating = Double(ratingText)
         cell.ratingView.ratingView.isHidden = !showRating
         return cell
+    }
+}
+
+extension MovieListViewController {
+    func getCoordinator() -> Coordinator? {
+        assert(coordinator != nil)
+        return coordinator
+    }
+    
+    func setCoordinator(_ coordinator: Coordinator) {
+        self.coordinator = coordinator
     }
 }
 

@@ -3,12 +3,17 @@ import UIKit
 
 final class MoviesSamplingViewController: UIViewController {
     
+    var coordinator: Coordinator!
+        
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.register(MovieSampleTableCell.self)
             tableView.delegate = self
             tableView.dataSource = self
         }
+    }
+    @IBAction func onSearchButtonTap(_ sender: Any) {
+        coordinator.openFilterWindow(context: self)
     }
 }
 
@@ -28,6 +33,8 @@ extension MoviesSamplingViewController: UITableViewDelegate, UITableViewDataSour
                 for: indexPath
             ) as! MovieSampleTableCell).configured { cell in
                 cell.sampleTitle.text = "Лучшее"
+                cell.contextVC = self
+                cell.coordinator = coordinator
             }
         default:
             return UITableViewCell()

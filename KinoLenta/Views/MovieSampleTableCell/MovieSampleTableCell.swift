@@ -9,6 +9,9 @@ struct CarouselData {
 
 final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
     
+    var contextVC: UIViewController!
+    var coordinator: Coordinator!
+    
     @IBOutlet weak var sampleTitle: UILabel!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -91,6 +94,8 @@ extension MovieSampleTableCell: UICollectionViewDataSource {
 extension MovieSampleTableCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        TODO: open here movie detail screen
+        #warning("need to pass movieID")
+        coordinator.openDetailMovie(withMovieId: 0, context: contextVC)
     }
 }
 
