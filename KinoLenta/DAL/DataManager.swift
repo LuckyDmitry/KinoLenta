@@ -47,5 +47,11 @@ extension DataManager: MovieInfoService {
 
 // MARK: User movies
 extension DataManager: SavedMovieService {
-    func getSavedMovies(option: SavedMovieOption) -> [MovieDomainModel] { [] }
+    func getSavedMovies(option: SavedMovieOption, completion: @escaping (Result<[MovieDomainModel], Error>) -> ()) {}
+    
+    func removeMovies(_ movies: [MovieDomainModel], directoryType type: SavedMovieOption, completion: ((Error?) -> ())?) {}
+    
+    func saveMovies(_ movies: [MovieDomainModel], folderType type: SavedMovieOption, completion: ((Error?) -> ())?) {}
+    
+    func changeDirectoryMovies(_ movies: [MovieDomainModel], from initType: SavedMovieOption, to destType: SavedMovieOption, completion: ((Error?) -> ())?) {}
 }
