@@ -115,7 +115,7 @@ extension NetworkingService {
     }
 }
 
-func getUrlItems(for requestType: RequestTypes) -> QueryInfo {
+private func getUrlItems(for requestType: RequestTypes) -> QueryInfo {
     lazy var token: String = ApiKey.value
     var queryItems: [URLQueryItem] = []
     let queryItemToken = URLQueryItem(name: "api_key", value: token)
@@ -148,7 +148,7 @@ func getUrlItems(for requestType: RequestTypes) -> QueryInfo {
     return QueryInfo(pathItem: pathItem, queryItems: queryItems)
 }
 
-func makeRequest(with queryInfo: QueryInfo, callback:  @escaping ([QueryMovieModel]) -> Void) {
+private func makeRequest(with queryInfo: QueryInfo, callback:  @escaping ([QueryMovieModel]) -> Void) {
     let config = URLSessionConfiguration.default
     let session = URLSession(configuration: config)
 
