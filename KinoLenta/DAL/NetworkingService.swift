@@ -116,7 +116,7 @@ extension NetworkingService {
 }
 
 private func getUrlItems(for requestType: RequestTypes) -> QueryInfo {
-    lazy var token: String = ApiKey.value
+    lazy var token: String = APIKey.value
     var queryItems: [URLQueryItem] = []
     let queryItemToken = URLQueryItem(name: "api_key", value: token)
     let queryItemLang = URLQueryItem(name: "language", value: "ru")
@@ -175,7 +175,7 @@ private func makeRequest(with queryInfo: QueryInfo, callback:  @escaping ([Query
             return
         }
         
-        let response: [QueryMovieModel] = parseModelFromData(data: content)
+        let response: [QueryMovieModel] = parseModelFromResponse(data: content)
         DispatchQueue.main.async {
             assert(Thread.isMainThread)
             callback(response)
