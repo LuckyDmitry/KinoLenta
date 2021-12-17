@@ -16,6 +16,10 @@ enum APIKey {
 
 
 def main():
+    # Eliminate unnecessary rewrites
+    if os.path.isfile(GEN_PATH):
+        return
+
     assert os.path.isfile(API_KEY_PATH), f'API key not found at {os.path.abspath(API_KEY_PATH)}'
 
     dir_path = os.path.dirname(GEN_PATH)

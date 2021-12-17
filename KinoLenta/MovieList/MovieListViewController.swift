@@ -104,10 +104,11 @@ class MovieListViewController: UIViewController {
 }
 
 extension MovieListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionViewLayout(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let cvWidth = collectionView.bounds.width
         let cellWidth: CGFloat = Constants.isLandscape ? Constants.defaultCellWidth : min(floor(cvWidth / 2), Constants.defaultCellWidth)
         return .init(width: cellWidth, height: Constants.cellHeight)
