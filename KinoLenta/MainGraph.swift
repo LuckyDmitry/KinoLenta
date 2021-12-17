@@ -20,12 +20,24 @@ final class MainGraph {
         configureTabBarAppearence()
         let movieListViewController = movieListStoryboard.instantiateViewController(withIdentifier: "MovieList") as! MovieListViewController
 
-        movieListViewController.setCoordinator(CoordinatorImpl())
+        movieListViewController.coordinator = CoordinatorImpl()
+                
+        let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
+
+        let searchedMovieViewController = searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
         
+        searchedMovieViewController.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
+        searchedMovieViewController.coordinator = CoordinatorImpl()
+
+        searchedMovieViewController.filterItems = GenreDecoderContainer.sharedMovieManager.getGenreNames().map {
+            QuickItem(title: $0)
+        }
+        
+        searchedMovieViewController.tabBarItem = UITabBarItem(title: "Searched", image: nil, selectedImage: nil)
         movieListViewController.tabBarItem = UITabBarItem(title: "Movie List", image: nil, selectedImage: nil)
         movieSamplingVC.tabBarItem = UITabBarItem(title: "Movie Sampling", image: nil, selectedImage: nil)
-        
-        tabBarController.viewControllers = [movieSamplingVC, movieListViewController]
+
+        tabBarController.viewControllers = [movieSamplingVC, searchedMovieViewController, movieListViewController]
     }
     
     private func configureTabBarAppearence() {
@@ -46,7 +58,6 @@ final class MainGraph {
 protocol Coordinator {
     func openDetailMovie(withMovieId id: Int, context: UIViewController)
     func openFilterWindow(context: UIViewController)
-    func openSearchWindow(context: UIViewController)
 }
 
 
@@ -66,20 +77,5 @@ final class CoordinatorImpl: Coordinator {
         let filterVC = FilterScreenViewController()
         
         context.present(filterVC, animated: true)
-    }
-    
-    func openSearchWindow(context: UIViewController) {
-        let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
-
-        let searchedMovieViewController = searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
-        
-        searchedMovieViewController.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
-        searchedMovieViewController.coordinator = self
-
-        searchedMovieViewController.filterItems = GenreDecoderContainer.sharedMovieManager.getGenreNames().map {
-            QuickItem(title: $0)
-        }
-        
-        context.present(searchedMovieViewController, animated: true)
     }
 }
