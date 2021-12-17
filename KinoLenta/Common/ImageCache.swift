@@ -27,7 +27,6 @@ final class ImageCache {
         }
     }
     
-    
     func load(for url: URL, callback: @escaping (UIImage?) -> Void) {
         let fileURL = directory.appendingPathComponent(url.nameForCaching())
 
@@ -59,7 +58,9 @@ final class ImageCache {
 
     private func readFromFileCache(from url: URL, callback: @escaping (UIImage?) -> Void) {
         queue.async { [fileManager] in
-            let imageData = fileManager.fileExists(atPath: url.path) ? fileManager.contents(atPath: url.path) : nil
+            let imageData = fileManager.fileExists(atPath: url.path)
+            ? fileManager.contents(atPath: url.path)
+            : nil
             DispatchQueue.main.async {
                 callback(imageData?.toImage())
             }
