@@ -30,7 +30,8 @@ final class RatingView: UIView {
     
     var image: UIImage? {
         didSet {
-            imageView.image = image
+            imageView.image = UIImage(named: "movie_vertical_placeholder")
+            setBorder(isBorderActive: true)
         }
     }
 
@@ -38,6 +39,7 @@ final class RatingView: UIView {
 
     func setImage(url: URL) {
         cancellationHandle = imageView.setImage(url: url)
+        setBorder(isBorderActive: false)
     }
     
     func reset() {
@@ -91,6 +93,11 @@ final class RatingView: UIView {
             ratingView.backgroundColor = newColor
             ratingLabel.text = "\(rating)"
         }
+    }
+    
+    private func setBorder(isBorderActive: Bool) {
+        imageView.layer.borderColor = isBorderActive ? UIColor.gray.cgColor : UIColor.clear.cgColor
+        imageView.layer.borderWidth = isBorderActive ? 0.2 : 0
     }
 }
 
