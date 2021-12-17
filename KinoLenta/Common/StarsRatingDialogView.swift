@@ -68,7 +68,7 @@ final class StarsRatingDialogView: UIView {
                                               left: Consts.buttonImageInset,
                                               bottom: Consts.buttonImageInset,
                                               right: Consts.buttonImageInset)
-        button.layer.cornerRadius = Consts.closeButtonHeight / 2
+        button.layer.cornerRadius = floor(Consts.closeButtonHeight / 2)
         button.backgroundColor = .pickerItemBackground.withAlphaComponent(0.7)
         button.contentHorizontalAlignment = .fill
         button.addAction(UIAction { [weak self]_ in
@@ -97,7 +97,7 @@ final class StarsRatingDialogView: UIView {
     
     private lazy var starsCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.estimatedItemSize = CGSize(width: bounds.width / CGFloat(Consts.amountOfItems), height: bounds.height)
+        flowLayout.estimatedItemSize = CGSize(width: floor(bounds.width / CGFloat(Consts.amountOfItems)), height: bounds.height)
         let starsCollectionView = UICollectionView(frame: .zero,
                                          collectionViewLayout: flowLayout)
         starsCollectionView.backgroundColor = .clear
@@ -147,7 +147,7 @@ extension StarsRatingDialogView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "id", for: indexPath)
-        let image = UIImage(systemName: indexPath.row <= stars ? "star.fill" : "star")
+        let image = UIImage(systemName: indexPath.row < stars ? "star.fill" : "star")
         
         cell.subviews.forEach { $0.removeFromSuperview() }
         let imageView = UIImageView(image: image)
@@ -165,7 +165,7 @@ extension StarsRatingDialogView: UICollectionViewDataSource {
 
 extension StarsRatingDialogView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.widthWithInsets / CGFloat(Consts.amountOfItems)
+        let width = floor(collectionView.widthWithInsets / CGFloat(Consts.amountOfItems))
         let height = collectionView.bounds.height
         return CGSize(width: width, height: height)
     }
