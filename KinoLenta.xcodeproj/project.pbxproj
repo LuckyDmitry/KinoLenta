@@ -74,6 +74,7 @@
 		7E92D7042769F4EC00220928 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E92D7032769F4EC00220928 /* ImageCache.swift */; };
 		7E9B0CFA276CA06A00439B0F /* api-key.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7E9B0CF9276CA06A00439B0F /* api-key.txt */; };
 		7E9B0D00276CD70D00439B0F /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B0CFF276CD70D00439B0F /* APIKey.swift */; };
+		7E9B0D02276CEAD100439B0F /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B0D01276CEAD100439B0F /* ImageExtension.swift */; };
 		7EFA861627687A4400523248 /* MovieSampleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA861527687A4400523248 /* MovieSampleTableCell.swift */; };
 		7EFA861827687A4E00523248 /* MovieSampleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EFA861727687A4E00523248 /* MovieSampleTableCell.xib */; };
 		7EFA861A27687E3500523248 /* CarouselCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFA861927687E3500523248 /* CarouselCollectionCell.swift */; };
@@ -188,6 +189,7 @@
 		7E92D7032769F4EC00220928 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		7E9B0CF9276CA06A00439B0F /* api-key.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "api-key.txt"; sourceTree = "<group>"; };
 		7E9B0CFF276CD70D00439B0F /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		7E9B0D01276CEAD100439B0F /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		7EFA861527687A4400523248 /* MovieSampleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSampleTableCell.swift; sourceTree = "<group>"; };
 		7EFA861727687A4E00523248 /* MovieSampleTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieSampleTableCell.xib; sourceTree = "<group>"; };
 		7EFA861927687E3500523248 /* CarouselCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionCell.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				7EFA86242768B42E00523248 /* ImageViewExtension.swift */,
 				7E92D7012769EE6600220928 /* UrlExtension.swift */,
 				7E6D2B81276B3D2100AB10D8 /* DataExtension.swift */,
+				7E9B0D01276CEAD100439B0F /* ImageExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				66852C9B276794860055E4A1 /* SearchModel.swift in Sources */,
 				4B0BA6742764D743008507EE /* SearchedMovieViewItem.swift in Sources */,
 				66852CA3276794AA0055E4A1 /* DataManager.swift in Sources */,
+				7E9B0D02276CEAD100439B0F /* ImageExtension.swift in Sources */,
 				7EFA861627687A4400523248 /* MovieSampleTableCell.swift in Sources */,
 				C644C7032768BEEA0078E9FD /* PosterCell.swift in Sources */,
 				7E07C7C7276770930052A5F9 /* FiltersFooterView.swift in Sources */,

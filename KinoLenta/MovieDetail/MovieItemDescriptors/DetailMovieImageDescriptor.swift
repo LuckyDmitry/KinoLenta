@@ -29,7 +29,7 @@ struct DetailMovieImageDescriptor: CollectionViewCellDescriptor {
     let cellClass: UICollectionReusableView.Type = DetailMovieImageCollectionViewCell.self
     let image: UIImage?
     var inset: UIEdgeInsets = .zero
-    private let placeholderImage = UIImage(named: "movie_vertical_placeholder")
+    private let placeholderImage = UIImage.moviePlaceholder
     private let layoutManager = DetailMovieImageLayoutManager()
     
     func sizeForItem(in collectionView: UICollectionView) -> CGSize {
