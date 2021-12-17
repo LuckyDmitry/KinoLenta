@@ -7,6 +7,10 @@
 
 import Foundation
 
+fileprivate enum Constant {
+    static let tmdbImageDomain = "https://image.tmdb.org/t/p/w500"
+}
+
 
 // MARK: - MovieDomainModel
 struct MovieDomainModel: Codable {
@@ -33,6 +37,15 @@ struct MovieDomainModel: Codable {
     let video: Bool?
     let voteAverage: Double?
     let voteCount: Int?
+    
+    var backdropURL: URL? {
+        guard let backdropPath = backdropPath else { return nil }
+        return URL(string: Constant.tmdbImageDomain + backdropPath)
+    }
+    
+    var parsedDate: Date? {
+        parseDate(date: releaseDate)
+    }
 
     enum CodingKeys: String, CodingKey {
         case adult
@@ -56,7 +69,9 @@ struct MovieDomainModel: Codable {
 
 
 // MARK: DataParser (not used)
-private func parseDate(date: String) -> Date? {
+private func parseDate(date: String?) -> Date? {
+    guard let date = date else { return nil }
+    
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd"
     
