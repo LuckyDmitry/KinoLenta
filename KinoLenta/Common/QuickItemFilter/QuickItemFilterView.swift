@@ -23,8 +23,8 @@ struct QuickItem {
 
 final class QuickItemFilterView: UIView {
     private enum QuickItemLayoutConfig {
-        static let font: UIFont = UIFont.boldSystemFont(ofSize: 17)
-        static let textPadding: CGFloat = 20
+        static let font: UIFont = UIFont(name: "SFProDisplay-Bold", size: 14) ?? UIFont.boldSystemFont(ofSize: 14)
+        static let textPadding: CGFloat = 15
     }
     
     var selectedItems: [Int] = []
@@ -135,8 +135,8 @@ extension QuickItemFilterView {
     private enum Consts {
         static let cellIdentifier = String(describing: QuickItemFilterCollectionViewCell.self)
         static let nibFile = "GenreQuickFilterCell"
-        static let fontSize: CGFloat = 17
-        static let textPadding: CGFloat = 20
+        static let fontSize: CGFloat = 14
+        static let textPadding: CGFloat = 15
         static let marginBetweenCells: CGFloat = 10
     }
 }
