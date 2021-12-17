@@ -42,7 +42,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
                         <inset key="titleEdgeInsets" minX="0.0" minY="15" maxX="15" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" title="☆">
+                        <state key="normal" title="☆ ☆ ☆ ☆ ☆">
                             <color key="titleColor" name="textPlaceholderForeground"/>
                         </state>
                         <connections>
