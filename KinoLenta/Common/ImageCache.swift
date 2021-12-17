@@ -29,7 +29,6 @@ final class ImageCache {
     
     func load(for url: URL, callback: @escaping (UIImage?) -> Void) {
         let fileURL = directory.appendingPathComponent(url.nameForCaching())
-
         let imageKey = NSString(string: url.nameForCaching())
         if let image = inMemoryCache.object(forKey: imageKey) {
             callback(image)
@@ -51,7 +50,10 @@ final class ImageCache {
                 if let image = image {
                     self?.inMemoryCache.setObject(image, forKey: imageKey)
                 }
-                callback(image)
+                
+                DispatchQueue.main.async {
+                    callback(image)
+                }
             }
         }
     }
