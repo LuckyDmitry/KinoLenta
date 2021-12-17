@@ -7,11 +7,7 @@
 
 import UIKit
 
-final class MovieDetailViewController: UIViewController, QuickItemFilterDelegate {
-    func itemPressed(transition: Transition, isSelected: Bool) {
-        
-    }
-    
+final class MovieDetailViewController: UIViewController {
     private enum MovieCellType {
         case title
         case poster
@@ -33,6 +29,8 @@ final class MovieDetailViewController: UIViewController, QuickItemFilterDelegate
                                              .review]
     
     private var descriptors: [MovieCellType: [CollectionViewCellDescriptor]] = [:]
+    var selectedMovie: MovieDomainModel!
+    var cache: CacheService!
     var buttonActions: [(optionType: SavedMovieOption, QuickItem)] = []
     
     private lazy var movieDetailCollectionView: UICollectionView = {
@@ -43,6 +41,13 @@ final class MovieDetailViewController: UIViewController, QuickItemFilterDelegate
         collectionView.contentInset = Consts.collectionViewInset
         collectionView.backgroundColor = .clear
         return collectionView
+    }()
+    
+    private lazy var starsRatingView: StarsRatingDialogView = {
+        let starsRatingView = StarsRatingDialogView(frame: .zero)
+        starsRatingView.delegate = self
+        starsRatingView.translatesAutoresizingMaskIntoConstraints = false
+        return starsRatingView
     }()
     
     private func createCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
@@ -89,69 +94,129 @@ final class MovieDetailViewController: UIViewController, QuickItemFilterDelegate
             }
             switch section {
             case .title:
-                descriptors[section]?.append(MovieTextItemDescriptor(title: "Ла-Ла Ленд",
-                                                                     font: UIFont(name: "SFProDisplay-Bold", size: 50) ?? UIFont.boldSystemFont(ofSize: 50),
-                                                                     textColor: UIColor.black))
+                let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.title,
+                                                             font: UIFont.boldSystemFont(ofSize: 50),
+                                                             textColor: UIColor.black)
+                descriptors[section]?.append(textDescriptor)
             case .poster:
-                descriptors[section]?.append(DetailMovieImageDescriptor(image: UIImage(named: "4"),
-                                                                        inset: UIEdgeInsets(top: 20, left: inset, bottom: 20, right: inset)))
+                let imageDescriptor = DetailMovieImageDescriptor(image: UIImage(),
+                                                                 inset: UIEdgeInsets(top: 20, left: inset, bottom: 20, right: inset))
+                descriptors[section]?.append(imageDescriptor)
             case .details:
-                descriptors[section]?.append(MovieTextItemDescriptor(title: "2016, мюзикл, мелодрама США, Гонконг, 2 ч. 8 мин., 16+",
-                                                                     font: UIFont(name: "SFProDisplay-Medium", size: 18) ?? UIFont.boldSystemFont(ofSize: 18),
-                                                                     textColor: UIColor.black.withAlphaComponent(0.5)
-                                                                    ))
-            case .description:
-                descriptors[section]?.append(MovieTextItemDescriptor(title: "Миа и Себастьян выбирают между личным счастьем и амбициями. Трагикомичный мюзикл о компромиссе в жизни артиста",
-                                                                     font: UIFont(name: "SFCompactText-Medium", size: systemFontSize) ?? UIFont.boldSystemFont(ofSize: systemFontSize),
-                                                                     textColor: UIColor.black.withAlphaComponent(0.7),
-                                                                     alignment: .left
-                                                                    ))
-            case .actors:
-                descriptors[section]?.append(contentsOf: [DetailMovieStarsDescriptor(primaryFont: UIFont.systemFont(ofSize: systemFontSize),
-                                                                                     primaryTitle: "В ролях:",
-                                                                                     secondaryFont: UIFont(name: "SFCompactText-Medium", size: systemFontSize) ?? UIFont.boldSystemFont(ofSize: systemFontSize),
-                                                                                     secondaryTitle: "Дэмьен Шазелл"),
-                                                          DetailMovieStarsDescriptor(primaryFont: UIFont(name: "SFCompactText-Medium", size: systemFontSize) ?? UIFont.boldSystemFont(ofSize: systemFontSize),
-                                                                                     primaryTitle: "Актеры:",
-                                                                                     secondaryFont: UIFont.systemFont(ofSize: systemFontSize),
-                                                                                     secondaryTitle: "Райан Гослинг, Эмма Стоун, Джон Ледженд, Дж.К. Симмонс, Розмари ДеУитт, Финн Уиттрок, Калли Эрнандес, Соноя Мидзуно, Джессика Рот, Том Эверетт Скотт")])
-            case .reviewTitle:
-                descriptors[section]?.append(MovieTextItemDescriptor(title: "Отзывы",
-                                                                     font: UIFont(name: "SFProDisplay-Bold", size: 26) ?? UIFont.boldSystemFont(ofSize: 26),
-                                                                     alignment: .left))
-            case .review:
-                for reviewIndex in 0...1 {
-                    var review = DetailMovieReviewDescriptor(image: UIImage(named: "4"),
-                                                             nickname: "Волк ну погоди",
-                                                             nicknameFont: UIFont(name: "SFCompactText-Medium", size: systemFontSize) ?? UIFont.boldSystemFont(ofSize: systemFontSize),
-                                                             reviewText: "Сотворив из рядовой подготовки к джазовому концерту неподдельный триллер с зашкаливающим эмоциональным бурлеском, режиссер и сценарист Дэмьен Шазелл сам того не подозревая превратился в одного из на 'Ла-Ла Ленд'. Питая теплые чувство к музыкеСотворив из рядовой подготовки к джазовому концерту неподдельный триллер с зашкаливающим",
-                                                             reviewFont: UIFont(name: "SFCompactText-Light", size: 14) ?? UIFont.boldSystemFont(ofSize: 14),
-                                                             heightThreshold: Consts.minHeightTextThreashold)
-                    review.openMoreHandler = { [weak self, reviewIndex, review] in
-                        let initialOffset = self?.movieDetailCollectionView.contentOffset ?? .zero
-                        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: {
-                            var updatedReview = review
-                            updatedReview.openMoreHandler = nil
-                            updatedReview.heightThreshold = Consts.maxHeightTextThreashold
-                            guard let section = self?.sections.firstIndex(of: .review) else { return }
-                            let indexPath = IndexPath(row: reviewIndex, section: section)
-                            self?.descriptors[.review]![reviewIndex] = updatedReview
-                            self?.movieDetailCollectionView.reloadItems(at: [indexPath])
-                            
-                        }, completion: { _ in
-                            self?.movieDetailCollectionView.setContentOffset(initialOffset, animated: false)
-                        })
-                        
-                    }
-                    descriptors[section]?.append(review)
-                }
-                
+                let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.overview,
+                                                             font: UIFont.systemFont(ofSize: 18),
+                                                             textColor: UIColor.black.withAlphaComponent(0.5))
+                descriptors[section]?.append(textDescriptor)
+            case .description, .actors, .reviewTitle, .review:
+                break
             case .actions:
                 let items = buttonActions.map { $1 }
                 descriptors[section]?.append(DetailMovieButtonActionsDescriptor(items: items,
                                                                                 componentDelegate: self))
             }
         }
+    }
+    
+    private func showRatingView() {
+        view.addSubview(starsRatingView)
+        
+        NSLayoutConstraint.activate([
+            starsRatingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Consts.edgeMargin),
+            starsRatingView.topAnchor.constraint(equalTo: view.topAnchor,
+                                            constant: view.frame.midY),
+            starsRatingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Consts.edgeMargin)
+        ])
+        movieDetailCollectionView.isScrollEnabled = false
+        movieDetailCollectionView.isUserInteractionEnabled = false
+    }
+}
+
+extension MovieDetailViewController: StarsRatingDialogDelegate {
+    func starsSelected(amount: Int) {
+        // TODO: Rating logic
+        removeStarsRatingView()
+    }
+    
+    func closedPressed() {
+        removeStarsRatingView()
+    }
+    
+    private func removeStarsRatingView() {
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.starsRatingView.removeFromSuperview()
+            self?.movieDetailCollectionView.isScrollEnabled = true
+            self?.movieDetailCollectionView.isUserInteractionEnabled = true
+        })
+    }
+}
+
+extension MovieDetailViewController: QuickItemFilterDelegate {
+    func itemPressed(transition: Transition, isSelected: Bool) {
+        switch transition {
+        case .singlePress(let index):
+            singlePressAction(at: index, isSelected: isSelected)
+        case .transitionPress(let indexBefore, let indexAfter):
+            transitionPressAction(first: indexBefore, second: indexAfter, isSelected: isSelected)
+        }
+    }
+    
+    private func transitionPressAction(first: Int, second: Int, isSelected: Bool) {
+        let destType = buttonActions[second].optionType
+        let initType = buttonActions[first].optionType
+        
+        if case  .viewed = destType {
+           showRatingView()
+        }
+        
+        cache.changeDirectoryMovies([selectedMovie], from: initType, to: destType, completion: { error in
+            // TODO: Handle error
+        })
+    }
+    
+    private func singlePressAction(at index: Int, isSelected: Bool) {
+        let optionType = buttonActions[index].optionType
+        guard !isSelected else {
+            if case .viewed = optionType {
+                showRatingView()
+            }
+            cache.saveMovies([selectedMovie], folderType: buttonActions[index].optionType) { error in
+                // TODO: Handle error
+            }
+            return
+        }
+        
+        let alertViewController = UIAlertController(title: "Удалить фильм из \(optionType.description)?",
+                                                    message: nil,
+                                                    preferredStyle: .alert)
+        
+        let removeMovieAction = UIAlertAction(title: "Удалить",
+                                              style: .destructive,
+                                              handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.cache.removeMovies([self.selectedMovie], directoryType: self.buttonActions[index].optionType) { error in
+                // TODO: Handle error
+            }
+        })
+        
+        let leaveMovieAction = UIAlertAction(title: "Оставить",
+                                   style: .default,
+                                   handler: { [weak self] _ in
+            guard let self = self else { return }
+            alertViewController.dismiss(animated: true)
+            let sectionIndex = self.sections.firstIndex(where: { $0 == .actions })
+            let buttons = self.buttonActions.enumerated().map {
+                QuickItem(isSelected: $0.offset == index, title: $0.element.1.title)
+            }
+            
+            self.descriptors[.actions] = [DetailMovieButtonActionsDescriptor(items: buttons, componentDelegate: self)]
+            if let sectionIndex = sectionIndex {
+                self.movieDetailCollectionView.reloadSections(IndexSet(integer: sectionIndex))                
+            }
+        })
+        
+        alertViewController.addAction(removeMovieAction)
+        alertViewController.addAction(leaveMovieAction)
+        present(alertViewController, animated: true)
     }
 }
 
@@ -186,6 +251,7 @@ extension MovieDetailViewController {
         static let collectionViewInset = UIEdgeInsets(top: 0, left: 20, bottom: 50, right: 20)
         static let flowViewInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         static let minimumLineSpacing: CGFloat = 15
+        static let edgeMargin: CGFloat = 10
     }
 }
 
