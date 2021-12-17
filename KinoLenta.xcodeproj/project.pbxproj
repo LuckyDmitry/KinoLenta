@@ -21,7 +21,6 @@
 		4B0BA6862764D751008507EE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BA67D2764D751008507EE /* StringExtension.swift */; };
 		4B218B9F2762245700C41939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218B9E2762245700C41939 /* AppDelegate.swift */; };
 		4B218BA12762245700C41939 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218BA02762245700C41939 /* SceneDelegate.swift */; };
-		4B218BAB2762245800C41939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B218BA92762245800C41939 /* LaunchScreen.storyboard */; };
 		4B218BB62762245800C41939 /* KinoLentaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218BB52762245800C41939 /* KinoLentaTests.swift */; };
 		4B218BC12762245900C41939 /* KinoLentaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218BC02762245900C41939 /* KinoLentaUITests.swift */; };
 		4B218BCF2762269900C41939 /* MainGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B218BCE2762269900C41939 /* MainGraph.swift */; };
@@ -700,7 +699,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E07C7D42767709E0052A5F9 /* FilterScreenViewController.xib in Resources */,
-				4B218BAB2762245800C41939 /* LaunchScreen.storyboard in Resources */,
 				CE1144BE276B61F800435D70 /* tv_genres_ru.json in Resources */,
 				CE1144C2276B61F800435D70 /* movies_popular.json in Resources */,
 				4B0BA6832764D751008507EE /* SearchView.xib in Resources */,
