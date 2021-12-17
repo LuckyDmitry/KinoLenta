@@ -83,6 +83,7 @@
 		C644C7032768BEEA0078E9FD /* PosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644C6FE2768BEEA0078E9FD /* PosterCell.swift */; };
 		C644C7042768BEEA0078E9FD /* MovieList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C644C7002768BEEA0078E9FD /* MovieList.storyboard */; };
 		C644C7052768BEEA0078E9FD /* MovieListConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644C7012768BEEA0078E9FD /* MovieListConstants.swift */; };
+		C69DD10F276C99CC002567E4 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69DD10E276C99CC002567E4 /* NetworkingService.swift */; };
 		CE1144BD276B61F800435D70 /* movies_top_rated.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144B7276B61F800435D70 /* movies_top_rated.json */; };
 		CE1144BE276B61F800435D70 /* tv_genres_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144B8276B61F800435D70 /* tv_genres_ru.json */; };
 		CE1144BF276B61F800435D70 /* movie_discover_horrors_ru_region.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144B9276B61F800435D70 /* movie_discover_horrors_ru_region.json */; };
@@ -198,6 +199,7 @@
 		C644C6FE2768BEEA0078E9FD /* PosterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterCell.swift; sourceTree = "<group>"; };
 		C644C7002768BEEA0078E9FD /* MovieList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MovieList.storyboard; sourceTree = "<group>"; };
 		C644C7012768BEEA0078E9FD /* MovieListConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListConstants.swift; sourceTree = "<group>"; };
+		C69DD10E276C99CC002567E4 /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		CE1144B7276B61F800435D70 /* movies_top_rated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies_top_rated.json; sourceTree = "<group>"; };
 		CE1144B8276B61F800435D70 /* tv_genres_ru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tv_genres_ru.json; sourceTree = "<group>"; };
 		CE1144B9276B61F800435D70 /* movie_discover_horrors_ru_region.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movie_discover_horrors_ru_region.json; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				CEAE404B2768D95D008CC273 /* MockDataManager.swift */,
 				66852C9F276794AA0055E4A1 /* DataManager.swift */,
 				66852CA0276794AA0055E4A1 /* Networking.swift */,
+				C69DD10E276C99CC002567E4 /* NetworkingService.swift */,
 				66852CA1276794AA0055E4A1 /* Caching.swift */,
 				66852CA2276794AA0055E4A1 /* DataAccessProtocols.swift */,
 			);

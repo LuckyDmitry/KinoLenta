@@ -71,6 +71,10 @@ func tryParseWithObj<T: Decodable>(data: [[String: Any]]) -> [T] {
 }
 
 
+func parseObj<T: Decodable>(data: Data) -> T {
+    return try! JSONDecoder().decode(T.self, from: data)
+}
+
 class MockDataManager {
 
 }
