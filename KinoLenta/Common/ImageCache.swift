@@ -28,6 +28,7 @@ final class ImageCache {
     }
     
     func load(for url: URL, callback: @escaping (UIImage?) -> Void) {
+        assert(Thread.isMainThread)
         let fileURL = directory.appendingPathComponent(url.nameForCaching())
         let imageKey = NSString(string: url.nameForCaching())
         if let image = inMemoryCache.object(forKey: imageKey) {
@@ -36,6 +37,7 @@ final class ImageCache {
         }
 
         readFromFileCache(from: fileURL) { [weak self] image in
+            assert(Thread.isMainThread)
             if let image = image {
                 self?.inMemoryCache.setObject(image, forKey: imageKey)
                 callback(image)
@@ -43,6 +45,7 @@ final class ImageCache {
             }
 
             self?.downloadFromNetwork(imageUrl: url) { [weak self] imageData in
+                assert(Thread.isMainThread)
                 if let imageData = imageData {
                     self?.addToFileCache(imageData, fileURL: fileURL)
                 }
@@ -50,10 +53,8 @@ final class ImageCache {
                 if let image = image {
                     self?.inMemoryCache.setObject(image, forKey: imageKey)
                 }
-                
-                DispatchQueue.main.async {
-                    callback(image)
-                }
+
+                callback(image)
             }
         }
     }
@@ -75,7 +76,9 @@ final class ImageCache {
                 if let error = error {
                     print(error)
                 }
-                callback(data)
+                DispatchQueue.main.async {
+                    callback(data)
+                }
             }
         }
     }
