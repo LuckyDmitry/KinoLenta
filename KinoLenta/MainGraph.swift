@@ -20,14 +20,14 @@ final class MainGraph {
         configureTabBarAppearence()
         let movieListViewController = movieListStoryboard.instantiateViewController(withIdentifier: "MovieList") as! MovieListViewController
 
-        movieListViewController.setCoordinator(CoordinatorImpl())
+        movieListViewController.coordinator = CoordinatorImpl()
                 
         let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
 
         let searchedMovieViewController = searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
         
         searchedMovieViewController.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
-        searchedMovieViewController.setCoordinator(CoordinatorImpl())
+        searchedMovieViewController.coordinator = CoordinatorImpl()
 
         searchedMovieViewController.filterItems = GenreDecoderContainer.sharedMovieManager.getGenreNames().map {
             QuickItem(title: $0)

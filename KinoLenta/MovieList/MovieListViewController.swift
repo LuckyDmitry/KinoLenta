@@ -9,7 +9,14 @@ import UIKit
 
 class MovieListViewController: UIViewController {
     
-    private var coordinator: Coordinator?
+    private var internalCoordinator: Coordinator?
+    var coordinator: Coordinator? {
+        get {
+            assert(internalCoordinator != nil)
+            return internalCoordinator
+        }
+        set { internalCoordinator = newValue }
+    }
     
     @IBOutlet var watchButton: UIButton!
     @IBOutlet var watchedButton: UIButton!
@@ -108,7 +115,7 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         #warning("Need to pass movieID")
-        getCoordinator()?.openDetailMovie(withMovieId: 0, context: self)
+        coordinator?.openDetailMovie(withMovieId: 0, context: self)
     }
 }
 
@@ -133,17 +140,6 @@ extension MovieListViewController: UICollectionViewDataSource {
         cell.ratingView.rating = Double(ratingText)
         cell.ratingView.ratingView.isHidden = !showRating
         return cell
-    }
-}
-
-extension MovieListViewController {
-    func getCoordinator() -> Coordinator? {
-        assert(coordinator != nil)
-        return coordinator
-    }
-    
-    func setCoordinator(_ coordinator: Coordinator) {
-        self.coordinator = coordinator
     }
 }
 
