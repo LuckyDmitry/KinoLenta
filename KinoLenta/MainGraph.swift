@@ -33,9 +33,9 @@ final class MainGraph {
             QuickItem(title: $0)
         }
         
-        searchedMovieViewController.tabBarItem = UITabBarItem(title: "Searched", image: nil, selectedImage: nil)
-        movieListViewController.tabBarItem = UITabBarItem(title: "Movie List", image: nil, selectedImage: nil)
-        movieSamplingVC.tabBarItem = UITabBarItem(title: "Movie Sampling", image: nil, selectedImage: nil)
+        searchedMovieViewController.tabBarItem = UITabBarItem(title: "Searched", image: UIImage(systemName: "film"), selectedImage: UIImage(systemName: "film"))
+        movieListViewController.tabBarItem = UITabBarItem(title: "Movie List", image: UIImage(systemName: "list.and.film"), selectedImage: UIImage(systemName: "list.and.film"))
+        movieSamplingVC.tabBarItem = UITabBarItem(title: "Movie Sampling", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
 
         tabBarController.viewControllers = [movieSamplingVC, searchedMovieViewController, movieListViewController]
     }
@@ -44,9 +44,9 @@ final class MainGraph {
         if #available(iOS 13.0, *) {
             let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithDefaultBackground()
-            tabBarAppearance.backgroundColor = UIColor.white
+            tabBarAppearance.backgroundColor = .mainBackground
+            tabBarAppearance.selectionIndicatorTintColor = .pickerItemBackground
             UITabBar.appearance().standardAppearance = tabBarAppearance
-
             if #available(iOS 15.0, *) {
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             }
