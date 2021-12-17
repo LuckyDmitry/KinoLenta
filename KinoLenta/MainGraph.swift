@@ -20,8 +20,7 @@ final class MainGraph {
         configureTabBarAppearence()
         let movieListViewController = movieListStoryboard.instantiateViewController(withIdentifier: "MovieList") as! MovieListViewController
 
-        movieListViewController.coordinator = CoordinatorImpl()
-        
+        movieListViewController.setCoordinator(CoordinatorImpl())
         
         movieListViewController.tabBarItem = UITabBarItem(title: "Movie List", image: nil, selectedImage: nil)
         movieSamplingVC.tabBarItem = UITabBarItem(title: "Movie Sampling", image: nil, selectedImage: nil)

@@ -3,8 +3,6 @@ import UIKit
 
 final class FilterScreenViewController: UIViewController {
     
-    var coordinator: Coordinator!
-
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
             tableView.register(RatingFilterTableCell.self)
