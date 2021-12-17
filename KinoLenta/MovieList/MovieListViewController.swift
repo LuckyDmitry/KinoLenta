@@ -23,17 +23,31 @@ class MovieListViewController: UIViewController {
     @IBOutlet var placeHolderView: UIView!
     @IBOutlet var collectionView: UICollectionView!
     
-    var images = (0...11).compactMap { number -> UIImage? in
-        let image = UIImage(named: "poster\(number)")
-        return image
-    }
-    
-    var ratings = (0...11).compactMap { number -> Int in
-        return Int.random(in: 1...5)
-    }
-    
+    var cacheService: CacheService!
     var showRating: Bool = false
-
+    
+    var movieModels: [MovieDomainModel] = []
+    
+    var movieOption: SavedMovieOption = .wishToWatch {
+        didSet {
+            loadMovies()
+        }
+    }
+    
+    private func loadMovies() {
+        cacheService.getSavedMovies(option: movieOption, completion: { result in
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case .success(let movies):
+                    self?.movieModels = movies
+                    self?.collectionView.reloadData()
+                case .failure(let error):
+                    break
+                }
+            }
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -47,8 +61,8 @@ class MovieListViewController: UIViewController {
             self,
             action: #selector(selectWatchedButton),
             for: .touchUpInside)
-        }
-    
+    }
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -58,14 +72,12 @@ class MovieListViewController: UIViewController {
         watchedButton.clipsToBounds = true
         self.watchButton.tintColor = .pickerItemBackground
         self.watchedButton.tintColor = .mainBackground
-        self.watchedButton.setTitleColor(.pickerItemBackground, for: .normal)
         self.watchButton.setTitleColor(.buttonTextColor, for: .normal)
+        loadMovies()
     }
-    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         collectionView.collectionViewLayout.invalidateLayout()
     }
  
@@ -85,6 +97,7 @@ class MovieListViewController: UIViewController {
         watchButton.changeState(on: .selected)
         watchedButton.changeState(on: .notSelected)
         refreshView()
+        movieOption = .wishToWatch
     }
     
     @objc func selectWatchedButton() {
@@ -92,14 +105,15 @@ class MovieListViewController: UIViewController {
         watchedButton.changeState(on: .selected)
         watchButton.changeState(on: .notSelected)
         refreshView()
+        movieOption = .viewed
     }
     
     private func refreshView() {
-        let indices = self.collectionView.indexPathsForVisibleItems
-        self.collectionView.reloadItems(at: indices)
+//        let indices = self.collectionView.indexPathsForVisibleItems
+//        self.collectionView.reloadItems(at: indices)
         //temporary lines
-        self.images.shuffle()
-        self.collectionView.reloadData()
+//        self.images.shuffle()
+//        self.collectionView.reloadData()
     }
 
 }
@@ -117,13 +131,13 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         #warning("Need to pass movieID")
-        coordinator?.openDetailMovie(withMovieId: 0, context: self)
+        coordinator?.openDetailMovie(withMovieId: movieModels[indexPath.row].id, context: self)
     }
 }
 
 extension MovieListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return movieModels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -134,12 +148,15 @@ extension MovieListViewController: UICollectionViewDataSource {
             fatalError("Unable to dequeue PosterCell.")
         }
         
-        let image = images[indexPath.row]
-        let ratingText = ratings[indexPath.row]
+        let model = movieModels[indexPath.row]
+//        let image = images[indexPath.row]
+//        let ratingText = ratings[indexPath.row]
         
-        cell.ratingView.image = image
+        if let url = model.backdropURL {
+            cell.ratingView.setImage(url: url)
+        }
         cell.layer.cornerRadius = Constants.cellCornerRadius
-        cell.ratingView.rating = Double(ratingText)
+//        cell.ratingView.rating = Double(ratingText)
         cell.ratingView.ratingView.isHidden = !showRating
         return cell
     }

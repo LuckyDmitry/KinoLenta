@@ -57,7 +57,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KT7-45-YYL">
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KT7-45-YYL" customClass="SelectedButton" customModule="KinoLenta" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="204" width="541" height="33"/>
                             <color key="backgroundColor" name="mainBackground"/>
                             <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="18"/>
@@ -86,7 +86,7 @@
                 <outlet property="movieGenre" destination="hrV-OR-u07" id="a3x-xA-sUh"/>
                 <outlet property="movieTitle" destination="sdQ-lk-gYV" id="UdF-f0-GRn"/>
                 <outlet property="ratingView" destination="kxS-Yt-R9d" id="08j-BR-L3a"/>
-                <outlet property="watchLaterButton" destination="KT7-45-YYL" id="a7i-ev-WLv"/>
+                <outlet property="watchLaterButton" destination="KT7-45-YYL" id="ZxD-3s-f1z"/>
             </connections>
             <point key="canvasLocation" x="578.98550724637687" y="297.65625"/>
         </view>

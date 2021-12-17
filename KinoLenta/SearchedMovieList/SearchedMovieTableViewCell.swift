@@ -9,8 +9,13 @@ import UIKit
 
 final class SearchedMovieTableViewCell: UITableViewCell {
     @IBOutlet var movieTitle: UILabel!
-    @IBOutlet var watchLaterButton: UIButton!
+    @IBOutlet var watchLaterButton: SelectedButton!
     @IBOutlet var movieDescription: UILabel!
     @IBOutlet var movieGenre: UILabel!
     @IBOutlet var ratingView: RatingView!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        ratingView.reset()
+    }
 }

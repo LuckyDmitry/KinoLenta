@@ -30,7 +30,9 @@ final class MovieDetailViewController: UIViewController {
     
     private var descriptors: [MovieCellType: [CollectionViewCellDescriptor]] = [:]
     var selectedMovie: MovieDomainModel!
+    var service: NetworkingService!
     var cache: CacheService!
+    var idMovie: Int!
     var buttonActions: [(optionType: SavedMovieOption, QuickItem)] = []
     
     private lazy var movieDetailCollectionView: UICollectionView = {
@@ -62,7 +64,13 @@ final class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(movieDetailCollectionView)
         view.backgroundColor = .mainBackground
-        populateElements()
+        if let idMovie = idMovie {
+            service.getById(idMovie, callback: { movie in
+                self.selectedMovie = movie
+                self.populateElements()
+            })
+        }
+        
         movieDetailCollectionView.register(uniqueCells: [
             DetailMovieTextCollectionViewCell.self,
             DetailMovieImageCollectionViewCell.self,
@@ -94,12 +102,12 @@ final class MovieDetailViewController: UIViewController {
             }
             switch section {
             case .title:
-                let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.title,
+                let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.title ?? "",
                                                              font: UIFont.boldSystemFont(ofSize: 50),
                                                              textColor: UIColor.darkTextForeground)
                 descriptors[section]?.append(textDescriptor)
             case .poster:
-                let imageDescriptor = DetailMovieImageDescriptor(image: UIImage(),
+                let imageDescriptor = DetailMovieImageDescriptor(imageUrl: selectedMovie.backdropURL,
                                                                  inset: UIEdgeInsets(top: 20, left: inset, bottom: 20, right: inset))
                 descriptors[section]?.append(imageDescriptor)
             case .details:
@@ -107,19 +115,50 @@ final class MovieDetailViewController: UIViewController {
                                                              font: UIFont.systemFont(ofSize: 18),
                                                              textColor: UIColor.darkTextForeground.withAlphaComponent(0.5))
                 descriptors[section]?.append(textDescriptor)
-            case .description, .actors, .reviewTitle, .review:
+            case .description:
                 break
             case .actions:
                 let items = buttonActions.map { $1 }
                 descriptors[section]?.append(DetailMovieButtonActionsDescriptor(items: items,
                                                                                 componentDelegate: self))
+            case .actors:
+                let first = DetailMovieStarsDescriptor(primaryFont: UIFont.systemFont(ofSize: 18),
+                                                      primaryTitle: "Режиссер: ",
+                                                      secondaryFont: UIFont.systemFont(ofSize: 18),
+                                                      secondaryTitle: "Дэмьен Шазелл")
+                let second = DetailMovieStarsDescriptor(primaryFont: UIFont.systemFont(ofSize: 18),
+                                                      primaryTitle: "В ролях: ",
+                                                      secondaryFont: UIFont.systemFont(ofSize: 18),
+                                                      secondaryTitle: "Райан Гослинг, Эмма Стоун, Джон Ледженд, Дж.К. Симмонс, Розмари ДеУитт, Финн Уиттрок, Калли Эрнандес, Соноя Мидзуно, Джессика Рот, Том Эверетт Скотт")
+                descriptors[section]?.append(first)
+                descriptors[section]?.append(second)
+            case .reviewTitle:
+                let review = MovieTextItemDescriptor(title: "Отзывы", font: UIFont.boldSystemFont(ofSize: 25), alignment: .left)
+                descriptors[section]?.append(review)
+            case .review:
+                for i in 0...3 {
+                    let review = DetailMovieReviewDescriptor(nickname: "Волк",
+                                                             nicknameFont: UIFont.systemFont(ofSize: 25),
+                                                             reviewText: "Сотворив из рядовой подготовки к джазовому концерту неподдельный триллер с зашкаливающим эмоциональным бурлеском, режиссер и сценарист Дэмьен Шазелл сам того не подозревая превратился в одного из наиболее уважаемых и востребованных творцов современности. Проросшая из скромной короткометражки идея была замечена продюсерами и перевоплотилась в полный метр, известный под названием 'Одержимость'. Заставив Дж. К. Симмонса и Майлза Тернера играть в действительности на грани, пройти огонь, воду, медные трубы и в довершении ко всему едва не поубивать друг друга на съемочной площадке, Дэмьен Шазелл собрал внушительный букет положительных откликов от широчайшей аудитории, обеспечивший его детищу блестящие как для малобюджетного кино кассовые сборы, а также стойкие позиции на церемонии награждения премией 'Оскар'. Открыв двери в заветный мир сверкающих софитов Голливуда, Дэмьен Шазелл был вправе выбирать любой приглянувшийся проект, однако вместо переноса чужой идеи на экран он вновь засел за написание сценария, известного нынче как 'Ла-Ла Ленд'. Питая теплые чувство к музыке",
+                                                             reviewFont: UIFont.systemFont(ofSize: 17),
+                                                             heightThreshold: 250,
+                                                             openMoreHandler: { [weak self] in
+                        guard let self = self else { return }
+                        guard var initSection = self.descriptors[section]?[i] as? DetailMovieReviewDescriptor else { return }
+                        initSection.heightThreshold = 5000
+                        self.descriptors[section]?[i] = initSection
+                        let section = self.sections.firstIndex(where: { $0 == .actions}) ?? 0
+                        self.movieDetailCollectionView.reloadSections(IndexSet(integer: section))
+                    })
+                    descriptors[section]?.append(review)
+                }
             }
         }
+        movieDetailCollectionView.reloadData()
     }
     
     private func showRatingView() {
         view.addSubview(starsRatingView)
-        
         NSLayoutConstraint.activate([
             starsRatingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Consts.edgeMargin),
             starsRatingView.topAnchor.constraint(equalTo: view.topAnchor,
@@ -210,7 +249,7 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
             
             self.descriptors[.actions] = [DetailMovieButtonActionsDescriptor(items: buttons, componentDelegate: self)]
             if let sectionIndex = sectionIndex {
-                self.movieDetailCollectionView.reloadSections(IndexSet(integer: sectionIndex))                
+                self.movieDetailCollectionView.reloadSections(IndexSet(integer: sectionIndex))
             }
         })
         
@@ -254,5 +293,3 @@ extension MovieDetailViewController {
         static let edgeMargin: CGFloat = 10
     }
 }
-
-

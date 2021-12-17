@@ -49,7 +49,6 @@ final class FilterScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.reloadData()
     }
 }
