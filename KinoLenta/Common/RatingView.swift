@@ -13,7 +13,7 @@ final class RatingView: UIView {
         let ratingLabel = UILabel()
         ratingLabel.textAlignment = .center
         ratingLabel.textColor = UIColor.white
-        ratingLabel.font = UIFont.boldSystemFont(ofSize: Consts.ratingFontSize)
+        ratingLabel.font = UIFont(name: "SFProDisplay-Bold", size: Consts.ratingFontSize) ?? UIFont.boldSystemFont(ofSize: Consts.ratingFontSize)
         return ratingLabel
     }()
 

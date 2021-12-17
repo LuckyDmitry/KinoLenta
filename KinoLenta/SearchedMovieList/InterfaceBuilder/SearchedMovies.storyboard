@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Iq-yg-GaU">
-                                <rect key="frame" x="0.0" y="49" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="49" width="414" height="35"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="7YJ-19-IN7"/>
+                                    <constraint firstAttribute="height" constant="35" id="7YJ-19-IN7"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xmu-Lf-Zdc">
@@ -48,7 +48,7 @@
                             <constraint firstItem="xmu-Lf-Zdc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="SuY-rc-NtG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xmu-Lf-Zdc" secondAttribute="trailing" id="ewR-mI-zWu"/>
                             <constraint firstAttribute="bottom" secondItem="xmu-Lf-Zdc" secondAttribute="bottom" id="fgv-CM-vZ6"/>
-                            <constraint firstItem="xmu-Lf-Zdc" firstAttribute="top" secondItem="3Iq-yg-GaU" secondAttribute="bottom" constant="15" id="g6n-SY-wat"/>
+                            <constraint firstItem="xmu-Lf-Zdc" firstAttribute="top" secondItem="3Iq-yg-GaU" secondAttribute="bottom" constant="20" id="g6n-SY-wat"/>
                             <constraint firstItem="3Iq-yg-GaU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="5" id="vPb-zc-Gww"/>
                             <constraint firstItem="3Iq-yg-GaU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="wt5-FI-00q"/>
                         </constraints>

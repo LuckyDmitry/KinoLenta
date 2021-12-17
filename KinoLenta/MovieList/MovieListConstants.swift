@@ -11,8 +11,6 @@ import UIKit
 enum Constants {
     static let reuseId: String = String(describing: PosterCell.self)
     static var isLandscape: Bool { UIDevice.current.orientation.isLandscape }
-    static let backGroundColor: UIColor = UIColor(named: "mainBackground") ?? .white
-    static let selectedItemColor: UIColor = UIColor(named: "selectedItemBackground") ?? .black
     static let defaultCellWidth: CGFloat = 180
     static let cellHeight: CGFloat = 270
     static let buttonCornerRadius: CGFloat = 10

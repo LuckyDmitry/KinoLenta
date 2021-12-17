@@ -90,42 +90,42 @@ final class MovieDetailViewController: UIViewController, QuickItemFilterDelegate
             switch section {
             case .title:
                 descriptors[section]?.append(MovieTextItemDescriptor(title: "Ла-Ла Ленд",
-                                                                     font: UIFont.boldSystemFont(ofSize: 50),
+                                                                     font: UIFont(name: "SFProDisplay-Bold", size: 50) ?? UIFont.boldSystemFont(ofSize: 50),
                                                                      textColor: UIColor.black))
             case .poster:
                 descriptors[section]?.append(DetailMovieImageDescriptor(image: UIImage(named: "4"),
                                                                         inset: UIEdgeInsets(top: 20, left: inset, bottom: 20, right: inset)))
             case .details:
                 descriptors[section]?.append(MovieTextItemDescriptor(title: "2016, мюзикл, мелодрама США, Гонконг, 2 ч. 8 мин., 16+",
-                                                                     font: UIFont.systemFont(ofSize: 18),
+                                                                     font: UIFont(name: "SFProDisplay-Medium", size: 18) ?? UIFont.boldSystemFont(ofSize: 18),
                                                                      textColor: UIColor.black.withAlphaComponent(0.5)
                                                                     ))
             case .description:
                 descriptors[section]?.append(MovieTextItemDescriptor(title: "Миа и Себастьян выбирают между личным счастьем и амбициями. Трагикомичный мюзикл о компромиссе в жизни артиста",
-                                                                     font: UIFont.boldSystemFont(ofSize: systemFontSize),
+                                                                     font: UIFont(name: "SFCompactText-Medium", size: systemFontSize) ?? UIFont.boldSystemFont(ofSize: systemFontSize),
                                                                      textColor: UIColor.black.withAlphaComponent(0.7),
                                                                      alignment: .left
                                                                     ))
             case .actors:
                 descriptors[section]?.append(contentsOf: [DetailMovieStarsDescriptor(primaryFont: UIFont.systemFont(ofSize: systemFontSize),
                                                                                      primaryTitle: "В ролях:",
-                                                                                     secondaryFont: UIFont.systemFont(ofSize: systemFontSize),
+                                                                                     secondaryFont: UIFont(name: "SFCompactText-Medium", size: systemFontSize) ?? UIFont.boldSystemFont(ofSize: systemFontSize),
                                                                                      secondaryTitle: "Дэмьен Шазелл"),
-                                                          DetailMovieStarsDescriptor(primaryFont: UIFont.systemFont(ofSize: systemFontSize),
+                                                          DetailMovieStarsDescriptor(primaryFont: UIFont(name: "SFCompactText-Medium", size: systemFontSize) ?? UIFont.boldSystemFont(ofSize: systemFontSize),
                                                                                      primaryTitle: "Актеры:",
                                                                                      secondaryFont: UIFont.systemFont(ofSize: systemFontSize),
                                                                                      secondaryTitle: "Райан Гослинг, Эмма Стоун, Джон Ледженд, Дж.К. Симмонс, Розмари ДеУитт, Финн Уиттрок, Калли Эрнандес, Соноя Мидзуно, Джессика Рот, Том Эверетт Скотт")])
             case .reviewTitle:
                 descriptors[section]?.append(MovieTextItemDescriptor(title: "Отзывы",
-                                                                     font: UIFont.boldSystemFont(ofSize: 26),
+                                                                     font: UIFont(name: "SFProDisplay-Bold", size: 26) ?? UIFont.boldSystemFont(ofSize: 26),
                                                                      alignment: .left))
             case .review:
                 for reviewIndex in 0...1 {
                     var review = DetailMovieReviewDescriptor(image: UIImage(named: "4"),
                                                              nickname: "Волк ну погоди",
-                                                             nicknameFont: UIFont.systemFont(ofSize: systemFontSize),
+                                                             nicknameFont: UIFont(name: "SFCompactText-Medium", size: systemFontSize) ?? UIFont.boldSystemFont(ofSize: systemFontSize),
                                                              reviewText: "Сотворив из рядовой подготовки к джазовому концерту неподдельный триллер с зашкаливающим эмоциональным бурлеском, режиссер и сценарист Дэмьен Шазелл сам того не подозревая превратился в одного из на 'Ла-Ла Ленд'. Питая теплые чувство к музыкеСотворив из рядовой подготовки к джазовому концерту неподдельный триллер с зашкаливающим",
-                                                             reviewFont: UIFont.systemFont(ofSize: 14),
+                                                             reviewFont: UIFont(name: "SFCompactText-Light", size: 14) ?? UIFont.boldSystemFont(ofSize: 14),
                                                              heightThreshold: Consts.minHeightTextThreashold)
                     review.openMoreHandler = { [weak self, reviewIndex, review] in
                         let initialOffset = self?.movieDetailCollectionView.contentOffset ?? .zero
