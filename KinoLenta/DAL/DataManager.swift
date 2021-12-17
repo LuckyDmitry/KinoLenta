@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class DataManager {
     let cacheService: Caching
     let networkingService: Networking
@@ -29,7 +28,9 @@ extension DataManager: MovieSearchService {
 
 // MARK: Compilation
 extension DataManager: MovieCompilationService {
-    func getPopular() -> [QueryMovieModel] { return [] }
+    func getPopular() -> [QueryMovieModel] {
+        return []
+    }
     
     func getTopRated() -> [QueryMovieModel] { return [] }
     
