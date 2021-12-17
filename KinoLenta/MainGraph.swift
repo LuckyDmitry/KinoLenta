@@ -48,7 +48,7 @@ final class MainGraph {
             let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithDefaultBackground()
             tabBarAppearance.backgroundColor = .mainBackground
-            tabBarAppearance.selectionIndicatorTintColor = .pickerItemBackground
+            UITabBar.appearance().tintColor = .buttonActiveBackground
             UITabBar.appearance().standardAppearance = tabBarAppearance
             if #available(iOS 15.0, *) {
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
