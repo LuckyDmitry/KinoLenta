@@ -30,7 +30,7 @@ final class RatingView: UIView {
     
     var image: UIImage? {
         didSet {
-            imageView.image = UIImage(named: "movie_vertical_placeholder")
+            imageView.image = UIImage.moviePlaceholder
             setBorder(isBorderActive: true)
         }
     }
