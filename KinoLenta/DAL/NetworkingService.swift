@@ -64,7 +64,6 @@ class NetworkingService {
     
     func getById(_ id: Int, callback: @escaping (MovieDomainModel) -> Void){
         let queryInfo = getUrlItems(for: .getById, id: id)
-        print(queryInfo.pathItem, queryInfo.queryItems)
         queue.async {
             assert(!Thread.isMainThread)
             makeRequestSingleFilm(with: queryInfo, callback: callback)
@@ -73,7 +72,6 @@ class NetworkingService {
     
     func getSimilar(_ id: Int, callback: @escaping ([QueryMovieModel]) -> Void) {
         let queryInfo = getUrlItems(for: .getSimilar, id: id)
-        print(queryInfo.pathItem, queryInfo.queryItems)
         queue.async {
             assert(!Thread.isMainThread)
             makeRequest(with: queryInfo, callback: callback)
@@ -149,9 +147,11 @@ private func getUrlItems(for requestType: RequestTypes, id: Int? = nil) -> Query
         queryItems.append(queryItemAdult)
         queryItems.append(queryItemWatchMonetization)
     case .getById:
-        pathItem = "movie/\(id ?? 42)"
+        assert(id != nil)
+        pathItem = "movie/\(id ?? 33)"
     case .getSimilar:
-        pathItem = "movie/\(id ?? 42)/similar"
+        assert(id != nil)
+        pathItem = "movie/\(id ?? 33)/similar"
     }
     return QueryInfo(pathItem: pathItem, queryItems: queryItems)
 }
@@ -159,11 +159,15 @@ private func getUrlItems(for requestType: RequestTypes, id: Int? = nil) -> Query
 private func makeRequest(with queryInfo: QueryInfo, callback:  @escaping ([QueryMovieModel]) -> Void) {
     let config = URLSessionConfiguration.default
     let session = URLSession(configuration: config)
-    let url = getUrl(with: queryInfo)
+    guard let url = getUrl(with: queryInfo) else{
+        return
+    }
     let task = session.dataTask(with: url) { data, response, error in
         assert(!Thread.isMainThread)
-        guard error == nil else {
-            print ("error: \(error!)")
+        if data == nil {
+            if let error = error {
+                print("error: \(error)")
+            }
             return
         }
         
@@ -171,12 +175,10 @@ private func makeRequest(with queryInfo: QueryInfo, callback:  @escaping ([Query
             print("No data")
             return
         }
-        print(content)
         
         let response: [QueryMovieModel] = parseModelFromResponse(data: content)
         DispatchQueue.main.async {
             assert(Thread.isMainThread)
-            print(response)
             callback(response)
         }
         
@@ -184,14 +186,19 @@ private func makeRequest(with queryInfo: QueryInfo, callback:  @escaping ([Query
     task.resume()
 }
 
+
 private func makeRequestSingleFilm(with queryInfo: QueryInfo, callback:  @escaping (MovieDomainModel) -> Void) {
     let config = URLSessionConfiguration.default
     let session = URLSession(configuration: config)
-    let url = getUrl(with: queryInfo)
+    guard let url = getUrl(with: queryInfo) else{
+        return
+    }
     let task = session.dataTask(with: url) { data, response, error in
         assert(!Thread.isMainThread)
-        guard error == nil else {
-            print ("error: \(error!)")
+        if data == nil {
+            if let error = error {
+                print("error: \(error)")
+            }
             return
         }
         
@@ -199,29 +206,27 @@ private func makeRequestSingleFilm(with queryInfo: QueryInfo, callback:  @escapi
             print("No data")
             return
         }
-        print(content)
         
-        let response: MovieDomainModel = parseObj(data: content)
-        DispatchQueue.main.async {
-            assert(Thread.isMainThread)
-            callback(response)
+        do {
+            let response: MovieDomainModel = try parseObj(data: content)
+            DispatchQueue.main.async {
+                assert(Thread.isMainThread)
+                callback(response)
+            }
+        } catch{
+            print(error)
         }
         
     }
     task.resume()
 }
 
-private func getUrl(with queryInfo: QueryInfo) -> URL {
+private func getUrl(with queryInfo: QueryInfo) -> URL? {
     var components = URLComponents()
     components.scheme = "https"
     components.host = "api.themoviedb.org"
     components.path = "/3/\(queryInfo.pathItem)"
     components.queryItems = queryInfo.queryItems
-    
-    guard let url = components.url else {
-        print("url can't be composed")
-        return URL(fileURLWithPath: "")
-    }
-    return url
+    return components.url
 }
     
