@@ -14,6 +14,17 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
     
     @IBOutlet private weak var datePickerHeight: NSLayoutConstraint!
     @IBOutlet private weak var dateButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton! {
+        didSet {
+            cancelButton.isHidden = true
+        }
+    }
+    @IBAction func cancelAction(_ sender: Any) {
+        cancelButton.isHidden = true
+        dateButton.setTitle("Не выбрано", for: .normal)
+        
+        dateButton.setTitleColor(UIColor.textPlaceholderForeground, for: .normal)
+    }
     
     @IBAction private func showPickerAction(_ sender: Any) {
         
@@ -64,6 +75,8 @@ extension YearFilterTableCell: UIPickerViewDataSource, UIPickerViewDelegate {
             : UIColor.darkOrangeTextForeground,
             for: .normal
         )
+        
+        cancelButton.isHidden = false
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

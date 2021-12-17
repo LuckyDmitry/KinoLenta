@@ -20,6 +20,19 @@ final class RatingFilterTableCell: UITableViewCell, BaseTableViewCell {
         
         valueButton.setTitle(text, for: .normal)
         valueButton.setTitleColor(UIColor.darkOrangeTextForeground, for: .normal)
+        cancelButton.isHidden = false
+    }
+    
+    @IBOutlet weak var cancelButton: UIButton! {
+        didSet {
+            cancelButton.isHidden = true
+        }
+    }
+    @IBAction func cancelAction(_ sender: Any) {
+        cancelButton.isHidden = true
+        valueButton.setTitle("☆ ☆ ☆ ☆ ☆", for: .normal)
+        
+        valueButton.setTitleColor(UIColor.textPlaceholderForeground, for: .normal)
     }
     
     @IBOutlet weak var sliderHeight: NSLayoutConstraint!
