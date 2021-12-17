@@ -48,11 +48,11 @@ final class CacheService: Caching {
                 for movie in movies {
                     let movieIdAsString = "\(movie.id)"
                     
-                    if fileNamesSet.contains(movieIdAsString + ".json") {
+                    if fileNamesSet.contains(movieIdAsString + ".\(Consts.fileExtension)") {
                         let urlToRemove = self.formatUrl(folderUrl: url, fileName: movieIdAsString)
                         try self.fileManager.removeItem(at: urlToRemove)
                     }
-                } 
+                }
             } catch {
                 completion?(error)
             }
