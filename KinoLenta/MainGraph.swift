@@ -54,8 +54,8 @@ protocol Coordinator {
 final class CoordinatorImpl: Coordinator {
     func openDetailMovie(withMovieId id: Int, context: UIViewController) {
         let detailMovieViewController = MovieDetailViewController()
-        detailMovieViewController.buttonActions = [(.viewed, QuickItem(title: "Посмотреть")),
-                                                   (.all, QuickItem(title: "Посмотреть"))]
+        detailMovieViewController.buttonActions = [(.viewed, QuickItem(title: "Просмотрено")),
+                                                   (.wishToWatch, QuickItem(title: "Посмотреть"))]
         context.present(detailMovieViewController, animated: true)
     }
 }
