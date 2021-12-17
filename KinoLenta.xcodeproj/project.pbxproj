@@ -45,6 +45,7 @@
 		4B8C1A57276515D9002A637C /* QuickItemFilterCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C1A54276515D8002A637C /* QuickItemFilterCollectionViewLayout.swift */; };
 		4B8C1A58276515D9002A637C /* QuickItemFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C1A55276515D8002A637C /* QuickItemFilterCollectionViewCell.swift */; };
 		4B8C1A59276515D9002A637C /* QuickItemFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C1A56276515D9002A637C /* QuickItemFilterView.swift */; };
+		61F26A87276C73A800606BC3 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F26A86276C73A800606BC3 /* APIKey.swift */; };
 		66852C99276794860055E4A1 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852C94276794860055E4A1 /* MovieModel.swift */; };
 		66852C9A276794860055E4A1 /* CommonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852C95276794860055E4A1 /* CommonModels.swift */; };
 		66852C9B276794860055E4A1 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852C96276794860055E4A1 /* SearchModel.swift */; };
@@ -158,6 +159,7 @@
 		4B8C1A54276515D8002A637C /* QuickItemFilterCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickItemFilterCollectionViewLayout.swift; sourceTree = "<group>"; };
 		4B8C1A55276515D8002A637C /* QuickItemFilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickItemFilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B8C1A56276515D9002A637C /* QuickItemFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickItemFilterView.swift; sourceTree = "<group>"; };
+		61F26A86276C73A800606BC3 /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		66852C94276794860055E4A1 /* MovieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		66852C95276794860055E4A1 /* CommonModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonModels.swift; sourceTree = "<group>"; };
 		66852C96276794860055E4A1 /* SearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 			children = (
 				CE1144C6276B620B00435D70 /* Utils */,
 				CE1144C3276B620100435D70 /* Extensions */,
+				61F26A85276C73A700606BC3 /* Generated */,
 				4B3492C7276B1F6000C9265F /* MovieDetail */,
 				C644C6FC2768BEEA0078E9FD /* MovieList */,
 				66852C9E276794AA0055E4A1 /* DAL */,
@@ -408,6 +411,14 @@
 				4B3492D4276B1F6000C9265F /* DetailMovieButtonActionsCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		61F26A85276C73A700606BC3 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				61F26A86276C73A800606BC3 /* APIKey.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		66852C93276794860055E4A1 /* Networking */ = {
@@ -595,6 +606,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B218BC52762245900C41939 /* Build configuration list for PBXNativeTarget "KinoLenta" */;
 			buildPhases = (
+				61F26A82276BC2D000606BC3 /* ShellScript */,
 				4B218B972762245700C41939 /* Sources */,
 				4B218B982762245700C41939 /* Frameworks */,
 				4B218B992762245700C41939 /* Resources */,
@@ -733,6 +745,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		61F26A82276BC2D000606BC3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/api-key.txt",
+				"$(SRCROOT)/KinoLenta/Infra/api_key_embedder.py",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/KinoLenta/Generated/APIKey.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\npython3 KinoLenta/Infra/api_key_embedder.py\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4B218B972762245700C41939 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -789,6 +824,7 @@
 				66852C9B276794860055E4A1 /* SearchModel.swift in Sources */,
 				4B0BA6742764D743008507EE /* SearchedMovieViewItem.swift in Sources */,
 				66852CA3276794AA0055E4A1 /* DataManager.swift in Sources */,
+				61F26A87276C73A800606BC3 /* APIKey.swift in Sources */,
 				7EFA861627687A4400523248 /* MovieSampleTableCell.swift in Sources */,
 				C644C7032768BEEA0078E9FD /* PosterCell.swift in Sources */,
 				7E07C7C7276770930052A5F9 /* FiltersFooterView.swift in Sources */,
