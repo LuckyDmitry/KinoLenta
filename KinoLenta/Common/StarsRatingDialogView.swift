@@ -14,7 +14,7 @@ protocol StarsRatingDialogDelegate: AnyObject {
 
 final class StarsRatingDialogView: UIView {
     weak var delegate: StarsRatingDialogDelegate?
-    var stars: Int = 1
+    var stars: Int = 0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -147,7 +147,7 @@ extension StarsRatingDialogView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "id", for: indexPath)
-        let image = UIImage(systemName: indexPath.row < stars ? "star.fill" : "star")
+        let image = UIImage(systemName: indexPath.row <= stars ? "star.fill" : "star")
         
         cell.subviews.forEach { $0.removeFromSuperview() }
         let imageView = UIImageView(image: image)
