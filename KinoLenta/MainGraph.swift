@@ -33,9 +33,12 @@ final class MainGraph {
             QuickItem(title: $0)
         }
         
-        searchedMovieViewController.tabBarItem = UITabBarItem(title: "Searched", image: UIImage(systemName: "film"), selectedImage: UIImage(systemName: "film"))
-        movieListViewController.tabBarItem = UITabBarItem(title: "Movie List", image: UIImage(systemName: "list.and.film"), selectedImage: UIImage(systemName: "list.and.film"))
-        movieSamplingVC.tabBarItem = UITabBarItem(title: "Movie Sampling", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
+        let mainScreenImage = UIImage(systemName: "film")
+        let searchImage = UIImage(systemName: "magnifyingglass")
+        let wishlistImage = UIImage(systemName: "list.and.film")
+        searchedMovieViewController.tabBarItem = UITabBarItem(title: "Searched", image: mainScreenImage, selectedImage: mainScreenImage)
+        movieListViewController.tabBarItem = UITabBarItem(title: "Movie List", image: wishlistImage, selectedImage: wishlistImage)
+        movieSamplingVC.tabBarItem = UITabBarItem(title: "Movie Sampling", image: searchImage, selectedImage: searchImage)
 
         tabBarController.viewControllers = [movieSamplingVC, searchedMovieViewController, movieListViewController]
     }
