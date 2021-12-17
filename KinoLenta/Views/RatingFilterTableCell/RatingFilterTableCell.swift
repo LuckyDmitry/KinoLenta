@@ -15,8 +15,8 @@ final class RatingFilterTableCell: UITableViewCell, BaseTableViewCell {
     }
     
     @IBAction func raitingSliderAction(_ sender: Any) {
-        let value = Int(round(ratingSlider.value))
-        let text = String(repeating: "★", count: value) +  String(repeating: "☆", count: 10 - value)
+        let value = Int(round(ratingSlider.value) / 2)
+        let text = String(repeating: "★", count: value) +  String(repeating: "☆", count: 5 - value)
         
         valueButton.setTitle(text, for: .normal)
         valueButton.setTitleColor(UIColor.darkOrangeTextForeground, for: .normal)

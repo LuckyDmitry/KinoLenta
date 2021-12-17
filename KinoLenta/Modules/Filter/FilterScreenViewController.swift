@@ -23,7 +23,7 @@ final class FilterScreenViewController: UIViewController {
                     assertionFailure()
                     return nil
                 }
-        headerView.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 150)
+        headerView.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 200)
         headerView.delegate = self
         return headerView
     }()

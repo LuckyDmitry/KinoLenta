@@ -17,11 +17,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FiltersHeaderView" customModule="KinoLenta" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="507" height="80"/>
+            <rect key="frame" x="0.0" y="0.0" width="507" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Фильтры" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgT-Zo-31A">
-                    <rect key="frame" x="198.5" y="25.5" width="110" height="29"/>
+                    <rect key="frame" x="198.5" y="85.5" width="110" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="110" id="DiX-18-pVf"/>
                         <constraint firstAttribute="height" constant="29" id="H6f-1K-ngD"/>
@@ -31,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCP-E7-yKx">
-                    <rect key="frame" x="442" y="15" width="50" height="50"/>
+                    <rect key="frame" x="442" y="75" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="AWG-Fp-BEj"/>
                         <constraint firstAttribute="width" constant="50" id="JAI-c9-ACL"/>
@@ -48,10 +48,8 @@
             <constraints>
                 <constraint firstItem="cgT-Zo-31A" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BkH-ee-mkO"/>
                 <constraint firstItem="BCP-E7-yKx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Q3c-2A-eJb"/>
-                <constraint firstAttribute="bottom" secondItem="cgT-Zo-31A" secondAttribute="bottom" constant="25.5" id="W0E-2Y-2DM"/>
                 <constraint firstItem="cgT-Zo-31A" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Ww9-db-UAr"/>
                 <constraint firstAttribute="trailing" secondItem="BCP-E7-yKx" secondAttribute="trailing" constant="15" id="qNg-u1-hhz"/>
-                <constraint firstItem="cgT-Zo-31A" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25.5" id="yW3-3W-7Bh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="205.07246376811597" y="-224.33035714285714"/>
