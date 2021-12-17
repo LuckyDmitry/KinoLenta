@@ -62,16 +62,20 @@ class NetworkingService {
         }
     }
     
-    func getById(_ id: Int) -> [MovieDomainModel] {
-        []
+    func getById(_ id: Int, callback: @escaping (MovieDomainModel) -> Void){
+        let queryInfo = getUrlItems(for: .getById, id: id)
+        queue.async {
+            assert(!Thread.isMainThread)
+            makeRequestSingleFilm(with: queryInfo, callback: callback)
+        }
     }
     
-    func getRecommendations(for movie: MovieDomainModel) -> [MovieDomainModel] {
-        []
-    }
-    
-    func getSimilar(to movie: MovieDomainModel) -> [MovieDomainModel] {
-        []
+    func getSimilar(_ id: Int, callback: @escaping ([QueryMovieModel]) -> Void) {
+        let queryInfo = getUrlItems(for: .getSimilar, id: id)
+        queue.async {
+            assert(!Thread.isMainThread)
+            makeRequest(with: queryInfo, callback: callback)
+        }
     }
     
     func getPopular(callback: @escaping ([QueryMovieModel]) -> Void) {
@@ -86,10 +90,6 @@ class NetworkingService {
         getCompilation(for: .getTrending, using: callback)
     }
     
-    func getSavedMovies(option: SavedMovieOption) -> [MovieDomainModel] {
-        []
-    }
-    
 }
 
 enum RequestTypes {
@@ -98,6 +98,8 @@ enum RequestTypes {
     case getPopular
     case getTopRated
     case getTrending
+    case getById
+    case getSimilar
 }
 
 struct QueryInfo {
@@ -115,7 +117,7 @@ extension NetworkingService {
     }
 }
 
-private func getUrlItems(for requestType: RequestTypes) -> QueryInfo {
+private func getUrlItems(for requestType: RequestTypes, id: Int? = nil) -> QueryInfo {
     lazy var token: String = APIKey.value
     var queryItems: [URLQueryItem] = []
     let queryItemToken = URLQueryItem(name: "api_key", value: token)
@@ -144,6 +146,12 @@ private func getUrlItems(for requestType: RequestTypes) -> QueryInfo {
         queryItems.append(queryItemSort)
         queryItems.append(queryItemAdult)
         queryItems.append(queryItemWatchMonetization)
+    case .getById:
+        assert(id != nil)
+        pathItem = "movie/\(id ?? 33)"
+    case .getSimilar:
+        assert(id != nil)
+        pathItem = "movie/\(id ?? 33)/similar"
     }
     return QueryInfo(pathItem: pathItem, queryItems: queryItems)
 }
@@ -151,22 +159,15 @@ private func getUrlItems(for requestType: RequestTypes) -> QueryInfo {
 private func makeRequest(with queryInfo: QueryInfo, callback:  @escaping ([QueryMovieModel]) -> Void) {
     let config = URLSessionConfiguration.default
     let session = URLSession(configuration: config)
-
-    var components = URLComponents()
-    components.scheme = "https"
-    components.host = "api.themoviedb.org"
-    components.path = "/3/\(queryInfo.pathItem)"
-    components.queryItems = queryInfo.queryItems
-
-    guard let url = components.url else {
-        print("url can't be composed")
+    guard let url = getUrl(with: queryInfo) else{
         return
     }
-
     let task = session.dataTask(with: url) { data, response, error in
         assert(!Thread.isMainThread)
-        guard error == nil else {
-            print ("error: \(error!)")
+        if data == nil {
+            if let error = error {
+                print("error: \(error)")
+            }
             return
         }
         
@@ -180,8 +181,52 @@ private func makeRequest(with queryInfo: QueryInfo, callback:  @escaping ([Query
             assert(Thread.isMainThread)
             callback(response)
         }
+        
     }
-    
     task.resume()
+}
+
+
+private func makeRequestSingleFilm(with queryInfo: QueryInfo, callback:  @escaping (MovieDomainModel) -> Void) {
+    let config = URLSessionConfiguration.default
+    let session = URLSession(configuration: config)
+    guard let url = getUrl(with: queryInfo) else{
+        return
+    }
+    let task = session.dataTask(with: url) { data, response, error in
+        assert(!Thread.isMainThread)
+        if data == nil {
+            if let error = error {
+                print("error: \(error)")
+            }
+            return
+        }
+        
+        guard let content = data else {
+            print("No data")
+            return
+        }
+        
+        do {
+            let response: MovieDomainModel = try parseObj(data: content)
+            DispatchQueue.main.async {
+                assert(Thread.isMainThread)
+                callback(response)
+            }
+        } catch{
+            print(error)
+        }
+        
+    }
+    task.resume()
+}
+
+private func getUrl(with queryInfo: QueryInfo) -> URL? {
+    var components = URLComponents()
+    components.scheme = "https"
+    components.host = "api.themoviedb.org"
+    components.path = "/3/\(queryInfo.pathItem)"
+    components.queryItems = queryInfo.queryItems
+    return components.url
 }
     
