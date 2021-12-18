@@ -120,10 +120,6 @@ final class CoordinatorImpl: Coordinator {
     }
     
     func openSearchWindow(context: UIViewController, movies: [QueryMovieModel]? = nil) {
-        let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
-        
-        let searchedMovieViewController = searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
-        
         let controller = tabBarController.viewControllers![1] as! SearchedMoviesViewController
         if let movies = movies {
             controller.setDisplayedItems(queryResults: movies.toSearchedMovieViewItems())

@@ -7,10 +7,6 @@
 
 import Foundation
 
-fileprivate enum Constant {
-    static let tmdbImageDomain = "https://image.tmdb.org/t/p/w500"
-}
-
 struct QueryMovieModel: Decodable {
     let posterPath: String?
     let adult: Bool?
@@ -28,7 +24,7 @@ struct QueryMovieModel: Decodable {
     
     var backdropURL: URL? {
         guard let backdropPath = backdropPath else { return nil }
-        return URL(string: Constant.tmdbImageDomain + backdropPath)
+        return Endpoint.smallImage(path: backdropPath)
     }
     
     var parsedDate: Date? {

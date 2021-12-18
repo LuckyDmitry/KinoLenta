@@ -111,9 +111,7 @@ final class MovieDetailViewController: UIViewController {
     // TODO: Will be removed
     private func populateElements() {
         let inset = view.frame.width / 4
-        
-        let systemFontSize = UIFont.systemFontSize
-        
+
         for section in sections {
             if descriptors[section] == nil {
                 descriptors[section] = []

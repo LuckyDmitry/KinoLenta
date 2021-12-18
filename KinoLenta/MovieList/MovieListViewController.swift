@@ -41,7 +41,7 @@ class MovieListViewController: UIViewController {
                 case .success(let movies):
                     self?.movieModels = movies
                     self?.collectionView.reloadData()
-                case .failure(let error):
+                case .failure(_):
                     break
                 }
             }

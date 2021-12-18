@@ -7,10 +7,6 @@
 
 import Foundation
 
-fileprivate enum Constant {
-    static let tmdbImageDomain = "https://image.tmdb.org/t/p/w500"
-}
-
 
 // MARK: - MovieDomainModel
 struct MovieDomainModel: Codable, Hashable {
@@ -40,7 +36,7 @@ struct MovieDomainModel: Codable, Hashable {
     
     var backdropURL: URL? {
         guard let backdropPath = backdropPath else { return nil }
-        return URL(string: Constant.tmdbImageDomain + backdropPath)
+        return Endpoint.smallImage(path: backdropPath)
     }
     
     var parsedDate: Date? {
