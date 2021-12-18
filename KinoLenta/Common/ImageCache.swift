@@ -26,6 +26,9 @@ final class ImageCache {
             )
         }
     }
+
+    // Note: UIImage should be safe to create and use from any thread
+    // See https://developer.apple.com/documentation/uikit/uiimage
     
     func load(for url: URL, traits: ImageSizeTraits = .normal, callback: @escaping (UIImage?) -> Void) {
         assert(Thread.isMainThread)
@@ -42,24 +45,24 @@ final class ImageCache {
                 return
             }
 
-            self?.downloadFromNetwork(imageUrl: url) { [weak self] imageData in
+            self?.downloadFromNetwork(imageUrl: url) { [weak self] imageData, image in
                 assert(Thread.isMainThread)
                 
                 self?.addToFileCache(imageData, url: url, traits: .normal)
 
-                let image = imageData?.toImage()
                 guard let image = image else {
                     callback(nil)
                     return
                 }
 
-                let thumbnail = image.downscaled(maxDimention: 256)
-                if let imageData = thumbnail.toData() {
-                    self?.addToFileCache(imageData, url: url, traits: .thumbnail)
-                }
+                image.downscaled(maxDimention: 256) { thumbnail, thumbnailData in
+                    if let imageData = thumbnailData {
+                        self?.addToFileCache(imageData, url: url, traits: .thumbnail)
+                    }
 
-                self?.addToInMemoryCache(thumbnail, url: url, traits: traits)
-                callback(traits == .normal ? image : thumbnail)
+                    self?.addToInMemoryCache(thumbnail, url: url, traits: traits)
+                    callback(traits == .normal ? image : thumbnail)
+                }
             }
         }
     }
@@ -78,8 +81,9 @@ final class ImageCache {
             let imageData = fileManager.fileExists(atPath: fileURL.path)
                 ? fileManager.contents(atPath: fileURL.path)
                 : nil
+            let image = imageData?.toImage()
             DispatchQueue.main.async {
-                callback(imageData?.toImage())
+                callback(image)
             }
         }
     }
@@ -96,14 +100,15 @@ final class ImageCache {
         directory.appendingPathComponent(url.imageNameForCaching(traits: traits))
     }
     
-    private func downloadFromNetwork(imageUrl: URL, callback: @escaping (Data?) -> Void) {
+    private func downloadFromNetwork(imageUrl: URL, callback: @escaping (Data?, UIImage?) -> Void) {
         DispatchQueue.global().async {
             self.downloadData(from: imageUrl) { data, _, error in
                 if let error = error {
                     print(error)
                 }
+                let image = data?.toImage()
                 DispatchQueue.main.async {
-                    callback(data)
+                    callback(data, image)
                 }
             }
         }
@@ -126,5 +131,17 @@ extension URL {
 
     fileprivate func inMemoryCacheKey(traits: ImageSizeTraits) -> NSString {
         NSString(string: imageNameForCaching(traits: traits))
+    }
+}
+
+extension UIImage {
+    func downscaled(maxDimention: CGFloat, callback: @escaping (UIImage, Data?) -> Void) {
+        DispatchQueue.global().async {
+            let image = self.downscaled(maxDimention: maxDimention)
+            let data = image.toData()
+            DispatchQueue.main.async {
+                callback(image, data)
+            }
+        }
     }
 }
