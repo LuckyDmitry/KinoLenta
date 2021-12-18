@@ -20,8 +20,13 @@
         }
       ],
       "color" : {
-        "platform" : "universal",
-        "reference" : "labelColor"
+        "color-space" : "srgb",
+        "components" : {
+          "alpha" : "1.000",
+          "blue" : "0.404",
+          "green" : "0.482",
+          "red" : "0.690"
+        }
       },
       "idiom" : "universal"
     }
