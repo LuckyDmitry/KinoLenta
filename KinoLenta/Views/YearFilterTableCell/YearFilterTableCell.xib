@@ -31,17 +31,34 @@
                         <color key="textColor" name="darkTextForeground"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyT-lp-cVX">
-                        <rect key="frame" x="15" y="10" width="345" height="30"/>
-                        <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="17"/>
-                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" title="от 2000 до 2005">
-                            <color key="titleColor" name="textPlaceholderForeground"/>
-                        </state>
-                        <connections>
-                            <action selector="showPickerAction:" destination="M1G-Xv-erY" eventType="touchUpInside" id="48A-SZ-O7T"/>
-                        </connections>
-                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HFl-Gz-D6B">
+                        <rect key="frame" x="10" y="10" width="350" height="20"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyT-lp-cVX">
+                                <rect key="frame" x="0.0" y="0.0" width="330" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="от 2000 до 2005">
+                                    <color key="titleColor" name="textPlaceholderForeground"/>
+                                </state>
+                                <connections>
+                                    <action selector="showPickerAction:" destination="M1G-Xv-erY" eventType="touchUpInside" id="48A-SZ-O7T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lfc-tY-AaV">
+                                <rect key="frame" x="330" y="0.0" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="ccy-pf-HiP"/>
+                                    <constraint firstAttribute="height" constant="20" id="tJi-x9-OIg"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="close_icon"/>
+                                <connections>
+                                    <action selector="cancelAction:" destination="M1G-Xv-erY" eventType="touchUpInside" id="0cn-ww-IKg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </stackView>
                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="606-ZL-Izd">
                         <rect key="frame" x="25" y="50" width="325" height="0.0"/>
                         <constraints>
@@ -50,22 +67,22 @@
                     </pickerView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="yyT-lp-cVX" firstAttribute="leading" secondItem="4UF-JS-gQR" secondAttribute="leading" constant="15" id="2Ls-0g-mee"/>
                     <constraint firstAttribute="bottom" secondItem="606-ZL-Izd" secondAttribute="bottom" priority="250" id="2qX-Ku-JvK"/>
-                    <constraint firstItem="yyT-lp-cVX" firstAttribute="top" secondItem="4UF-JS-gQR" secondAttribute="top" constant="10" id="88Z-qD-f1o"/>
                     <constraint firstAttribute="trailing" secondItem="rpa-HW-qWj" secondAttribute="trailing" constant="15" id="9f7-Ua-ysJ"/>
+                    <constraint firstItem="HFl-Gz-D6B" firstAttribute="leading" secondItem="4UF-JS-gQR" secondAttribute="leading" constant="10" id="Ah4-GI-ZiQ"/>
                     <constraint firstItem="rpa-HW-qWj" firstAttribute="leading" secondItem="4UF-JS-gQR" secondAttribute="leading" constant="15" id="Amc-QT-A8Z"/>
                     <constraint firstItem="rpa-HW-qWj" firstAttribute="top" secondItem="4UF-JS-gQR" secondAttribute="top" constant="10" id="Awq-zR-C6O"/>
                     <constraint firstItem="606-ZL-Izd" firstAttribute="top" secondItem="rpa-HW-qWj" secondAttribute="bottom" constant="10" id="FcH-kt-I1A"/>
                     <constraint firstItem="606-ZL-Izd" firstAttribute="leading" secondItem="4UF-JS-gQR" secondAttribute="leading" constant="25" id="KpL-4B-F72"/>
+                    <constraint firstItem="606-ZL-Izd" firstAttribute="top" secondItem="HFl-Gz-D6B" secondAttribute="bottom" constant="20" id="MZU-RE-Hup"/>
                     <constraint firstAttribute="trailing" secondItem="606-ZL-Izd" secondAttribute="trailing" constant="25" id="Tlq-FF-N5b"/>
-                    <constraint firstItem="yyT-lp-cVX" firstAttribute="bottom" secondItem="rpa-HW-qWj" secondAttribute="bottom" id="hH4-3r-qg0"/>
-                    <constraint firstItem="yyT-lp-cVX" firstAttribute="top" secondItem="rpa-HW-qWj" secondAttribute="top" id="sMt-GM-7O7"/>
-                    <constraint firstAttribute="trailing" secondItem="yyT-lp-cVX" secondAttribute="trailing" constant="15" id="uss-BY-zDq"/>
+                    <constraint firstAttribute="trailing" secondItem="HFl-Gz-D6B" secondAttribute="trailing" constant="15" id="dWI-yr-a5C"/>
+                    <constraint firstItem="HFl-Gz-D6B" firstAttribute="top" secondItem="4UF-JS-gQR" secondAttribute="top" constant="10" id="ykb-3U-6uS"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="cancelButton" destination="Lfc-tY-AaV" id="iXN-Id-eEd"/>
                 <outlet property="dateButton" destination="yyT-lp-cVX" id="1br-Oc-sKO"/>
                 <outlet property="datePicker" destination="606-ZL-Izd" id="jzV-Bh-hvl"/>
                 <outlet property="datePickerHeight" destination="v7b-Mp-Bzf" id="Oju-l0-gMv"/>
@@ -74,6 +91,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="close_icon" width="32" height="32"/>
         <namedColor name="darkTextForeground">
             <color red="0.125" green="0.125" blue="0.125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -22,17 +22,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wg3-2a-flC">
-                        <rect key="frame" x="15" y="15" width="65" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="ClZ-U8-iW2"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" name="darkTextForeground"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="xVp-OT-8AW">
-                        <rect key="frame" x="18" y="36" width="339" height="1"/>
+                        <rect key="frame" x="18" y="35" width="339" height="1"/>
                         <constraints>
                             <constraint firstAttribute="height" id="VQ3-do-FZE"/>
                         </constraints>
@@ -43,43 +34,73 @@
                             <action selector="raitingSliderAction:" destination="V9S-ll-srq" eventType="valueChanged" id="dDe-4F-rk1"/>
                         </connections>
                     </slider>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHq-3h-bkK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
-                        <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="15"/>
-                        <inset key="titleEdgeInsets" minX="0.0" minY="15" maxX="15" maxY="0.0"/>
-                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" title="☆ ☆ ☆ ☆ ☆">
-                            <color key="titleColor" name="textPlaceholderForeground"/>
-                        </state>
-                        <connections>
-                            <action selector="showSliderAction:" destination="V9S-ll-srq" eventType="touchUpInside" id="aYx-04-L5T"/>
-                        </connections>
-                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-OH-dvz">
+                        <rect key="frame" x="15" y="0.0" width="345" height="35"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wg3-2a-flC">
+                                <rect key="frame" x="0.0" y="15" width="65" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ClZ-U8-iW2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="darkTextForeground"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHq-3h-bkK">
+                                <rect key="frame" x="65" y="15" width="260" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="☆ ☆ ☆ ☆ ☆">
+                                    <color key="titleColor" name="textPlaceholderForeground"/>
+                                </state>
+                                <connections>
+                                    <action selector="showSliderAction:" destination="V9S-ll-srq" eventType="touchUpInside" id="aYx-04-L5T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxb-aO-hd0">
+                                <rect key="frame" x="325" y="15" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="7Ht-lV-Pym"/>
+                                    <constraint firstAttribute="height" constant="20" id="CKm-Yk-aHB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="close_icon"/>
+                                <connections>
+                                    <action selector="cancelAction:" destination="V9S-ll-srq" eventType="touchUpInside" id="S8D-PL-kck"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="oxb-aO-hd0" firstAttribute="top" secondItem="SHb-OH-dvz" secondAttribute="top" constant="15" id="9kW-9y-5MG"/>
+                            <constraint firstAttribute="height" constant="35" id="A9R-Pn-XwY"/>
+                            <constraint firstItem="oHq-3h-bkK" firstAttribute="top" secondItem="SHb-OH-dvz" secondAttribute="top" constant="15" id="NpR-kP-tfU"/>
+                            <constraint firstItem="Wg3-2a-flC" firstAttribute="top" secondItem="SHb-OH-dvz" secondAttribute="top" constant="15" id="ZyY-Ab-Djr"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="xVp-OT-8AW" firstAttribute="top" secondItem="oHq-3h-bkK" secondAttribute="bottom" id="0LX-es-s19"/>
-                    <constraint firstAttribute="trailing" secondItem="oHq-3h-bkK" secondAttribute="trailing" id="24i-LR-658"/>
-                    <constraint firstItem="Wg3-2a-flC" firstAttribute="leading" secondItem="Bej-t2-RFE" secondAttribute="leading" constant="15" id="EhQ-MK-c9p"/>
+                    <constraint firstAttribute="trailing" secondItem="SHb-OH-dvz" secondAttribute="trailing" constant="15" id="1YG-Zm-ArH"/>
+                    <constraint firstItem="xVp-OT-8AW" firstAttribute="top" secondItem="SHb-OH-dvz" secondAttribute="bottom" id="5Km-AT-7KA"/>
+                    <constraint firstItem="SHb-OH-dvz" firstAttribute="leading" secondItem="Bej-t2-RFE" secondAttribute="leading" constant="15" id="Kbq-f0-hBv"/>
                     <constraint firstItem="xVp-OT-8AW" firstAttribute="leading" secondItem="Bej-t2-RFE" secondAttribute="leadingMargin" id="OFK-XM-tru"/>
-                    <constraint firstItem="xVp-OT-8AW" firstAttribute="top" secondItem="Wg3-2a-flC" secondAttribute="bottom" id="Szo-VP-Pu8"/>
+                    <constraint firstItem="SHb-OH-dvz" firstAttribute="top" secondItem="Bej-t2-RFE" secondAttribute="top" id="QW9-sg-sXp"/>
                     <constraint firstAttribute="trailingMargin" secondItem="xVp-OT-8AW" secondAttribute="trailing" id="UEp-ii-dJ2"/>
-                    <constraint firstItem="oHq-3h-bkK" firstAttribute="top" secondItem="Bej-t2-RFE" secondAttribute="top" id="Wog-Od-iD9"/>
-                    <constraint firstItem="Wg3-2a-flC" firstAttribute="top" secondItem="Bej-t2-RFE" secondAttribute="top" constant="15" id="WwE-oa-cKL"/>
                     <constraint firstAttribute="bottomMargin" secondItem="xVp-OT-8AW" secondAttribute="bottom" priority="250" constant="2" id="nGO-vO-NmJ"/>
-                    <constraint firstItem="oHq-3h-bkK" firstAttribute="leading" secondItem="Bej-t2-RFE" secondAttribute="leading" id="qQM-k3-Cso"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="cancelButton" destination="oxb-aO-hd0" id="GJp-o0-DIF"/>
                 <outlet property="ratingSlider" destination="xVp-OT-8AW" id="R4P-Kd-wpZ"/>
                 <outlet property="sliderHeight" destination="VQ3-do-FZE" id="JIb-vX-9Kc"/>
-                <outlet property="sliderTopConstraint" destination="Szo-VP-Pu8" id="pbB-5A-5Wk"/>
+                <outlet property="sliderTopConstraint" destination="5Km-AT-7KA" id="mxw-s3-URZ"/>
                 <outlet property="valueButton" destination="oHq-3h-bkK" id="Myl-eR-xp2"/>
             </connections>
             <point key="canvasLocation" x="39.855072463768117" y="22.767857142857142"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="close_icon" width="32" height="32"/>
         <namedColor name="GreyColor">
             <color red="0.71372549019607845" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

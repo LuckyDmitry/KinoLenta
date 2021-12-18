@@ -1,9 +1,13 @@
 import Foundation
 import UIKit
 
+protocol SearchMoviesWithFilterDelegate: AnyObject {
+    func searchMovies()
+}
+
 final class FiltersFooterView: UIView {
     
-    weak var delegate: CloseScreenDelegate?
+    weak var delegate: SearchMoviesWithFilterDelegate?
     
     @IBOutlet private weak var filterButton: UIButton! {
         didSet {
@@ -11,6 +15,6 @@ final class FiltersFooterView: UIView {
         }
     }
     @IBAction private func showAction(_ sender: Any) {
-        delegate?.closeScreen()
+        delegate?.searchMovies()
     }
 }

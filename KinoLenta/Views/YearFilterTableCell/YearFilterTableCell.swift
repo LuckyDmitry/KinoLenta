@@ -4,6 +4,11 @@ import UIKit
 final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
         
     weak var delegate: UpdateTableDelegate?
+    var selectedYears: [ClosedRange<Int>]? {
+        let from = allYears[datePicker.selectedRow(inComponent: 0)]
+        let to = allYears[datePicker.selectedRow(inComponent: 1)]
+        return useThisFilter ? [from...to] : nil
+    }
 
     @IBOutlet private weak var datePicker: UIPickerView! {
         didSet {
@@ -14,6 +19,17 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
     
     @IBOutlet private weak var datePickerHeight: NSLayoutConstraint!
     @IBOutlet private weak var dateButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton! {
+        didSet {
+            cancelButton.isHidden = true
+        }
+    }
+    @IBAction func cancelAction(_ sender: Any) {
+        cancelButton.isHidden = true
+        dateButton.setTitle("Не выбрано", for: .normal)
+        useThisFilter = false
+        dateButton.setTitleColor(UIColor.textPlaceholderForeground, for: .normal)
+    }
     
     @IBAction private func showPickerAction(_ sender: Any) {
         
@@ -35,6 +51,7 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
         
     private let allYears = Array(1950...2021)
     private var isPickerShowing = false
+    private var useThisFilter = false
     
     func reset() {
         delegate = nil
@@ -64,6 +81,8 @@ extension YearFilterTableCell: UIPickerViewDataSource, UIPickerViewDelegate {
             : UIColor.darkOrangeTextForeground,
             for: .normal
         )
+        useThisFilter = true
+        cancelButton.isHidden = false
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
