@@ -10,6 +10,14 @@ import UIKit
 final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet private var placeHolderView: UIView!
     @IBOutlet private var moviesTableView: UITableView!
+    @IBOutlet var filterButton: UIButton! {
+        didSet {
+            let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .medium)
+            let largeBoldDoc = UIImage(systemName: "line.3.horizontal.decrease.circle.fill", withConfiguration: largeConfig)
+            filterButton.setImage(largeBoldDoc, for: .normal)
+        }
+        
+    }
     @IBOutlet var searchTextField: UITextField!
     private var collectionView: QuickItemFilterView!
     private var internalCoordinator: Coordinator?
@@ -17,7 +25,6 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     private var timer: Timer?
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
     var filterItems = [QuickItem]()
-    
     var coordinator: Coordinator? {
         get {
             assert(internalCoordinator != nil)
@@ -57,8 +64,11 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
         displayedItems = queryResults
     }
     
+    private var savedMovieIds: Set<Int> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTextField.layer.cornerRadius = 20
         moviesTableView.backgroundColor = .mainBackground
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
@@ -67,6 +77,12 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
         collectionView = QuickItemFilterView(frame: placeHolderView.bounds)
         collectionView.delegate = self
         placeHolderView.addSubview(collectionView)
+        
+        cacheService.getSavedMovies(option: .wishToWatch, completion: { [weak self] result in
+            if case .success(let movies) = result {
+                self?.savedMovieIds = Set(movies.map { $0.id })
+            }
+        })
         
         filterItems = GenreDecoderContainer.sharedMovieManager.getGenreNames().map {
             QuickItem(title: $0)
@@ -91,18 +107,24 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchTextField.becomeFirstResponder()
+        
     }
     
     @objc
     private func watchLaterButtonPressed(_ button: SelectedButton) {
-        let title: String
-        if button.isButtonSelected {
-            title = "Добавлено"
-            cacheService.saveMovies([], folderType: .wishToWatch, completion: nil)
-        } else {
-            title = "Смотреть позже"
-            cacheService.removeMovies([], directoryType: .wishToWatch, completion: nil)
-        }
+        let title = button.isButtonSelected ? "Смотреть позже" : "Добавлено" 
+        let movie = displayedItems[button.index]
+        
+        networkService.getById(movie.id, callback: { [weak self] model in
+            if button.isButtonSelected {
+                self?.savedMovieIds.insert(movie.id)
+                self?.cacheService.saveMovies([model], folderType: .wishToWatch, completion: nil)
+            } else {
+                self?.savedMovieIds.remove(movie.id)
+                self?.cacheService.removeMovies([model], directoryType: .wishToWatch, completion: nil)
+            }
+        })
+       
         button.setTitle(title, for: .normal)
         button.isButtonSelected = !button.isButtonSelected
     }
@@ -112,7 +134,16 @@ extension SearchedMoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let id = displayedItems[indexPath.row].id
-        coordinator?.openDetailMovie(withMovieId: id, context: self)
+        coordinator?.openDetailMovie(withMovieId: id, context: self) { [weak self] in
+            self?.cacheService.getSavedMovies(option: .wishToWatch, completion: { [weak self] result in
+                if case .success(let movies) = result {
+                    self?.savedMovieIds = Set(movies.map { $0.id })
+                    DispatchQueue.main.async {
+                        self?.moviesTableView.reloadData()
+                    }
+                }
+            })
+        }
     }
 }
 
@@ -135,6 +166,9 @@ extension SearchedMoviesViewController: UITableViewDataSource {
         cell.ratingView.setImage(url: url)
         cell.ratingView.rating = movie.rating
         cell.ratingView.layer.cornerRadius = 10
+        if savedMovieIds.contains(where: { $0 == movie.id }) {
+            cell.watchLaterButton.isButtonSelected = true
+        }
         
         cell.watchLaterButton.setTitle(cell.watchLaterButton.isButtonSelected ? "Добавлено" :
                                         "Смотреть позже", for: .normal)

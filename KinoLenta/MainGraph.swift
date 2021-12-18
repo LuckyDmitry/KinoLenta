@@ -80,7 +80,7 @@ final class MainGraph {
 
 // TODO: Will be moved
 protocol Coordinator {
-    func openDetailMovie(withMovieId id: Int, context: UIViewController)
+    func openDetailMovie(withMovieId id: Int, context: UIViewController, completion: (() -> ())?)
     func openFilterWindow(context: UIViewController)
     func openSearchWindow()
 }
@@ -96,7 +96,7 @@ final class CoordinatorImpl: Coordinator {
         self.tabBarController = tabBarController
     }
     
-    func openDetailMovie(withMovieId id: Int, context: UIViewController) {
+    func openDetailMovie(withMovieId id: Int, context: UIViewController, completion: (() -> ())? = nil) {
         let detailMovieViewController = MovieDetailViewController()
         detailMovieViewController.buttonActions = [(.wishToWatch, QuickItem(title: "Посмотреть")),
                                                    (.viewed, QuickItem(title: "Просмотрено"))]

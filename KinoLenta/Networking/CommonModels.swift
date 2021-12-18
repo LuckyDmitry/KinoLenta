@@ -9,7 +9,7 @@ import Foundation
 
 
 // MARK: - ProductionCountry
-struct ProductionCountry: Codable {
+struct ProductionCountry: Codable, Hashable {
     let iso3166_1: String?
     let name: String?
 
@@ -20,13 +20,13 @@ struct ProductionCountry: Codable {
 }
 
 // MARK: - Genre
-struct Genre: Codable {
+struct Genre: Codable, Hashable {
     let id: Int
     let name: String
 }
 
 // MARK: - ProductionCompany
-struct ProductionCompany: Codable {
+struct ProductionCompany: Codable, Hashable {
     let id: Int?
     let logoPath: String?
     let name: String?

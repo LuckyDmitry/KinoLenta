@@ -4,6 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -61,8 +63,12 @@
                                             <constraint firstAttribute="height" constant="60" id="Soy-57-t1J"/>
                                             <constraint firstAttribute="width" constant="60" id="gQ9-LE-za5"/>
                                         </constraints>
+                                        <color key="tintColor" name="unselectedTextForeground"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="magnifier_icon"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="line.3.horizontal.decrease.circle.fill" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="bold"/>
+                                        </state>
                                         <connections>
                                             <action selector="filterButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Kzu-7U-lAq"/>
                                         </connections>
@@ -98,6 +104,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="dxQ-W5-el3" id="YZR-tm-0I6"/>
                         <outlet property="bottomConstraint" destination="BcJ-6P-Jh5" id="rlG-h9-uW1"/>
+                        <outlet property="filterButton" destination="m1r-h1-eMn" id="FUZ-tP-qJV"/>
                         <outlet property="moviesTableView" destination="xmu-Lf-Zdc" id="pT6-QZ-21o"/>
                         <outlet property="placeHolderView" destination="3Iq-yg-GaU" id="54g-1a-069"/>
                         <outlet property="searchTextField" destination="Q3X-zV-xtC" id="C1W-VO-1YC"/>
@@ -111,7 +118,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="magnifier_icon" width="30" height="30"/>
+        <image name="line.3.horizontal.decrease.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="unselectedTextForeground">
+            <color red="0.66666666666666663" green="0.50980392156862742" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -65,6 +65,24 @@ final class MovieDetailViewController: UIViewController {
         view.addSubview(movieDetailCollectionView)
         view.backgroundColor = .mainBackground
         if let idMovie = idMovie {
+            
+            for buttonAction in buttonActions {
+                cache.getSavedMovies(option: buttonAction.optionType, completion: { result in
+                    if case .success(let movies) = result {
+                        if movies.contains(where: { $0.id == idMovie }) {
+                            let index = self.buttonActions.firstIndex(where: {
+                                $0.optionType == buttonAction.optionType
+                            }) ?? 0
+                            self.buttonActions[index].1.isSelected = true
+                            let section = self.sections.firstIndex(of: .actors) ?? 0
+                            DispatchQueue.main.async {
+                                self.movieDetailCollectionView.reloadSections(IndexSet(integer: section))
+                            }
+                        }
+                    }
+                })
+            }
+            
             service.getById(idMovie, callback: { movie in
                 self.selectedMovie = movie
                 self.populateElements()
@@ -104,7 +122,7 @@ final class MovieDetailViewController: UIViewController {
             case .title:
                 let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.title ?? "",
                                                              font: UIFont.boldSystemFont(ofSize: 50),
-                                                             textColor: UIColor.darkTextForeground)
+                                                             textColor: UIColor.black)
                 descriptors[section]?.append(textDescriptor)
             case .poster:
                 let imageDescriptor = DetailMovieImageDescriptor(imageUrl: selectedMovie.backdropURL,
@@ -113,7 +131,8 @@ final class MovieDetailViewController: UIViewController {
             case .details:
                 let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.overview ?? "",
                                                              font: UIFont.systemFont(ofSize: 18),
-                                                             textColor: UIColor.darkTextForeground.withAlphaComponent(0.5))
+                                                             textColor: UIColor.black.withAlphaComponent(0.5),
+                                                             alignment: .left)
                 descriptors[section]?.append(textDescriptor)
             case .description:
                 break
@@ -147,7 +166,8 @@ final class MovieDetailViewController: UIViewController {
                         guard var initSection = self.descriptors[section]?[i] as? DetailMovieReviewDescriptor else { return }
                         initSection.heightThreshold = 5000
                         self.descriptors[section]?[i] = initSection
-                        let section = self.sections.firstIndex(where: { $0 == .actions}) ?? 0
+                        let section = self.sections.firstIndex(of: .review) ?? 0
+                        
                         self.movieDetailCollectionView.reloadSections(IndexSet(integer: section))
                     })
                     descriptors[section]?.append(review)

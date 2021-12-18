@@ -131,7 +131,7 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         #warning("Need to pass movieID")
-        coordinator?.openDetailMovie(withMovieId: movieModels[indexPath.row].id, context: self)
+        coordinator?.openDetailMovie(withMovieId: movieModels[indexPath.row].id, context: self, completion: nil)
     }
 }
 
@@ -149,14 +149,16 @@ extension MovieListViewController: UICollectionViewDataSource {
         }
         
         let model = movieModels[indexPath.row]
+<<<<<<< HEAD
 //        let image = images[indexPath.row]
 //        let ratingText = ratings[indexPath.row]
         
+=======
+>>>>>>> 02736a6 (Merge branch 'master' into trifonov/code)
         if let url = model.backdropURL {
             cell.ratingView.setImage(url: url)
         }
         cell.layer.cornerRadius = Constants.cellCornerRadius
-//        cell.ratingView.rating = Double(ratingText)
         cell.ratingView.ratingView.isHidden = !showRating
         return cell
     }
