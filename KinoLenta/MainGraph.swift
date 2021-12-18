@@ -29,6 +29,7 @@ final class MainGraph {
     private lazy var moviesSamplingViewController: MoviesSamplingViewController = {
         let moviesSamplingViewController = MoviesSamplingViewController()
         moviesSamplingViewController.coordinator = coordinator
+        moviesSamplingViewController.dataProvider = networkService
         
         let searchImage = UIImage(systemName: "magnifyingglass")
         moviesSamplingViewController.tabBarItem = UITabBarItem(title: "Movie Sampling", image: searchImage, selectedImage: searchImage)
@@ -83,14 +84,16 @@ protocol Coordinator {
     func openDetailMovie(withMovieId id: Int, context: UIViewController, completion: (() -> ())?)
     func openFilterWindow(context: UIViewController)
     func openSearchWindow()
+    func openSearchWindow(context: UIViewController, movies: [QueryMovieModel]?)
 }
 
 // TODO: Will be moved
 final class CoordinatorImpl: Coordinator {
- 
+
     let tabBarController: UITabBarController
     
     let dataProvider = MockDataManager()
+    
     
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
@@ -116,18 +119,19 @@ final class CoordinatorImpl: Coordinator {
         context.present(filterVC, animated: true)
     }
     
-    func openSearchWindow(context: UIViewController) {
+    func openSearchWindow(context: UIViewController, movies: [QueryMovieModel]? = nil) {
         let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
         
         let searchedMovieViewController = searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
         
-        searchedMovieViewController.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
-        searchedMovieViewController.coordinator = self
-        
-        searchedMovieViewController.filterItems = GenreDecoderContainer.sharedMovieManager.getGenreNames().map {
-            QuickItem(title: $0)
+        let controller = tabBarController.viewControllers![1] as! SearchedMoviesViewController
+        if let movies = movies {
+            controller.setDisplayedItems(queryResults: movies.toSearchedMovieViewItems())
+        }
+        else {
+            controller.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
         }
         
-        context.present(searchedMovieViewController, animated: true)
+        tabBarController.selectedIndex = 1
     }
 }

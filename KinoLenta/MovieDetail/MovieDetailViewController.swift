@@ -120,7 +120,7 @@ final class MovieDetailViewController: UIViewController {
             }
             switch section {
             case .title:
-                let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.title ?? "",
+                let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.title,
                                                              font: UIFont.boldSystemFont(ofSize: 50),
                                                              textColor: UIColor.black)
                 descriptors[section]?.append(textDescriptor)

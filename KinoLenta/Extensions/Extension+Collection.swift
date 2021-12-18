@@ -24,3 +24,11 @@ extension Collection where Element == QueryMovieModel {
         }
     }
 }
+
+extension Collection where Element == QueryMovieModel {
+    func toCarouselData(genreSeparator: String = ", ") -> [CarouselData] {
+        self.map {
+            CarouselData(id: $0.id, image: $0.backdropURL, rating: $0.voteAverage, name: $0.title)
+        }
+    }
+}

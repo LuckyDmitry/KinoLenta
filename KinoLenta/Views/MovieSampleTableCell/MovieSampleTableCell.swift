@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 struct CarouselData {
+    let id: Int
     let image: URL?
     let rating: Double?
     let name: String?
@@ -11,6 +12,12 @@ final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
     
     var contextVC: UIViewController!
     var coordinator: Coordinator!
+    var originalItems: [QueryMovieModel] = []
+    var items: [CarouselData] = []
+    
+    func reloadData() {
+        collectionView.reloadData()
+    }
     
     @IBOutlet weak var sampleTitle: UILabel!
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -26,31 +33,9 @@ final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
     }
     
     @IBAction func showAllAction(_ sender: Any) {
-//        TODO: open movies screen
+        
+        coordinator.openSearchWindow(context: contextVC, movies: originalItems)
     }
-    
-    // TODO: Will be removed
-    private var items: [CarouselData] = [
-        CarouselData(
-            image: nil,
-            rating: 7,
-            name: "Название"
-        ),
-        CarouselData(
-            image: URL(string: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png"),
-            rating: 5,
-            name: "Название"
-        ),
-        CarouselData(
-            image: URL(string: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png"),
-            rating: 9,
-            name: "Название"
-        ),
-        CarouselData(
-            image: URL(string: "https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png"),
-            rating: 3,
-            name: "Название"
-        )]
 }
 
 
@@ -93,9 +78,8 @@ extension MovieSampleTableCell: UICollectionViewDataSource {
 
 extension MovieSampleTableCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        TODO: open here movie detail screen
-        #warning("need to pass movieID")
-        coordinator.openDetailMovie(withMovieId: 0, context: contextVC, completion: nil)
+        let movieId = items[indexPath.row]
+        coordinator.openDetailMovie(withMovieId: movieId.id, context: contextVC) {}
     }
 }
 

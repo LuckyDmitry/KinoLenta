@@ -69,7 +69,7 @@ struct MovieDomainModel: Codable, Hashable {
 
 
 // MARK: DataParser (not used)
-private func parseDate(date: String?) -> Date? {
+func parseDate(date: String?) -> Date? {
     guard let date = date else { return nil }
     
     let formatter = DateFormatter()
