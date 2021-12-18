@@ -18,7 +18,12 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
         }
         
     }
-    @IBOutlet var searchTextField: UITextField!
+    @IBOutlet var searchTextField: UITextField! {
+        didSet {
+            searchTextField.layer.borderWidth = 1
+            searchTextField.layer.borderColor = UIColor.pickerItemBackground.cgColor
+        }
+    }
     private var collectionView: QuickItemFilterView!
     private var internalCoordinator: Coordinator?
     private var displayedItems: [SearchedMovieViewItem] = []
