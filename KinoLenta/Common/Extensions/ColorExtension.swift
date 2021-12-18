@@ -13,6 +13,10 @@ extension UIColor {
         UIColor(named: "pickerUnselectedBackground") ?? .clear
     }
     
+    static var buttonTextColor: UIColor {
+        UIColor(named: "buttonTextColor") ?? .clear
+    }
+    
     static var buttonActiveBackground: UIColor {
         UIColor(named: "buttonActiveBackground") ?? .clear
     }

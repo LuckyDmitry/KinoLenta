@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -46,7 +47,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.94117647059999998" green="0.92941176469999998" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="mainBackground"/>
                                 <constraints>
                                     <constraint firstItem="jMG-rG-o3j" firstAttribute="centerX" secondItem="Tgi-ml-HF9" secondAttribute="centerX" id="3VW-z4-RIc"/>
                                     <constraint firstItem="jMG-rG-o3j" firstAttribute="centerY" secondItem="Tgi-ml-HF9" secondAttribute="centerY" constant="20" id="H1h-oB-2cg"/>
@@ -54,7 +55,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XJi-BO-DgX">
                                 <rect key="frame" x="0.0" y="144" width="414" height="752"/>
-                                <color key="backgroundColor" red="0.94117647059999998" green="0.92941176469999998" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="mainBackground"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Yng-Yw-Ac8">
                                     <size key="itemSize" width="180" height="270"/>
                                     <size key="estimatedItemSize" width="180" height="270"/>
@@ -106,6 +107,9 @@
     </scenes>
     <color key="tintColor" red="0.86274509803921573" green="0.74117647058823533" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
+        <namedColor name="mainBackground">
+            <color red="0.96078431372549022" green="0.94509803921568625" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

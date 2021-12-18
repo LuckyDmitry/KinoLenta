@@ -96,7 +96,7 @@ final class MovieDetailViewController: UIViewController {
             case .title:
                 let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.title,
                                                              font: UIFont.boldSystemFont(ofSize: 50),
-                                                             textColor: UIColor.black)
+                                                             textColor: UIColor.darkTextForeground)
                 descriptors[section]?.append(textDescriptor)
             case .poster:
                 let imageDescriptor = DetailMovieImageDescriptor(image: UIImage(),
@@ -105,7 +105,7 @@ final class MovieDetailViewController: UIViewController {
             case .details:
                 let textDescriptor = MovieTextItemDescriptor(title: selectedMovie.overview ?? "",
                                                              font: UIFont.systemFont(ofSize: 18),
-                                                             textColor: UIColor.black.withAlphaComponent(0.5))
+                                                             textColor: UIColor.darkTextForeground.withAlphaComponent(0.5))
                 descriptors[section]?.append(textDescriptor)
             case .description, .actors, .reviewTitle, .review:
                 break

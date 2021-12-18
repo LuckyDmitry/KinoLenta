@@ -59,6 +59,7 @@ class MovieListViewController: UIViewController {
         self.watchButton.tintColor = .pickerItemBackground
         self.watchedButton.tintColor = .mainBackground
         self.watchedButton.setTitleColor(.pickerItemBackground, for: .normal)
+        self.watchButton.setTitleColor(.buttonTextColor, for: .normal)
     }
     
     
@@ -155,7 +156,7 @@ extension UIButton {
         switch buttonState {
         case .selected:
             self.tintColor = .pickerItemBackground
-            self.setTitleColor(.white, for: .normal)
+            self.setTitleColor(.buttonTextColor, for: .normal)
         case .notSelected:
             self.tintColor = .mainBackground
             self.setTitleColor(.pickerItemBackground, for: .normal)

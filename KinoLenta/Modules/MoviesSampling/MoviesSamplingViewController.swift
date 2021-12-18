@@ -12,6 +12,13 @@ final class MoviesSamplingViewController: UIViewController {
             tableView.dataSource = self
         }
     }
+    @IBOutlet var searchButton: UIButton! {
+        didSet {
+            let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .medium)
+            let largeBoldDoc = UIImage(systemName: "magnifyingglass", withConfiguration: largeConfig)
+            searchButton.setImage(largeBoldDoc, for: .normal)
+        }
+    }
     @IBAction func onSearchButtonTap(_ sender: Any) {
         coordinator.openFilterWindow(context: self)
     }
