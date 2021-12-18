@@ -24,7 +24,7 @@ final class DetailMovieReviewCollectionViewCell: UICollectionViewCell {
     
     let openFullReviewButton: UIButton = {
         let button = UIButton()
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(UIColor.darkTextForeground, for: .normal)
         return button
     }()
     

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoviesSamplingViewController" customModule="KinoLenta" customModuleProvider="target">
             <connections>
+                <outlet property="searchButton" destination="i9Z-fJ-DYQ" id="0Cv-Kv-rq9"/>
                 <outlet property="tableView" destination="nQv-Ov-ux9" id="9I8-zp-MlX"/>
                 <outlet property="view" destination="iN0-l3-epB" id="H4I-Ah-f50"/>
             </connections>
@@ -26,7 +28,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="КиноLenta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qO7-P3-unM">
                             <rect key="frame" x="15" y="15" width="309" height="42"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                            <color key="textColor" name="DarkColor"/>
+                            <color key="textColor" name="darkTextForeground"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9Z-fJ-DYQ">
@@ -35,8 +37,14 @@
                                 <constraint firstAttribute="height" constant="60" id="FZj-V7-AFN"/>
                                 <constraint firstAttribute="width" constant="60" id="GU9-Lv-r3O"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                            <color key="tintColor" name="unselectedTextForeground"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" image="magnifier_icon"/>
+                            <state key="normal">
+                                <color key="titleColor" name="unselectedTextForeground"/>
+                                <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="large"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                            </state>
                             <connections>
                                 <action selector="onSearchButtonTap:" destination="-1" eventType="touchUpInside" id="qKf-8a-md8"/>
                             </connections>
@@ -68,16 +76,19 @@
                 <constraint firstItem="nQv-Ov-ux9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="kfe-ay-Kp1"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cy9-bz-r9a" secondAttribute="trailing" id="nhr-Bu-N69"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="114"/>
+            <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
         </view>
     </objects>
     <resources>
-        <image name="magnifier_icon" width="30" height="30"/>
-        <namedColor name="DarkColor">
-            <color red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <namedColor name="darkTextForeground">
+            <color red="0.125" green="0.125" blue="0.125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="mainBackground">
             <color red="0.96078431372549022" green="0.94509803921568625" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="unselectedTextForeground">
+            <color red="0.66666666666666663" green="0.50980392156862742" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

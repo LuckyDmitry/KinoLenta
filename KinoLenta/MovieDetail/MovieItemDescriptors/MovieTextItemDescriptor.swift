@@ -24,7 +24,7 @@ struct MovieTextItemDescriptor: CollectionViewCellDescriptor {
     var cellClass: UICollectionReusableView.Type = DetailMovieTextCollectionViewCell.self
     let title: String
     let font: UIFont
-    var textColor: UIColor = .black
+    var textColor: UIColor = .darkTextForeground
     var alignment: NSTextAlignment = .center
     var isMultiline: Bool = true
     private let layoutManager = DetailMovieTextLayoutManager()
