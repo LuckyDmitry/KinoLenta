@@ -131,7 +131,6 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        #warning("Need to pass movieID")
         coordinator?.openDetailMovie(withMovieId: movieModels[indexPath.row].id, context: self, completion: nil)
     }
 }

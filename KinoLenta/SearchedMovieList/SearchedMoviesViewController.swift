@@ -62,6 +62,10 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     
     func setDisplayedItems(queryResults: [SearchedMovieViewItem]) {
         displayedItems = queryResults
+        DispatchQueue.main.async { [self]
+            self.moviesTableView.reloadData()
+        }
+        
     }
     
     private var savedMovieIds: Set<Int> = []
@@ -106,8 +110,6 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        searchTextField.becomeFirstResponder()
-        
     }
     
     @objc

@@ -84,7 +84,6 @@
 		C644C7032768BEEA0078E9FD /* PosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644C6FE2768BEEA0078E9FD /* PosterCell.swift */; };
 		C644C7042768BEEA0078E9FD /* MovieList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C644C7002768BEEA0078E9FD /* MovieList.storyboard */; };
 		C644C7052768BEEA0078E9FD /* MovieListConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644C7012768BEEA0078E9FD /* MovieListConstants.swift */; };
-		C69DD10F276C99CC002567E4 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69DD10E276C99CC002567E4 /* NetworkingService.swift */; };
 		CE1144BD276B61F800435D70 /* movies_top_rated.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144B7276B61F800435D70 /* movies_top_rated.json */; };
 		CE1144BE276B61F800435D70 /* tv_genres_ru.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144B8276B61F800435D70 /* tv_genres_ru.json */; };
 		CE1144BF276B61F800435D70 /* movie_discover_horrors_ru_region.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1144B9276B61F800435D70 /* movie_discover_horrors_ru_region.json */; };
@@ -1011,7 +1010,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6K48877LFZ;
+				DEVELOPMENT_TEAM = F59T87TWR8;
 				INFOPLIST_FILE = KinoLenta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1031,7 +1030,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6K48877LFZ;
+				DEVELOPMENT_TEAM = F59T87TWR8;
 				INFOPLIST_FILE = KinoLenta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (

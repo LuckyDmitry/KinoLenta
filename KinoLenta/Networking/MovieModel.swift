@@ -7,6 +7,9 @@
 
 import Foundation
 
+fileprivate enum Constant {
+    static let tmdbImageDomain = "https://image.tmdb.org/t/p/w500"
+}
 
 struct QueryMovieModel: Decodable {
     let posterPath: String?
@@ -22,6 +25,15 @@ struct QueryMovieModel: Decodable {
     let voteCount: Int?
     let video: Bool?
     let voteAverage: Double?
+    
+    var backdropURL: URL? {
+        guard let backdropPath = backdropPath else { return nil }
+        return URL(string: Constant.tmdbImageDomain + backdropPath)
+    }
+    
+    var parsedDate: Date? {
+        parseDate(date: releaseDate)
+    }
 
     enum CodingKeys: String, CodingKey {
         case posterPath = "poster_path"
