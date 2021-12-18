@@ -7,6 +7,19 @@
 
 import UIKit
 
+extension UITextField {
+    func setLeftPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
+    }
+}
+
 final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet private var placeHolderView: UIView!
     @IBOutlet private var moviesTableView: UITableView!
@@ -21,6 +34,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     @IBOutlet var searchTextField: UITextField! {
         didSet {
             searchTextField.layer.borderWidth = 1
+            searchTextField.setLeftPaddingPoints(10)
             searchTextField.layer.borderColor = UIColor.pickerItemBackground.cgColor
         }
     }
@@ -87,8 +101,8 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
         collectionView.delegate = self
         placeHolderView.addSubview(collectionView)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+//        self.moviesTableView.addGestureRecognizer(tapGesture)
         
         cacheService.getSavedMovies(option: .wishToWatch, completion: { [weak self] result in
             if case .success(let movies) = result {
