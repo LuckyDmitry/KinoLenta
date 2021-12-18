@@ -41,7 +41,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     @IBOutlet var searchViewTopConstraint: NSLayoutConstraint!
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 0.5,
+        timer = Timer.scheduledTimer(timeInterval: 0.25,
                              target: self,
                              selector: #selector(findMovies),
                              userInfo: nil,
@@ -161,7 +161,7 @@ extension SearchedMoviesViewController: UITableViewDataSource {
         cell.movieGenre.text = movie.genre
         cell.movieDescription.text = movie.description
         guard let url = URL(string: movie.image ?? "") else {
-            fatalError("URL")
+            return UITableViewCell()
         }
         cell.ratingView.setImage(url: url)
         cell.ratingView.rating = movie.rating
