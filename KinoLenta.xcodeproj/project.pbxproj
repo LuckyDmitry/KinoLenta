@@ -44,6 +44,7 @@
 		4B8C1A57276515D9002A637C /* QuickItemFilterCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C1A54276515D8002A637C /* QuickItemFilterCollectionViewLayout.swift */; };
 		4B8C1A58276515D9002A637C /* QuickItemFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C1A55276515D8002A637C /* QuickItemFilterCollectionViewCell.swift */; };
 		4B8C1A59276515D9002A637C /* QuickItemFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C1A56276515D9002A637C /* QuickItemFilterView.swift */; };
+		61463A2C276DE35B005ABA9A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61463A2B276DE35B005ABA9A /* Endpoint.swift */; };
 		61C4D4AE276CD9A500D5C6A3 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C4D4AD276CD9A500D5C6A3 /* APIKey.swift */; };
 		61C4D4B2276D099E00D5C6A3 /* ImageSizeTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C4D4B1276D099E00D5C6A3 /* ImageSizeTraits.swift */; };
 		66852C99276794860055E4A1 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66852C94276794860055E4A1 /* MovieModel.swift */; };
@@ -159,6 +160,7 @@
 		4B8C1A54276515D8002A637C /* QuickItemFilterCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickItemFilterCollectionViewLayout.swift; sourceTree = "<group>"; };
 		4B8C1A55276515D8002A637C /* QuickItemFilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickItemFilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B8C1A56276515D9002A637C /* QuickItemFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickItemFilterView.swift; sourceTree = "<group>"; };
+		61463A2B276DE35B005ABA9A /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		61C4D4AD276CD9A500D5C6A3 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIKey.swift; path = KinoLenta/Generated/APIKey.swift; sourceTree = "<group>"; };
 		61C4D4B1276D099E00D5C6A3 /* ImageSizeTraits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeTraits.swift; sourceTree = "<group>"; };
 		66852C94276794860055E4A1 /* MovieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				66852C96276794860055E4A1 /* SearchModel.swift */,
 				66852C97276794860055E4A1 /* TVModel.swift */,
 				66852C98276794860055E4A1 /* MovieDomainModel.swift */,
+				61463A2B276DE35B005ABA9A /* Endpoint.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -824,6 +827,7 @@
 				66852C9B276794860055E4A1 /* SearchModel.swift in Sources */,
 				4B0BA6742764D743008507EE /* SearchedMovieViewItem.swift in Sources */,
 				66852CA3276794AA0055E4A1 /* DataManager.swift in Sources */,
+				61463A2C276DE35B005ABA9A /* Endpoint.swift in Sources */,
 				7E9B0D02276CEAD100439B0F /* ImageExtension.swift in Sources */,
 				7EFA861627687A4400523248 /* MovieSampleTableCell.swift in Sources */,
 				C644C7032768BEEA0078E9FD /* PosterCell.swift in Sources */,
@@ -1010,14 +1014,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F59T87TWR8;
+				DEVELOPMENT_TEAM = R77689U7U8;
 				INFOPLIST_FILE = KinoLenta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trifonov.KinoLenta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stonespb.KinoLenta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1030,14 +1034,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F59T87TWR8;
+				DEVELOPMENT_TEAM = R77689U7U8;
 				INFOPLIST_FILE = KinoLenta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trifonov.KinoLenta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stonespb.KinoLenta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

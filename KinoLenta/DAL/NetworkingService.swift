@@ -223,8 +223,8 @@ private func makeRequestSingleFilm(with queryInfo: QueryInfo, callback:  @escapi
 
 private func getUrl(with queryInfo: QueryInfo) -> URL? {
     var components = URLComponents()
-    components.scheme = "https"
-    components.host = "api.themoviedb.org"
+    components.scheme = Endpoint.apiBaseURL.scheme
+    components.host = Endpoint.apiBaseURL.host
     components.path = "/3/\(queryInfo.pathItem)"
     components.queryItems = queryInfo.queryItems
     return components.url

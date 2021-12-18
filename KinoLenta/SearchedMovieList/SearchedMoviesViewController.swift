@@ -67,7 +67,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     
     func setDisplayedItems(queryResults: [SearchedMovieViewItem]) {
         displayedItems = queryResults
-        DispatchQueue.main.async { [self]
+        DispatchQueue.main.async {
             self.moviesTableView.reloadData()
         }
         
