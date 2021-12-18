@@ -20,10 +20,9 @@ final class MoviesSamplingViewController: UIViewController {
         }
     }
     @IBAction func onSearchButtonTap(_ sender: Any) {
-        coordinator.openFilterWindow(context: self)
+        coordinator.openSearchWindow()
     }
 }
-
 
 #warning("mock data")
 extension MoviesSamplingViewController: UITableViewDelegate, UITableViewDataSource {

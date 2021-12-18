@@ -8,7 +8,8 @@
 import UIKit
 
 struct SearchedMovieViewItem {
-    let image: UIImage?
+    let id: Int
+    let image: String?
     let title: String
     let genre: String?
     let description: String?

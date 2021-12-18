@@ -13,7 +13,7 @@ fileprivate enum Constant {
 
 
 // MARK: - MovieDomainModel
-struct MovieDomainModel: Codable {
+struct MovieDomainModel: Codable, Hashable {
     let adult: Bool?
     let backdropPath: String?
     let budget: Int?

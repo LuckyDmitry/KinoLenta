@@ -27,7 +27,7 @@ struct DetailMovieImageLayoutManager: LayoutManager {
 
 struct DetailMovieImageDescriptor: CollectionViewCellDescriptor {
     let cellClass: UICollectionReusableView.Type = DetailMovieImageCollectionViewCell.self
-    let image: UIImage?
+    let imageUrl: URL?
     var inset: UIEdgeInsets = .zero
     private let placeholderImage = UIImage.moviePlaceholder
     private let layoutManager = DetailMovieImageLayoutManager()
@@ -41,7 +41,9 @@ struct DetailMovieImageDescriptor: CollectionViewCellDescriptor {
         guard let cell = cell as? DetailMovieImageCollectionViewCell else {
             fatalError("Invalid cell type")
         }
-        cell.imageView.image = image ?? placeholderImage
+        if let imageUrl = imageUrl {
+            cell.imageView.setImage(url: imageUrl)
+        }
         cell.insets = inset
         return cell
         

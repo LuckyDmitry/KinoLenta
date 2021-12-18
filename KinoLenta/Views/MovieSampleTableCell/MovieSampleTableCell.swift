@@ -95,7 +95,7 @@ extension MovieSampleTableCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        TODO: open here movie detail screen
         #warning("need to pass movieID")
-        coordinator.openDetailMovie(withMovieId: 0, context: contextVC)
+        coordinator.openDetailMovie(withMovieId: 0, context: contextVC, completion: nil)
     }
 }
 

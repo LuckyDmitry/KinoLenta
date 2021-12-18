@@ -13,7 +13,6 @@ enum GenreDecoderContainer {
     static let sharedTVManager = GenreDecoder(fileURL: MockJsonPaths.tvGenrePath.fileURL)
 }
 
-
 class GenreDecoder {
     
     private var intIndexed: [Int: String] = [:]

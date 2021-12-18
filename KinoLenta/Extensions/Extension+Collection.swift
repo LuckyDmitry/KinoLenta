@@ -12,7 +12,8 @@ extension Collection where Element == QueryMovieModel {
     func toSearchedMovieViewItems(genreSeparator: String = ", ") -> [SearchedMovieViewItem] {
         self.map {
             SearchedMovieViewItem(
-                image: nil,
+                id: $0.id,
+                image: "https://image.tmdb.org/t/p/original/" + ($0.backdropPath ?? ""),
                 title: $0.title,
                 genre: $0.genreIDS?.compactMap {
                     GenreDecoderContainer.sharedMovieManager.getByID($0)
