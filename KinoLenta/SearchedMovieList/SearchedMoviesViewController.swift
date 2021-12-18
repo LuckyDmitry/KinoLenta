@@ -82,6 +82,9 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
         collectionView.delegate = self
         placeHolderView.addSubview(collectionView)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+        
         cacheService.getSavedMovies(option: .wishToWatch, completion: { [weak self] result in
             if case .success(let movies) = result {
                 self?.savedMovieIds = Set(movies.map { $0.id })
@@ -93,6 +96,10 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
         }
         collectionView.items = filterItems
         
+    }
+    
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        searchTextField.resignFirstResponder()
     }
 
     @IBAction func filterButtonPressed(_ sender: UIButton) {
