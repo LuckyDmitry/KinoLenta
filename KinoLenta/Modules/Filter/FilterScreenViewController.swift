@@ -8,8 +8,13 @@ struct FilterFields {
     let years: [ClosedRange<Int>]?
 }
 
+protocol FilterScreenDelegate: AnyObject {
+    func filterChosen(_ filters: FilterFields)
+}
+
 final class FilterScreenViewController: UIViewController {
     
+    weak var delegate: FilterScreenDelegate?
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
             tableView.register(RatingFilterTableCell.self)
@@ -130,14 +135,14 @@ extension FilterScreenViewController: CloseScreenDelegate, SearchMoviesWithFilte
               let ratingCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? RatingFilterTableCell else {
                   return
               }
-//        TODO: make here request
         let filterFields = FilterFields(
             genre: genreCell.selectedField,
             country: countryCell.selectedField,
             rating: ratingCell.selectedRating,
             years: yearCell.selectedYears
         )
-        print(filterFields)
+        delegate?.filterChosen(filterFields)
+        dismiss(animated: true)
     }
 }
 
