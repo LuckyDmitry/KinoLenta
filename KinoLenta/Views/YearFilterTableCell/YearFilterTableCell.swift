@@ -75,13 +75,13 @@ extension YearFilterTableCell: UIPickerViewDataSource, UIPickerViewDelegate {
         
         dateButton.setTitle("от \(allYears[fromDate]) до \(allYears[toDate])", for: .normal)
         
-        dateButton.setTitleColor(
-            allYears[fromDate] > allYears[toDate]
-            ? .red
-            : UIColor.darkOrangeTextForeground,
-            for: .normal
-        )
-        useThisFilter = true
+        if allYears[fromDate] > allYears[toDate] {
+            dateButton.setTitleColor(.red, for: .normal)
+            useThisFilter = false
+        } else {
+            dateButton.setTitleColor(UIColor.darkOrangeTextForeground, for: .normal)
+            useThisFilter = true
+        }
         cancelButton.isHidden = false
     }
 
