@@ -106,6 +106,8 @@ extension QuickItemFilterView: UICollectionViewDataSource {
         cell.genreLabel.text = item.title
         cell.isItemSelected = item.isSelected
         cell.genreLabel.sizeToFit()
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.pickerItemBackground.cgColor
         cell.layer.cornerRadius = ceil(cell.bounds.height / 2)
         return cell
     }

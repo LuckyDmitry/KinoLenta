@@ -11,8 +11,8 @@ final class QuickItemFilterCollectionViewCell: UICollectionViewCell {
     @IBOutlet var genreLabel: UILabel!
     var isItemSelected: Bool = false {
         didSet {
-            contentView.backgroundColor = isItemSelected ? .pickerItemBackground : .white
-            genreLabel.textColor = isItemSelected ? .white : .buttonActiveBackground
+            contentView.backgroundColor = isItemSelected ? .pickerItemBackground : .mainBackground
+            genreLabel.textColor = isItemSelected ? .mainBackground : .pickerItemBackground
         }
     }
 }
