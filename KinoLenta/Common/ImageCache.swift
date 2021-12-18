@@ -27,47 +27,73 @@ final class ImageCache {
         }
     }
     
-    func load(for url: URL, callback: @escaping (UIImage?) -> Void) {
+    func load(for url: URL, traits: ImageSizeTraits = .normal, callback: @escaping (UIImage?) -> Void) {
         assert(Thread.isMainThread)
-        let fileURL = directory.appendingPathComponent(url.nameForCaching())
-        let imageKey = NSString(string: url.nameForCaching())
-        if let image = inMemoryCache.object(forKey: imageKey) {
+        if let image = readFromInMemoryCache(url: url, traits: traits) {
             callback(image)
             return
         }
 
-        readFromFileCache(from: fileURL) { [weak self] image in
+        readFromFileCache(url: url, traits: traits) { [weak self] image in
             assert(Thread.isMainThread)
             if let image = image {
-                self?.inMemoryCache.setObject(image, forKey: imageKey)
+                self?.addToInMemoryCache(image, url: url, traits: traits)
                 callback(image)
                 return
             }
 
             self?.downloadFromNetwork(imageUrl: url) { [weak self] imageData in
                 assert(Thread.isMainThread)
-                if let imageData = imageData {
-                    self?.addToFileCache(imageData, fileURL: fileURL)
-                }
+                
+                self?.addToFileCache(imageData, url: url, traits: .normal)
+
                 let image = imageData?.toImage()
-                if let image = image {
-                    self?.inMemoryCache.setObject(image, forKey: imageKey)
+                guard let image = image else {
+                    callback(nil)
+                    return
                 }
 
-                callback(image)
+                let thumbnail = image.downscaled(maxDimention: 256)
+                if let imageData = thumbnail.toData() {
+                    self?.addToFileCache(imageData, url: url, traits: .thumbnail)
+                }
+
+                self?.addToInMemoryCache(thumbnail, url: url, traits: traits)
+                callback(traits == .normal ? image : thumbnail)
             }
         }
     }
 
-    private func readFromFileCache(from url: URL, callback: @escaping (UIImage?) -> Void) {
+    private func readFromInMemoryCache(url: URL, traits: ImageSizeTraits) -> UIImage? {
+        inMemoryCache.object(forKey: url.inMemoryCacheKey(traits: traits))
+    }
+
+    private func addToInMemoryCache(_ image: UIImage, url: URL, traits: ImageSizeTraits) {
+        inMemoryCache.setObject(image, forKey: url.inMemoryCacheKey(traits: traits))
+    }
+
+    private func readFromFileCache(url: URL, traits: ImageSizeTraits, callback: @escaping (UIImage?) -> Void) {
+        let fileURL = fileCachePath(for: url, traits: traits)
         queue.async { [fileManager] in
-            let imageData = fileManager.fileExists(atPath: url.path)
-            ? fileManager.contents(atPath: url.path)
-            : nil
+            let imageData = fileManager.fileExists(atPath: fileURL.path)
+                ? fileManager.contents(atPath: fileURL.path)
+                : nil
             DispatchQueue.main.async {
                 callback(imageData?.toImage())
             }
         }
+    }
+
+    private func addToFileCache(_ imageData: Data?, url: URL, traits: ImageSizeTraits) {
+        guard let imageData = imageData else { return }
+        let fileURL = fileCachePath(for: url, traits: traits)
+        queue.async(flags: .barrier) {
+            try? imageData.write(to: fileURL)
+        }
+    }
+
+    private func fileCachePath(for url: URL, traits: ImageSizeTraits) -> URL {
+        directory.appendingPathComponent(url.imageNameForCaching(traits: traits))
     }
     
     private func downloadFromNetwork(imageUrl: URL, callback: @escaping (Data?) -> Void) {
@@ -83,13 +109,22 @@ final class ImageCache {
         }
     }
     
-    private func addToFileCache(_ imageData: Data, fileURL: URL) {
-        queue.async(flags: .barrier) {
-            try? imageData.write(to: fileURL)
-        }
-    }
-    
     private func downloadData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+}
+
+extension URL {
+    fileprivate func imageNameForCaching(traits: ImageSizeTraits) -> String {
+        switch traits {
+        case .normal:
+            return nameForCaching()
+        case .thumbnail:
+            return nameForCaching() + "_thumbnail"
+        }
+    }
+
+    fileprivate func inMemoryCacheKey(traits: ImageSizeTraits) -> NSString {
+        NSString(string: imageNameForCaching(traits: traits))
     }
 }

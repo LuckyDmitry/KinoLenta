@@ -38,7 +38,7 @@ final class RatingView: UIView {
     private var cancellationHandle: CancellationHandle?
 
     func setImage(url: URL) {
-        cancellationHandle = imageView.setImage(url: url)
+        cancellationHandle = imageView.setImage(url: url, traits: .thumbnail)
         setBorder(isBorderActive: false)
     }
     
