@@ -22,7 +22,7 @@ final class MainGraph {
         movieListViewController.coordinator = coordinator
         movieListViewController.cacheService = cacheService
         let wishlistImage = UIImage(systemName: "list.and.film")
-        movieListViewController.tabBarItem = UITabBarItem(title: "Movie List", image: wishlistImage, selectedImage: wishlistImage)
+        movieListViewController.tabBarItem = UITabBarItem(title: "Избранное", image: wishlistImage, selectedImage: wishlistImage)
         return movieListViewController
     }()
     
@@ -31,8 +31,8 @@ final class MainGraph {
         moviesSamplingViewController.coordinator = coordinator
         moviesSamplingViewController.dataProvider = networkService
         
-        let searchImage = UIImage(systemName: "magnifyingglass")
-        moviesSamplingViewController.tabBarItem = UITabBarItem(title: "Movie Sampling", image: searchImage, selectedImage: searchImage)
+        let searchImage = UIImage(systemName: "film")
+        moviesSamplingViewController.tabBarItem = UITabBarItem(title: "Лента", image: searchImage, selectedImage: searchImage)
         return moviesSamplingViewController
     }()
     
@@ -51,8 +51,8 @@ final class MainGraph {
         }
         
         
-        let mainScreenImage = UIImage(systemName: "film")
-        searchedMovieViewController.tabBarItem = UITabBarItem(title: "Searched", image: mainScreenImage, selectedImage: mainScreenImage)
+        let mainScreenImage = UIImage(systemName: "magnifyingglass")
+        searchedMovieViewController.tabBarItem = UITabBarItem(title: "Поиск", image: mainScreenImage, selectedImage: mainScreenImage)
         return searchedMovieViewController
     }()
         
