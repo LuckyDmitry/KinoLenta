@@ -41,9 +41,9 @@ struct DetailMovieImageDescriptor: CollectionViewCellDescriptor {
         guard let cell = cell as? DetailMovieImageCollectionViewCell else {
             fatalError("Invalid cell type")
         }
-        cell.cancellationHandle?.isCancelled = true
+        cell.cancellation?.cancel()
         if let imageUrl = imageUrl {
-            cell.cancellationHandle = cell.imageView.setImage(url: imageUrl)
+            cell.cancellation = cell.imageView.setImage(url: imageUrl)
         }
         cell.insets = inset
         return cell

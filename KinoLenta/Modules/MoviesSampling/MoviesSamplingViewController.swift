@@ -36,55 +36,56 @@ extension MoviesSamplingViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            return (tableView.dequeueReusableCell(
-                withIdentifier: "MovieSampleTableCell",
-                for: indexPath
-            ) as! MovieSampleTableCell).configured { cell in
-                cell.sampleTitle.text =
-                    NSLocalizedString("featured_screen_trending_title",
-                                      comment: "Trending collection title on featured movies screen")
-                cell.contextVC = self
-                dataProvider.getTrending { data in
-                    cell.originalItems = data
-                    cell.items = data.toCarouselData()
-                    cell.reloadData()
-                }
-                cell.coordinator = coordinator
-            }
+            return cell(
+                in: tableView,
+                forRowAt: indexPath,
+                title: NSLocalizedString("featured_screen_trending_title",
+                                         comment: "Trending collection title on featured movies screen"),
+                getData: dataProvider.getTrending
+            )
         case 1:
-            return (tableView.dequeueReusableCell(
-                withIdentifier: "MovieSampleTableCell",
-                for: indexPath
-            ) as! MovieSampleTableCell).configured { cell in
-                cell.sampleTitle.text =
-                    NSLocalizedString("featured_screen_popular_title",
-                                      comment: "Popular collection title on featured movies screen")
-                cell.contextVC = self
-                dataProvider.getPopular { data in
-                    cell.originalItems = data
-                    cell.items = data.toCarouselData()
-                    cell.reloadData()
-                }
-                cell.coordinator = coordinator
-            }
+            return cell(
+                in: tableView,
+                forRowAt: indexPath,
+                title: NSLocalizedString("featured_screen_popular_title",
+                                         comment: "Popular collection title on featured movies screen"),
+                getData: dataProvider.getPopular
+            )
         case 2:
-            return (tableView.dequeueReusableCell(
-                withIdentifier: "MovieSampleTableCell",
-                for: indexPath
-            ) as! MovieSampleTableCell).configured { cell in
-                cell.sampleTitle.text =
-                    NSLocalizedString("featured_screen_top_rated_title",
-                                      comment: "Top rated collection title on featured movies screen")
-                cell.contextVC = self
-                dataProvider.getTopRated { data in
-                    cell.originalItems = data
-                    cell.items = data.toCarouselData()
-                    cell.reloadData()
-                }
-                cell.coordinator = coordinator
-            }
+            return cell(
+                in: tableView,
+                forRowAt: indexPath,
+                title:  NSLocalizedString("featured_screen_top_rated_title",
+                                          comment: "Top rated collection title on featured movies screen"),
+                getData: dataProvider.getTopRated
+            )
         default:
             return UITableViewCell()
+        }
+    }
+
+    private func cell(
+        in tableView: UITableView,
+        forRowAt indexPath: IndexPath,
+        title: String,
+        getData: (@escaping ([QueryMovieModel]?) -> Void) -> CancellationHandle
+    ) -> MovieSampleTableCell {
+        (tableView.dequeueReusableCell(
+            withIdentifier: "MovieSampleTableCell",
+            for: indexPath
+        ) as! MovieSampleTableCell).configured { cell in
+            cell.sampleTitle.text = title
+            cell.contextVC = self
+            _ = getData { data in
+                guard let data = data else {
+                    print("Failed to get data for cell: '\(title)")
+                    return
+                }
+                cell.originalItems = data
+                cell.items = data.toCarouselData()
+                cell.reloadData()
+            }
+            cell.coordinator = coordinator
         }
     }
 }
