@@ -64,7 +64,9 @@ struct DetailMovieReviewDescriptor: CollectionViewCellDescriptor {
     let reviewFont: UIFont
     // If review is too long, we can hide it.
     var heightThreshold: CGFloat
-    var openFullReviewButtonTitle: String = "Показать полностью"
+    let openFullReviewButtonTitle: String =
+        NSLocalizedString("movie_details_screen_show_full_review_action",
+                          comment: "Show full review action title on movie details screen")
     var openMoreHandler: (() -> ())? = nil
     
     private let layoutManager = DetailMovieReviewLayoutManager()

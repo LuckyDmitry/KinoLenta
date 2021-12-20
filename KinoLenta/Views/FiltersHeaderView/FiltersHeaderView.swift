@@ -10,8 +10,7 @@ final class FiltersHeaderView: UIView {
     
     @IBOutlet private weak var titleLabel: UILabel! {
         didSet {
-            titleLabel.text = NSLocalizedString("filter_screen_title",
-                                                comment: "Title of filters screen")
+            titleLabel.text = NSLocalizedString("filter_screen_title", comment: "Title of filters screen")
         }
     }
     @IBAction private func closeScreenAction(_ sender: Any) {

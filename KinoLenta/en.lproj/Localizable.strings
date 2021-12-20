@@ -18,6 +18,9 @@
 /* Action title for adding to wishlist */
 "add_to_wishlist_action" = "Add to wishlist";
 
+/* Action title for adding to wishlist in inactive state (already added) */
+"add_to_wishlist_action_already_added" = "Already added";
+
 /* Action title for adding to already watched list */
 "add_to_watched_list_action" = "Watched";
 
@@ -63,8 +66,23 @@
 /* Absent year selection title on filters screen */
 "filter_screen_year_nothing_selected_item" = "Not selected";
 
+/* Year selection text template on filters screen */
+"filter_screen_year_selected_template" = "from {{from_year}} to {{to_year}}";
+
 /* Rating section title on filters screen */
 "filter_screen_rating_title" = "Rating";
 
 /* Apply action title on filters screen */
 "filter_screen_apply_action" = "Apply";
+
+/* Trending collection title on featured movies screen */
+"featured_screen_trending_title" = "Trending";
+
+/* Popular collection title on featured movies screen */
+"featured_screen_popular_title" = "Popular";
+
+/* Top rated collection title on featured movies screen */
+"featured_screen_top_rated_title" = "Top rated";
+
+/* Show full review action title on movie details screen */
+"movie_details_screen_show_full_review_action" = "Show full";

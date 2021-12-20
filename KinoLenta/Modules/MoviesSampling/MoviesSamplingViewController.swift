@@ -40,7 +40,9 @@ extension MoviesSamplingViewController: UITableViewDelegate, UITableViewDataSour
                 withIdentifier: "MovieSampleTableCell",
                 for: indexPath
             ) as! MovieSampleTableCell).configured { cell in
-                cell.sampleTitle.text = "В тренде"
+                cell.sampleTitle.text =
+                    NSLocalizedString("featured_screen_trending_title",
+                                      comment: "Trending collection title on featured movies screen")
                 cell.contextVC = self
                 dataProvider.getTrending { data in
                     cell.originalItems = data
@@ -54,7 +56,9 @@ extension MoviesSamplingViewController: UITableViewDelegate, UITableViewDataSour
                 withIdentifier: "MovieSampleTableCell",
                 for: indexPath
             ) as! MovieSampleTableCell).configured { cell in
-                cell.sampleTitle.text = "Популярное"
+                cell.sampleTitle.text =
+                    NSLocalizedString("featured_screen_popular_title",
+                                      comment: "Popular collection title on featured movies screen")
                 cell.contextVC = self
                 dataProvider.getPopular { data in
                     cell.originalItems = data
@@ -68,7 +72,9 @@ extension MoviesSamplingViewController: UITableViewDelegate, UITableViewDataSour
                 withIdentifier: "MovieSampleTableCell",
                 for: indexPath
             ) as! MovieSampleTableCell).configured { cell in
-                cell.sampleTitle.text = "Лучшее"
+                cell.sampleTitle.text =
+                    NSLocalizedString("featured_screen_top_rated_title",
+                                      comment: "Top rated collection title on featured movies screen")
                 cell.contextVC = self
                 dataProvider.getTopRated { data in
                     cell.originalItems = data

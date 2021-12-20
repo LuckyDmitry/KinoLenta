@@ -16,7 +16,10 @@
 "search_tab_title" = "Поиск";
 
 /* Action title for adding to wishlist */
-"add_to_wishlist_action" = "Посмотреть";
+"add_to_wishlist_action" = "Хочу посмотреть";
+
+/* Action title for adding to wishlist in inactive state (already added) */
+"add_to_wishlist_action_already_added" = "Добавлено";
 
 /* Action title for adding to already watched list */
 "add_to_watched_list_action" = "Просмотрено";
@@ -63,8 +66,23 @@
 /* Absent year selection title on filters screen */
 "filter_screen_year_nothing_selected_item" = "Не выбран";
 
+/* Year selection text template on filters screen */
+"filter_screen_year_selected_template" = "от {{from_year}} до {{to_year}}";
+
 /* Rating section title on filters screen */
 "filter_screen_rating_title" = "Рейтинг";
 
 /* Apply action title on filters screen */
 "filter_screen_apply_action" = "Применить";
+
+/* Trending collection title on featured movies screen */
+"featured_screen_trending_title" = "В тренде";
+
+/* Popular collection title on featured movies screen */
+"featured_screen_popular_title" = "Популярное";
+
+/* Top rated collection title on featured movies screen */
+"featured_screen_top_rated_title" = "Высокий рейтинг";
+
+/* Show full review action title on movie details screen */
+"movie_details_screen_show_full_review_action" = "Показать полностью";

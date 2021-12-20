@@ -13,8 +13,7 @@ final class FiltersFooterView: UIView {
         didSet {
             filterButton.layer.cornerRadius = 10
             filterButton.setTitle(
-                NSLocalizedString("filter_screen_apply_action",
-                                  comment: "Apply action title on filters screen"),
+                NSLocalizedString("filter_screen_apply_action", comment: "Apply action title on filters screen"),
                 for: .normal
             )
         }
