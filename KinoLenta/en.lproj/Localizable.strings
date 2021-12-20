@@ -34,10 +34,37 @@
 "remove_from_wishlist_dialog_message" = "Remove the movie from wishlist?";
 
 /* Remove action title for dialog on removing movie from list */
-"remove_from_list_remove_action_title" = "Remove";
+"remove_from_list_remove_action" = "Remove";
 
 /* Cancel action title for dialog on removing movie from list */
-"remove_from_list_cancel_action_title" = "Leave";
+"remove_from_list_cancel_action" = "Leave";
 
 /* Reviews section title on movie details screen */
 "movie_reviews_section_title" = "Reviews";
+
+/* Title of filters screen */
+"filter_screen_title" = "Filters";
+
+/* Genre section title on filters screen */
+"filter_screen_genre_title" = "Genre";
+
+/* Absent genre selection title on filters screen */
+"filter_screen_genre_nothing_selected_item" = "Not selected";
+
+/* Country section title on filters screen */
+"filter_screen_country_title" = "Country";
+
+/* Absent country selection title on filters screen */
+"filter_screen_country_nothing_selected_item" = "Not selected";
+
+/* Year section title on filters screen */
+"filter_screen_year_title" = "Year";
+
+/* Absent year selection title on filters screen */
+"filter_screen_year_nothing_selected_item" = "Not selected";
+
+/* Rating section title on filters screen */
+"filter_screen_rating_title" = "Rating";
+
+/* Apply action title on filters screen */
+"filter_screen_apply_action" = "Apply";

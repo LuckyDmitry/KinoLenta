@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="507" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Фильтры" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgT-Zo-31A">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILTERS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgT-Zo-31A">
                     <rect key="frame" x="198.5" y="85.5" width="110" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="110" id="DiX-18-pVf"/>
@@ -52,6 +52,9 @@
                 <constraint firstAttribute="trailing" secondItem="BCP-E7-yKx" secondAttribute="trailing" constant="15" id="qNg-u1-hhz"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="titleLabel" destination="cgT-Zo-31A" id="OGj-dE-uwy"/>
+            </connections>
             <point key="canvasLocation" x="205.07246376811597" y="-224.33035714285714"/>
         </view>
     </objects>

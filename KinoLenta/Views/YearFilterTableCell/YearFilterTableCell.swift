@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
-        
     weak var delegate: UpdateTableDelegate?
     var selectedYears: [ClosedRange<Int>]? {
         let from = allYears[datePicker.selectedRow(inComponent: 0)]
@@ -18,7 +17,17 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
     }
     
     @IBOutlet private weak var datePickerHeight: NSLayoutConstraint!
-    @IBOutlet private weak var dateButton: UIButton!
+    @IBOutlet private weak var dateTitle: UILabel! {
+        didSet {
+            dateTitle?.text = NSLocalizedString("filter_screen_year_title",
+                                                comment: "Year section title on filters screen")
+        }
+    }
+    @IBOutlet private weak var dateButton: UIButton! {
+        didSet {
+            dateButton?.setTitle(noSelectedYearTitle, for: .normal)
+        }
+    }
     @IBOutlet weak var cancelButton: UIButton! {
         didSet {
             cancelButton.isHidden = true
@@ -26,13 +35,12 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
     }
     @IBAction func cancelAction(_ sender: Any) {
         cancelButton.isHidden = true
-        dateButton.setTitle("Не выбрано", for: .normal)
+        dateButton.setTitle(noSelectedYearTitle, for: .normal)
         useThisFilter = false
         dateButton.setTitleColor(UIColor.textPlaceholderForeground, for: .normal)
     }
     
     @IBAction private func showPickerAction(_ sender: Any) {
-        
         UIView.animate(
             withDuration: 0.4,
             animations: { [weak self] in
@@ -100,3 +108,6 @@ extension YearFilterTableCell {
         return self
     }
 }
+
+private let noSelectedYearTitle = NSLocalizedString("filter_screen_year_nothing_selected_item",
+                                                    comment: "Absent year selection title on filters screen")

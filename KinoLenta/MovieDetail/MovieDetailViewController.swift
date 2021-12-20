@@ -252,7 +252,7 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
                                                     preferredStyle: .alert)
         
         let removeMovieAction = UIAlertAction(
-            title: NSLocalizedString("remove_from_list_remove_action_title",
+            title: NSLocalizedString("remove_from_list_remove_action",
                                      comment: "Remove action title for dialog on removing movie from list"),
             style: .destructive
         ) { [weak self] _ in
@@ -266,7 +266,7 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
         }
 
         let leaveMovieAction = UIAlertAction(
-            title: NSLocalizedString("remove_from_list_cancel_action_title",
+            title: NSLocalizedString("remove_from_list_cancel_action",
                                      comment: "Cancel action title for dialog on removing movie from list"),
             style: .default
         ) { [weak self] _ in

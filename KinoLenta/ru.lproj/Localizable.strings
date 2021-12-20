@@ -34,10 +34,37 @@
 "remove_from_wishlist_dialog_message" = "Удалить фильм из списка на просмотр?";
 
 /* Remove action title for dialog on removing movie from list */
-"remove_from_list_remove_action_title" = "Удалить";
+"remove_from_list_remove_action" = "Удалить";
 
 /* Cancel action title for dialog on removing movie from list */
-"remove_from_list_cancel_action_title" = "Оставить";
+"remove_from_list_cancel_action" = "Оставить";
 
 /* Reviews section title on movie details screen */
 "movie_reviews_section_title" = "Отзывы";
+
+/* Title of filters screen */
+"filter_screen_title" = "Фильтры";
+
+/* Genre section title on filters screen */
+"filter_screen_genre_title" = "Жанр";
+
+/* Absent genre selection title on filters screen */
+"filter_screen_genre_nothing_selected_item" = "Не выбран";
+
+/* Country section title on filters screen */
+"filter_screen_country_title" = "Страна";
+
+/* Absent country selection title on filters screen */
+"filter_screen_country_nothing_selected_item" = "Не выбрана";
+
+/* Year section title on filters screen */
+"filter_screen_year_title" = "Год";
+
+/* Absent year selection title on filters screen */
+"filter_screen_year_nothing_selected_item" = "Не выбран";
+
+/* Rating section title on filters screen */
+"filter_screen_rating_title" = "Рейтинг";
+
+/* Apply action title on filters screen */
+"filter_screen_apply_action" = "Применить";

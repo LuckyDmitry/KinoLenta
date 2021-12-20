@@ -37,8 +37,8 @@
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-OH-dvz">
                         <rect key="frame" x="15" y="0.0" width="345" height="35"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wg3-2a-flC">
-                                <rect key="frame" x="0.0" y="15" width="65" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RATING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wg3-2a-flC">
+                                <rect key="frame" x="0.0" y="15" width="59.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ClZ-U8-iW2"/>
                                 </constraints>
@@ -47,10 +47,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHq-3h-bkK">
-                                <rect key="frame" x="65" y="15" width="260" height="20"/>
+                                <rect key="frame" x="59.5" y="15" width="265.5" height="20"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="☆ ☆ ☆ ☆ ☆">
+                                <state key="normal" title="-----">
                                     <color key="titleColor" name="textPlaceholderForeground"/>
                                 </state>
                                 <connections>
@@ -94,6 +94,7 @@
                 <outlet property="ratingSlider" destination="xVp-OT-8AW" id="R4P-Kd-wpZ"/>
                 <outlet property="sliderHeight" destination="VQ3-do-FZE" id="JIb-vX-9Kc"/>
                 <outlet property="sliderTopConstraint" destination="5Km-AT-7KA" id="mxw-s3-URZ"/>
+                <outlet property="titleLabel" destination="Wg3-2a-flC" id="1pB-i5-I1R"/>
                 <outlet property="valueButton" destination="oHq-3h-bkK" id="Myl-eR-xp2"/>
             </connections>
             <point key="canvasLocation" x="39.855072463768117" y="22.767857142857142"/>

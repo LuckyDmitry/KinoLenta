@@ -34,10 +34,37 @@
 "remove_from_wishlist_dialog_message" = "Удалить фильм из списка на просмотр?";
 
 /* Remove action title for dialog on removing movie from list */
-"remove_from_list_remove_action_title" = "remove_from_list_remove_action_title";
+"remove_from_list_remove_action" = "remove_from_list_remove_action";
 
 /* Cancel action title for dialog on removing movie from list */
-"remove_from_list_cancel_action_title" = "remove_from_list_cancel_action_title";
+"remove_from_list_cancel_action" = "remove_from_list_cancel_action";
 
 /* Reviews section title on movie details screen */
 "movie_reviews_section_title" = "movie_reviews_section_title";
+
+/* Title of filters screen */
+"filter_screen_title" = "filter_screen_title";
+
+/* Genre section title on filters screen */
+"filter_screen_genre_title" = "filter_screen_genre_title";
+
+/* Absent genre selection title on filters screen */
+"filter_screen_genre_nothing_selected_item" = "filter_screen_genre_nothing_selected_item";
+
+/* Country section title on filters screen */
+"filter_screen_country_title" = "filter_screen_country_title";
+
+/* Absent country selection title on filters screen */
+"filter_screen_country_nothing_selected_item" = "filter_screen_country_nothing_selected_item";
+
+/* Year section title on filters screen */
+"filter_screen_year_title" = "filter_screen_year_title";
+
+/* Absent year selection title on filters screen */
+"filter_screen_year_nothing_selected_item" = "filter_screen_year_nothing_selected_item";
+
+/* Rating section title on filters screen */
+"filter_screen_rating_title" = "filter_screen_rating_title";
+
+/* Apply action title on filters screen */
+"filter_screen_apply_action" = "filter_screen_apply_action";
