@@ -12,4 +12,7 @@ extension UIImage {
     static let magnifyingGlass = UIImage(systemName: "magnifyingglass")
     static let listAndFilm = UIImage(systemName: "list.and.film")
     static let film = UIImage(systemName: "film")
+    static let close = UIImage(named: "closeIcon")
+    static let star = UIImage(named: "star")
+    static let filledStar = UIImage(named: "star.fill")
 }

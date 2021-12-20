@@ -1,55 +1,21 @@
 import UIKit
 
 extension UIColor {
-    static var mainBackground: UIColor {
-        UIColor(named: "mainBackground") ?? .clear
-    }
-    
-    static var pickerItemBackground: UIColor {
-        UIColor(named: "selectedItemBackground") ?? .clear
-    }
-    
-    static var pickerUnselectedBackground: UIColor {
-        UIColor(named: "pickerUnselectedBackground") ?? .clear
-    }
-    
-    static var buttonTextColor: UIColor {
-        UIColor(named: "buttonTextColor") ?? .clear
-    }
-    
-    static var buttonActiveBackground: UIColor {
-        UIColor(named: "buttonActiveBackground") ?? .clear
-    }
-    
-    static var pickerTextForeground: UIColor {
-        UIColor(named: "mainTextForeground") ?? .clear
-    }
-    
-    static var pickerUnselectedTextForeground: UIColor {
-        UIColor(named: "unselectedTextForeground") ?? .clear
-    }
-    
-    static var darkTextForeground: UIColor {
-        UIColor(named: "darkTextForeground") ?? .clear
-    }
-    
-    static var textPlaceholderForeground: UIColor {
-        UIColor(named: "textPlaceholderForeground") ?? .clear
-    }
-    
-    static var darkOrangeTextForeground: UIColor {
-        UIColor(named: "darkOrangeTextForeground") ?? .clear
-    }
-    
-    static var greenRating: UIColor {
-        UIColor(named: "greenRating") ?? .clear
-    }
-    
-    static var yellowRating: UIColor {
-        UIColor(named: "yellowRating") ?? .clear
-    }
-    
-    static var redRating: UIColor {
-        UIColor(named: "redRating") ?? .clear
-    }
+    static let mainBackground = UIColor(named: "mainBackground") ?? .clear
+
+    static let pickerItemBackground = UIColor(named: "selectedItemBackground") ?? .clear
+    static let pickerUnselectedBackground = UIColor(named: "pickerUnselectedBackground") ?? .clear
+    static let pickerTextForeground = UIColor(named: "mainTextForeground") ?? .black
+    static let pickerUnselectedTextForeground = UIColor(named: "unselectedTextForeground") ?? .black
+
+    static let buttonTextColor = UIColor(named: "buttonTextColor") ?? .black
+    static let buttonActiveBackground = UIColor(named: "buttonActiveBackground") ?? .clear
+
+    static let darkTextForeground = UIColor(named: "darkTextForeground") ?? .black
+    static let textPlaceholderForeground = UIColor(named: "textPlaceholderForeground") ?? .gray
+    static let darkOrangeTextForeground = UIColor(named: "darkOrangeTextForeground") ?? .orange
+
+    static let greenRating = UIColor(named: "greenRating") ?? .green
+    static let yellowRating = UIColor(named: "yellowRating") ?? .yellow
+    static let redRating = UIColor(named: "redRating") ?? .red
 }

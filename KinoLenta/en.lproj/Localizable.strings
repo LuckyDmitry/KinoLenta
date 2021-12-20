@@ -15,8 +15,29 @@
 /* Tab title for movie search */
 "search_tab_title" = "Find";
 
-/* Action title for adding to watchlist */
-"add_to_wishlist_action" = "Add to watchlist";
+/* Action title for adding to wishlist */
+"add_to_wishlist_action" = "Add to wishlist";
 
 /* Action title for adding to already watched list */
 "add_to_watched_list_action" = "Watched";
+
+/* Action title for sending movie rating */
+"send_rating_action" = "Send";
+
+/* Title for rate movie dialog */
+"rating_dialog_title" = "Rate the movie";
+
+/* Message for dialog on removing movie from watched list */
+"remove_from_watched_list_dialog_message" = "Remove the movie from already watched list?";
+
+/* Message for dialog on removing movie from wishlist */
+"remove_from_wishlist_dialog_message" = "Remove the movie from wishlist?";
+
+/* Remove action title for dialog on removing movie from list */
+"remove_from_list_remove_action_title" = "Remove";
+
+/* Cancel action title for dialog on removing movie from list */
+"remove_from_list_cancel_action_title" = "Leave";
+
+/* Reviews section title on movie details screen */
+"movie_reviews_section_title" = "Reviews";

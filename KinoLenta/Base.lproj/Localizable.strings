@@ -15,8 +15,29 @@
 /* Tab title for movie search */
 "search_tab_title" = "search_tab_title";
 
-/* Action title for adding to watchlist */
+/* Action title for adding to wishlist */
 "add_to_wishlist_action" = "add_to_wishlist_action";
 
 /* Action title for adding to already watched list */
 "add_to_watched_list_action" = "add_to_watched_list_action";
+
+/* Action title for sending movie rating */
+"send_rating_action" = "send_rating_action";
+
+/* Title for rate movie dialog */
+"rating_dialog_title" = "rating_dialog_title";
+
+/* Message for dialog on removing movie from watched list */
+"remove_from_watched_list_dialog_message" = "Удалить фильм из просмотренного?";
+
+/* Message for dialog on removing movie from wishlist */
+"remove_from_wishlist_dialog_message" = "Удалить фильм из списка на просмотр?";
+
+/* Remove action title for dialog on removing movie from list */
+"remove_from_list_remove_action_title" = "remove_from_list_remove_action_title";
+
+/* Cancel action title for dialog on removing movie from list */
+"remove_from_list_cancel_action_title" = "remove_from_list_cancel_action_title";
+
+/* Reviews section title on movie details screen */
+"movie_reviews_section_title" = "movie_reviews_section_title";

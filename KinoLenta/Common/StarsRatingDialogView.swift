@@ -32,9 +32,11 @@ final class StarsRatingDialogView: UIView {
         layer.shadowRadius = Consts.shadowOffsetByY
         layer.shadowOpacity = 0.4
         layer.shadowOffset = CGSize(width: 0, height: Consts.shadowOffsetByY)
-        
-        pickerView.items = [QuickItem(title: "Отправить")]
-        
+
+        pickerView.items = [
+            QuickItem(title: NSLocalizedString("send_rating_action", comment: "Action title for sending movie rating")),
+        ]
+
         NSLayoutConstraint.activate([
             closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Consts.edgeMargin),
             closeButton.topAnchor.constraint(equalTo: topAnchor, constant: Consts.edgeMargin),
@@ -62,8 +64,7 @@ final class StarsRatingDialogView: UIView {
     
     private lazy var closeButton: UIButton = {
         let button = UIButton()
-        let renderedImage = UIImage(named: "closeIcon")?.withTintColor(.white)
-        button.setImage(renderedImage, for: .normal)
+        button.setImage(UIImage.close?.withTintColor(.white), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: Consts.buttonImageInset,
                                               left: Consts.buttonImageInset,
                                               bottom: Consts.buttonImageInset,
@@ -88,7 +89,7 @@ final class StarsRatingDialogView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Оцените фильм"
+        label.text = NSLocalizedString("rating_dialog_title", comment: "Title for rate movie dialog")
         label.font = UIFont.boldSystemFont(ofSize: 40)
         label.textColor = UIColor.black.withAlphaComponent(0.6)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -147,14 +148,12 @@ extension StarsRatingDialogView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "id", for: indexPath)
-        let image = UIImage(systemName: indexPath.row <= stars ? "star.fill" : "star")
         
         cell.subviews.forEach { $0.removeFromSuperview() }
-        let imageView = UIImageView(image: image)
+        let imageView = UIImageView(image: indexPath.row <= stars ? .filledStar : .star)
         imageView.frame = cell.bounds
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .pickerItemBackground
-        imageView.image = image
         imageView.isUserInteractionEnabled = true
         
         cell.addSubview(imageView)

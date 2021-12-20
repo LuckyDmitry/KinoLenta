@@ -112,7 +112,7 @@ final class CoordinatorImpl: Coordinator {
         let detailMovieViewController = MovieDetailViewController()
         detailMovieViewController.buttonActions = [
             (.wishToWatch, QuickItem(title: NSLocalizedString("add_to_wishlist_action",
-                                                              comment: "Action title for adding to watchlist"))),
+                                                              comment: "Action title for adding to wishlist"))),
             (.viewed, QuickItem(title: NSLocalizedString("add_to_watched_list_action",
                                                          comment: "Action title adding to already watched list"))),
         ]
