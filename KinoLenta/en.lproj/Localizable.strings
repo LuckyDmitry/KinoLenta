@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  KinoLenta
+
+  Created by Alexander Denisov on 20.12.2021.
+  
+*/
+
+/* Tab title for selected movies */
+"favorites_tab_title" = "Favorites";
+
+/* Tab title for featured collections */
+"featured_tab_title" = "Featured";
+
+/* Tab title for movie search */
+"search_tab_title" = "Find";
+
+/* Action title for adding to watchlist */
+"add_to_wishlist_action" = "Add to watchlist";
+
+/* Action title for adding to already watched list */
+"add_to_watched_list_action" = "Watched";

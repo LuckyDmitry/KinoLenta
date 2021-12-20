@@ -17,7 +17,7 @@ final class MoviesSamplingViewController: UIViewController {
     @IBOutlet var searchButton: UIButton! {
         didSet {
             let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .medium)
-            let largeBoldDoc = UIImage(systemName: "magnifyingglass", withConfiguration: largeConfig)
+            let largeBoldDoc = UIImage.magnifyingGlass?.withConfiguration(largeConfig)
             searchButton.setImage(largeBoldDoc, for: .normal)
         }
     }
