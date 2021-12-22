@@ -42,7 +42,7 @@
                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="14"/>
                         <color key="tintColor" name="darkTextForeground"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" title="Показать все"/>
+                        <state key="normal" title="SHOW_ALL"/>
                         <connections>
                             <action selector="showAllAction:" destination="itX-qw-zzv" eventType="touchUpInside" id="l7G-dC-tgt"/>
                         </connections>
@@ -78,6 +78,7 @@
             <connections>
                 <outlet property="collectionView" destination="tsq-RT-ilJ" id="XH8-hi-rgl"/>
                 <outlet property="sampleTitle" destination="XnY-ND-43Q" id="4IQ-so-Uo2"/>
+                <outlet property="showAllButton" destination="BOt-7j-AVy" id="Mix-Bb-dx5"/>
             </connections>
             <point key="canvasLocation" x="160.86956521739131" y="66.294642857142861"/>
         </tableViewCell>

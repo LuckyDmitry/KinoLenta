@@ -84,5 +84,14 @@
 /* Top rated collection title on featured movies screen */
 "featured_screen_top_rated_title" = "featured_screen_top_rated_title";
 
+/* Show all movies in collection action title on featured movies screen */
+"featured_screen_show_all_action" = "featured_screen_show_all_action";
+
 /* Show full review action title on movie details screen */
 "movie_details_screen_show_full_review_action" = "movie_details_screen_show_full_review_action";
+
+/* Wishlist switcher state title on favorites screen */
+"favorites_screen_wishlist_switcher_title" = "favorites_screen_wishlist_switcher_title";
+
+/* Already watched list switcher state title on favorites screen */
+"favorites_screen_watched_list_switcher_title" = "favorites_screen_watched_list_switcher_title";

@@ -13,6 +13,6 @@ extension UIImage {
     static let listAndFilm = UIImage(systemName: "list.and.film")
     static let film = UIImage(systemName: "film")
     static let close = UIImage(named: "closeIcon")
-    static let star = UIImage(named: "star")
-    static let filledStar = UIImage(named: "star.fill")
+    static let star = UIImage(systemName: "star")
+    static let filledStar = UIImage(systemName: "star.fill")
 }

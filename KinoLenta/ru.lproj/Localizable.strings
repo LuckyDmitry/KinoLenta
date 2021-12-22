@@ -22,7 +22,7 @@
 "add_to_wishlist_action_already_added" = "Добавлено";
 
 /* Action title for adding to already watched list */
-"add_to_watched_list_action" = "Просмотрено";
+"add_to_watched_list_action" = "Уже смотрел";
 
 /* Action title for sending movie rating */
 "send_rating_action" = "Отправить";
@@ -84,5 +84,14 @@
 /* Top rated collection title on featured movies screen */
 "featured_screen_top_rated_title" = "Высокий рейтинг";
 
+/* Show all movies in collection action title on featured movies screen */
+"featured_screen_show_all_action" = "Показать все";
+
 /* Show full review action title on movie details screen */
 "movie_details_screen_show_full_review_action" = "Показать полностью";
+
+/* Wishlist switcher state title on favorites screen */
+"favorites_screen_wishlist_switcher_title" = "Хочу посмотреть";
+
+/* Already watched list switcher state title on favorites screen */
+"favorites_screen_watched_list_switcher_title" = "Уже смотрел";

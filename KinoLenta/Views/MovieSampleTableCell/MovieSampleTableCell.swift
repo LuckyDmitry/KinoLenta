@@ -9,7 +9,6 @@ struct CarouselData {
 }
 
 final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
-    
     var contextVC: UIViewController!
     var coordinator: Coordinator!
     var originalItems: [QueryMovieModel] = []
@@ -20,7 +19,7 @@ final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
     }
     
     @IBOutlet weak var sampleTitle: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView! {
+    @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
             collectionView.showsHorizontalScrollIndicator = false
             collectionView.dataSource = self
@@ -31,9 +30,18 @@ final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
             collectionView.register(UINib(nibName: Consts.cellDescribing, bundle: nil), forCellWithReuseIdentifier: Consts.cellDescribing)
         }
     }
-    
-    @IBAction func showAllAction(_ sender: Any) {
-        
+
+    @IBOutlet private weak var showAllButton: UIButton! {
+        didSet {
+            showAllButton.setTitle(
+                NSLocalizedString("featured_screen_show_all_action",
+                                  comment: "Show all movies in collection action title on featured movies screen"),
+                for: .normal
+            )
+        }
+    }
+
+    @IBAction private func showAllAction(_ sender: Any) {
         coordinator.openSearchWindow(context: contextVC, movies: originalItems)
     }
 }
