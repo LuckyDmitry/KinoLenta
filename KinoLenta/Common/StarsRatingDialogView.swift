@@ -23,7 +23,7 @@ final class StarsRatingDialogView: UIView {
         addSubview(pickerView)
         addSubview(titleLabel)
         if let layout = pickerView.collectionView.collectionViewLayout as? QuickItemFilterCollectionViewLayout {
-            layout.lifeCycleDelegate = self
+            layout.alignment = .center
         }
         
         backgroundColor = UIColor.mainBackground
@@ -34,7 +34,10 @@ final class StarsRatingDialogView: UIView {
         layer.shadowOffset = CGSize(width: 0, height: Consts.shadowOffsetByY)
 
         pickerView.items = [
-            QuickItem(title: NSLocalizedString("send_rating_action", comment: "Action title for sending movie rating")),
+            QuickItem(
+                title: NSLocalizedString("send_rating_action", comment: "Action title for sending movie rating"),
+                minWidth: QuickItemFilterView.Consts.defaultWidth
+            ),
         ]
 
         NSLayoutConstraint.activate([
@@ -54,7 +57,8 @@ final class StarsRatingDialogView: UIView {
             pickerView.topAnchor.constraint(equalTo: starsCollectionView.bottomAnchor, constant: Consts.edgeMargin),
             pickerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.edgeMargin),
             pickerView.heightAnchor.constraint(equalToConstant: 40),
-            pickerView.widthAnchor.constraint(equalTo: widthAnchor)
+            pickerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Consts.edgeMargin),
+            pickerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Consts.edgeMargin),
         ])
     }
     
@@ -111,19 +115,6 @@ final class StarsRatingDialogView: UIView {
         
         return starsCollectionView
     }()
-}
-
-extension StarsRatingDialogView: QuickItemFilterLayoutLifeCycleDelegate {
-    func prepareLayoutDidFinish(contentSize: CGSize) {
-        let contentWidth = contentSize.width
-        
-        let availableWidth = bounds.width - contentWidth
-        let horizontalInset = availableWidth > 0 ? floor(availableWidth / 2) : .zero
-        pickerView.collectionView.contentInset = .init(top: .zero,
-                                                            left: horizontalInset,
-                                                            bottom: .zero,
-                                                            right: .zero)
-    }
 }
 
 extension StarsRatingDialogView: QuickItemFilterDelegate {

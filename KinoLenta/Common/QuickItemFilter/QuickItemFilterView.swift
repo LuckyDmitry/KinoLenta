@@ -19,6 +19,7 @@ protocol QuickItemFilterDelegate: AnyObject {
 struct QuickItem {
     var isSelected: Bool = false
     var title: String
+    var minWidth: CGFloat?
 }
 
 final class QuickItemFilterView: UIView {
@@ -84,12 +85,11 @@ final class QuickItemFilterView: UIView {
 
 extension QuickItemFilterView: QuickItemFilterCollectionViewLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, widthForIndexPath indexPath: IndexPath) -> CGFloat {
-        let title = items[indexPath.row].title
+        let item = items[indexPath.row]
         let inset = collectionView.contentInset
         let height = collectionView.bounds.height - (inset.top + inset.bottom)
-        let titleWidth = title.width(withHeight: height, font: QuickItemLayoutConfig.font)
-        let width = QuickItemLayoutConfig.textPadding + titleWidth
-        return width
+        let titleWidth = item.title.width(withHeight: height, font: QuickItemLayoutConfig.font)
+        return max(QuickItemLayoutConfig.textPadding + titleWidth, item.minWidth ?? 0)
     }
 }
 
@@ -134,11 +134,12 @@ extension QuickItemFilterView: UICollectionViewDelegate {
 }
 
 extension QuickItemFilterView {
-    private enum Consts {
-        static let cellIdentifier = String(describing: QuickItemFilterCollectionViewCell.self)
-        static let nibFile = "GenreQuickFilterCell"
-        static let fontSize: CGFloat = 14
-        static let textPadding: CGFloat = 15
-        static let marginBetweenCells: CGFloat = 10
+    enum Consts {
+        static let defaultWidth: CGFloat = 100
+        fileprivate static let cellIdentifier = String(describing: QuickItemFilterCollectionViewCell.self)
+        fileprivate static let nibFile = "GenreQuickFilterCell"
+        fileprivate static let fontSize: CGFloat = 14
+        fileprivate static let textPadding: CGFloat = 15
+        fileprivate static let marginBetweenCells: CGFloat = 10
     }
 }

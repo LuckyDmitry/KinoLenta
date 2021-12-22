@@ -18,9 +18,15 @@ protocol QuickItemFilterLayoutLifeCycleDelegate: AnyObject {
 }
 
 final class QuickItemFilterCollectionViewLayout: UICollectionViewLayout {
+    enum Alignment {
+        case left
+        case center
+    }
+
     weak var delegate: QuickItemFilterCollectionViewLayoutDelegate?
     weak var lifeCycleDelegate: QuickItemFilterLayoutLifeCycleDelegate?
     var intersectionMargin: CGFloat = 0
+    var alignment = Alignment.left
     
     private var cache: [UICollectionViewLayoutAttributes] = []
     private var contentWidth: CGFloat = 0
@@ -47,27 +53,39 @@ final class QuickItemFilterCollectionViewLayout: UICollectionViewLayout {
         let leadingInset = collectionView.contentInset.left
         let trailingInset = collectionView.contentInset.right
         
-        contentWidth = leadingInset
+        contentWidth = leadingInset + intersectionMargin
         
         assert(collectionView.numberOfSections == 1)
         
         let section = 0
         
         let amountOfItems = collectionView.numberOfItems(inSection: section)
+        var frames = [CGRect]()
         
         for index in 0..<amountOfItems {
-            let indexPath = IndexPath(row: index, section: section)
             let height = contentHeight - (bottomInset + topInset)
-            let width = delegate?.collectionView(collectionView,
-                                                 widthForIndexPath: indexPath) ?? 100
-            let frame = CGRect(x: contentWidth,y: topInset,width: width,height: height)
+            let width = delegate?.collectionView(
+                collectionView,
+                widthForIndexPath: IndexPath(row: index, section: section)
+            ) ?? QuickItemFilterView.Consts.defaultWidth
+            let frame = CGRect(x: contentWidth, y: topInset, width: width, height: height)
+            frames.append(frame)
             contentWidth = max(contentWidth, frame.maxX) + intersectionMargin
-            let layoutAttribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-            layoutAttribute.frame = frame
-            cache.append(layoutAttribute)
         }
         
         contentWidth += trailingInset
+
+        var offset: CGFloat = 0
+        if case .center = alignment {
+            offset = max(floor((collectionView.bounds.width - contentWidth) / 2), 0)
+            contentWidth += offset
+        }
+        for index in 0..<amountOfItems {
+            let layoutAttribute = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: section))
+            layoutAttribute.frame = frames[index].offsetBy(dx: offset, dy: 0)
+            cache.append(layoutAttribute)
+        }
+
         lifeCycleDelegate?.prepareLayoutDidFinish(contentSize: collectionViewContentSize)
     }
     
