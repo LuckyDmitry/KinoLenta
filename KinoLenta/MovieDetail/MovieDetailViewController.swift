@@ -18,7 +18,7 @@ final class MovieDetailViewController: UIViewController {
         case reviewTitle
         case review
     }
-    
+
     private var sections: [MovieCellType] = [.poster,
                                              .title,
                                              .details,
@@ -27,14 +27,14 @@ final class MovieDetailViewController: UIViewController {
                                              .actors,
                                              .reviewTitle,
                                              .review]
-    
+
     private var descriptors: [MovieCellType: [CollectionViewCellDescriptor]] = [:]
     var selectedMovie: MovieDomainModel!
     var service: NetworkingService!
     var cache: CacheService!
     var idMovie: Int!
     var buttonActions: [(optionType: SavedMovieOption, QuickItem)] = []
-    
+
     private lazy var movieDetailCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: createCollectionViewFlowLayout())
@@ -44,14 +44,14 @@ final class MovieDetailViewController: UIViewController {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
-    
+
     private lazy var starsRatingView: StarsRatingDialogView = {
         let starsRatingView = StarsRatingDialogView(frame: .zero)
         starsRatingView.delegate = self
         starsRatingView.translatesAutoresizingMaskIntoConstraints = false
         return starsRatingView
     }()
-    
+
     private func createCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -59,13 +59,12 @@ final class MovieDetailViewController: UIViewController {
         layout.minimumLineSpacing = Consts.minimumLineSpacing
         return layout
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(movieDetailCollectionView)
         view.backgroundColor = .mainBackground
         if let idMovie = idMovie {
-            
             for buttonAction in buttonActions {
                 cache.getSavedMovies(option: buttonAction.optionType, completion: { result in
                     if case .success(let movies) = result {
@@ -82,13 +81,13 @@ final class MovieDetailViewController: UIViewController {
                     }
                 })
             }
-            
+
             service.getById(idMovie, callback: { movie in
                 self.selectedMovie = movie
                 self.populateElements()
             })
         }
-        
+
         movieDetailCollectionView.register(uniqueCells: [
             DetailMovieTextCollectionViewCell.self,
             DetailMovieImageCollectionViewCell.self,
@@ -97,17 +96,17 @@ final class MovieDetailViewController: UIViewController {
             DetailMovieButtonActionsCollectionViewCell.self
         ])
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         movieDetailCollectionView.collectionViewLayout.invalidateLayout()
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         movieDetailCollectionView.frame = view.bounds
     }
-    
+
     // TODO: Will be removed
     private func populateElements() {
         let inset = view.frame.width / 4
@@ -170,7 +169,7 @@ final class MovieDetailViewController: UIViewController {
                         initSection.heightThreshold = 5000
                         self.descriptors[section]?[i] = initSection
                         let section = self.sections.firstIndex(of: .review) ?? 0
-                        
+
                         self.movieDetailCollectionView.reloadSections(IndexSet(integer: section))
                     })
                     descriptors[section]?.append(review)
@@ -179,7 +178,7 @@ final class MovieDetailViewController: UIViewController {
         }
         movieDetailCollectionView.reloadData()
     }
-    
+
     private func showRatingView() {
         view.addSubview(starsRatingView)
         NSLayoutConstraint.activate([
@@ -198,11 +197,11 @@ extension MovieDetailViewController: StarsRatingDialogDelegate {
         // TODO: Rating logic
         removeStarsRatingView()
     }
-    
+
     func closedPressed() {
         removeStarsRatingView()
     }
-    
+
     private func removeStarsRatingView() {
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.starsRatingView.removeFromSuperview()
@@ -221,20 +220,20 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
             transitionPressAction(first: indexBefore, second: indexAfter, isSelected: isSelected)
         }
     }
-    
+
     private func transitionPressAction(first: Int, second: Int, isSelected: Bool) {
         let destType = buttonActions[second].optionType
         let initType = buttonActions[first].optionType
-        
-        if case  .viewed = destType {
+
+        if case .viewed = destType {
            showRatingView()
         }
-        
+
         cache.changeDirectoryMovies([selectedMovie], from: initType, to: destType, completion: { error in
             // TODO: Handle error
         })
     }
-    
+
     private func singlePressAction(at index: Int, isSelected: Bool) {
         let optionType = buttonActions[index].optionType
         guard !isSelected else {
@@ -246,11 +245,11 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
             }
             return
         }
-        
+
         let alertViewController = UIAlertController(title: deleteMessage(for: optionType),
                                                     message: nil,
                                                     preferredStyle: .alert)
-        
+
         let removeMovieAction = UIAlertAction(
             title: NSLocalizedString("remove_from_list_remove_action",
                                      comment: "Remove action title for dialog on removing movie from list"),
@@ -276,13 +275,13 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
             let buttons = self.buttonActions.enumerated().map {
                 QuickItem(isSelected: $0.offset == index, title: $0.element.1.title)
             }
-            
+
             self.descriptors[.actions] = [DetailMovieButtonActionsDescriptor(items: buttons, componentDelegate: self)]
             if let sectionIndex = sectionIndex {
                 self.movieDetailCollectionView.reloadSections(IndexSet(integer: sectionIndex))
             }
         }
-        
+
         alertViewController.addAction(removeMovieAction)
         alertViewController.addAction(leaveMovieAction)
         present(alertViewController, animated: true)
@@ -300,11 +299,11 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return descriptors[sections[section]]?.count ?? .zero
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let descriptor = descriptors[sections[indexPath.section]] else { fatalError("Invalid section") }
         return descriptor[indexPath.row].cell(in: collectionView, at: indexPath)

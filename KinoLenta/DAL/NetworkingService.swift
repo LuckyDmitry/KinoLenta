@@ -9,7 +9,7 @@ import UIKit
 
 class NetworkingService {
     let queue = DispatchQueue(label: "UrlQueue", attributes: .concurrent)
-    
+
     func search(query: String, callback: @escaping ([QueryMovieModel]) -> Void) {
         var queryInfo = getUrlItems(for: .search)
         queryInfo.queryItems.append(
@@ -21,7 +21,7 @@ class NetworkingService {
             makeRequest(with: queryInfo, callback: callback)
         }
     }
-    
+
     func discover(
         genre: [Int]?,
         yearRange: ClosedRange<Int>?,
@@ -61,7 +61,7 @@ class NetworkingService {
             makeRequest(with: queryInfo, callback: callback)
         }
     }
-    
+
     func getById(_ id: Int, callback: @escaping (MovieDomainModel) -> Void){
         let queryInfo = getUrlItems(for: .getById, id: id)
         queue.async {
@@ -69,7 +69,7 @@ class NetworkingService {
             makeRequestSingleFilm(with: queryInfo, callback: callback)
         }
     }
-    
+
     func getSimilar(_ id: Int, callback: @escaping ([QueryMovieModel]) -> Void) {
         let queryInfo = getUrlItems(for: .getSimilar, id: id)
         queue.async {
@@ -77,19 +77,18 @@ class NetworkingService {
             makeRequest(with: queryInfo, callback: callback)
         }
     }
-    
+
     func getPopular(callback: @escaping ([QueryMovieModel]) -> Void) {
         getCompilation(for: .getPopular, using: callback)
     }
-    
+
     func getTopRated(callback: @escaping ([QueryMovieModel]) -> Void) {
         getCompilation(for: .getTopRated, using: callback)
     }
-    
+
     func getTrending(callback: @escaping ([QueryMovieModel]) -> Void) {
         getCompilation(for: .getTrending, using: callback)
     }
-    
 }
 
 enum RequestTypes {
@@ -108,7 +107,7 @@ struct QueryInfo {
 }
 
 extension NetworkingService {
-    func getCompilation(for requestType: RequestTypes, using callback:  @escaping ([QueryMovieModel]) -> Void) {
+    func getCompilation(for requestType: RequestTypes, using callback: @escaping ([QueryMovieModel]) -> Void) {
         let queryInfo = getUrlItems(for: requestType)
         queue.async {
             assert(!Thread.isMainThread)
@@ -156,7 +155,7 @@ private func getUrlItems(for requestType: RequestTypes, id: Int? = nil) -> Query
     return QueryInfo(pathItem: pathItem, queryItems: queryItems)
 }
 
-private func makeRequest(with queryInfo: QueryInfo, callback:  @escaping ([QueryMovieModel]) -> Void) {
+private func makeRequest(with queryInfo: QueryInfo, callback: @escaping ([QueryMovieModel]) -> Void) {
     let config = URLSessionConfiguration.default
     let session = URLSession(configuration: config)
     guard let url = getUrl(with: queryInfo) else{
@@ -170,24 +169,23 @@ private func makeRequest(with queryInfo: QueryInfo, callback:  @escaping ([Query
             }
             return
         }
-        
+
         guard let content = data else {
             print("No data")
             return
         }
-        
+
         let response: [QueryMovieModel] = parseModelFromResponse(data: content)
         DispatchQueue.main.async {
             assert(Thread.isMainThread)
             callback(response)
         }
-        
     }
     task.resume()
 }
 
 
-private func makeRequestSingleFilm(with queryInfo: QueryInfo, callback:  @escaping (MovieDomainModel) -> Void) {
+private func makeRequestSingleFilm(with queryInfo: QueryInfo, callback: @escaping (MovieDomainModel) -> Void) {
     let config = URLSessionConfiguration.default
     let session = URLSession(configuration: config)
     guard let url = getUrl(with: queryInfo) else{
@@ -201,12 +199,12 @@ private func makeRequestSingleFilm(with queryInfo: QueryInfo, callback:  @escapi
             }
             return
         }
-        
+
         guard let content = data else {
             print("No data")
             return
         }
-        
+
         do {
             let response: MovieDomainModel = try parseObj(data: content)
             DispatchQueue.main.async {
@@ -216,7 +214,6 @@ private func makeRequestSingleFilm(with queryInfo: QueryInfo, callback:  @escapi
         } catch{
             print(error)
         }
-        
     }
     task.resume()
 }
@@ -229,4 +226,4 @@ private func getUrl(with queryInfo: QueryInfo) -> URL? {
     components.queryItems = queryInfo.queryItems
     return components.url
 }
-    
+

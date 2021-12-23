@@ -6,44 +6,44 @@ protocol UpdateTableDelegate: AnyObject {
 }
 
 final class PickerFilterTableCell: UITableViewCell, BaseTableViewCell {
-    
     var pickerData: [String] = []
     var selectedField: String? {
         let selectedRow = variantsPicker.selectedRow(inComponent: 0)
         return selectedRow == 0 ? nil : pickerData[selectedRow]
     }
-    
+
     weak var delegate: UpdateTableDelegate?
-    
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var selectionButton: UIButton!
     @IBAction private func showPicker(_ sender: Any) {
-
         UIView.animate(
             withDuration: 0.4,
             animations: { [weak self] in
                 guard let self = self else { return }
                 self.variantsPickerHeight.constant = self.isPickerShowing ? 0 : 100
                 self.variantsPicker.isHidden = self.isPickerShowing
-                
+
                 self.isPickerShowing.toggle()
                 self.layoutIfNeeded()
-                
+
                 self.delegate?.reloadTableView()
             }
         )
         layoutIfNeeded()
     }
+
     @IBOutlet private weak var variantsPicker: UIPickerView! {
         didSet {
             variantsPicker.delegate = self
             variantsPicker.dataSource = self
         }
     }
+
     @IBOutlet private weak var variantsPickerHeight: NSLayoutConstraint!
-    
+
     private var isPickerShowing = false
-    
+
     func reset() {
         titleLabel.text = nil
         selectionButton.setTitle(nil, for: .normal)
@@ -53,7 +53,6 @@ final class PickerFilterTableCell: UITableViewCell, BaseTableViewCell {
 }
 
 extension PickerFilterTableCell: UIPickerViewDataSource, UIPickerViewDelegate {
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -70,15 +69,14 @@ extension PickerFilterTableCell: UIPickerViewDataSource, UIPickerViewDelegate {
             for: .normal
         )
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard row  < pickerData.count else {
+        guard row < pickerData.count else {
             assertionFailure()
             return nil
         }
         return pickerData[row]
     }
-
 }
 
 extension PickerFilterTableCell {

@@ -13,8 +13,9 @@ final class MainGraph {
     private lazy var dataProvider = MockDataManager()
     private lazy var cacheService = CacheService()
     private lazy var networkService = NetworkingService()
-    
+
     // MARK: - Views
+
     private lazy var movieListViewController: MovieListViewController = {
         let movieListStoryboard = UIStoryboard(name: "MovieList", bundle: nil)
         let movieListViewController =
@@ -29,7 +30,7 @@ final class MainGraph {
         )
         return movieListViewController
     }()
-    
+
     private lazy var moviesSamplingViewController: MoviesSamplingViewController = {
         let moviesSamplingViewController = MoviesSamplingViewController()
         moviesSamplingViewController.coordinator = coordinator
@@ -42,13 +43,13 @@ final class MainGraph {
         )
         return moviesSamplingViewController
     }()
-    
+
     private lazy var searchedMovieViewController: SearchedMoviesViewController = {
         let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
 
         let searchedMovieViewController =
             searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
-    
+
         searchedMovieViewController.coordinator = coordinator
         searchedMovieViewController.cacheService = cacheService
         searchedMovieViewController.networkService = networkService
@@ -64,12 +65,13 @@ final class MainGraph {
         )
         return searchedMovieViewController
     }()
-        
+
     // MARK: Settings
+
     func start(with tabBarController: UITabBarController) {
         configureTabBarAppearence()
         coordinator = CoordinatorImpl(tabBarController: tabBarController)
-    
+
 
         tabBarController.viewControllers = [moviesSamplingViewController, searchedMovieViewController, movieListViewController]
     }
@@ -98,16 +100,15 @@ protocol Coordinator {
 
 // TODO: Will be moved
 final class CoordinatorImpl: Coordinator {
-
     let tabBarController: UITabBarController
-    
+
     let dataProvider = MockDataManager()
-    
-    
+
+
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
     }
-    
+
     func openDetailMovie(withMovieId id: Int, context: UIViewController, completion: (() -> ())? = nil) {
         let detailMovieViewController = MovieDetailViewController()
         detailMovieViewController.buttonActions = [
@@ -121,17 +122,17 @@ final class CoordinatorImpl: Coordinator {
         detailMovieViewController.service = NetworkingService()
         context.present(detailMovieViewController, animated: true)
     }
-    
+
     func openSearchWindow() {
         tabBarController.selectedIndex = 1
     }
 
     func openFilterWindow(context: UIViewController) {
         let filterVC = FilterScreenViewController()
-        
+
         context.present(filterVC, animated: true)
     }
-    
+
     func openSearchWindow(context: UIViewController, movies: [QueryMovieModel]? = nil) {
         let controller = tabBarController.viewControllers![1] as! SearchedMoviesViewController
         if let movies = movies {
@@ -140,7 +141,7 @@ final class CoordinatorImpl: Coordinator {
         else {
             controller.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
         }
-        
+
         tabBarController.selectedIndex = 1
     }
 }

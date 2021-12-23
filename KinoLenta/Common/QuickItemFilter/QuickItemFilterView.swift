@@ -27,9 +27,9 @@ final class QuickItemFilterView: UIView {
         static let font: UIFont = UIFont(name: "SFProDisplay-Bold", size: 14) ?? UIFont.boldSystemFont(ofSize: 14)
         static let textPadding: CGFloat = 15
     }
-    
+
     var selectedItems: [Int] = []
-    
+
     var contentSize: CGSize {
         set {
             collectionView.contentSize = newValue
@@ -38,7 +38,7 @@ final class QuickItemFilterView: UIView {
             collectionView.contentSize
         }
     }
-    
+
     lazy var collectionView: UICollectionView = {
         let layout = QuickItemFilterCollectionViewLayout()
         layout.intersectionMargin = Consts.marginBetweenCells
@@ -52,31 +52,31 @@ final class QuickItemFilterView: UIView {
         collectionView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellWithReuseIdentifier: Consts.cellIdentifier)
         return collectionView
     }()
-    
+
     var items: [QuickItem] = [] {
         didSet {
             collectionView.reloadData()
         }
     }
-    
+
     private let insets: UIEdgeInsets
-    
+
     weak var delegate: QuickItemFilterDelegate?
-    
+
     init(frame: CGRect, insets: UIEdgeInsets = .zero) {
         self.insets = insets
         super.init(frame: frame)
         configureView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func configureView() {
         addSubview(collectionView)
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         collectionView.frame = bounds
@@ -97,11 +97,11 @@ extension QuickItemFilterView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.cellIdentifier, for: indexPath)
         guard let cell = cell as? QuickItemFilterCollectionViewCell else { fatalError("Invalid cell type") }
-        
+
         let item = items[indexPath.row]
         cell.genreLabel.text = item.title
         cell.isItemSelected = item.isSelected
@@ -115,9 +115,8 @@ extension QuickItemFilterView: UICollectionViewDataSource {
 
 extension QuickItemFilterView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
         let selectedIndexBefore = items.enumerated().first(where: { $0.element.isSelected && indexPath.row != $0.offset})?.offset
-        
+
         items = items.enumerated().map {
             QuickItem(isSelected: $0 == indexPath.row ? !$1.isSelected : false, title: $1.title)
         }

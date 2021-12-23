@@ -13,11 +13,11 @@ final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
     var coordinator: Coordinator!
     var originalItems: [QueryMovieModel] = []
     var items: [CarouselData] = []
-    
+
     func reloadData() {
         collectionView.reloadData()
     }
-    
+
     @IBOutlet weak var sampleTitle: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
@@ -67,13 +67,13 @@ extension MovieSampleTableCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         items.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.cellDescribing, for: indexPath)
         guard let cell = cell as? CarouselCollectionCell else { fatalError("Invalid cell type") }
-        
+
         cell.reset()
-        
+
         let item = items[indexPath.row]
         cell.movieTitle.text = item.name
         cell.ratingView.rating = item.rating

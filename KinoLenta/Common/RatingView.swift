@@ -22,12 +22,12 @@ final class RatingView: UIView {
         ratingView.clipsToBounds = true
         return ratingView
     }()
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configureView()
     }
-    
+
     var image: UIImage? {
         didSet {
             imageView.image = UIImage.moviePlaceholder
@@ -41,27 +41,27 @@ final class RatingView: UIView {
         cancellationHandle = imageView.setImage(url: url, traits: .thumbnail)
         setBorder(isBorderActive: false)
     }
-    
+
     func reset() {
         cancellationHandle?.isCancelled = true
-        
+
         image = nil
         ratingLabel.text = nil
     }
-    
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+
     private func configureView() {
         addSubview(imageView)
         addSubview(ratingView)
         ratingView.addSubview(ratingLabel)
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = bounds
@@ -72,13 +72,13 @@ final class RatingView: UIView {
                                   size: ratingViewSize)
         ratingLabel.frame = ratingView.bounds
     }
-    
+
     var rating: Double? {
         didSet {
             guard let rating = rating else {
                 return
             }
-            
+
             let newColor: UIColor
             switch rating {
             case .zero...Consts.maxRedRating:
@@ -94,7 +94,7 @@ final class RatingView: UIView {
             ratingLabel.text = "\(rating)"
         }
     }
-    
+
     private func setBorder(isBorderActive: Bool) {
         imageView.layer.borderColor = isBorderActive ? UIColor.gray.cgColor : UIColor.clear.cgColor
         imageView.layer.borderWidth = isBorderActive ? 0.2 : 0

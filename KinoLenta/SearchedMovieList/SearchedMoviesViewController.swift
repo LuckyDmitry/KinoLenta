@@ -13,6 +13,7 @@ extension UITextField {
         self.leftView = paddingView
         self.leftViewMode = .always
     }
+
     func setRightPaddingPoints(_ amount:CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.rightView = paddingView
@@ -29,8 +30,8 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
             let largeBoldDoc = UIImage(systemName: "line.3.horizontal.decrease.circle.fill", withConfiguration: largeConfig)
             filterButton.setImage(largeBoldDoc, for: .normal)
         }
-        
     }
+
     @IBOutlet var searchTextField: UITextField! {
         didSet {
             searchTextField.layer.borderWidth = 1
@@ -38,6 +39,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
             searchTextField.layer.borderColor = UIColor.pickerItemBackground.cgColor
         }
     }
+
     private var collectionView: QuickItemFilterView!
     private var internalCoordinator: Coordinator?
     private var displayedItems: [SearchedMovieViewItem] = []
@@ -56,7 +58,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     var cacheService: CacheService!
     var networkService: NetworkingService!
-    
+
     @IBOutlet var searchViewTopConstraint: NSLayoutConstraint!
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         timer?.invalidate()
@@ -66,7 +68,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
                              userInfo: nil,
                              repeats: false)
     }
-    
+
     @objc
     func findMovies() {
         let request = searchTextField.text ?? ""
@@ -78,17 +80,16 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
             }
         })
     }
-    
+
     func setDisplayedItems(queryResults: [SearchedMovieViewItem]) {
         displayedItems = queryResults
         DispatchQueue.main.async {
             self.moviesTableView.reloadData()
         }
-        
     }
-    
+
     private var savedMovieIds: Set<Int> = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTextField.layer.cornerRadius = 20
@@ -100,23 +101,22 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
         collectionView = QuickItemFilterView(frame: placeHolderView.bounds)
         collectionView.delegate = self
         placeHolderView.addSubview(collectionView)
-        
+
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
 //        self.moviesTableView.addGestureRecognizer(tapGesture)
-        
+
         cacheService.getSavedMovies(option: .wishToWatch, completion: { [weak self] result in
             if case .success(let movies) = result {
                 self?.savedMovieIds = Set(movies.map { $0.id })
             }
         })
-        
+
         filterItems = GenreDecoderContainer.sharedMovieManager.getGenreNames().map {
             QuickItem(title: $0)
         }
         collectionView.items = filterItems
-        
     }
-    
+
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         searchTextField.resignFirstResponder()
     }
@@ -126,7 +126,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
         filterScreenViewController.delegate = self
         present(filterScreenViewController, animated: true)
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = CGRect(x: collectionView.frame.minX,
@@ -134,15 +134,15 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
                                       width: view.frame.width,
                                       height: collectionView.frame.height)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
+
     @objc
     private func watchLaterButtonPressed(_ button: SelectedButton) {
         let movie = displayedItems[button.index]
-        
+
         networkService.getById(movie.id, callback: { [weak self] model in
             if button.isButtonSelected {
                 self?.savedMovieIds.insert(movie.id)
@@ -209,11 +209,11 @@ extension SearchedMoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayedItems.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Consts.cellIdentifier, for: indexPath) as? SearchedMovieTableViewCell else { fatalError("Invalid cell type") }
         let movie = displayedItems[indexPath.row]
-        
+
         cell.backgroundColor = .mainBackground
         cell.movieTitle.text = movie.title
         cell.movieGenre.text = movie.genre
@@ -254,13 +254,13 @@ extension SearchedMoviesViewController: QuickItemFilterDelegate {
             self.bottomConstraint.constant = searchViewBottomConstraintNewConstant
             self.view.layoutIfNeeded()
         }
-        
+
         guard isSelected else {
             displayedItems.removeAll()
             moviesTableView.reloadData()
             return
         }
-        
+
         let genreIndex: Int
         switch transition {
         case .singlePress(let index):
@@ -268,7 +268,7 @@ extension SearchedMoviesViewController: QuickItemFilterDelegate {
         case .transitionPress(_, let index):
             genreIndex = index
         }
-      
+
         let genreName = filterItems[genreIndex].title.lowercased()
         if let id = GenreDecoderContainer.sharedMovieManager.getByName(genreName) {
             networkService.discover(genre: [id], yearRange: nil, ratingGTE: nil, country: nil, callback: { model in

@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias Networking =  MovieSearchService &
+typealias Networking = MovieSearchService &
                         MovieInfoService &
                         MovieCompilationService &
                         SavedMovieService

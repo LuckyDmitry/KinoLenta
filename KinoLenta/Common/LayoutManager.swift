@@ -15,13 +15,13 @@ protocol LayoutManager {
 
 struct AnyLayoutManager<T>: LayoutManager {
     typealias CellType = T
-    
+
     private let applyLayout: (T, CGRect) -> ()
-    
+
     init<Manager: LayoutManager>(_ manager: Manager) where Manager.CellType == T {
         applyLayout = manager.applyLayout
     }
-    
+
     func applyLayout(for cell: T, bounds: CGRect) {
         applyLayout(cell, bounds)
     }

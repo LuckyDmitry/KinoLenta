@@ -13,7 +13,7 @@ extension UICollectionView {
         let inset = contentInset
         return bounds.width - (inset.left + inset.right)
     }
-    
+
     func register(uniqueCells: [UICollectionViewCell.Type]) {
         for cell in uniqueCells {
             let identifier = String(describing: cell)

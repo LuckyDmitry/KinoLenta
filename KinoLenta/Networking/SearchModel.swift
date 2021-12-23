@@ -22,7 +22,7 @@ struct SearchModel: Decodable {
     let voteCount: Int?
     let name: String
     let originalName: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case posterPath = "poster_path"
         case popularity, id, overview

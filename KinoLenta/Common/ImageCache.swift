@@ -3,9 +3,8 @@ import UIKit
 import CommonCrypto
 
 final class ImageCache {
-    
     static let shared = ImageCache()
-    
+
     private let fileManager = FileManager()
     private let queue = DispatchQueue(label: "ImageCacheQueue", attributes: .concurrent)
     private let inMemoryCache = NSCache<NSString, UIImage>()
@@ -18,7 +17,7 @@ final class ImageCache {
 
     typealias DownloadedImageHandler = (traits: ImageSizeTraits, callback: (UIImage?) -> Void)
     private var networkRequests = [URL: [DownloadedImageHandler]]()
-    
+
     init() {
         queue.async(flags: .barrier) { [weak self] in
             guard let self = self else { return }
@@ -32,7 +31,7 @@ final class ImageCache {
 
     // Note: UIImage should be safe to create and use from any thread
     // See https://developer.apple.com/documentation/uikit/uiimage
-    
+
     func load(for url: URL, traits: ImageSizeTraits = .normal, callback: @escaping (UIImage?) -> Void) {
         assert(Thread.isMainThread)
         if let image = readFromInMemoryCache(url: url, traits: traits) {
@@ -55,7 +54,7 @@ final class ImageCache {
 
             self.downloadFromNetwork(imageUrl: url) { imageData, image in
                 assert(Thread.isMainThread)
-                
+
                 self.addToFileCache(imageData, url: url, traits: .normal)
 
                 guard let image = image else {
@@ -106,7 +105,7 @@ final class ImageCache {
     private func fileCachePath(for url: URL, traits: ImageSizeTraits) -> URL {
         directory.appendingPathComponent(url.imageNameForCaching(traits: traits))
     }
-    
+
     private func downloadFromNetwork(imageUrl: URL, callback: @escaping (Data?, UIImage?) -> Void) {
         DispatchQueue.global().async {
             self.downloadData(from: imageUrl) { data, _, error in
@@ -120,7 +119,7 @@ final class ImageCache {
             }
         }
     }
-    
+
     private func downloadData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }

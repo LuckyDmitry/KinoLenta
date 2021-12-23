@@ -12,18 +12,18 @@ final class DetailMovieTextCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         return label
     }()
-    
+
     private let layoutManager = AnyLayoutManager<DetailMovieTextCollectionViewCell>(DetailMovieTextLayoutManager())
- 
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(title)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         layoutManager.applyLayout(for: self, bounds: bounds)

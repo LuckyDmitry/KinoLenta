@@ -13,7 +13,6 @@ protocol FilterScreenDelegate: AnyObject {
 }
 
 final class FilterScreenViewController: UIViewController {
-    
     weak var delegate: FilterScreenDelegate?
     @IBOutlet private weak var tableView: UITableView! {
         didSet {
@@ -23,12 +22,12 @@ final class FilterScreenViewController: UIViewController {
 
             tableView.tableHeaderView = headerView
             tableView.tableFooterView = footerView
-            
+
             tableView.delegate = self
             tableView.dataSource = self
         }
     }
-    
+
     private lazy var headerView: FiltersHeaderView? = {
         guard let headerView = UINib(nibName: "FiltersHeaderView", bundle: nil)
                 .instantiate(withOwner: nil, options: nil)[0] as? FiltersHeaderView else {
@@ -39,8 +38,8 @@ final class FilterScreenViewController: UIViewController {
         headerView.delegate = self
         return headerView
     }()
-    
-    
+
+
     private lazy var footerView: FiltersFooterView? = {
         guard let footerView = UINib(nibName: "FiltersFooterView", bundle: nil)
                 .instantiate(withOwner: nil, options: nil)[0] as? FiltersFooterView else {
@@ -51,7 +50,7 @@ final class FilterScreenViewController: UIViewController {
         footerView.delegate = self
         return footerView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
@@ -59,11 +58,10 @@ final class FilterScreenViewController: UIViewController {
 }
 
 extension FilterScreenViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         4
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
@@ -79,7 +77,7 @@ extension FilterScreenViewController: UITableViewDelegate, UITableViewDataSource
                     pickerData: [noSelectedGenresTitle, "Ужасы", "Комедия", "Боевик"]
                 )
             }
-            
+
         case 1:
             return (tableView.dequeueReusableCell(
                 withIdentifier: "PickerFilterTableCell",
@@ -93,7 +91,7 @@ extension FilterScreenViewController: UITableViewDelegate, UITableViewDataSource
                     pickerData: [noSelectedCountryTitle, "Россия", "Сша", "Мексика"]
                 )
             }
-            
+
         case 2:
             return (tableView.dequeueReusableCell(
                 withIdentifier: "YearFilterTableCell",
@@ -102,7 +100,7 @@ extension FilterScreenViewController: UITableViewDelegate, UITableViewDataSource
                 cell.reset()
                 cell.delegate = self
             }
-            
+
         case 3:
             return (tableView.dequeueReusableCell(
                 withIdentifier: "RatingFilterTableCell",
@@ -111,7 +109,7 @@ extension FilterScreenViewController: UITableViewDelegate, UITableViewDataSource
                 cell.reset()
                 cell.delegate = self
             }
-            
+
         default:
             return UITableViewCell()
         }
@@ -129,7 +127,7 @@ extension FilterScreenViewController: CloseScreenDelegate, SearchMoviesWithFilte
     func closeScreen() {
         dismiss(animated: true)
     }
-    
+
     func searchMovies() {
         guard let genreCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? PickerFilterTableCell,
               let countryCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? PickerFilterTableCell,
@@ -149,7 +147,6 @@ extension FilterScreenViewController: CloseScreenDelegate, SearchMoviesWithFilte
 }
 
 extension FilterScreenViewController {
-    
     private func setPickerFilterFields(
         cell: PickerFilterTableCell,
         titleLabel: String,

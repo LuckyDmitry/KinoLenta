@@ -13,6 +13,7 @@
 import Foundation
 
 // MARK: - TVModel
+
 struct TVModel: Decodable, Hashable {
     let backdropURL: String
     let createdBy: [CreatedBy]?
@@ -77,6 +78,7 @@ struct TVModel: Decodable, Hashable {
 }
 
 // MARK: - CreatedBy
+
 struct CreatedBy: Codable, Hashable {
     let id: Int?
     let creditID, name: String?
@@ -92,6 +94,7 @@ struct CreatedBy: Codable, Hashable {
 }
 
 // MARK: - Network
+
 struct Network: Codable, Hashable {
     let name: String?
     let id: Int?
@@ -107,6 +110,7 @@ struct Network: Codable, Hashable {
 }
 
 // MARK: - Season
+
 struct Season: Codable, Hashable {
     let id: Int?
     let airDate: String?
@@ -126,6 +130,7 @@ struct Season: Codable, Hashable {
 }
 
 // MARK: - SpokenLanguage
+
 struct SpokenLanguage: Codable, Hashable {
     let englishName, iso639_1, name: String?
 
