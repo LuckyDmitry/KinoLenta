@@ -73,9 +73,10 @@ extension FilterScreenViewController: UITableViewDelegate, UITableViewDataSource
             ) as! PickerFilterTableCell).configured { cell in
                 setPickerFilterFields(
                     cell: cell,
-                    titleLabel: "Жанры",
-                    buttonTitle: "Не выбрано",
-                    pickerData: ["Не выбрано", "Ужасы", "Комедия", "Боевик"]
+                    titleLabel: NSLocalizedString("filter_screen_genre_title",
+                                                  comment: "Genre section title on filters screen"),
+                    buttonTitle: noSelectedGenresTitle,
+                    pickerData: [noSelectedGenresTitle, "Ужасы", "Комедия", "Боевик"]
                 )
             }
             
@@ -86,9 +87,10 @@ extension FilterScreenViewController: UITableViewDelegate, UITableViewDataSource
             ) as! PickerFilterTableCell).configured { cell in
                 setPickerFilterFields(
                     cell: cell,
-                    titleLabel: "Страна",
-                    buttonTitle: "Не выбрано",
-                    pickerData: ["Не выбрано", "Россия", "Сша", "Мексика"]
+                    titleLabel: NSLocalizedString("filter_screen_country_title",
+                                                  comment: "Country section title on filters screen"),
+                    buttonTitle: noSelectedCountryTitle,
+                    pickerData: [noSelectedCountryTitle, "Россия", "Сша", "Мексика"]
                 )
             }
             
@@ -161,3 +163,8 @@ extension FilterScreenViewController {
         cell.pickerData = pickerData
     }
 }
+
+private let noSelectedGenresTitle = NSLocalizedString("filter_screen_genre_nothing_selected_item",
+                                                      comment: "Absent genre selection title on filters screen")
+private let noSelectedCountryTitle = NSLocalizedString("filter_screen_country_nothing_selected_item",
+                                                       comment: "Absent country selection title on filters screen")

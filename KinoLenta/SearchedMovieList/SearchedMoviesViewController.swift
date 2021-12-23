@@ -141,7 +141,6 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     
     @objc
     private func watchLaterButtonPressed(_ button: SelectedButton) {
-        let title = button.isButtonSelected ? "Смотреть позже" : "Добавлено" 
         let movie = displayedItems[button.index]
         
         networkService.getById(movie.id, callback: { [weak self] model in
@@ -153,9 +152,16 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
                 self?.cacheService.removeMovies([model], directoryType: .wishToWatch, completion: nil)
             }
         })
-       
-        button.setTitle(title, for: .normal)
+
         button.isButtonSelected = !button.isButtonSelected
+        updateWatchLaterButtonTitle(button)
+    }
+
+    private func updateWatchLaterButtonTitle(_ button: SelectedButton) {
+        button.setTitle(
+            button.isButtonSelected ? addedToWishlistButtonTitle : addToWishlistButtonTitle,
+            for: .normal
+        )
     }
 }
 
@@ -221,9 +227,8 @@ extension SearchedMoviesViewController: UITableViewDataSource {
         if savedMovieIds.contains(where: { $0 == movie.id }) {
             cell.watchLaterButton.isButtonSelected = true
         }
-        
-        cell.watchLaterButton.setTitle(cell.watchLaterButton.isButtonSelected ? "Добавлено" :
-                                        "Смотреть позже", for: .normal)
+
+        updateWatchLaterButtonTitle(cell.watchLaterButton)
         cell.watchLaterButton.addTarget(self, action: #selector(watchLaterButtonPressed(_:)), for: .touchUpInside)
         cell.watchLaterButton.index = indexPath.row
         return cell
@@ -289,3 +294,9 @@ final class SelectedButton: UIButton {
     var index: Int = 0
 }
 
+private let addToWishlistButtonTitle =
+    NSLocalizedString("add_to_wishlist_action",
+                      comment: "Action title for adding to wishlist")
+private let addedToWishlistButtonTitle =
+    NSLocalizedString("add_to_wishlist_action_already_added",
+                      comment: "Action title for adding to wishlist in inactive state (already added)")

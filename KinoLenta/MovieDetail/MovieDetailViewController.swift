@@ -150,7 +150,12 @@ final class MovieDetailViewController: UIViewController {
                 descriptors[section]?.append(first)
                 descriptors[section]?.append(second)
             case .reviewTitle:
-                let review = MovieTextItemDescriptor(title: "Отзывы", font: UIFont.boldSystemFont(ofSize: 25), alignment: .left)
+                let review = MovieTextItemDescriptor(
+                    title: NSLocalizedString("movie_reviews_section_title",
+                                             comment: "Reviews section title on movie details screen"),
+                    font: UIFont.boldSystemFont(ofSize: 25),
+                    alignment: .left
+                )
                 descriptors[section]?.append(review)
             case .review:
                 for i in 0...3 {
@@ -242,22 +247,29 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
             return
         }
         
-        let alertViewController = UIAlertController(title: "Удалить фильм из \(optionType.description)?",
+        let alertViewController = UIAlertController(title: deleteMessage(for: optionType),
                                                     message: nil,
                                                     preferredStyle: .alert)
         
-        let removeMovieAction = UIAlertAction(title: "Удалить",
-                                              style: .destructive,
-                                              handler: { [weak self] _ in
+        let removeMovieAction = UIAlertAction(
+            title: NSLocalizedString("remove_from_list_remove_action",
+                                     comment: "Remove action title for dialog on removing movie from list"),
+            style: .destructive
+        ) { [weak self] _ in
             guard let self = self else { return }
-            self.cache.removeMovies([self.selectedMovie], directoryType: self.buttonActions[index].optionType) { error in
+            self.cache.removeMovies(
+                [self.selectedMovie],
+                directoryType: self.buttonActions[index].optionType
+            ) { error in
                 // TODO: Handle error
             }
-        })
-        
-        let leaveMovieAction = UIAlertAction(title: "Оставить",
-                                   style: .default,
-                                   handler: { [weak self] _ in
+        }
+
+        let leaveMovieAction = UIAlertAction(
+            title: NSLocalizedString("remove_from_list_cancel_action",
+                                     comment: "Cancel action title for dialog on removing movie from list"),
+            style: .default
+        ) { [weak self] _ in
             guard let self = self else { return }
             alertViewController.dismiss(animated: true)
             let sectionIndex = self.sections.firstIndex(where: { $0 == .actions })
@@ -269,7 +281,7 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
             if let sectionIndex = sectionIndex {
                 self.movieDetailCollectionView.reloadSections(IndexSet(integer: sectionIndex))
             }
-        })
+        }
         
         alertViewController.addAction(removeMovieAction)
         alertViewController.addAction(leaveMovieAction)
@@ -309,5 +321,16 @@ extension MovieDetailViewController {
         static let flowViewInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         static let minimumLineSpacing: CGFloat = 15
         static let edgeMargin: CGFloat = 10
+    }
+}
+
+private func deleteMessage(for option: SavedMovieOption) -> String {
+    switch option {
+    case .viewed:
+        return NSLocalizedString("remove_from_watched_list_dialog_message",
+                                 comment: "Message for dialog on removing movie from watched list")
+    case .wishToWatch:
+        return NSLocalizedString("remove_from_wishlist_dialog_message",
+                                 comment: "Message for dialog on removing movie from wishlist")
     }
 }

@@ -1,0 +1,97 @@
+/* 
+  Localizable.strings
+  KinoLenta
+
+  Created by Alexander Denisov on 20.12.2021.
+  
+*/
+
+/* Tab title for selected movies */
+"favorites_tab_title" = "Избранное";
+
+/* Tab title for featured collections */
+"featured_tab_title" = "Лента";
+
+/* Tab title for movie search */
+"search_tab_title" = "Поиск";
+
+/* Action title for adding to wishlist */
+"add_to_wishlist_action" = "Хочу посмотреть";
+
+/* Action title for adding to wishlist in inactive state (already added) */
+"add_to_wishlist_action_already_added" = "Добавлено";
+
+/* Action title for adding to already watched list */
+"add_to_watched_list_action" = "Уже смотрел";
+
+/* Action title for sending movie rating */
+"send_rating_action" = "Отправить";
+
+/* Title for rate movie dialog */
+"rating_dialog_title" = "Оцените фильм";
+
+/* Message for dialog on removing movie from watched list */
+"remove_from_watched_list_dialog_message" = "Удалить фильм из просмотренного?";
+
+/* Message for dialog on removing movie from wishlist */
+"remove_from_wishlist_dialog_message" = "Удалить фильм из списка на просмотр?";
+
+/* Remove action title for dialog on removing movie from list */
+"remove_from_list_remove_action" = "Удалить";
+
+/* Cancel action title for dialog on removing movie from list */
+"remove_from_list_cancel_action" = "Оставить";
+
+/* Reviews section title on movie details screen */
+"movie_reviews_section_title" = "Отзывы";
+
+/* Title of filters screen */
+"filter_screen_title" = "Фильтры";
+
+/* Genre section title on filters screen */
+"filter_screen_genre_title" = "Жанр";
+
+/* Absent genre selection title on filters screen */
+"filter_screen_genre_nothing_selected_item" = "Не выбран";
+
+/* Country section title on filters screen */
+"filter_screen_country_title" = "Страна";
+
+/* Absent country selection title on filters screen */
+"filter_screen_country_nothing_selected_item" = "Не выбрана";
+
+/* Year section title on filters screen */
+"filter_screen_year_title" = "Год";
+
+/* Absent year selection title on filters screen */
+"filter_screen_year_nothing_selected_item" = "Не выбран";
+
+/* Year selection text template on filters screen */
+"filter_screen_year_selected_template" = "от {{from_year}} до {{to_year}}";
+
+/* Rating section title on filters screen */
+"filter_screen_rating_title" = "Рейтинг";
+
+/* Apply action title on filters screen */
+"filter_screen_apply_action" = "Применить";
+
+/* Trending collection title on featured movies screen */
+"featured_screen_trending_title" = "В тренде";
+
+/* Popular collection title on featured movies screen */
+"featured_screen_popular_title" = "Популярное";
+
+/* Top rated collection title on featured movies screen */
+"featured_screen_top_rated_title" = "Высокий рейтинг";
+
+/* Show all movies in collection action title on featured movies screen */
+"featured_screen_show_all_action" = "Показать все";
+
+/* Show full review action title on movie details screen */
+"movie_details_screen_show_full_review_action" = "Показать полностью";
+
+/* Wishlist switcher state title on favorites screen */
+"favorites_screen_wishlist_switcher_title" = "Хочу посмотреть";
+
+/* Already watched list switcher state title on favorites screen */
+"favorites_screen_watched_list_switcher_title" = "Уже смотрел";

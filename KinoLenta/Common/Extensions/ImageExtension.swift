@@ -1,10 +1,6 @@
 import UIKit
 
 extension UIImage {
-    static var moviePlaceholder: UIImage? {
-        UIImage(named: "movie_vertical_placeholder")
-    }
-
     func downscaled(maxDimention: CGFloat) -> UIImage {
         guard size.width > maxDimention || size.height > maxDimention else { return self }
 

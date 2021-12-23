@@ -30,18 +30,9 @@ protocol MovieInfoService {
     func getSimilar(to movie: MovieDomainModel) -> [MovieDomainModel]
 }
 
-enum SavedMovieOption: String {
-    case viewed = "ViewedMovies"
-    case wishToWatch = "WishMovies"
-    
-    var description: String {
-        switch self {
-        case .viewed:
-            return "Просмотреное"
-        case .wishToWatch:
-            return "Посмотреть"
-        }
-    }
+enum SavedMovieOption {
+    case viewed
+    case wishToWatch
 }
 
 protocol SavedMovieService {

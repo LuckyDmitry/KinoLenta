@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
-        
     weak var delegate: UpdateTableDelegate?
     var selectedYears: [ClosedRange<Int>]? {
         let from = allYears[datePicker.selectedRow(inComponent: 0)]
@@ -18,7 +17,17 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
     }
     
     @IBOutlet private weak var datePickerHeight: NSLayoutConstraint!
-    @IBOutlet private weak var dateButton: UIButton!
+    @IBOutlet private weak var dateTitle: UILabel! {
+        didSet {
+            dateTitle?.text = NSLocalizedString("filter_screen_year_title",
+                                                comment: "Year section title on filters screen")
+        }
+    }
+    @IBOutlet private weak var dateButton: UIButton! {
+        didSet {
+            dateButton?.setTitle(noSelectedYearTitle, for: .normal)
+        }
+    }
     @IBOutlet weak var cancelButton: UIButton! {
         didSet {
             cancelButton.isHidden = true
@@ -26,13 +35,12 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
     }
     @IBAction func cancelAction(_ sender: Any) {
         cancelButton.isHidden = true
-        dateButton.setTitle("Не выбрано", for: .normal)
+        dateButton.setTitle(noSelectedYearTitle, for: .normal)
         useThisFilter = false
         dateButton.setTitleColor(UIColor.textPlaceholderForeground, for: .normal)
     }
     
     @IBAction private func showPickerAction(_ sender: Any) {
-        
         UIView.animate(
             withDuration: 0.4,
             animations: { [weak self] in
@@ -48,8 +56,8 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
         )
         layoutIfNeeded()
     }
-        
-    private let allYears = Array(1950...2021)
+
+    private let allYears = Array(1950...currentYear).reversed().map { $0 }
     private var isPickerShowing = false
     private var useThisFilter = false
     
@@ -73,7 +81,7 @@ extension YearFilterTableCell: UIPickerViewDataSource, UIPickerViewDelegate {
         let fromDate = pickerView.selectedRow(inComponent: 0)
         let toDate = pickerView.selectedRow(inComponent: 1)
         
-        dateButton.setTitle("от \(allYears[fromDate]) до \(allYears[toDate])", for: .normal)
+        dateButton.setTitle(makeSelectedYearRangeText(from: allYears[fromDate], to: allYears[toDate]), for: .normal)
         
         if allYears[fromDate] > allYears[toDate] {
             dateButton.setTitleColor(.red, for: .normal)
@@ -100,3 +108,16 @@ extension YearFilterTableCell {
         return self
     }
 }
+
+private func makeSelectedYearRangeText(from fromYear: Int, to toYear: Int) -> String {
+    let template = NSLocalizedString("filter_screen_year_selected_template",
+                                     comment: "Year selection text template on filters screen")
+    return template
+        .replacingOccurrences(of: "{{from_year}}", with: String(fromYear))
+        .replacingOccurrences(of: "{{to_year}}", with: String(toYear))
+}
+
+private let noSelectedYearTitle = NSLocalizedString("filter_screen_year_nothing_selected_item",
+                                                    comment: "Absent year selection title on filters screen")
+
+private let currentYear = Calendar(identifier: .gregorian).component(.year, from: Date())

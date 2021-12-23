@@ -17,12 +17,16 @@ final class MainGraph {
     // MARK: - Views
     private lazy var movieListViewController: MovieListViewController = {
         let movieListStoryboard = UIStoryboard(name: "MovieList", bundle: nil)
-        let movieListViewController = movieListStoryboard.instantiateViewController(withIdentifier: "MovieList") as! MovieListViewController
+        let movieListViewController =
+            movieListStoryboard.instantiateViewController(withIdentifier: "MovieList") as! MovieListViewController
 
         movieListViewController.coordinator = coordinator
         movieListViewController.cacheService = cacheService
-        let wishlistImage = UIImage(systemName: "list.and.film")
-        movieListViewController.tabBarItem = UITabBarItem(title: "Избранное", image: wishlistImage, selectedImage: wishlistImage)
+        movieListViewController.tabBarItem = UITabBarItem(
+            title: NSLocalizedString("favorites_tab_title", comment: "Tab title for selected movies"),
+            image: .listAndFilm,
+            selectedImage: .listAndFilm
+        )
         return movieListViewController
     }()
     
@@ -30,17 +34,20 @@ final class MainGraph {
         let moviesSamplingViewController = MoviesSamplingViewController()
         moviesSamplingViewController.coordinator = coordinator
         moviesSamplingViewController.dataProvider = networkService
-        
-        let searchImage = UIImage(systemName: "film")
-        moviesSamplingViewController.tabBarItem = UITabBarItem(title: "Лента", image: searchImage, selectedImage: searchImage)
+
+        moviesSamplingViewController.tabBarItem = UITabBarItem(
+            title: NSLocalizedString("featured_tab_title", comment: "Tab title for featured collections"),
+            image: .film,
+            selectedImage: .film
+        )
         return moviesSamplingViewController
     }()
     
     private lazy var searchedMovieViewController: SearchedMoviesViewController = {
         let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
-        let searchImage = UIImage(systemName: "magnifyingglass")
 
-        let searchedMovieViewController = searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
+        let searchedMovieViewController =
+            searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
     
         searchedMovieViewController.coordinator = coordinator
         searchedMovieViewController.cacheService = cacheService
@@ -49,10 +56,12 @@ final class MainGraph {
         searchedMovieViewController.filterItems = GenreDecoderContainer.sharedMovieManager.getGenreNames().map {
             QuickItem(title: $0)
         }
-        
-        
-        let mainScreenImage = UIImage(systemName: "magnifyingglass")
-        searchedMovieViewController.tabBarItem = UITabBarItem(title: "Поиск", image: mainScreenImage, selectedImage: mainScreenImage)
+
+        searchedMovieViewController.tabBarItem = UITabBarItem(
+            title: NSLocalizedString("search_tab_title", comment: "Tab title for movie search"),
+            image: .magnifyingGlass,
+            selectedImage: .magnifyingGlass
+        )
         return searchedMovieViewController
     }()
         
@@ -101,8 +110,12 @@ final class CoordinatorImpl: Coordinator {
     
     func openDetailMovie(withMovieId id: Int, context: UIViewController, completion: (() -> ())? = nil) {
         let detailMovieViewController = MovieDetailViewController()
-        detailMovieViewController.buttonActions = [(.wishToWatch, QuickItem(title: "Посмотреть")),
-                                                   (.viewed, QuickItem(title: "Просмотрено"))]
+        detailMovieViewController.buttonActions = [
+            (.wishToWatch, QuickItem(title: NSLocalizedString("add_to_wishlist_action",
+                                                              comment: "Action title for adding to wishlist"))),
+            (.viewed, QuickItem(title: NSLocalizedString("add_to_watched_list_action",
+                                                         comment: "Action title adding to already watched list"))),
+        ]
         detailMovieViewController.cache = CacheService()
         detailMovieViewController.idMovie = id
         detailMovieViewController.service = NetworkingService()

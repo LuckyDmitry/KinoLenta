@@ -1,0 +1,97 @@
+/* 
+  Localizable.strings
+  KinoLenta
+
+  Created by Alexander Denisov on 20.12.2021.
+  
+*/
+
+/* Tab title for selected movies */
+"favorites_tab_title" = "Favorites";
+
+/* Tab title for featured collections */
+"featured_tab_title" = "Featured";
+
+/* Tab title for movie search */
+"search_tab_title" = "Find";
+
+/* Action title for adding to wishlist */
+"add_to_wishlist_action" = "Add to wishlist";
+
+/* Action title for adding to wishlist in inactive state (already added) */
+"add_to_wishlist_action_already_added" = "Already added";
+
+/* Action title for adding to already watched list */
+"add_to_watched_list_action" = "Watched";
+
+/* Action title for sending movie rating */
+"send_rating_action" = "Send";
+
+/* Title for rate movie dialog */
+"rating_dialog_title" = "Rate the movie";
+
+/* Message for dialog on removing movie from watched list */
+"remove_from_watched_list_dialog_message" = "Remove the movie from already watched list?";
+
+/* Message for dialog on removing movie from wishlist */
+"remove_from_wishlist_dialog_message" = "Remove the movie from wishlist?";
+
+/* Remove action title for dialog on removing movie from list */
+"remove_from_list_remove_action" = "Remove";
+
+/* Cancel action title for dialog on removing movie from list */
+"remove_from_list_cancel_action" = "Leave";
+
+/* Reviews section title on movie details screen */
+"movie_reviews_section_title" = "Reviews";
+
+/* Title of filters screen */
+"filter_screen_title" = "Filters";
+
+/* Genre section title on filters screen */
+"filter_screen_genre_title" = "Genre";
+
+/* Absent genre selection title on filters screen */
+"filter_screen_genre_nothing_selected_item" = "Not selected";
+
+/* Country section title on filters screen */
+"filter_screen_country_title" = "Country";
+
+/* Absent country selection title on filters screen */
+"filter_screen_country_nothing_selected_item" = "Not selected";
+
+/* Year section title on filters screen */
+"filter_screen_year_title" = "Year";
+
+/* Absent year selection title on filters screen */
+"filter_screen_year_nothing_selected_item" = "Not selected";
+
+/* Year selection text template on filters screen */
+"filter_screen_year_selected_template" = "from {{from_year}} to {{to_year}}";
+
+/* Rating section title on filters screen */
+"filter_screen_rating_title" = "Rating";
+
+/* Apply action title on filters screen */
+"filter_screen_apply_action" = "Apply";
+
+/* Trending collection title on featured movies screen */
+"featured_screen_trending_title" = "Trending";
+
+/* Popular collection title on featured movies screen */
+"featured_screen_popular_title" = "Popular";
+
+/* Top rated collection title on featured movies screen */
+"featured_screen_top_rated_title" = "Top rated";
+
+/* Show all movies in collection action title on featured movies screen */
+"featured_screen_show_all_action" = "Show all";
+
+/* Show full review action title on movie details screen */
+"movie_details_screen_show_full_review_action" = "Show more";
+
+/* Wishlist switcher state title on favorites screen */
+"favorites_screen_wishlist_switcher_title" = "Wishlist";
+
+/* Already watched list switcher state title on favorites screen */
+"favorites_screen_watched_list_switcher_title" = "Watched";

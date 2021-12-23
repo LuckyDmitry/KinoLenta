@@ -18,8 +18,24 @@ class MovieListViewController: UIViewController {
         set { internalCoordinator = newValue }
     }
     
-    @IBOutlet var watchButton: UIButton!
-    @IBOutlet var watchedButton: UIButton!
+    @IBOutlet var watchButton: UIButton! {
+        didSet {
+            watchButton.setTitle(
+                NSLocalizedString("favorites_screen_wishlist_switcher_title",
+                                  comment: "Wishlist switcher state title on favorites screen"),
+                for: .normal
+            )
+        }
+    }
+    @IBOutlet var watchedButton: UIButton! {
+        didSet {
+            watchedButton.setTitle(
+                NSLocalizedString("favorites_screen_watched_list_switcher_title",
+                                  comment: "Already watched list switcher state title on favorites screen"),
+                for: .normal
+            )
+        }
+    }
     @IBOutlet var placeHolderView: UIView!
     @IBOutlet var collectionView: UICollectionView!
     

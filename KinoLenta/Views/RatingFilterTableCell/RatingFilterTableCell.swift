@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 final class RatingFilterTableCell: UITableViewCell, BaseTableViewCell {
-    
     weak var delegate: UpdateTableDelegate?
     
     var selectedRating: Double? {
@@ -12,7 +11,17 @@ final class RatingFilterTableCell: UITableViewCell, BaseTableViewCell {
     private var useThisFilter = false
     private var isSliderShowing = false
     
-    @IBOutlet private weak var valueButton: UIButton!
+    @IBOutlet private weak var valueButton: UIButton! {
+        didSet {
+            valueButton.setTitle("☆☆☆☆☆", for: .normal)
+        }
+    }
+    @IBOutlet private weak var titleLabel: UILabel! {
+        didSet {
+            titleLabel.text = NSLocalizedString("filter_screen_rating_title",
+                                                comment: "Rating section title on filters screen")
+        }
+    }
     @IBOutlet private weak var ratingSlider: UISlider! {
         didSet {
             ratingSlider.setValue(5, animated: false)
@@ -37,7 +46,7 @@ final class RatingFilterTableCell: UITableViewCell, BaseTableViewCell {
     }
     @IBAction func cancelAction(_ sender: Any) {
         cancelButton.isHidden = true
-        valueButton.setTitle("☆ ☆ ☆ ☆ ☆", for: .normal)
+        valueButton.setTitle("☆☆☆☆☆", for: .normal)
         useThisFilter = false
         valueButton.setTitleColor(UIColor.textPlaceholderForeground, for: .normal)
     }

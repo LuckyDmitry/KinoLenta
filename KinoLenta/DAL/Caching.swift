@@ -19,8 +19,8 @@ func getUrlFolderBy(folderType type: SavedMovieOption) throws -> URL {
     return try fileManager.url(for: .libraryDirectory,
                                   in: .userDomainMask,
                                   appropriateFor: nil,
-                                  create: true).appendingPathComponent(type.rawValue,
-                                                                       isDirectory: true)
+                                  create: true)
+        .appendingPathComponent(type.cacheDirName,isDirectory: true)
 }
 
 func createDirectoryIfNeeded(at url: URL) throws {
@@ -106,12 +106,23 @@ final class CacheService: Caching {
         }
     }
     
-    private enum PathConsts {
-        static let wishesMovieDirectoryName = "WishesMovies"
+    fileprivate enum PathConsts {
+        static let wishesMovieDirectoryName = "WishMovies"
         static let viewedMoviesDirectoryName = "ViewedMovies"
     }
     
     private enum Consts {
         static let fileExtension = "json"
+    }
+}
+
+extension SavedMovieOption {
+    fileprivate var cacheDirName: String {
+        switch self {
+        case .wishToWatch:
+            return CacheService.PathConsts.wishesMovieDirectoryName
+        case .viewed:
+            return CacheService.PathConsts.viewedMoviesDirectoryName
+        }
     }
 }
