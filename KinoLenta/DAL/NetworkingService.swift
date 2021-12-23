@@ -185,51 +185,34 @@ private func makeRequest(
     cancellation: CancellationHandle,
     callback: @escaping ([QueryMovieModel]?) -> Void
 ) -> Void {
-    func runCallback(_ result: [QueryMovieModel]?) {
-        DispatchQueue.main.async {
-            if !cancellation.isCancelled {
-                callback(result)
-            }
-        }
-    }
-
-    let config = URLSessionConfiguration.default
-    let session = URLSession(configuration: config)
-    guard let url = getUrl(with: queryInfo) else {
-        assertionFailure()
-        runCallback(nil)
-        return
-    }
-    let task = session.dataTask(with: url) { data, response, error in
-        assert(!Thread.isMainThread)
-        if let error = error {
-            print("Network request error: \(error)")
-        }
-
-        guard let content = data else {
-            print("Network request returned no data")
-            runCallback(nil)
-            return
-        }
-
-        runCallback(parseModelFromResponse(data: content) as [QueryMovieModel])
-    }
-    task.resume()
-
-    DispatchQueue.main.async {
-        cancellation.onCancelled {
-            task.cancel()
-        }
-    }
+    makeRequest(
+        with: queryInfo,
+        cancellation: cancellation,
+        transform: { data in parseModelFromResponse(data: data) },
+        callback: callback
+    )
 }
-
 
 private func makeRequestSingleFilm(
     with queryInfo: QueryInfo,
     cancellation: CancellationHandle,
     callback: @escaping (MovieDomainModel?) -> Void
 ) {
-    func runCallback(_ result: MovieDomainModel?) {
+    makeRequest(
+        with: queryInfo,
+        cancellation: cancellation,
+        transform: { data in try parseObj(data: data) },
+        callback: callback
+    )
+}
+
+private func makeRequest<T>(
+    with queryInfo: QueryInfo,
+    cancellation: CancellationHandle,
+    transform: @escaping (Data) throws -> T,
+    callback: @escaping (T?) -> Void
+) -> Void {
+    func runCallback(_ result: T?) {
         DispatchQueue.main.async {
             if !cancellation.isCancelled {
                 callback(result)
@@ -250,14 +233,14 @@ private func makeRequestSingleFilm(
             print("Network request error: \(error)")
         }
 
-        guard let content = data else {
+        guard let data = data else {
             print("Network request returned no data")
             runCallback(nil)
             return
         }
 
         do {
-            runCallback(try parseObj(data: content) as MovieDomainModel)
+            runCallback(try transform(data))
         } catch {
             print("Network request parsing error: \(error)")
             runCallback(nil)
