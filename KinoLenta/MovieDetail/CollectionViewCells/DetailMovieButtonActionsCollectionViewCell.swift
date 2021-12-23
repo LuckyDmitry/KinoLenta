@@ -21,7 +21,7 @@ final class DetailMovieButtonActionsCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubview(filterComponent)
         if let layout = filterComponent.collectionView.collectionViewLayout as? QuickItemFilterCollectionViewLayout {
-            layout.lifeCycleDelegate = self
+            layout.alignment = .center
         }
     }
     
@@ -32,18 +32,5 @@ final class DetailMovieButtonActionsCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         layoutManager.applyLayout(for: self, bounds: bounds)
-    }
-}
-
-extension DetailMovieButtonActionsCollectionViewCell: QuickItemFilterLayoutLifeCycleDelegate {
-    func prepareLayoutDidFinish(contentSize: CGSize) {
-        let contentWidth = contentSize.width
-        
-        let availableWidth = bounds.width - contentWidth
-        let horizontalInset = availableWidth > 0 ? floor(availableWidth / 2) : .zero
-        filterComponent.collectionView.contentInset = .init(top: .zero,
-                                                            left: horizontalInset,
-                                                            bottom: .zero,
-                                                            right: .zero)
     }
 }
