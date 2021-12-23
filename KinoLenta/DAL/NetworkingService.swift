@@ -214,10 +214,13 @@ private func makeRequest(
 
         runCallback(parseModelFromResponse(data: content) as [QueryMovieModel])
     }
-    cancellation.onCancelled {
-        task.cancel()
-    }
     task.resume()
+
+    DispatchQueue.main.async {
+        cancellation.onCancelled {
+            task.cancel()
+        }
+    }
 }
 
 
@@ -260,10 +263,13 @@ private func makeRequestSingleFilm(
             runCallback(nil)
         }
     }
-    cancellation.onCancelled {
-        task.cancel()
-    }
     task.resume()
+
+    DispatchQueue.main.async {
+        cancellation.onCancelled {
+            task.cancel()
+        }
+    }
 }
 
 private func getUrl(with queryInfo: QueryInfo) -> URL? {
