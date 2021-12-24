@@ -13,10 +13,10 @@ final class DetailMovieButtonActionsCollectionViewCell: UICollectionViewCell {
             filterComponent.items = items
         }
     }
-    
+
     let filterComponent = QuickItemFilterView(frame: .zero)
     private let layoutManager = AnyLayoutManager<DetailMovieButtonActionsCollectionViewCell>(DetailMovieButtonActionsLayoutManager())
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(filterComponent)
@@ -24,11 +24,11 @@ final class DetailMovieButtonActionsCollectionViewCell: UICollectionViewCell {
             layout.alignment = .center
         }
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         layoutManager.applyLayout(for: self, bounds: bounds)

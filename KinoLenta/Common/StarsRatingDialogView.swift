@@ -25,7 +25,7 @@ final class StarsRatingDialogView: UIView {
         if let layout = pickerView.collectionView.collectionViewLayout as? QuickItemFilterCollectionViewLayout {
             layout.alignment = .center
         }
-        
+
         backgroundColor = UIColor.mainBackground
         layer.cornerRadius = Consts.shadowOffsetByY
         layer.shadowColor = UIColor.black.cgColor
@@ -45,15 +45,15 @@ final class StarsRatingDialogView: UIView {
             closeButton.topAnchor.constraint(equalTo: topAnchor, constant: Consts.edgeMargin),
             closeButton.widthAnchor.constraint(equalToConstant: Consts.closeButtonHeight),
             closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor),
-            
+
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: Consts.edgeMargin),
-            
+
             starsCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Consts.edgeMargin),
             starsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Consts.edgeMargin),
             starsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Consts.edgeMargin),
             starsCollectionView.heightAnchor.constraint(equalToConstant: 75),
-            
+
             pickerView.topAnchor.constraint(equalTo: starsCollectionView.bottomAnchor, constant: Consts.edgeMargin),
             pickerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.edgeMargin),
             pickerView.heightAnchor.constraint(equalToConstant: 40),
@@ -61,11 +61,11 @@ final class StarsRatingDialogView: UIView {
             pickerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Consts.edgeMargin),
         ])
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage.close?.withTintColor(.white), for: .normal)
@@ -83,14 +83,14 @@ final class StarsRatingDialogView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     private lazy var pickerView: QuickItemFilterView = {
         let pickerView = QuickItemFilterView(frame: .zero)
         pickerView.delegate = self
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         return pickerView
     }()
-    
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("rating_dialog_title", comment: "Title for rate movie dialog")
@@ -99,7 +99,7 @@ final class StarsRatingDialogView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private lazy var starsCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.estimatedItemSize = CGSize(width: floor(bounds.width / CGFloat(Consts.amountOfItems)), height: bounds.height)
@@ -110,9 +110,9 @@ final class StarsRatingDialogView: UIView {
         starsCollectionView.delegate = self
         starsCollectionView.dataSource = self
         starsCollectionView.allowsSelection = true
-        
+
         starsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "id")
-        
+
         return starsCollectionView
     }()
 }
@@ -139,16 +139,16 @@ extension StarsRatingDialogView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "id", for: indexPath)
-        
+
         cell.subviews.forEach { $0.removeFromSuperview() }
         let imageView = UIImageView(image: indexPath.row <= stars ? .filledStar : .star)
         imageView.frame = cell.bounds
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .pickerItemBackground
         imageView.isUserInteractionEnabled = true
-        
+
         cell.addSubview(imageView)
-        
+
         return cell
     }
 }

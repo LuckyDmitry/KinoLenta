@@ -6,9 +6,8 @@ protocol SearchMoviesWithFilterDelegate: AnyObject {
 }
 
 final class FiltersFooterView: UIView {
-    
     weak var delegate: SearchMoviesWithFilterDelegate?
-    
+
     @IBOutlet private weak var filterButton: UIButton! {
         didSet {
             filterButton.layer.cornerRadius = 10
@@ -18,6 +17,7 @@ final class FiltersFooterView: UIView {
             )
         }
     }
+
     @IBAction private func showAction(_ sender: Any) {
         delegate?.searchMovies()
     }

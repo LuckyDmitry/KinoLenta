@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-extension UIImageView {    
+extension UIImageView {
     func setImage(url: URL, traits: ImageSizeTraits = .normal) -> CancellationHandle {
         let handle = CancellationHandle()
         ImageCache.shared.load(for: url, traits: traits) { [weak self] image in

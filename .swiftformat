@@ -1,0 +1,79 @@
+# file options
+
+--exclude XcodeBuild,KinoLenta/Generated
+
+# format options
+
+--swiftversion 5.1
+--maxwidth 120
+--indent 4
+--trimwhitespace always
+
+# rules
+
+--disable isEmpty
+
+--disable andOperator
+--disable anyObjectProtocol
+--disable assertionFailures
+--disable braces
+--disable consecutiveBlankLines
+--disable duplicateImports
+--disable elseOnSameLine
+--disable emptyBraces
+--disable enumNamespaces
+--disable extensionAccessControl
+--disable fileHeader
+--disable hoistPatternLet
+--disable indent
+--disable initCoderUnavailable
+--disable leadingDelimiters
+--disable linebreakAtEndOfFile
+--disable linebreaks
+--disable modifierOrder
+--disable numberFormatting
+--disable preferKeyPath
+--disable redundantBackticks
+--disable redundantBreak
+--disable redundantClosure
+--disable redundantExtensionACL
+--disable redundantFileprivate
+--disable redundantGet
+--disable redundantInit
+--disable redundantLet
+--disable redundantLetError
+--disable redundantNilInit
+--disable redundantObjc
+--disable redundantParens
+--disable redundantPattern
+--disable redundantRawValues
+--disable redundantReturn
+--disable redundantSelf
+--disable redundantType
+--disable redundantVoidReturnType
+--disable semicolons
+--disable sortedImports
+--disable spaceAroundBraces
+--disable spaceAroundBrackets
+--disable spaceAroundComments
+--disable spaceAroundGenerics
+--disable spaceAroundOperators
+--disable spaceAroundParens
+--disable spaceInsideBraces
+--disable spaceInsideBrackets
+--disable spaceInsideComments
+--disable spaceInsideGenerics
+--disable spaceInsideParens
+--disable strongOutlets
+--disable strongifiedSelf
+--disable todos
+--disable trailingClosures
+--disable trailingCommas
+--disable typeSugar
+--disable unusedArguments
+--disable void
+--disable wrap
+--disable wrapArguments
+--disable wrapAttributes
+--disable wrapMultilineStatementBraces
+--disable yodaConditions

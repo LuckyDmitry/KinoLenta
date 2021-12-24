@@ -9,6 +9,7 @@ import Foundation
 
 
 // MARK: - MovieDomainModel
+
 struct MovieDomainModel: Codable, Hashable {
     let adult: Bool?
     let backdropPath: String?
@@ -33,12 +34,12 @@ struct MovieDomainModel: Codable, Hashable {
     let video: Bool?
     let voteAverage: Double?
     let voteCount: Int?
-    
+
     var backdropURL: URL? {
         guard let backdropPath = backdropPath else { return nil }
         return Endpoint.smallImage(path: backdropPath)
     }
-    
+
     var parsedDate: Date? {
         parseDate(date: releaseDate)
     }
@@ -65,11 +66,12 @@ struct MovieDomainModel: Codable, Hashable {
 
 
 // MARK: DataParser (not used)
+
 func parseDate(date: String?) -> Date? {
     guard let date = date else { return nil }
-    
+
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd"
-    
+
     return formatter.date(from: date)
 }

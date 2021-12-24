@@ -9,7 +9,7 @@ import UIKit
 
 class PosterCell: UICollectionViewCell {
     @IBOutlet var ratingView: RatingView!
-    
+
     override func prepareForReuse() {
         ratingView.image = nil
     }

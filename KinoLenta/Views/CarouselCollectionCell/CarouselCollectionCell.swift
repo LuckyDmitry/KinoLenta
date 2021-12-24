@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 final class CarouselCollectionCell: UICollectionViewCell {
-    
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var ratingView: RatingView! {
         didSet {
@@ -10,7 +9,7 @@ final class CarouselCollectionCell: UICollectionViewCell {
             ratingView.clipsToBounds = true
         }
     }
-    
+
     func reset() {
         movieTitle.text = nil
         ratingView.reset()

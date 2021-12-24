@@ -10,11 +10,11 @@ import UIKit
 
 struct DetailMovieButtonActionsLayoutManager: LayoutManager {
     typealias CellType = DetailMovieButtonActionsCollectionViewCell
-    
+
     func applyLayout(for cell: DetailMovieButtonActionsCollectionViewCell, bounds: CGRect) {
         cell.filterComponent.frame = bounds
     }
-    
+
     func calculateSize(width: CGFloat) -> CGSize {
         return .init(width: width, height: 40)
     }
@@ -25,11 +25,11 @@ struct DetailMovieButtonActionsDescriptor: CollectionViewCellDescriptor {
     let items: [QuickItem]
     var componentDelegate: QuickItemFilterDelegate?
     private let layoutManager = DetailMovieButtonActionsLayoutManager()
-    
+
     func sizeForItem(in collectionView: UICollectionView) -> CGSize {
         layoutManager.calculateSize(width: collectionView.widthWithInsets)
     }
-    
+
     func cell(in collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         guard let cell = cell as? DetailMovieButtonActionsCollectionViewCell else {
@@ -37,6 +37,6 @@ struct DetailMovieButtonActionsDescriptor: CollectionViewCellDescriptor {
         }
         cell.items = items
         cell.filterComponent.delegate = componentDelegate
-        return cell 
+        return cell
     }
 }

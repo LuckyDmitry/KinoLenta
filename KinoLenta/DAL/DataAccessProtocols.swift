@@ -10,7 +10,7 @@ import Foundation
 
 protocol MovieSearchService {
     func search(query: String) -> [QueryMovieModel]
-    
+
     func discover(
         genre: [Genre],
         yearRange: ClosedRange<Int>?,

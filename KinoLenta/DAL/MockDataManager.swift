@@ -18,7 +18,7 @@ enum MockJsonPaths {
     case movieDiscoverHorrorRuRegion
     case movieGenrePath
     case tvGenrePath
-    
+
     var fileURL: URL {
         switch self {
         case .search:
@@ -75,56 +75,56 @@ func parseObj<T: Decodable>(data: Data) throws -> T {
 }
 
 class MockDataManager {
-
 }
 
 // MARK: Search
+
 extension MockDataManager: MovieSearchService {
-    
     func search(query: String) -> [QueryMovieModel] {
         let result: [QueryMovieModel] = parseJsonFromData(fileURL: MockJsonPaths.search.fileURL)
         return result
     }
-    
+
     func discover(genre: [Genre], yearRange: ClosedRange<Int>?, ratingRange: ClosedRange<Int>?) -> [QueryMovieModel] {
         let result: [QueryMovieModel] = parseJsonFromData(fileURL: MockJsonPaths.movieDiscoverHorrorRuRegion.fileURL)
         return result
     }
-
 }
 
 // MARK: Compilation
+
 extension MockDataManager: MovieCompilationService {
     func getPopular() -> [QueryMovieModel] {
         let result: [QueryMovieModel] = parseJsonFromData(fileURL: MockJsonPaths.moviePopular.fileURL)
         return result
     }
-    
+
     func getTopRated() -> [QueryMovieModel] {
         let result: [QueryMovieModel] = parseJsonFromData(fileURL: MockJsonPaths.movieTopRated.fileURL)
         return result
     }
-    
+
     func getTrending() -> [QueryMovieModel] { return [] }
 }
 
 // MARK: Movie
+
 extension MockDataManager: MovieInfoService {
     func getById(_ id: Int) -> [MovieDomainModel] { return [] }
-    
+
     func getRecommendations(for movie: MovieDomainModel) -> [MovieDomainModel] { return [] }
-    
+
     func getSimilar(to movie: MovieDomainModel) -> [MovieDomainModel] { return [] }
 }
 
 // MARK: User movies
+
 extension MockDataManager: SavedMovieService {
     func getSavedMovies(option: SavedMovieOption, completion: @escaping (Result<[MovieDomainModel], Error>) -> ()) {}
-    
+
     func removeMovies(_ movies: [MovieDomainModel], directoryType type: SavedMovieOption, completion: ((Error?) -> ())?) {}
-    
+
     func saveMovies(_ movies: [MovieDomainModel], folderType type: SavedMovieOption, completion: ((Error?) -> ())?) {}
-    
+
     func changeDirectoryMovies(_ movies: [MovieDomainModel], from initType: SavedMovieOption, to destType: SavedMovieOption, completion: ((Error?) -> ())?) {}
-    
 }

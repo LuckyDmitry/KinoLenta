@@ -10,11 +10,11 @@ import UIKit
 
 struct DetailMovieTextLayoutManager: LayoutManager {
     typealias CellType = DetailMovieTextCollectionViewCell
-    
+
     func applyLayout(for cell: DetailMovieTextCollectionViewCell, bounds: CGRect) {
         cell.title.frame = bounds
     }
-    
+
     func calculateHeight(width: CGFloat, font: UIFont, text: String) -> CGFloat {
         return text.height(withWidth: width, font: font)
     }
@@ -34,7 +34,7 @@ struct MovieTextItemDescriptor: CollectionViewCellDescriptor {
         let height = layoutManager.calculateHeight(width: width, font: font, text: title)
         return CGSize(width: width, height: height)
     }
-    
+
     func cell(in collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         guard let cell = cell as? DetailMovieTextCollectionViewCell else {

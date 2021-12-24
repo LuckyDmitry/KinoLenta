@@ -11,11 +11,11 @@ import AVFoundation
 
 struct DetailMovieTrailerLayoutManager: LayoutManager {
     typealias CellType = DetailMovieTrailerCollectionViewCell
-    
+
     func applyLayout(for cell: DetailMovieTrailerCollectionViewCell, bounds: CGRect) {
         cell.player.view.frame = bounds
     }
-    
+
     func calculateHeight(width: CGFloat, font: UIFont, text: String) -> CGFloat {
         return text.height(withWidth: width, font: font)
     }
@@ -31,14 +31,14 @@ struct DetailMovieTrailerDescriptor: CollectionViewCellDescriptor {
         let height: CGFloat = 250
         return CGSize(width: width, height: height)
     }
-    
+
     func cell(in collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         guard let cell = cell as? DetailMovieTrailerCollectionViewCell else {
             fatalError("Invalid cell type")
         }
         let path = Bundle.main.bundleURL.appendingPathComponent("film").appendingPathExtension(for: .mpeg4Movie)
-        
+
         // will be removed
         let avPlayer = AVPlayer(url: path)
         cell.player.player = avPlayer

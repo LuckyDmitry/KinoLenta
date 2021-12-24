@@ -30,18 +30,18 @@ func createDirectoryIfNeeded(at url: URL) throws {
 
 final class CacheService: Caching {
     // TODO: Add caching
-    
+
     func getSavedMovies(option: SavedMovieOption, completion: @escaping(Result<[MovieDomainModel], Error>) -> ()) {
         DispatchQueue.global().async {
             do {
                 let folderUrl = try getUrlFolderBy(folderType: option)
                 let contentsOfDirectory = try fileManager.contentsOfDirectory(atPath: folderUrl.path)
-                
+
                 let contentData: [Data] = contentsOfDirectory.compactMap { pathAsString in
                     let fileUrl = folderUrl.appendingPathComponent(pathAsString)
                     return fileManager.contents(atPath: fileUrl.path)
                 }
-                
+
                 let decoder = JSONDecoder()
                 let movieItems = contentData.compactMap { data in
                     return try? decoder.decode(MovieDomainModel.self, from: data)
@@ -52,18 +52,18 @@ final class CacheService: Caching {
             }
         }
     }
-    
+
     func removeMovies(_ movies: [MovieDomainModel], directoryType type: SavedMovieOption, completion: ((Error?) -> ())?) {
         DispatchQueue.global().async {
             do {
                 let url = try getUrlFolderBy(folderType: type)
                 let contentsOfDirectory = try fileManager.contentsOfDirectory(atPath: url.path)
-                
+
                 let fileNamesSet = Set(contentsOfDirectory)
-                
+
                 for movie in movies {
                     let movieIdAsString = "\(movie.id)"
-                    
+
                     if fileNamesSet.contains(movieIdAsString + ".\(Consts.fileExtension)") {
                         let urlToRemove = formatUrl(folderUrl: url, fileName: movieIdAsString)
                         try fileManager.removeItem(at: urlToRemove)
@@ -74,7 +74,7 @@ final class CacheService: Caching {
             }
         }
     }
-    
+
     // Called when we need to move movie from one folder to another
     func changeDirectoryMovies(_ movies: [MovieDomainModel],
                                from initType: SavedMovieOption,
@@ -84,16 +84,15 @@ final class CacheService: Caching {
         removeMovies(movies, directoryType: initType, completion: completion)
         saveMovies(movies, folderType: destType, completion: completion)
     }
-    
+
     func saveMovies(_ movies: [MovieDomainModel], folderType type: SavedMovieOption, completion: ((Error?) -> ())?) {
-        
         DispatchQueue.global().async {
             do {
                 let folderUrl = try getUrlFolderBy(folderType: type)
                 try createDirectoryIfNeeded(at: folderUrl)
-                
+
                 let encoder = JSONEncoder()
-                
+
                 for movie in movies {
                     let movieIdAsString = "\(movie.id)"
                     let fileUrl = formatUrl(folderUrl: folderUrl, fileName: movieIdAsString)
@@ -105,12 +104,12 @@ final class CacheService: Caching {
             }
         }
     }
-    
+
     fileprivate enum PathConsts {
         static let wishesMovieDirectoryName = "WishMovies"
         static let viewedMoviesDirectoryName = "ViewedMovies"
     }
-    
+
     private enum Consts {
         static let fileExtension = "json"
     }

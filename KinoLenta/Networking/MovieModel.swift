@@ -21,12 +21,12 @@ struct QueryMovieModel: Decodable {
     let voteCount: Int?
     let video: Bool?
     let voteAverage: Double?
-    
+
     var backdropURL: URL? {
         guard let backdropPath = backdropPath else { return nil }
         return Endpoint.smallImage(path: backdropPath)
     }
-    
+
     var parsedDate: Date? {
         parseDate(date: releaseDate)
     }
@@ -53,6 +53,7 @@ enum OriginalLanguage: String, Decodable {
 }
 
 // MARK: - MovieModel
+
 struct MovieModel: Decodable {
     let id: Int
     let title: String

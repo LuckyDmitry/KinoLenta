@@ -15,7 +15,7 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
             datePicker.dataSource = self
         }
     }
-    
+
     @IBOutlet private weak var datePickerHeight: NSLayoutConstraint!
     @IBOutlet private weak var dateTitle: UILabel! {
         didSet {
@@ -23,23 +23,26 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
                                                 comment: "Year section title on filters screen")
         }
     }
+
     @IBOutlet private weak var dateButton: UIButton! {
         didSet {
             dateButton?.setTitle(noSelectedYearTitle, for: .normal)
         }
     }
+
     @IBOutlet weak var cancelButton: UIButton! {
         didSet {
             cancelButton.isHidden = true
         }
     }
+
     @IBAction func cancelAction(_ sender: Any) {
         cancelButton.isHidden = true
         dateButton.setTitle(noSelectedYearTitle, for: .normal)
         useThisFilter = false
         dateButton.setTitleColor(UIColor.textPlaceholderForeground, for: .normal)
     }
-    
+
     @IBAction private func showPickerAction(_ sender: Any) {
         UIView.animate(
             withDuration: 0.4,
@@ -47,10 +50,10 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
                 guard let self = self else { return }
                 self.datePickerHeight.constant = self.isPickerShowing ? 0 : 100
                 self.datePicker.isHidden = self.isPickerShowing
-                
+
                 self.isPickerShowing.toggle()
                 self.layoutIfNeeded()
-                
+
                 self.delegate?.reloadTableView()
             }
         )
@@ -60,14 +63,13 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
     private let allYears = Array(1950...currentYear).reversed().map { $0 }
     private var isPickerShowing = false
     private var useThisFilter = false
-    
+
     func reset() {
         delegate = nil
     }
 }
 
 extension YearFilterTableCell: UIPickerViewDataSource, UIPickerViewDelegate {
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -80,9 +82,9 @@ extension YearFilterTableCell: UIPickerViewDataSource, UIPickerViewDelegate {
         guard row < allYears.count else { return assertionFailure() }
         let fromDate = pickerView.selectedRow(inComponent: 0)
         let toDate = pickerView.selectedRow(inComponent: 1)
-        
+
         dateButton.setTitle(makeSelectedYearRangeText(from: allYears[fromDate], to: allYears[toDate]), for: .normal)
-        
+
         if allYears[fromDate] > allYears[toDate] {
             dateButton.setTitleColor(.red, for: .normal)
             useThisFilter = false

@@ -13,7 +13,7 @@ final class MovieTextItemCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         title.frame = bounds

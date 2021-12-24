@@ -2,11 +2,10 @@ import Foundation
 import UIKit
 
 final class MoviesSamplingViewController: UIViewController {
-    
     var coordinator: Coordinator!
-    
+
     var dataProvider: NetworkingService!
-        
+
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.register(MovieSampleTableCell.self)
@@ -14,6 +13,7 @@ final class MoviesSamplingViewController: UIViewController {
             tableView.dataSource = self
         }
     }
+
     @IBOutlet var searchButton: UIButton! {
         didSet {
             let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .medium)
@@ -21,6 +21,7 @@ final class MoviesSamplingViewController: UIViewController {
             searchButton.setImage(largeBoldDoc, for: .normal)
         }
     }
+
     @IBAction func onSearchButtonTap(_ sender: Any) {
         coordinator.openSearchWindow()
     }
@@ -28,11 +29,10 @@ final class MoviesSamplingViewController: UIViewController {
 
 
 extension MoviesSamplingViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         3
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
@@ -85,7 +85,6 @@ extension MoviesSamplingViewController: UITableViewDelegate, UITableViewDataSour
             }
         default:
             return UITableViewCell()
-            
         }
     }
 }
