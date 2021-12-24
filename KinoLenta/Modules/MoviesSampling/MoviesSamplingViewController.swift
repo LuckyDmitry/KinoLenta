@@ -55,8 +55,8 @@ extension MoviesSamplingViewController: UITableViewDelegate, UITableViewDataSour
             return cell(
                 in: tableView,
                 forRowAt: indexPath,
-                title:  NSLocalizedString("featured_screen_top_rated_title",
-                                          comment: "Top rated collection title on featured movies screen"),
+                title: NSLocalizedString("featured_screen_top_rated_title",
+                                         comment: "Top rated collection title on featured movies screen"),
                 getData: dataProvider.getTopRated
             )
         default:

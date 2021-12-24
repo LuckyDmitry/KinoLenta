@@ -71,7 +71,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     }
 
     private var cancellation: CancellationHandle?
-    
+
     @objc
     func findMovies() {
         cancellation?.cancel()

@@ -13,6 +13,7 @@ final class DetailMovieImageCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+
     var cancellation: CancellationHandle?
 
     var insets: UIEdgeInsets = .zero
