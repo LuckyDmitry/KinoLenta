@@ -44,7 +44,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     private var internalCoordinator: Coordinator?
     private var displayedItems: [SearchedMovieViewItem] = []
     private var timer: Timer?
-    private var currentRequestCancellation: CancellationHandle?
+    private var cancellation: CancellationHandle?
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
     var filterItems = [QuickItem]()
     var coordinator: Coordinator? {
@@ -69,8 +69,6 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
                              userInfo: nil,
                              repeats: false)
     }
-
-    private var cancellation: CancellationHandle?
 
     @objc
     func findMovies() {
@@ -177,7 +175,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
 
 extension SearchedMoviesViewController: FilterScreenDelegate {
     func filterChosen(_ filters: FilterFields) {
-        currentRequestCancellation?.cancel()
+        cancellation?.cancel()
         let genre = GenreDecoderContainer.sharedMovieManager.getByName(filters.genre?.lowercased() ?? "").map { [$0] }
         if let index = filterItems.firstIndex(where: { $0.title == filters.genre ?? "" }) {
             let before = filterItems[index]
@@ -186,7 +184,7 @@ extension SearchedMoviesViewController: FilterScreenDelegate {
             collectionView.collectionView.delegate?.collectionView?(collectionView.collectionView,
                                                                      didSelectItemAt: IndexPath(row: index, section: 0))
         }
-        currentRequestCancellation = networkService.discover(
+        cancellation = networkService.discover(
             genre: genre,
             yearRange: filters.years?.first,
             ratingGTE: Int(filters.rating ?? 0),
