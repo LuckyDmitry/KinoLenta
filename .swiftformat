@@ -8,6 +8,10 @@
 --maxwidth 120
 --indent 4
 --trimwhitespace always
+--nospaceoperators ...,..<
+--wraparguments before-first
+--wrapcollections before-first
+--wrapparameters before-first
 
 # rules
 
@@ -18,18 +22,13 @@
 --disable assertionFailures
 --disable braces
 --disable consecutiveBlankLines
---disable duplicateImports
---disable elseOnSameLine
 --disable emptyBraces
 --disable enumNamespaces
 --disable extensionAccessControl
 --disable fileHeader
 --disable hoistPatternLet
---disable indent
 --disable initCoderUnavailable
 --disable leadingDelimiters
---disable linebreakAtEndOfFile
---disable linebreaks
 --disable modifierOrder
 --disable numberFormatting
 --disable preferKeyPath
@@ -51,19 +50,6 @@
 --disable redundantSelf
 --disable redundantType
 --disable redundantVoidReturnType
---disable semicolons
---disable sortedImports
---disable spaceAroundBraces
---disable spaceAroundBrackets
---disable spaceAroundComments
---disable spaceAroundGenerics
---disable spaceAroundOperators
---disable spaceAroundParens
---disable spaceInsideBraces
---disable spaceInsideBrackets
---disable spaceInsideComments
---disable spaceInsideGenerics
---disable spaceInsideParens
 --disable strongOutlets
 --disable strongifiedSelf
 --disable todos
@@ -72,8 +58,4 @@
 --disable typeSugar
 --disable unusedArguments
 --disable void
---disable wrap
---disable wrapArguments
---disable wrapAttributes
---disable wrapMultilineStatementBraces
 --disable yodaConditions
