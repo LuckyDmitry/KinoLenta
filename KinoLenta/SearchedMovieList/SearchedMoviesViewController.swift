@@ -274,7 +274,7 @@ extension SearchedMoviesViewController: QuickItemFilterDelegate {
         let searchViewTopConstraintNewConstant: CGFloat
         let searchViewBottomConstraintNewConstant: CGFloat
         if isSelected {
-            let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0
+            let safeAreaHeight = view.safeAreaInsets.top
             searchViewTopConstraintNewConstant = -self.searchView.frame.height - safeAreaHeight
             searchViewBottomConstraintNewConstant = safeAreaHeight + 5
         } else {
