@@ -10,7 +10,11 @@ import UIKit
 class NetworkingService {
     let queue = DispatchQueue(label: "UrlQueue", attributes: .concurrent)
 
-    func search(query: String, callback: @escaping ([QueryMovieModel]) -> Void) {
+    func search(
+        query: String,
+        callback: @escaping ([QueryMovieModel]?) -> Void
+    ) -> CancellationHandle {
+        let cancellation = CancellationHandle()
         var queryInfo = getUrlItems(for: .search)
         queryInfo.queryItems.append(
             URLQueryItem(name: "query", value: query)
@@ -18,16 +22,18 @@ class NetworkingService {
 
         queue.async {
             assert(!Thread.isMainThread)
-            makeRequest(with: queryInfo, callback: callback)
+            makeRequest(with: queryInfo, cancellation: cancellation, callback: callback)
         }
+        return cancellation
     }
 
     func discover(
         genre: [Int]?,
         yearRange: ClosedRange<Int>?,
         ratingGTE: Int?, country: String?,
-        callback: @escaping ([QueryMovieModel]) -> Void
-    ) {
+        callback: @escaping ([QueryMovieModel]?) -> Void
+    ) -> CancellationHandle {
+        let cancellation = CancellationHandle()
         var queryInfo = getUrlItems(for: .discover)
         if let leftYearBound = yearRange?.lowerBound {
             queryInfo.queryItems.append(
@@ -57,37 +63,48 @@ class NetworkingService {
             )
         }
         queue.async {
-            assert(!Thread.isMainThread)
-            makeRequest(with: queryInfo, callback: callback)
+            makeRequest(with: queryInfo, cancellation: cancellation) { result in
+                assert(Thread.isMainThread)
+                callback(result)
+            }
         }
+        return cancellation
     }
 
-    func getById(_ id: Int, callback: @escaping (MovieDomainModel) -> Void){
+    func getById(_ id: Int, callback: @escaping (MovieDomainModel?) -> Void) -> CancellationHandle {
+        let cancellation = CancellationHandle()
         let queryInfo = getUrlItems(for: .getById, id: id)
         queue.async {
-            assert(!Thread.isMainThread)
-            makeRequestSingleFilm(with: queryInfo, callback: callback)
+            makeRequestSingleFilm(with: queryInfo, cancellation: cancellation, callback: callback)
         }
+        return cancellation
     }
 
-    func getSimilar(_ id: Int, callback: @escaping ([QueryMovieModel]) -> Void) {
+    func getSimilar(_ id: Int, callback: @escaping ([QueryMovieModel]?) -> Void) -> CancellationHandle {
+        let cancellation = CancellationHandle()
         let queryInfo = getUrlItems(for: .getSimilar, id: id)
         queue.async {
-            assert(!Thread.isMainThread)
-            makeRequest(with: queryInfo, callback: callback)
+            makeRequest(with: queryInfo, cancellation: cancellation, callback: callback)
         }
+        return cancellation
     }
 
-    func getPopular(callback: @escaping ([QueryMovieModel]) -> Void) {
-        getCompilation(for: .getPopular, using: callback)
+    func getPopular(callback: @escaping ([QueryMovieModel]?) -> Void) -> CancellationHandle {
+        let cancellation = CancellationHandle()
+        getCompilation(for: .getPopular, cancellation: cancellation, callback: callback)
+        return cancellation
     }
 
-    func getTopRated(callback: @escaping ([QueryMovieModel]) -> Void) {
-        getCompilation(for: .getTopRated, using: callback)
+    func getTopRated(callback: @escaping ([QueryMovieModel]?) -> Void) -> CancellationHandle {
+        let cancellation = CancellationHandle()
+        getCompilation(for: .getTopRated, cancellation: cancellation, callback: callback)
+        return cancellation
     }
 
-    func getTrending(callback: @escaping ([QueryMovieModel]) -> Void) {
-        getCompilation(for: .getTrending, using: callback)
+    func getTrending(callback: @escaping ([QueryMovieModel]?) -> Void) -> CancellationHandle {
+        let cancellation = CancellationHandle()
+        getCompilation(for: .getTrending, cancellation: cancellation, callback: callback)
+        return cancellation
     }
 }
 
@@ -107,11 +124,19 @@ struct QueryInfo {
 }
 
 extension NetworkingService {
-    func getCompilation(for requestType: RequestTypes, using callback: @escaping ([QueryMovieModel]) -> Void) {
+    func getCompilation(
+        for requestType: RequestTypes,
+        cancellation: CancellationHandle,
+        callback: @escaping ([QueryMovieModel]?) -> Void
+    ) {
         let queryInfo = getUrlItems(for: requestType)
         queue.async {
-            assert(!Thread.isMainThread)
-            makeRequest(with: queryInfo, callback: callback)
+            makeRequest(with: queryInfo, cancellation: cancellation) { result in
+                assert(Thread.isMainThread)
+                if !cancellation.isCancelled {
+                    callback(result)
+                }
+            }
         }
     }
 }
@@ -155,67 +180,79 @@ private func getUrlItems(for requestType: RequestTypes, id: Int? = nil) -> Query
     return QueryInfo(pathItem: pathItem, queryItems: queryItems)
 }
 
-private func makeRequest(with queryInfo: QueryInfo, callback: @escaping ([QueryMovieModel]) -> Void) {
-    let config = URLSessionConfiguration.default
-    let session = URLSession(configuration: config)
-    guard let url = getUrl(with: queryInfo) else{
-        return
-    }
-    let task = session.dataTask(with: url) { data, response, error in
-        assert(!Thread.isMainThread)
-        if data == nil {
-            if let error = error {
-                print("error: \(error)")
-            }
-            return
-        }
-
-        guard let content = data else {
-            print("No data")
-            return
-        }
-
-        let response: [QueryMovieModel] = parseModelFromResponse(data: content)
-        DispatchQueue.main.async {
-            assert(Thread.isMainThread)
-            callback(response)
-        }
-    }
-    task.resume()
+private func makeRequest(
+    with queryInfo: QueryInfo,
+    cancellation: CancellationHandle,
+    callback: @escaping ([QueryMovieModel]?) -> Void
+) -> Void {
+    makeRequest(
+        with: queryInfo,
+        cancellation: cancellation,
+        transform: { data in parseModelFromResponse(data: data) },
+        callback: callback
+    )
 }
 
+private func makeRequestSingleFilm(
+    with queryInfo: QueryInfo,
+    cancellation: CancellationHandle,
+    callback: @escaping (MovieDomainModel?) -> Void
+) {
+    makeRequest(
+        with: queryInfo,
+        cancellation: cancellation,
+        transform: { data in try parseObj(data: data) },
+        callback: callback
+    )
+}
 
-private func makeRequestSingleFilm(with queryInfo: QueryInfo, callback: @escaping (MovieDomainModel) -> Void) {
+private func makeRequest<T>(
+    with queryInfo: QueryInfo,
+    cancellation: CancellationHandle,
+    transform: @escaping (Data) throws -> T,
+    callback: @escaping (T?) -> Void
+) -> Void {
+    func runCallback(_ result: T?) {
+        DispatchQueue.main.async {
+            if !cancellation.isCancelled {
+                callback(result)
+            }
+        }
+    }
+
     let config = URLSessionConfiguration.default
     let session = URLSession(configuration: config)
-    guard let url = getUrl(with: queryInfo) else{
+    guard let url = getUrl(with: queryInfo) else {
+        assertionFailure()
+        runCallback(nil)
         return
     }
     let task = session.dataTask(with: url) { data, response, error in
         assert(!Thread.isMainThread)
-        if data == nil {
-            if let error = error {
-                print("error: \(error)")
-            }
-            return
+        if let error = error {
+            print("Network request error: \(error)")
         }
 
-        guard let content = data else {
-            print("No data")
+        guard let data = data else {
+            print("Network request returned no data")
+            runCallback(nil)
             return
         }
 
         do {
-            let response: MovieDomainModel = try parseObj(data: content)
-            DispatchQueue.main.async {
-                assert(Thread.isMainThread)
-                callback(response)
-            }
-        } catch{
-            print(error)
+            runCallback(try transform(data))
+        } catch {
+            print("Network request parsing error: \(error)")
+            runCallback(nil)
         }
     }
     task.resume()
+
+    DispatchQueue.main.async {
+        cancellation.onCancelled {
+            task.cancel()
+        }
+    }
 }
 
 private func getUrl(with queryInfo: QueryInfo) -> URL? {

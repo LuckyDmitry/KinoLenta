@@ -29,6 +29,7 @@ final class MovieDetailViewController: UIViewController {
                                              .review]
 
     private var descriptors: [MovieCellType: [CollectionViewCellDescriptor]] = [:]
+    private var cancellation: CancellationHandle?
     var selectedMovie: MovieDomainModel!
     var service: NetworkingService!
     var cache: CacheService!
@@ -60,13 +61,18 @@ final class MovieDetailViewController: UIViewController {
         return layout
     }
 
+    deinit {
+        cancellation?.cancel()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(movieDetailCollectionView)
         view.backgroundColor = .mainBackground
         if let idMovie = idMovie {
             for buttonAction in buttonActions {
-                cache.getSavedMovies(option: buttonAction.optionType, completion: { result in
+                cache.getSavedMovies(option: buttonAction.optionType) { [weak self] result in
+                    guard let self = self else { return }
                     if case .success(let movies) = result {
                         if movies.contains(where: { $0.id == idMovie }) {
                             let index = self.buttonActions.firstIndex(where: {
@@ -79,12 +85,12 @@ final class MovieDetailViewController: UIViewController {
                             }
                         }
                     }
-                })
+                }
             }
 
-            service.getById(idMovie, callback: { movie in
-                self.selectedMovie = movie
-                self.populateElements()
+            cancellation = service.getById(idMovie, callback: { [weak self] movie in
+                self?.selectedMovie = movie
+                self?.populateElements()
             })
         }
 
@@ -164,8 +170,10 @@ final class MovieDetailViewController: UIViewController {
                                                              reviewFont: UIFont.systemFont(ofSize: 17),
                                                              heightThreshold: 250,
                                                              openMoreHandler: { [weak self] in
-                        guard let self = self else { return }
-                        guard var initSection = self.descriptors[section]?[i] as? DetailMovieReviewDescriptor else { return }
+                        guard let self = self,
+                              var initSection = self.descriptors[section]?[i] as? DetailMovieReviewDescriptor else {
+                                  return
+                              }
                         initSection.heightThreshold = 5000
                         self.descriptors[section]?[i] = initSection
                         let section = self.sections.firstIndex(of: .review) ?? 0

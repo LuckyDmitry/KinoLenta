@@ -23,7 +23,7 @@ struct DetailMovieButtonActionsLayoutManager: LayoutManager {
 struct DetailMovieButtonActionsDescriptor: CollectionViewCellDescriptor {
     var cellClass: UICollectionReusableView.Type = DetailMovieButtonActionsCollectionViewCell.self
     let items: [QuickItem]
-    var componentDelegate: QuickItemFilterDelegate?
+    weak var componentDelegate: QuickItemFilterDelegate?
     private let layoutManager = DetailMovieButtonActionsLayoutManager()
 
     func sizeForItem(in collectionView: UICollectionView) -> CGSize {

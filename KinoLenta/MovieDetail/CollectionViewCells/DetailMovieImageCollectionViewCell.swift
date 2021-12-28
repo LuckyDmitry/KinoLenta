@@ -14,7 +14,7 @@ final class DetailMovieImageCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    var cancellationHandle: CancellationHandle?
+    var cancellation: CancellationHandle?
 
     var insets: UIEdgeInsets = .zero
 

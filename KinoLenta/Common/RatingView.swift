@@ -35,15 +35,15 @@ final class RatingView: UIView {
         }
     }
 
-    private var cancellationHandle: CancellationHandle?
+    private var cancellation: CancellationHandle?
 
     func setImage(url: URL) {
-        cancellationHandle = imageView.setImage(url: url, traits: .thumbnail)
+        cancellation = imageView.setImage(url: url, traits: .thumbnail)
         setBorder(isBorderActive: false)
     }
 
     func reset() {
-        cancellationHandle?.isCancelled = true
+        cancellation?.cancel()
 
         image = nil
         ratingLabel.text = nil

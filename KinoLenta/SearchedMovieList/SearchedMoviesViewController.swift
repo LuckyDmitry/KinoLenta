@@ -44,6 +44,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     private var internalCoordinator: Coordinator?
     private var displayedItems: [SearchedMovieViewItem] = []
     private var timer: Timer?
+    private var cancellation: CancellationHandle?
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
     var filterItems = [QuickItem]()
     var coordinator: Coordinator? {
@@ -71,21 +72,24 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
 
     @objc
     func findMovies() {
-        let request = searchTextField.text ?? ""
-        networkService.search(query: request, callback: { [weak self] res in
-            DispatchQueue.main.async { [weak self] in
-                self?.displayedItems = res.toSearchedMovieViewItems()
-                self?.moviesTableView.reloadData()
-                self?.timer = nil
+        cancellation?.cancel()
+        cancellation = networkService.search(
+            query: searchTextField.text ?? ""
+        ) { [weak self] result in
+            assert(Thread.isMainThread)
+            guard let result = result else {
+                print("Failed to search movies")
+                return
             }
-        })
+            self?.displayedItems = result.toSearchedMovieViewItems()
+            self?.moviesTableView.reloadData()
+        }
     }
 
     func setDisplayedItems(queryResults: [SearchedMovieViewItem]) {
+        assert(Thread.isMainThread)
         displayedItems = queryResults
-        DispatchQueue.main.async {
-            self.moviesTableView.reloadData()
-        }
+        moviesTableView.reloadData()
     }
 
     private var savedMovieIds: Set<Int> = []
@@ -143,7 +147,11 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     private func watchLaterButtonPressed(_ button: SelectedButton) {
         let movie = displayedItems[button.index]
 
-        networkService.getById(movie.id, callback: { [weak self] model in
+        _ = networkService.getById(movie.id, callback: { [weak self] model in
+            guard let model = model else {
+                print("Failed to get movie model for id: \(movie.id)")
+                return
+            }
             if button.isButtonSelected {
                 self?.savedMovieIds.insert(movie.id)
                 self?.cacheService.saveMovies([model], folderType: .wishToWatch, completion: nil)
@@ -167,6 +175,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
 
 extension SearchedMoviesViewController: FilterScreenDelegate {
     func filterChosen(_ filters: FilterFields) {
+        cancellation?.cancel()
         let genre = GenreDecoderContainer.sharedMovieManager.getByName(filters.genre?.lowercased() ?? "").map { [$0] }
         if let index = filterItems.firstIndex(where: { $0.title == filters.genre ?? "" }) {
             let before = filterItems[index]
@@ -175,16 +184,21 @@ extension SearchedMoviesViewController: FilterScreenDelegate {
             collectionView.collectionView.delegate?.collectionView?(collectionView.collectionView,
                                                                      didSelectItemAt: IndexPath(row: index, section: 0))
         }
-        networkService.discover(genre: genre,
-                                yearRange: filters.years?.first,
-                                ratingGTE: Int(filters.rating ?? 0),
-                                country: filters.country,
-                                callback: { [weak self] movies in
-            DispatchQueue.main.async {
-                self?.displayedItems = movies.toSearchedMovieViewItems()
-                self?.moviesTableView.reloadData()
+        cancellation = networkService.discover(
+            genre: genre,
+            yearRange: filters.years?.first,
+            ratingGTE: Int(filters.rating ?? 0),
+            country: filters.country
+        ) { [weak self] movies in
+            assert(Thread.isMainThread)
+            guard let movies = movies else {
+                print("Failed to discover movies")
+                return
             }
-        })
+
+            self?.displayedItems = movies.toSearchedMovieViewItems()
+            self?.moviesTableView.reloadData()
+        }
     }
 }
 
@@ -237,6 +251,8 @@ extension SearchedMoviesViewController: UITableViewDataSource {
 
 extension SearchedMoviesViewController: QuickItemFilterDelegate {
     func itemPressed(transition: Transition, isSelected: Bool) {
+        cancellation?.cancel()
+
         let searchViewTopConstraintNewConstant: CGFloat
         let searchViewBottomConstraintNewConstant: CGFloat
         if isSelected {
@@ -271,12 +287,20 @@ extension SearchedMoviesViewController: QuickItemFilterDelegate {
 
         let genreName = filterItems[genreIndex].title.lowercased()
         if let id = GenreDecoderContainer.sharedMovieManager.getByName(genreName) {
-            networkService.discover(genre: [id], yearRange: nil, ratingGTE: nil, country: nil, callback: { model in
-                DispatchQueue.main.async { [weak self] in
-                    self?.displayedItems = model.toSearchedMovieViewItems()
-                    self?.moviesTableView.reloadData()
+            cancellation = networkService.discover(
+                genre: [id],
+                yearRange: nil,
+                ratingGTE: nil,
+                country: nil
+            ) { [weak self] model in
+                assert(Thread.isMainThread)
+                guard let model = model else {
+                    print("Failed to discover movies")
+                    return
                 }
-            })
+                self?.displayedItems = model.toSearchedMovieViewItems()
+                self?.moviesTableView.reloadData()
+            }
         }
     }
 }

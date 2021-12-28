@@ -120,7 +120,7 @@ final class CoordinatorImpl: Coordinator {
         detailMovieViewController.cache = CacheService()
         detailMovieViewController.idMovie = id
         detailMovieViewController.service = NetworkingService()
-        context.present(detailMovieViewController, animated: true)
+        context.present(detailMovieViewController, animated: true, completion: completion)
     }
 
     func openSearchWindow() {
