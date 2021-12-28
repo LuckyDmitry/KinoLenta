@@ -33,7 +33,7 @@ struct DetailMovieImageDescriptor: CollectionViewCellDescriptor {
     private let layoutManager = DetailMovieImageLayoutManager()
 
     func sizeForItem(in collectionView: UICollectionView) -> CGSize {
-        layoutManager.calculateHeight(width: collectionView.widthWithInsets )
+        layoutManager.calculateHeight(width: collectionView.widthWithInsets)
     }
 
     func cell(in collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {

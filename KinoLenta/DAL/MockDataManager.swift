@@ -46,8 +46,7 @@ func parseJsonFromData<T: Decodable>(fileURL: URL) -> [T] {
         let data = try readJsonData(fileURL: fileURL)
         let parsed: [T] = parseModelFromResponse(data: data)
         return parsed
-    }
-    catch {
+    } catch {
         print(error)
         return []
     }
@@ -122,9 +121,18 @@ extension MockDataManager: MovieInfoService {
 extension MockDataManager: SavedMovieService {
     func getSavedMovies(option: SavedMovieOption, completion: @escaping (Result<[MovieDomainModel], Error>) -> ()) {}
 
-    func removeMovies(_ movies: [MovieDomainModel], directoryType type: SavedMovieOption, completion: ((Error?) -> ())?) {}
+    func removeMovies(
+        _ movies: [MovieDomainModel],
+        directoryType type: SavedMovieOption,
+        completion: ((Error?) -> ())?
+    ) {}
 
     func saveMovies(_ movies: [MovieDomainModel], folderType type: SavedMovieOption, completion: ((Error?) -> ())?) {}
 
-    func changeDirectoryMovies(_ movies: [MovieDomainModel], from initType: SavedMovieOption, to destType: SavedMovieOption, completion: ((Error?) -> ())?) {}
+    func changeDirectoryMovies(
+        _ movies: [MovieDomainModel],
+        from initType: SavedMovieOption,
+        to destType: SavedMovieOption,
+        completion: ((Error?) -> ())?
+    ) {}
 }

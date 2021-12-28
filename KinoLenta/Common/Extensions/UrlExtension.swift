@@ -1,6 +1,6 @@
+import CommonCrypto
 import Foundation
 import UIKit
-import CommonCrypto
 
 extension URL {
     func nameForCaching() -> String {

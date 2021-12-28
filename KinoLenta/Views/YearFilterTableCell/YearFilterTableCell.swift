@@ -19,8 +19,10 @@ final class YearFilterTableCell: UITableViewCell, BaseTableViewCell {
     @IBOutlet private weak var datePickerHeight: NSLayoutConstraint!
     @IBOutlet private weak var dateTitle: UILabel! {
         didSet {
-            dateTitle?.text = NSLocalizedString("filter_screen_year_title",
-                                                comment: "Year section title on filters screen")
+            dateTitle?.text = NSLocalizedString(
+                "filter_screen_year_title",
+                comment: "Year section title on filters screen"
+            )
         }
     }
 
@@ -112,14 +114,18 @@ extension YearFilterTableCell {
 }
 
 private func makeSelectedYearRangeText(from fromYear: Int, to toYear: Int) -> String {
-    let template = NSLocalizedString("filter_screen_year_selected_template",
-                                     comment: "Year selection text template on filters screen")
+    let template = NSLocalizedString(
+        "filter_screen_year_selected_template",
+        comment: "Year selection text template on filters screen"
+    )
     return template
         .replacingOccurrences(of: "{{from_year}}", with: String(fromYear))
         .replacingOccurrences(of: "{{to_year}}", with: String(toYear))
 }
 
-private let noSelectedYearTitle = NSLocalizedString("filter_screen_year_nothing_selected_item",
-                                                    comment: "Absent year selection title on filters screen")
+private let noSelectedYearTitle = NSLocalizedString(
+    "filter_screen_year_nothing_selected_item",
+    comment: "Absent year selection title on filters screen"
+)
 
 private let currentYear = Calendar(identifier: .gregorian).component(.year, from: Date())

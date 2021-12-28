@@ -27,15 +27,20 @@ final class MovieSampleTableCell: UITableViewCell, BaseTableViewCell {
             collectionView.backgroundColor = .clear
             collectionView.showsHorizontalScrollIndicator = false
             collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-            collectionView.register(UINib(nibName: Consts.cellDescribing, bundle: nil), forCellWithReuseIdentifier: Consts.cellDescribing)
+            collectionView.register(
+                UINib(nibName: Consts.cellDescribing, bundle: nil),
+                forCellWithReuseIdentifier: Consts.cellDescribing
+            )
         }
     }
 
     @IBOutlet private weak var showAllButton: UIButton! {
         didSet {
             showAllButton.setTitle(
-                NSLocalizedString("featured_screen_show_all_action",
-                                  comment: "Show all movies in collection action title on featured movies screen"),
+                NSLocalizedString(
+                    "featured_screen_show_all_action",
+                    comment: "Show all movies in collection action title on featured movies screen"
+                ),
                 for: .normal
             )
         }
@@ -56,7 +61,11 @@ extension MovieSampleTableCell {
 }
 
 extension MovieSampleTableCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let width = (bounds.width - 2 * Consts.padding - Consts.marginBetweenCells) / 2
         let height = self.collectionView.bounds.height
         return CGSize(width: width, height: height)
@@ -68,7 +77,10 @@ extension MovieSampleTableCell: UICollectionViewDataSource {
         items.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.cellDescribing, for: indexPath)
         guard let cell = cell as? CarouselCollectionCell else { fatalError("Invalid cell type") }
 

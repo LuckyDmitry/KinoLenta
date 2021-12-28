@@ -39,24 +39,30 @@ extension MoviesSamplingViewController: UITableViewDelegate, UITableViewDataSour
             return cell(
                 in: tableView,
                 forRowAt: indexPath,
-                title: NSLocalizedString("featured_screen_trending_title",
-                                         comment: "Trending collection title on featured movies screen"),
+                title: NSLocalizedString(
+                    "featured_screen_trending_title",
+                    comment: "Trending collection title on featured movies screen"
+                ),
                 getData: dataProvider.getTrending
             )
         case 1:
             return cell(
                 in: tableView,
                 forRowAt: indexPath,
-                title: NSLocalizedString("featured_screen_popular_title",
-                                         comment: "Popular collection title on featured movies screen"),
+                title: NSLocalizedString(
+                    "featured_screen_popular_title",
+                    comment: "Popular collection title on featured movies screen"
+                ),
                 getData: dataProvider.getPopular
             )
         case 2:
             return cell(
                 in: tableView,
                 forRowAt: indexPath,
-                title: NSLocalizedString("featured_screen_top_rated_title",
-                                         comment: "Top rated collection title on featured movies screen"),
+                title: NSLocalizedString(
+                    "featured_screen_top_rated_title",
+                    comment: "Top rated collection title on featured movies screen"
+                ),
                 getData: dataProvider.getTopRated
             )
         default:

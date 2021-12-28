@@ -8,13 +8,13 @@
 import UIKit
 
 extension UITextField {
-    func setLeftPaddingPoints(_ amount:CGFloat){
+    func setLeftPaddingPoints(_ amount: CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.leftView = paddingView
         self.leftViewMode = .always
     }
 
-    func setRightPaddingPoints(_ amount:CGFloat) {
+    func setRightPaddingPoints(_ amount: CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
         self.rightView = paddingView
         self.rightViewMode = .always
@@ -27,7 +27,10 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     @IBOutlet var filterButton: UIButton! {
         didSet {
             let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold, scale: .medium)
-            let largeBoldDoc = UIImage(systemName: "line.3.horizontal.decrease.circle.fill", withConfiguration: largeConfig)
+            let largeBoldDoc = UIImage(
+                systemName: "line.3.horizontal.decrease.circle.fill",
+                withConfiguration: largeConfig
+            )
             filterButton.setImage(largeBoldDoc, for: .normal)
         }
     }
@@ -63,11 +66,13 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
     @IBOutlet var searchViewTopConstraint: NSLayoutConstraint!
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 0.25,
-                             target: self,
-                             selector: #selector(findMovies),
-                             userInfo: nil,
-                             repeats: false)
+        timer = Timer.scheduledTimer(
+            timeInterval: 0.25,
+            target: self,
+            selector: #selector(findMovies),
+            userInfo: nil,
+            repeats: false
+        )
     }
 
     @objc
@@ -101,7 +106,10 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
         searchTextField.layer.cornerRadius = floor(searchTextField.frame.height / 2)
-        moviesTableView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellReuseIdentifier: Consts.cellIdentifier)
+        moviesTableView.register(
+            UINib(nibName: Consts.nibFile, bundle: nil),
+            forCellReuseIdentifier: Consts.cellIdentifier
+        )
         collectionView = QuickItemFilterView(frame: placeHolderView.bounds)
         collectionView.delegate = self
         placeHolderView.addSubview(collectionView)
@@ -121,7 +129,7 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
         collectionView.items = filterItems
     }
 
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         searchTextField.resignFirstResponder()
     }
 
@@ -133,10 +141,12 @@ final class SearchedMoviesViewController: UIViewController, UIGestureRecognizerD
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.frame = CGRect(x: collectionView.frame.minX,
-                                      y: collectionView.frame.minY,
-                                      width: view.frame.width,
-                                      height: collectionView.frame.height)
+        collectionView.frame = CGRect(
+            x: collectionView.frame.minX,
+            y: collectionView.frame.minY,
+            width: view.frame.width,
+            height: collectionView.frame.height
+        )
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -180,9 +190,15 @@ extension SearchedMoviesViewController: FilterScreenDelegate {
         if let index = filterItems.firstIndex(where: { $0.title == filters.genre ?? "" }) {
             let before = filterItems[index]
             filterItems[index] = QuickItem(isSelected: true, title: before.title)
-            collectionView.collectionView.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .init())
-            collectionView.collectionView.delegate?.collectionView?(collectionView.collectionView,
-                                                                     didSelectItemAt: IndexPath(row: index, section: 0))
+            collectionView.collectionView.selectItem(
+                at: IndexPath(row: index, section: 0),
+                animated: true,
+                scrollPosition: .init()
+            )
+            collectionView.collectionView.delegate?.collectionView?(
+                collectionView.collectionView,
+                didSelectItemAt: IndexPath(row: index, section: 0)
+            )
         }
         cancellation = networkService.discover(
             genre: genre,
@@ -225,7 +241,9 @@ extension SearchedMoviesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Consts.cellIdentifier, for: indexPath) as? SearchedMovieTableViewCell else { fatalError("Invalid cell type") }
+        guard let cell = tableView
+            .dequeueReusableCell(withIdentifier: Consts.cellIdentifier, for: indexPath) as? SearchedMovieTableViewCell
+        else { fatalError("Invalid cell type") }
         let movie = displayedItems[indexPath.row]
 
         cell.backgroundColor = .mainBackground
@@ -319,8 +337,12 @@ final class SelectedButton: UIButton {
 }
 
 private let addToWishlistButtonTitle =
-    NSLocalizedString("add_to_wishlist_action",
-                      comment: "Action title for adding to wishlist")
+    NSLocalizedString(
+        "add_to_wishlist_action",
+        comment: "Action title for adding to wishlist"
+    )
 private let addedToWishlistButtonTitle =
-    NSLocalizedString("add_to_wishlist_action_already_added",
-                      comment: "Action title for adding to wishlist in inactive state (already added)")
+    NSLocalizedString(
+        "add_to_wishlist_action_already_added",
+        comment: "Action title for adding to wishlist in inactive state (already added)"
+    )

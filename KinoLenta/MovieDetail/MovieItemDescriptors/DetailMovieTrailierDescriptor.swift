@@ -5,9 +5,9 @@
 //  Created by Dmitry Trifonov on 13.12.2021.
 //
 
+import AVFoundation
 import Foundation
 import UIKit
-import AVFoundation
 
 struct DetailMovieTrailerLayoutManager: LayoutManager {
     typealias CellType = DetailMovieTrailerCollectionViewCell

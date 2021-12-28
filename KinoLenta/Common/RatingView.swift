@@ -13,7 +13,8 @@ final class RatingView: UIView {
         let ratingLabel = UILabel()
         ratingLabel.textAlignment = .center
         ratingLabel.textColor = UIColor.white
-        ratingLabel.font = UIFont(name: "SFProDisplay-Bold", size: Consts.ratingFontSize) ?? UIFont.boldSystemFont(ofSize: Consts.ratingFontSize)
+        ratingLabel.font = UIFont(name: "SFProDisplay-Bold", size: Consts.ratingFontSize) ?? UIFont
+            .boldSystemFont(ofSize: Consts.ratingFontSize)
         return ratingLabel
     }()
 
@@ -65,11 +66,15 @@ final class RatingView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = bounds
-        let ratingViewSize = CGSize(width: bounds.width / Consts.divider,
-                                    height: bounds.width / Consts.divider)
+        let ratingViewSize = CGSize(
+            width: bounds.width / Consts.divider,
+            height: bounds.width / Consts.divider
+        )
         let ratingViewOrigin = CGPoint(x: bounds.minX, y: bounds.maxY - ratingViewSize.height)
-        ratingView.frame = CGRect(origin: ratingViewOrigin,
-                                  size: ratingViewSize)
+        ratingView.frame = CGRect(
+            origin: ratingViewOrigin,
+            size: ratingViewSize
+        )
         ratingLabel.frame = ratingView.bounds
     }
 

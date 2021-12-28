@@ -22,7 +22,11 @@ class DataManager {
 extension DataManager: MovieSearchService {
     func search(query: String) -> [QueryMovieModel] { [] }
 
-    func discover(genre: [Genre], yearRange: ClosedRange<Int>?, ratingRange: ClosedRange<Int>?) -> [QueryMovieModel] { [] }
+    func discover(
+        genre: [Genre],
+        yearRange: ClosedRange<Int>?,
+        ratingRange: ClosedRange<Int>?
+    ) -> [QueryMovieModel] { [] }
 }
 
 // MARK: Compilation
@@ -52,9 +56,18 @@ extension DataManager: MovieInfoService {
 extension DataManager: SavedMovieService {
     func getSavedMovies(option: SavedMovieOption, completion: @escaping (Result<[MovieDomainModel], Error>) -> ()) {}
 
-    func removeMovies(_ movies: [MovieDomainModel], directoryType type: SavedMovieOption, completion: ((Error?) -> ())?) {}
+    func removeMovies(
+        _ movies: [MovieDomainModel],
+        directoryType type: SavedMovieOption,
+        completion: ((Error?) -> ())?
+    ) {}
 
     func saveMovies(_ movies: [MovieDomainModel], folderType type: SavedMovieOption, completion: ((Error?) -> ())?) {}
 
-    func changeDirectoryMovies(_ movies: [MovieDomainModel], from initType: SavedMovieOption, to destType: SavedMovieOption, completion: ((Error?) -> ())?) {}
+    func changeDirectoryMovies(
+        _ movies: [MovieDomainModel],
+        from initType: SavedMovieOption,
+        to destType: SavedMovieOption,
+        completion: ((Error?) -> ())?
+    ) {}
 }

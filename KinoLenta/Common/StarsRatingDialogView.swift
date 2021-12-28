@@ -69,14 +69,16 @@ final class StarsRatingDialogView: UIView {
     private lazy var closeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage.close?.withTintColor(.white), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: Consts.buttonImageInset,
-                                              left: Consts.buttonImageInset,
-                                              bottom: Consts.buttonImageInset,
-                                              right: Consts.buttonImageInset)
+        button.imageEdgeInsets = UIEdgeInsets(
+            top: Consts.buttonImageInset,
+            left: Consts.buttonImageInset,
+            bottom: Consts.buttonImageInset,
+            right: Consts.buttonImageInset
+        )
         button.layer.cornerRadius = floor(Consts.closeButtonHeight / 2)
         button.backgroundColor = .pickerItemBackground.withAlphaComponent(0.7)
         button.contentHorizontalAlignment = .fill
-        button.addAction(UIAction { [weak self]_ in
+        button.addAction(UIAction { [weak self] _ in
             self?.delegate?.closedPressed()
         }, for: .touchUpInside)
         button.contentVerticalAlignment = .fill
@@ -102,9 +104,14 @@ final class StarsRatingDialogView: UIView {
 
     private lazy var starsCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.estimatedItemSize = CGSize(width: floor(bounds.width / CGFloat(Consts.amountOfItems)), height: bounds.height)
-        let starsCollectionView = UICollectionView(frame: .zero,
-                                         collectionViewLayout: flowLayout)
+        flowLayout.estimatedItemSize = CGSize(
+            width: floor(bounds.width / CGFloat(Consts.amountOfItems)),
+            height: bounds.height
+        )
+        let starsCollectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: flowLayout
+        )
         starsCollectionView.backgroundColor = .clear
         starsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         starsCollectionView.delegate = self
@@ -137,7 +144,10 @@ extension StarsRatingDialogView: UICollectionViewDataSource {
         Consts.amountOfItems - 1
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "id", for: indexPath)
 
         cell.subviews.forEach { $0.removeFromSuperview() }
@@ -154,7 +164,11 @@ extension StarsRatingDialogView: UICollectionViewDataSource {
 }
 
 extension StarsRatingDialogView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let width = floor(collectionView.widthWithInsets / CGFloat(Consts.amountOfItems))
         let height = collectionView.bounds.height
         return CGSize(width: width, height: height)

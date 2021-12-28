@@ -48,7 +48,8 @@ final class MainGraph {
         let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
 
         let searchedMovieViewController =
-            searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
+            searchedMoviesStoryboard
+                .instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
 
         searchedMovieViewController.coordinator = coordinator
         searchedMovieViewController.cacheService = cacheService
@@ -73,7 +74,11 @@ final class MainGraph {
         coordinator = CoordinatorImpl(tabBarController: tabBarController)
 
 
-        tabBarController.viewControllers = [moviesSamplingViewController, searchedMovieViewController, movieListViewController]
+        tabBarController.viewControllers = [
+            moviesSamplingViewController,
+            searchedMovieViewController,
+            movieListViewController
+        ]
     }
 
     private func configureTabBarAppearence() {
@@ -112,13 +117,23 @@ final class CoordinatorImpl: Coordinator {
     func openDetailMovie(withMovieId id: Int, context: UIViewController, completion: (() -> ())? = nil) {
         let detailMovieViewController = MovieDetailViewController()
         detailMovieViewController.buttonActions = [
-            (.wishToWatch, QuickItem(title: NSLocalizedString("add_to_wishlist_action",
-                                                              comment: "Action title for adding to wishlist"))),
-            (.viewed, QuickItem(title: NSLocalizedString("add_to_watched_list_action",
-                                                         comment: "Action title adding to already watched list"))),
+            MovieDetailViewController.ButtonAction(
+                option: .wishToWatch,
+                item: QuickItem(title: NSLocalizedString(
+                    "add_to_wishlist_action",
+                    comment: "Action title for adding to wishlist"
+                ))
+            ),
+            MovieDetailViewController.ButtonAction(
+                option: .viewed,
+                item: QuickItem(title: NSLocalizedString(
+                    "add_to_watched_list_action",
+                    comment: "Action title adding to already watched list"
+                ))
+            ),
         ]
         detailMovieViewController.cache = CacheService()
-        detailMovieViewController.idMovie = id
+        detailMovieViewController.movieId = id
         detailMovieViewController.service = NetworkingService()
         context.present(detailMovieViewController, animated: true, completion: completion)
     }
@@ -137,8 +152,7 @@ final class CoordinatorImpl: Coordinator {
         let controller = tabBarController.viewControllers![1] as! SearchedMoviesViewController
         if let movies = movies {
             controller.setDisplayedItems(queryResults: movies.toSearchedMovieViewItems())
-        }
-        else {
+        } else {
             controller.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
         }
 

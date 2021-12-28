@@ -22,9 +22,11 @@ struct DetailMovieStarsLayoutManager: LayoutManager {
             cell.primaryLabel.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
 
             cell.secondaryLabel.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
-            cell.secondaryLabel.leadingAnchor.constraint(equalTo: cell.primaryLabel.trailingAnchor,
-                                                         constant: Consts
-                                                            .leadingMargin),
+            cell.secondaryLabel.leadingAnchor.constraint(
+                equalTo: cell.primaryLabel.trailingAnchor,
+                constant: Consts
+                    .leadingMargin
+            ),
             cell.secondaryLabel.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
             cell.secondaryLabel.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor)
         ])
@@ -52,9 +54,11 @@ struct DetailMovieStarsDescriptor: CollectionViewCellDescriptor {
 
         let primaryWidth = primaryTitle.width(withHeight: .greatestFiniteMagnitude, font: primaryFont)
 
-        let secondaryHeight = layoutManager.calculateHeight(width: width - primaryWidth,
-                                                            font: secondaryFont,
-                                                            text: secondaryTitle)
+        let secondaryHeight = layoutManager.calculateHeight(
+            width: width - primaryWidth,
+            font: secondaryFont,
+            text: secondaryTitle
+        )
         return CGSize(width: width, height: secondaryHeight)
     }
 

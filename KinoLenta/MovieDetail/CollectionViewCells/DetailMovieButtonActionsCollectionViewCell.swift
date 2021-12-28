@@ -15,7 +15,8 @@ final class DetailMovieButtonActionsCollectionViewCell: UICollectionViewCell {
     }
 
     let filterComponent = QuickItemFilterView(frame: .zero)
-    private let layoutManager = AnyLayoutManager<DetailMovieButtonActionsCollectionViewCell>(DetailMovieButtonActionsLayoutManager())
+    private let layoutManager =
+        AnyLayoutManager<DetailMovieButtonActionsCollectionViewCell>(DetailMovieButtonActionsLayoutManager())
 
     override init(frame: CGRect) {
         super.init(frame: frame)

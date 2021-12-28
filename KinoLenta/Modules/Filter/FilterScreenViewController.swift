@@ -30,10 +30,11 @@ final class FilterScreenViewController: UIViewController {
 
     private lazy var headerView: FiltersHeaderView? = {
         guard let headerView = UINib(nibName: "FiltersHeaderView", bundle: nil)
-                .instantiate(withOwner: nil, options: nil)[0] as? FiltersHeaderView else {
-                    assertionFailure()
-                    return nil
-                }
+            .instantiate(withOwner: nil, options: nil)[0] as? FiltersHeaderView
+        else {
+            assertionFailure()
+            return nil
+        }
         headerView.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 200)
         headerView.delegate = self
         return headerView
@@ -42,10 +43,11 @@ final class FilterScreenViewController: UIViewController {
 
     private lazy var footerView: FiltersFooterView? = {
         guard let footerView = UINib(nibName: "FiltersFooterView", bundle: nil)
-                .instantiate(withOwner: nil, options: nil)[0] as? FiltersFooterView else {
-                    assertionFailure()
-                    return nil
-                }
+            .instantiate(withOwner: nil, options: nil)[0] as? FiltersFooterView
+        else {
+            assertionFailure()
+            return nil
+        }
         footerView.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 150)
         footerView.delegate = self
         return footerView
@@ -71,8 +73,10 @@ extension FilterScreenViewController: UITableViewDelegate, UITableViewDataSource
             ) as! PickerFilterTableCell).configured { cell in
                 setPickerFilterFields(
                     cell: cell,
-                    titleLabel: NSLocalizedString("filter_screen_genre_title",
-                                                  comment: "Genre section title on filters screen"),
+                    titleLabel: NSLocalizedString(
+                        "filter_screen_genre_title",
+                        comment: "Genre section title on filters screen"
+                    ),
                     buttonTitle: noSelectedGenresTitle,
                     pickerData: [noSelectedGenresTitle, "Ужасы", "Комедия", "Боевик"]
                 )
@@ -85,8 +89,10 @@ extension FilterScreenViewController: UITableViewDelegate, UITableViewDataSource
             ) as! PickerFilterTableCell).configured { cell in
                 setPickerFilterFields(
                     cell: cell,
-                    titleLabel: NSLocalizedString("filter_screen_country_title",
-                                                  comment: "Country section title on filters screen"),
+                    titleLabel: NSLocalizedString(
+                        "filter_screen_country_title",
+                        comment: "Country section title on filters screen"
+                    ),
                     buttonTitle: noSelectedCountryTitle,
                     pickerData: [noSelectedCountryTitle, "Россия", "Сша", "Мексика"]
                 )
@@ -132,9 +138,10 @@ extension FilterScreenViewController: CloseScreenDelegate, SearchMoviesWithFilte
         guard let genreCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? PickerFilterTableCell,
               let countryCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? PickerFilterTableCell,
               let yearCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? YearFilterTableCell,
-              let ratingCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? RatingFilterTableCell else {
-                  return
-              }
+              let ratingCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? RatingFilterTableCell
+        else {
+            return
+        }
         let filterFields = FilterFields(
             genre: genreCell.selectedField,
             country: countryCell.selectedField,
@@ -161,7 +168,11 @@ extension FilterScreenViewController {
     }
 }
 
-private let noSelectedGenresTitle = NSLocalizedString("filter_screen_genre_nothing_selected_item",
-                                                      comment: "Absent genre selection title on filters screen")
-private let noSelectedCountryTitle = NSLocalizedString("filter_screen_country_nothing_selected_item",
-                                                       comment: "Absent country selection title on filters screen")
+private let noSelectedGenresTitle = NSLocalizedString(
+    "filter_screen_genre_nothing_selected_item",
+    comment: "Absent genre selection title on filters screen"
+)
+private let noSelectedCountryTitle = NSLocalizedString(
+    "filter_screen_country_nothing_selected_item",
+    comment: "Absent country selection title on filters screen"
+)
