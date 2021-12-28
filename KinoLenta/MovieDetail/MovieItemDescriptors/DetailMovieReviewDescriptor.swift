@@ -20,19 +20,37 @@ struct DetailMovieReviewLayoutManager: LayoutManager {
         cell.userImage.layer.cornerRadius = floor(bounds.width * Consts.imageSizeMultiplier)
 
         NSLayoutConstraint.activate([
-            cell.userImage.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: Consts.horizontalMargin),
+            cell.userImage.leadingAnchor.constraint(
+                equalTo: cell.contentView.leadingAnchor,
+                constant: Consts.horizontalMargin
+            ),
             cell.userImage.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
-            cell.userImage.widthAnchor.constraint(equalTo: cell.contentView.widthAnchor, multiplier: Consts.imageSizeMultiplier),
+            cell.userImage.widthAnchor.constraint(
+                equalTo: cell.contentView.widthAnchor,
+                multiplier: Consts.imageSizeMultiplier
+            ),
             cell.userImage.heightAnchor.constraint(equalTo: cell.userImage.widthAnchor),
 
-            cell.nickname.leadingAnchor.constraint(equalTo: cell.userImage.trailingAnchor, constant: Consts
-                                                    .horizontalMargin),
+            cell.nickname.leadingAnchor.constraint(
+                equalTo: cell.userImage.trailingAnchor,
+                constant: Consts
+                    .horizontalMargin
+            ),
             cell.nickname.centerYAnchor.constraint(equalTo: cell.userImage.centerYAnchor),
-            cell.nickname.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -Consts.horizontalMargin),
+            cell.nickname.trailingAnchor.constraint(
+                equalTo: cell.contentView.trailingAnchor,
+                constant: -Consts.horizontalMargin
+            ),
 
             cell.reviewText.topAnchor.constraint(equalTo: cell.userImage.bottomAnchor, constant: Consts.verticalMargin),
-            cell.reviewText.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: Consts.horizontalMargin),
-            cell.reviewText.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -Consts.horizontalMargin),
+            cell.reviewText.leadingAnchor.constraint(
+                equalTo: cell.contentView.leadingAnchor,
+                constant: Consts.horizontalMargin
+            ),
+            cell.reviewText.trailingAnchor.constraint(
+                equalTo: cell.contentView.trailingAnchor,
+                constant: -Consts.horizontalMargin
+            ),
             cell.reviewText.bottomAnchor.constraint(equalTo: cell.openFullReviewButton.topAnchor),
 
             cell.openFullReviewButton.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
@@ -65,8 +83,10 @@ struct DetailMovieReviewDescriptor: CollectionViewCellDescriptor {
     // If review is too long, we can hide it.
     var heightThreshold: CGFloat
     let openFullReviewButtonTitle: String =
-        NSLocalizedString("movie_details_screen_show_full_review_action",
-                          comment: "Show full review action title on movie details screen")
+        NSLocalizedString(
+            "movie_details_screen_show_full_review_action",
+            comment: "Show full review action title on movie details screen"
+        )
     var openMoreHandler: (() -> ())? = nil
 
     private let layoutManager = DetailMovieReviewLayoutManager()
@@ -85,9 +105,11 @@ struct DetailMovieReviewDescriptor: CollectionViewCellDescriptor {
         cell.reviewText.text = reviewText
         cell.reviewText.font = reviewFont
         cell.userImage.image = image
-        let height = layoutManager.calculateHeight(width: collectionView.widthWithInsets,
-                                                   text: reviewText,
-                                                   font: reviewFont)
+        let height = layoutManager.calculateHeight(
+            width: collectionView.widthWithInsets,
+            text: reviewText,
+            font: reviewFont
+        )
         let isHidden = height < heightThreshold
         cell.openFullReviewButton.isHidden = isHidden
         cell.openFullReviewButton.setTitle(openFullReviewButtonTitle, for: .normal)

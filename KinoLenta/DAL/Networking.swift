@@ -8,8 +8,8 @@
 import Foundation
 
 typealias Networking = MovieSearchService &
-                        MovieInfoService &
-                        MovieCompilationService &
-                        SavedMovieService
+    MovieInfoService &
+    MovieCompilationService &
+    SavedMovieService
 
 typealias Datasource = Networking

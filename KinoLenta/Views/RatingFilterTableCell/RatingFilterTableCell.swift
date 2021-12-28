@@ -19,8 +19,10 @@ final class RatingFilterTableCell: UITableViewCell, BaseTableViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel! {
         didSet {
-            titleLabel.text = NSLocalizedString("filter_screen_rating_title",
-                                                comment: "Rating section title on filters screen")
+            titleLabel.text = NSLocalizedString(
+                "filter_screen_rating_title",
+                comment: "Rating section title on filters screen"
+            )
         }
     }
 

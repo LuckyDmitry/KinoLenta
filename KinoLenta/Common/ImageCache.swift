@@ -1,6 +1,6 @@
+import CommonCrypto
 import Foundation
 import UIKit
-import CommonCrypto
 
 final class ImageCache {
     static let shared = ImageCache()

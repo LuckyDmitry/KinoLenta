@@ -17,8 +17,10 @@ public struct TableViewCellDescription {
 
 extension UITableView {
     public func register<T: BaseTableViewCell>(_ classType: T.Type) {
-        register(UINib(nibName: classType.cellIdentifier, bundle: nil),
-                 forCellReuseIdentifier: classType.cellIdentifier)
+        register(
+            UINib(nibName: classType.cellIdentifier, bundle: nil),
+            forCellReuseIdentifier: classType.cellIdentifier
+        )
     }
 }
 

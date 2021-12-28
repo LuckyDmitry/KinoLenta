@@ -16,7 +16,7 @@ extension UIImageView {
             } else if !handle.isCancelled {
                 self?.image = image
             }
-       }
-       return handle
+        }
+        return handle
     }
 }

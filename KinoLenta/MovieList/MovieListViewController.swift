@@ -20,8 +20,10 @@ class MovieListViewController: UIViewController {
     @IBOutlet var watchButton: UIButton! {
         didSet {
             watchButton.setTitle(
-                NSLocalizedString("favorites_screen_wishlist_switcher_title",
-                                  comment: "Wishlist switcher state title on favorites screen"),
+                NSLocalizedString(
+                    "favorites_screen_wishlist_switcher_title",
+                    comment: "Wishlist switcher state title on favorites screen"
+                ),
                 for: .normal
             )
         }
@@ -30,8 +32,10 @@ class MovieListViewController: UIViewController {
     @IBOutlet var watchedButton: UIButton! {
         didSet {
             watchedButton.setTitle(
-                NSLocalizedString("favorites_screen_watched_list_switcher_title",
-                                  comment: "Already watched list switcher state title on favorites screen"),
+                NSLocalizedString(
+                    "favorites_screen_watched_list_switcher_title",
+                    comment: "Already watched list switcher state title on favorites screen"
+                ),
                 for: .normal
             )
         }
@@ -72,12 +76,14 @@ class MovieListViewController: UIViewController {
         watchButton.addTarget(
             self,
             action: #selector(selectWatchButton),
-            for: .touchUpInside)
+            for: .touchUpInside
+        )
 
         watchedButton.addTarget(
             self,
             action: #selector(selectWatchedButton),
-            for: .touchUpInside)
+            for: .touchUpInside
+        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -103,8 +109,13 @@ class MovieListViewController: UIViewController {
         super.viewDidLayoutSubviews()
 
         let cvWidth = collectionView.bounds.width
-        let cellWidth: CGFloat = Constants.isLandscape ? Constants.defaultCellWidth : min(floor(cvWidth / 2), Constants.defaultCellWidth)
-        let cellPadding: CGFloat = Constants.isLandscape ? (cvWidth - floor(cvWidth / Constants.defaultCellWidth) * Constants.defaultCellWidth) / 2 : (cvWidth - cellWidth * 2) / 2
+        let cellWidth: CGFloat = Constants.isLandscape ? Constants.defaultCellWidth : min(
+            floor(cvWidth / 2),
+            Constants.defaultCellWidth
+        )
+        let cellPadding: CGFloat = Constants
+            .isLandscape ? (cvWidth - floor(cvWidth / Constants.defaultCellWidth) * Constants.defaultCellWidth) / 2 :
+            (cvWidth - cellWidth * 2) / 2
         collectionView.contentInset.left = cellPadding
         collectionView.contentInset.right = cellPadding
     }
@@ -129,7 +140,7 @@ class MovieListViewController: UIViewController {
     private func refreshView() {
 //        let indices = self.collectionView.indexPathsForVisibleItems
 //        self.collectionView.reloadItems(at: indices)
-        //temporary lines
+        // temporary lines
 //        self.images.shuffle()
 //        self.collectionView.reloadData()
     }
@@ -142,7 +153,10 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         let cvWidth = collectionView.bounds.width
-        let cellWidth: CGFloat = Constants.isLandscape ? Constants.defaultCellWidth : min(floor(cvWidth / 2), Constants.defaultCellWidth)
+        let cellWidth: CGFloat = Constants.isLandscape ? Constants.defaultCellWidth : min(
+            floor(cvWidth / 2),
+            Constants.defaultCellWidth
+        )
         return .init(width: cellWidth, height: Constants.cellHeight)
     }
 
@@ -156,7 +170,10 @@ extension MovieListViewController: UICollectionViewDataSource {
         return movieModels.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.reuseId, for: indexPath)
 
         guard let cell = cell as? PosterCell else {

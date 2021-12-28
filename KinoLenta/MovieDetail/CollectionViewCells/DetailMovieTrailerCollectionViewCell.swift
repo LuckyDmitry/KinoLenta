@@ -11,7 +11,8 @@ import AVKit
 final class DetailMovieTrailerCollectionViewCell: UICollectionViewCell, AVPlayerViewControllerDelegate {
     let player = AVPlayerViewController()
 
-    private let layoutManager = AnyLayoutManager<DetailMovieTrailerCollectionViewCell>(DetailMovieTrailerLayoutManager())
+    private let layoutManager =
+        AnyLayoutManager<DetailMovieTrailerCollectionViewCell>(DetailMovieTrailerLayoutManager())
 
     override init(frame: CGRect) {
         super.init(frame: frame)

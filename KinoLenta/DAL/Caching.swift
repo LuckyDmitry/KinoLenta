@@ -16,11 +16,13 @@ func formatUrl(folderUrl url: URL, fileName name: String, fileExtension: String 
 }
 
 func getUrlFolderBy(folderType type: SavedMovieOption) throws -> URL {
-    return try fileManager.url(for: .libraryDirectory,
-                                  in: .userDomainMask,
-                                  appropriateFor: nil,
-                                  create: true)
-        .appendingPathComponent(type.cacheDirName,isDirectory: true)
+    return try fileManager.url(
+        for: .libraryDirectory,
+        in: .userDomainMask,
+        appropriateFor: nil,
+        create: true
+    )
+    .appendingPathComponent(type.cacheDirName, isDirectory: true)
 }
 
 func createDirectoryIfNeeded(at url: URL) throws {
@@ -31,7 +33,7 @@ func createDirectoryIfNeeded(at url: URL) throws {
 final class CacheService: Caching {
     // TODO: Add caching
 
-    func getSavedMovies(option: SavedMovieOption, completion: @escaping(Result<[MovieDomainModel], Error>) -> ()) {
+    func getSavedMovies(option: SavedMovieOption, completion: @escaping (Result<[MovieDomainModel], Error>) -> ()) {
         DispatchQueue.global().async {
             do {
                 let folderUrl = try getUrlFolderBy(folderType: option)
@@ -53,7 +55,11 @@ final class CacheService: Caching {
         }
     }
 
-    func removeMovies(_ movies: [MovieDomainModel], directoryType type: SavedMovieOption, completion: ((Error?) -> ())?) {
+    func removeMovies(
+        _ movies: [MovieDomainModel],
+        directoryType type: SavedMovieOption,
+        completion: ((Error?) -> ())?
+    ) {
         DispatchQueue.global().async {
             do {
                 let url = try getUrlFolderBy(folderType: type)
@@ -76,10 +82,12 @@ final class CacheService: Caching {
     }
 
     // Called when we need to move movie from one folder to another
-    func changeDirectoryMovies(_ movies: [MovieDomainModel],
-                               from initType: SavedMovieOption,
-                               to destType: SavedMovieOption,
-                               completion: ((Error?) -> ())?) {
+    func changeDirectoryMovies(
+        _ movies: [MovieDomainModel],
+        from initType: SavedMovieOption,
+        to destType: SavedMovieOption,
+        completion: ((Error?) -> ())?
+    ) {
         assert(initType != destType)
         removeMovies(movies, directoryType: initType, completion: completion)
         saveMovies(movies, folderType: destType, completion: completion)

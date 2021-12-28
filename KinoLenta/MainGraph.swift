@@ -48,7 +48,8 @@ final class MainGraph {
         let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
 
         let searchedMovieViewController =
-            searchedMoviesStoryboard.instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
+            searchedMoviesStoryboard
+                .instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
 
         searchedMovieViewController.coordinator = coordinator
         searchedMovieViewController.cacheService = cacheService
@@ -73,7 +74,11 @@ final class MainGraph {
         coordinator = CoordinatorImpl(tabBarController: tabBarController)
 
 
-        tabBarController.viewControllers = [moviesSamplingViewController, searchedMovieViewController, movieListViewController]
+        tabBarController.viewControllers = [
+            moviesSamplingViewController,
+            searchedMovieViewController,
+            movieListViewController
+        ]
     }
 
     private func configureTabBarAppearence() {
@@ -147,8 +152,7 @@ final class CoordinatorImpl: Coordinator {
         let controller = tabBarController.viewControllers![1] as! SearchedMoviesViewController
         if let movies = movies {
             controller.setDisplayedItems(queryResults: movies.toSearchedMovieViewItems())
-        }
-        else {
+        } else {
             controller.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
         }
 

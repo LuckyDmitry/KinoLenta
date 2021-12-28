@@ -5,8 +5,8 @@
 //  Created by Dmitry Trifonov on 09.12.2021.
 //
 
-import XCTest
 @testable import KinoLenta
+import XCTest
 
 class KinoLentaTests: XCTestCase {
     override func setUpWithError() throws {

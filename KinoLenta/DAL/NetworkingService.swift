@@ -56,7 +56,7 @@ class NetworkingService {
             )
         }
         if let genres = genre {
-            let genresStringArray = genres.map({"\($0)"})
+            let genresStringArray = genres.map({ "\($0)" })
             let genre_string = genresStringArray.joined(separator: ", ")
             queryInfo.queryItems.append(
                 URLQueryItem(name: "with_genres", value: genre_string)
@@ -119,7 +119,7 @@ enum RequestTypes {
 }
 
 struct QueryInfo {
-    let pathItem : String
+    let pathItem: String
     var queryItems: [URLQueryItem]
 }
 

@@ -5,12 +5,14 @@
 //  Created by Dmitry Trifonov on 09.12.2021.
 //
 
-import UIKit
 import Foundation
+import UIKit
 
 protocol QuickItemFilterCollectionViewLayoutDelegate: AnyObject {
-    func collectionView(_ collectionView: UICollectionView,
-                        widthForIndexPath indexPath: IndexPath) -> CGFloat
+    func collectionView(
+        _ collectionView: UICollectionView,
+        widthForIndexPath indexPath: IndexPath
+    ) -> CGFloat
 }
 
 protocol QuickItemFilterLayoutLifeCycleDelegate: AnyObject {

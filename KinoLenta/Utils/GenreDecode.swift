@@ -41,10 +41,10 @@ class GenreDecoder {
         }
 
         self.init(genres: Dictionary(uniqueKeysWithValues: container.compactMap {
-                    guard let genreItemID = $0["id"] as? Int,
-                          let genreItemName = $0["name"] as? String else { return nil }
-                    return (genreItemID, genreItemName)
-                }))
+            guard let genreItemID = $0["id"] as? Int,
+                  let genreItemName = $0["name"] as? String else { return nil }
+            return (genreItemID, genreItemName)
+        }))
     }
 }
 

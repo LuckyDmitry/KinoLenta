@@ -49,7 +49,10 @@ final class QuickItemFilterView: UIView {
         collectionView.contentInset = insets
         collectionView.backgroundColor = .mainBackground
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(UINib(nibName: Consts.nibFile, bundle: nil), forCellWithReuseIdentifier: Consts.cellIdentifier)
+        collectionView.register(
+            UINib(nibName: Consts.nibFile, bundle: nil),
+            forCellWithReuseIdentifier: Consts.cellIdentifier
+        )
         return collectionView
     }()
 
@@ -98,7 +101,10 @@ extension QuickItemFilterView: UICollectionViewDataSource {
         return items.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Consts.cellIdentifier, for: indexPath)
         guard let cell = cell as? QuickItemFilterCollectionViewCell else { fatalError("Invalid cell type") }
 
@@ -115,7 +121,8 @@ extension QuickItemFilterView: UICollectionViewDataSource {
 
 extension QuickItemFilterView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedIndexBefore = items.enumerated().first(where: { $0.element.isSelected && indexPath.row != $0.offset})?.offset
+        let selectedIndexBefore = items.enumerated()
+            .first(where: { $0.element.isSelected && indexPath.row != $0.offset })?.offset
 
         items = items.enumerated().map {
             QuickItem(isSelected: $0 == indexPath.row ? !$1.isSelected : false, title: $1.title)
