@@ -8,6 +8,11 @@
 import UIKit
 
 final class MovieDetailViewController: UIViewController {
+    struct ButtonAction {
+        let option: SavedMovieOption
+        var item: QuickItem
+    }
+
     private enum MovieCellType {
         case title
         case poster
@@ -33,8 +38,8 @@ final class MovieDetailViewController: UIViewController {
     var selectedMovie: MovieDomainModel!
     var service: NetworkingService!
     var cache: CacheService!
-    var idMovie: Int!
-    var buttonActions: [(optionType: SavedMovieOption, QuickItem)] = []
+    var movieId: Int!
+    var buttonActions: [ButtonAction] = []
 
     private lazy var movieDetailCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
@@ -69,16 +74,16 @@ final class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(movieDetailCollectionView)
         view.backgroundColor = .mainBackground
-        if let idMovie = idMovie {
+        if let movieId = movieId {
             for buttonAction in buttonActions {
-                cache.getSavedMovies(option: buttonAction.optionType) { [weak self] result in
+                cache.getSavedMovies(option: buttonAction.option) { [weak self] result in
                     guard let self = self else { return }
                     if case .success(let movies) = result {
-                        if movies.contains(where: { $0.id == idMovie }) {
+                        if movies.contains(where: { $0.id == movieId }) {
                             let index = self.buttonActions.firstIndex(where: {
-                                $0.optionType == buttonAction.optionType
+                                $0.option == buttonAction.option
                             }) ?? 0
-                            self.buttonActions[index].1.isSelected = true
+                            self.buttonActions[index].item.isSelected = true
                             let section = self.sections.firstIndex(of: .actors) ?? 0
                             DispatchQueue.main.async {
                                 self.movieDetailCollectionView.reloadSections(IndexSet(integer: section))
@@ -88,7 +93,7 @@ final class MovieDetailViewController: UIViewController {
                 }
             }
 
-            cancellation = service.getById(idMovie, callback: { [weak self] movie in
+            cancellation = service.getById(movieId, callback: { [weak self] movie in
                 self?.selectedMovie = movie
                 self?.populateElements()
             })
@@ -140,7 +145,7 @@ final class MovieDetailViewController: UIViewController {
             case .description:
                 break
             case .actions:
-                let items = buttonActions.map { $1 }
+                let items = buttonActions.map { $0.item }
                 descriptors[section]?.append(DetailMovieButtonActionsDescriptor(items: items,
                                                                                 componentDelegate: self))
             case .actors:
@@ -230,8 +235,8 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
     }
 
     private func transitionPressAction(first: Int, second: Int, isSelected: Bool) {
-        let destType = buttonActions[second].optionType
-        let initType = buttonActions[first].optionType
+        let destType = buttonActions[second].option
+        let initType = buttonActions[first].option
 
         if case .viewed = destType {
            showRatingView()
@@ -243,12 +248,12 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
     }
 
     private func singlePressAction(at index: Int, isSelected: Bool) {
-        let optionType = buttonActions[index].optionType
+        let optionType = buttonActions[index].option
         guard !isSelected else {
             if case .viewed = optionType {
                 showRatingView()
             }
-            cache.saveMovies([selectedMovie], folderType: buttonActions[index].optionType) { error in
+            cache.saveMovies([selectedMovie], folderType: buttonActions[index].option) { error in
                 // TODO: Handle error
             }
             return
@@ -266,7 +271,7 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
             guard let self = self else { return }
             self.cache.removeMovies(
                 [self.selectedMovie],
-                directoryType: self.buttonActions[index].optionType
+                directoryType: self.buttonActions[index].option
             ) { error in
                 // TODO: Handle error
             }
@@ -281,7 +286,7 @@ extension MovieDetailViewController: QuickItemFilterDelegate {
             alertViewController.dismiss(animated: true)
             let sectionIndex = self.sections.firstIndex(where: { $0 == .actions })
             let buttons = self.buttonActions.enumerated().map {
-                QuickItem(isSelected: $0.offset == index, title: $0.element.1.title)
+                QuickItem(isSelected: $0.offset == index, title: $0.element.item.title)
             }
 
             self.descriptors[.actions] = [DetailMovieButtonActionsDescriptor(items: buttons, componentDelegate: self)]
