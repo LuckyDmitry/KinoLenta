@@ -1,10 +1,3 @@
-//
-//  DetailMovieImageItemCollectionViewCell.swift
-//  KinoLenta
-//
-//  Created by Dmitry Trifonov on 11.12.2021.
-//
-
 import UIKit
 
 final class DetailMovieImageCollectionViewCell: UICollectionViewCell {
