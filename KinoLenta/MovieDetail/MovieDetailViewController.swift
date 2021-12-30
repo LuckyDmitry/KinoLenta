@@ -140,7 +140,7 @@ final class MovieDetailViewController: UIViewController {
                 descriptors[section]?.append(textDescriptor)
             case .poster:
                 let imageDescriptor = DetailMovieImageDescriptor(
-                    imageUrl: selectedMovie.backdropURL,
+                    imageURL: selectedMovie.backdropURL,
                     inset: UIEdgeInsets(
                         top: 20,
                         left: inset,

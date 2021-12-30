@@ -174,10 +174,10 @@ extension MovieListViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.reuseId, for: indexPath)
-
-        guard let cell = cell as? PosterCell else {
-            fatalError("Unable to dequeue PosterCell.")
+        guard let cell = collectionView
+            .dequeueReusableCell(withReuseIdentifier: Constants.reuseId, for: indexPath) as? PosterCell
+        else {
+            fatalError("Invalid cell type")
         }
 
         let model = movieModels[indexPath.row]

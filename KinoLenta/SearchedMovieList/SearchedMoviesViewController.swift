@@ -249,11 +249,10 @@ extension SearchedMoviesViewController: UITableViewDataSource {
         cell.backgroundColor = .mainBackground
         cell.movieTitle.text = movie.title
         cell.movieGenre.text = movie.genre
-        cell.movieDescription.text = movie.description
-        guard let url = URL(string: movie.image ?? "") else {
-            return UITableViewCell()
+        cell.movieDescription.text = movie.overview ?? ""
+        if let imageURL = movie.imageURL {
+            cell.ratingView.setImage(url: imageURL)
         }
-        cell.ratingView.setImage(url: url)
         cell.ratingView.rating = movie.rating
         cell.ratingView.layer.cornerRadius = 10
         if savedMovieIds.contains(where: { $0 == movie.id }) {

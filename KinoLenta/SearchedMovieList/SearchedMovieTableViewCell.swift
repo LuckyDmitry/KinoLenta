@@ -12,7 +12,11 @@ final class SearchedMovieTableViewCell: UITableViewCell {
     @IBOutlet var watchLaterButton: SelectedButton!
     @IBOutlet var movieDescription: UILabel!
     @IBOutlet var movieGenre: UILabel!
-    @IBOutlet var ratingView: RatingView!
+    @IBOutlet var ratingView: RatingView! {
+        didSet {
+            ratingView.reset()
+        }
+    }
 
     override func prepareForReuse() {
         super.prepareForReuse()
