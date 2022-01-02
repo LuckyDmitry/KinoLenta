@@ -98,8 +98,7 @@ extension MovieSampleTableCell: UICollectionViewDataSource {
 
 extension MovieSampleTableCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let movieId = items[indexPath.row]
-        coordinator.openDetailMovie(withMovieId: movieId.id, context: contextVC) {}
+        coordinator.didSelectMovie(model: originalItems[indexPath.row], in: contextVC)
     }
 }
 

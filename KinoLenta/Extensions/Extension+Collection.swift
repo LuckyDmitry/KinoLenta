@@ -13,12 +13,12 @@ extension Collection where Element == QueryMovieModel {
         self.map {
             SearchedMovieViewItem(
                 id: $0.id,
-                image: Endpoint.smallImage(path: $0.backdropPath ?? "")?.absoluteString ?? "",
+                imageURL: $0.backdropURL ?? $0.posterURL,
                 title: $0.title,
                 genre: $0.genreIDS?.compactMap {
                     GenreDecoderContainer.sharedMovieManager.getByID($0)
                 }.joined(separator: genreSeparator).firstUppercased,
-                description: $0.overview,
+                overview: $0.overview,
                 rating: $0.voteAverage
             )
         }

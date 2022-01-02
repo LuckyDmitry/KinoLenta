@@ -56,17 +56,17 @@ class MovieListViewController: UIViewController {
     }
 
     private func loadMovies() {
-        cacheService.getSavedMovies(option: movieOption, completion: { result in
-            DispatchQueue.main.async { [weak self] in
-                switch result {
-                case .success(let movies):
-                    self?.movieModels = movies
-                    self?.collectionView.reloadData()
-                case .failure(_):
-                    break
-                }
+        cacheService.getSavedMovies(option: movieOption) { [weak self] result in
+            assert(Thread.isMainThread)
+            switch result {
+            case .success(let movies):
+                self?.movieModels = movies
+                self?.collectionView.reloadData()
+            case let .failure(error):
+                print("Failed to load movie list: \(error)")
+                break
             }
-        })
+        }
     }
 
     override func viewDidLoad() {
@@ -89,14 +89,14 @@ class MovieListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        watchedButton.layer.cornerRadius = Constants.buttonCornerRadius
         watchButton.layer.cornerRadius = Constants.buttonCornerRadius
         watchButton.clipsToBounds = true
+        watchButton.changeState(to: movieOption == .wishToWatch ? .selected : .notSelected)
+
+        watchedButton.layer.cornerRadius = Constants.buttonCornerRadius
         watchedButton.clipsToBounds = true
-        self.watchButton.tintColor = .pickerItemBackground
-        self.watchedButton.tintColor = .mainBackground
-        self.watchButton.setTitleColor(.buttonTextColor, for: .normal)
-        self.watchedButton.setTitleColor(.pickerItemBackground, for: .normal)
+        watchedButton.changeState(to: movieOption == .watched ? .selected : .notSelected)
+
         loadMovies()
     }
 
@@ -123,18 +123,18 @@ class MovieListViewController: UIViewController {
 
     @objc func selectWatchButton() {
         self.showRating = false
-        watchButton.changeState(on: .selected)
-        watchedButton.changeState(on: .notSelected)
+        watchButton.changeState(to: .selected)
+        watchedButton.changeState(to: .notSelected)
         refreshView()
         movieOption = .wishToWatch
     }
 
     @objc func selectWatchedButton() {
         self.showRating = true
-        watchedButton.changeState(on: .selected)
-        watchButton.changeState(on: .notSelected)
+        watchedButton.changeState(to: .selected)
+        watchButton.changeState(to: .notSelected)
         refreshView()
-        movieOption = .viewed
+        movieOption = .watched
     }
 
     private func refreshView() {
@@ -161,7 +161,7 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.openDetailMovie(withMovieId: movieModels[indexPath.row].id, context: self, completion: nil)
+        coordinator?.didSelectMovie(model: movieModels[indexPath.row], in: self)
     }
 }
 
@@ -196,7 +196,7 @@ extension UIButton {
         case notSelected
     }
 
-    func changeState(on buttonState: ButtonState) {
+    func changeState(to buttonState: ButtonState) {
         switch buttonState {
         case .selected:
             self.tintColor = .pickerItemBackground

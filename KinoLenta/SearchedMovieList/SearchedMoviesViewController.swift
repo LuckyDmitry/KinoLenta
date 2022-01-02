@@ -221,17 +221,8 @@ extension SearchedMoviesViewController: FilterScreenDelegate {
 extension SearchedMoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        let id = displayedItems[indexPath.row].id
-        coordinator?.openDetailMovie(withMovieId: id, context: self) { [weak self] in
-            self?.cacheService.getSavedMovies(option: .wishToWatch, completion: { [weak self] result in
-                if case .success(let movies) = result {
-                    self?.savedMovieIds = Set(movies.map { $0.id })
-                    DispatchQueue.main.async {
-                        self?.moviesTableView.reloadData()
-                    }
-                }
-            })
-        }
+        coordinator?.didSelectMovie(model: displayedItems[indexPath.row], in: self)
+        // TODO(stonespb): Update added to wishlist status using model subscription.
     }
 }
 
