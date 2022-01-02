@@ -85,7 +85,7 @@ final class MainGraph {
 
     private func configureTabBarAppearence() {
         if #available(iOS 13.0, *) {
-            let tabBarAppearance: UITabBarAppearance = .init()
+            let tabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithDefaultBackground()
             tabBarAppearance.backgroundColor = .mainBackground
             UITabBar.appearance().tintColor = .buttonActiveBackground
@@ -113,6 +113,7 @@ final class CoordinatorImpl: Coordinator {
     private let tabBarController: UITabBarController
     private let cacheService: CacheService
     private let networkService: NetworkingService
+    private var cancellation: CancellationHandle?
 
     init(
         tabBarController: UITabBarController,
@@ -135,12 +136,13 @@ final class CoordinatorImpl: Coordinator {
     }
 
     func openSearchWindow(context: UIViewController, movies: [QueryMovieModel]? = nil) {
+        cancellation?.cancel()
         let controller = tabBarController.viewControllers![1] as! SearchedMoviesViewController
         if let movies = movies {
             controller.setDisplayedItems(queryResults: movies.toSearchedMovieViewItems())
         } else {
             controller.setDisplayedItems(queryResults: [])
-            _ = networkService.search(query: "") { result in
+            cancellation = networkService.search(query: "") { result in
                 guard let movies = result else { return }
                 controller.setDisplayedItems(queryResults: movies.toSearchedMovieViewItems())
             }

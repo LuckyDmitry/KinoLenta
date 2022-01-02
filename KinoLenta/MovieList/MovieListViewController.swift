@@ -19,6 +19,8 @@ class MovieListViewController: UIViewController {
 
     @IBOutlet var watchButton: UIButton! {
         didSet {
+            watchButton.layer.cornerRadius = Constants.buttonCornerRadius
+            watchButton.clipsToBounds = true
             watchButton.setTitle(
                 NSLocalizedString(
                     "favorites_screen_wishlist_switcher_title",
@@ -31,6 +33,8 @@ class MovieListViewController: UIViewController {
 
     @IBOutlet var watchedButton: UIButton! {
         didSet {
+            watchedButton.layer.cornerRadius = Constants.buttonCornerRadius
+            watchedButton.clipsToBounds = true
             watchedButton.setTitle(
                 NSLocalizedString(
                     "favorites_screen_watched_list_switcher_title",
@@ -89,12 +93,7 @@ class MovieListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        watchButton.layer.cornerRadius = Constants.buttonCornerRadius
-        watchButton.clipsToBounds = true
         watchButton.changeState(to: movieOption == .wishToWatch ? .selected : .notSelected)
-
-        watchedButton.layer.cornerRadius = Constants.buttonCornerRadius
-        watchedButton.clipsToBounds = true
         watchedButton.changeState(to: movieOption == .watched ? .selected : .notSelected)
 
         loadMovies()

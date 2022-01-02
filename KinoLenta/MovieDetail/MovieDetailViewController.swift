@@ -178,6 +178,7 @@ final class MovieDetailViewController: UIViewController {
             case .actions:
                 addDecriptor(makeActionsDescriptor())
             case .starring:
+                // TODO(stonespb): Localization
                 if let director = viewModel.director {
                     let descriptor = DetailMovieStarsDescriptor(
                         primaryFont: UIFont.systemFont(ofSize: 18),
@@ -209,7 +210,6 @@ final class MovieDetailViewController: UIViewController {
                     addDecriptor(reviewTitle)
                 }
             case .review:
-                var reviewDescriptors = self.descriptors[section, default: []]
                 for (i, review) in viewModel.reviews.enumerated() {
                     let review = DetailMovieReviewDescriptor(
                         nickname: review.nickname,
@@ -219,10 +219,10 @@ final class MovieDetailViewController: UIViewController {
                         heightThreshold: 250,
                         openMoreHandler: { [weak self] in
                             guard let self = self,
-                                  var descriptor = reviewDescriptors[i] as? DetailMovieReviewDescriptor
+                                  var descriptor = self.descriptors[section]?[i] as? DetailMovieReviewDescriptor
                             else { return }
                             descriptor.heightThreshold = 5000
-                            reviewDescriptors[i] = descriptor
+                            self.descriptors[section]?[i] = descriptor
                             if let section = self.sections.firstIndex(of: .review) {
                                 self.movieDetailCollectionView.reloadSections(IndexSet(integer: section))
                             }
