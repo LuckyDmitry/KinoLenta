@@ -136,9 +136,9 @@ extension URL {
     fileprivate func imageNameForCaching(traits: ImageSizeTraits) -> String {
         switch traits {
         case .normal:
-            return nameForCaching()
+            return hashString
         case .thumbnail:
-            return nameForCaching() + "_thumbnail"
+            return hashString + "_thumbnail"
         }
     }
 

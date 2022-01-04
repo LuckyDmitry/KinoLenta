@@ -143,7 +143,7 @@ extension QuickItemFilterView {
     enum Consts {
         static let defaultWidth: CGFloat = 100
         fileprivate static let cellIdentifier = String(describing: QuickItemFilterCollectionViewCell.self)
-        fileprivate static let nibFile = "GenreQuickFilterCell"
+        fileprivate static let nibFile = "QuickItemFilterCollectionViewCell"
         fileprivate static let fontSize: CGFloat = 14
         fileprivate static let textPadding: CGFloat = 15
         fileprivate static let marginBetweenCells: CGFloat = 10
