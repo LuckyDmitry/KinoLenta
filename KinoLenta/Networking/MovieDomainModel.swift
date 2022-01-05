@@ -26,7 +26,8 @@ struct MovieDomainModel: Codable, Hashable {
     let productionCompanies: [ProductionCompany]?
     let productionCountries: [ProductionCountry]?
     let releaseDate: String?
-    let revenue, runtime: Int?
+    let revenue: Int?
+    let runtime: Int?
     let spokenLanguages: [SpokenLanguage]?
     let status: String?
     let tagline: String?
@@ -38,6 +39,11 @@ struct MovieDomainModel: Codable, Hashable {
     var backdropURL: URL? {
         guard let backdropPath = backdropPath else { return nil }
         return Endpoint.smallImage(path: backdropPath)
+    }
+
+    var posterURL: URL? {
+        guard let posterPath = posterPath else { return nil }
+        return Endpoint.smallImage(path: posterPath)
     }
 
     var parsedDate: Date? {

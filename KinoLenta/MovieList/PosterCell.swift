@@ -8,9 +8,14 @@
 import UIKit
 
 class PosterCell: UICollectionViewCell {
-    @IBOutlet var ratingView: RatingView!
+    @IBOutlet var ratingView: RatingView! {
+        didSet {
+            ratingView.reset()
+        }
+    }
 
     override func prepareForReuse() {
-        ratingView.image = nil
+        super.prepareForReuse()
+        ratingView.reset()
     }
 }

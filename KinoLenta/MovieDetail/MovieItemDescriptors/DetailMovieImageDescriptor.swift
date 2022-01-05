@@ -27,10 +27,15 @@ struct DetailMovieImageLayoutManager: LayoutManager {
 
 struct DetailMovieImageDescriptor: CollectionViewCellDescriptor {
     let cellClass: UICollectionReusableView.Type = DetailMovieImageCollectionViewCell.self
-    let imageUrl: URL?
-    var inset: UIEdgeInsets = .zero
+    private let imageURL: URL?
+    private let inset: UIEdgeInsets
     private let placeholderImage = UIImage.moviePlaceholder
     private let layoutManager = DetailMovieImageLayoutManager()
+
+    init(imageURL: URL?, inset: UIEdgeInsets = .zero) {
+        self.imageURL = imageURL
+        self.inset = inset
+    }
 
     func sizeForItem(in collectionView: UICollectionView) -> CGSize {
         layoutManager.calculateHeight(width: collectionView.widthWithInsets)
@@ -42,8 +47,9 @@ struct DetailMovieImageDescriptor: CollectionViewCellDescriptor {
             fatalError("Invalid cell type")
         }
         cell.cancellation?.cancel()
-        if let imageUrl = imageUrl {
-            cell.cancellation = cell.imageView.setImage(url: imageUrl)
+        cell.imageView.image = placeholderImage
+        if let imageURL = imageURL {
+            cell.cancellation = cell.imageView.setImage(url: imageURL)
         }
         cell.insets = inset
         return cell

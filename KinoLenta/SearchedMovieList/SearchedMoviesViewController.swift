@@ -221,17 +221,8 @@ extension SearchedMoviesViewController: FilterScreenDelegate {
 extension SearchedMoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        let id = displayedItems[indexPath.row].id
-        coordinator?.openDetailMovie(withMovieId: id, context: self) { [weak self] in
-            self?.cacheService.getSavedMovies(option: .wishToWatch, completion: { [weak self] result in
-                if case .success(let movies) = result {
-                    self?.savedMovieIds = Set(movies.map { $0.id })
-                    DispatchQueue.main.async {
-                        self?.moviesTableView.reloadData()
-                    }
-                }
-            })
-        }
+        coordinator?.didSelectMovie(model: displayedItems[indexPath.row], in: self)
+        // TODO(stonespb): Update added to wishlist status using model subscription.
     }
 }
 
@@ -249,11 +240,10 @@ extension SearchedMoviesViewController: UITableViewDataSource {
         cell.backgroundColor = .mainBackground
         cell.movieTitle.text = movie.title
         cell.movieGenre.text = movie.genre
-        cell.movieDescription.text = movie.description
-        guard let url = URL(string: movie.image ?? "") else {
-            return UITableViewCell()
+        cell.movieDescription.text = movie.overview ?? ""
+        if let imageURL = movie.imageURL {
+            cell.ratingView.setImage(url: imageURL)
         }
-        cell.ratingView.setImage(url: url)
         cell.ratingView.rating = movie.rating
         cell.ratingView.layer.cornerRadius = 10
         if savedMovieIds.contains(where: { $0 == movie.id }) {
@@ -274,7 +264,7 @@ extension SearchedMoviesViewController: QuickItemFilterDelegate {
         let searchViewTopConstraintNewConstant: CGFloat
         let searchViewBottomConstraintNewConstant: CGFloat
         if isSelected {
-            let safeAreaHeight = UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0
+            let safeAreaHeight = view.safeAreaInsets.top
             searchViewTopConstraintNewConstant = -self.searchView.frame.height - safeAreaHeight
             searchViewBottomConstraintNewConstant = safeAreaHeight + 5
         } else {

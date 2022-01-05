@@ -31,7 +31,7 @@ protocol MovieInfoService {
 }
 
 enum SavedMovieOption {
-    case viewed
+    case watched
     case wishToWatch
 }
 

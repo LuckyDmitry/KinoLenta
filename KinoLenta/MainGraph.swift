@@ -10,7 +10,6 @@ import UIKit
 
 final class MainGraph {
     private var coordinator: Coordinator!
-    private lazy var dataProvider = MockDataManager()
     private lazy var cacheService = CacheService()
     private lazy var networkService = NetworkingService()
 
@@ -71,8 +70,11 @@ final class MainGraph {
 
     func start(with tabBarController: UITabBarController) {
         configureTabBarAppearence()
-        coordinator = CoordinatorImpl(tabBarController: tabBarController)
-
+        coordinator = CoordinatorImpl(
+            tabBarController: tabBarController,
+            cacheService: cacheService,
+            networkService: networkService
+        )
 
         tabBarController.viewControllers = [
             moviesSamplingViewController,
@@ -83,7 +85,7 @@ final class MainGraph {
 
     private func configureTabBarAppearence() {
         if #available(iOS 13.0, *) {
-            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+            let tabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithDefaultBackground()
             tabBarAppearance.backgroundColor = .mainBackground
             UITabBar.appearance().tintColor = .buttonActiveBackground
@@ -97,45 +99,30 @@ final class MainGraph {
 
 // TODO: Will be moved
 protocol Coordinator {
-    func openDetailMovie(withMovieId id: Int, context: UIViewController, completion: (() -> ())?)
     func openFilterWindow(context: UIViewController)
     func openSearchWindow()
     func openSearchWindow(context: UIViewController, movies: [QueryMovieModel]?)
+
+    func didSelectMovie(model: MovieDomainModel, in context: UIViewController)
+    func didSelectMovie(model: QueryMovieModel, in context: UIViewController)
+    func didSelectMovie(model: SearchedMovieViewItem, in context: UIViewController)
 }
 
 // TODO: Will be moved
 final class CoordinatorImpl: Coordinator {
-    let tabBarController: UITabBarController
+    private let tabBarController: UITabBarController
+    private let cacheService: CacheService
+    private let networkService: NetworkingService
+    private var cancellation: CancellationHandle?
 
-    let dataProvider = MockDataManager()
-
-
-    init(tabBarController: UITabBarController) {
+    init(
+        tabBarController: UITabBarController,
+        cacheService: CacheService,
+        networkService: NetworkingService
+    ) {
         self.tabBarController = tabBarController
-    }
-
-    func openDetailMovie(withMovieId id: Int, context: UIViewController, completion: (() -> ())? = nil) {
-        let detailMovieViewController = MovieDetailViewController()
-        detailMovieViewController.buttonActions = [
-            MovieDetailViewController.ButtonAction(
-                option: .wishToWatch,
-                item: QuickItem(title: NSLocalizedString(
-                    "add_to_wishlist_action",
-                    comment: "Action title for adding to wishlist"
-                ))
-            ),
-            MovieDetailViewController.ButtonAction(
-                option: .viewed,
-                item: QuickItem(title: NSLocalizedString(
-                    "add_to_watched_list_action",
-                    comment: "Action title adding to already watched list"
-                ))
-            ),
-        ]
-        detailMovieViewController.cache = CacheService()
-        detailMovieViewController.movieId = id
-        detailMovieViewController.service = NetworkingService()
-        context.present(detailMovieViewController, animated: true, completion: completion)
+        self.cacheService = cacheService
+        self.networkService = networkService
     }
 
     func openSearchWindow() {
@@ -149,13 +136,45 @@ final class CoordinatorImpl: Coordinator {
     }
 
     func openSearchWindow(context: UIViewController, movies: [QueryMovieModel]? = nil) {
+        cancellation?.cancel()
         let controller = tabBarController.viewControllers![1] as! SearchedMoviesViewController
         if let movies = movies {
             controller.setDisplayedItems(queryResults: movies.toSearchedMovieViewItems())
         } else {
-            controller.setDisplayedItems(queryResults: dataProvider.search(query: "").toSearchedMovieViewItems())
+            controller.setDisplayedItems(queryResults: [])
+            cancellation = networkService.search(query: "") { result in
+                guard let movies = result else { return }
+                controller.setDisplayedItems(queryResults: movies.toSearchedMovieViewItems())
+            }
         }
 
         tabBarController.selectedIndex = 1
+    }
+
+    func didSelectMovie(model: MovieDomainModel, in context: UIViewController) {
+        let viewController = MovieDetailViewController(
+            viewModel: MovieDetailViewModel(model: model),
+            cache: cacheService,
+            networkService: networkService
+        )
+        context.present(viewController, animated: true)
+    }
+
+    func didSelectMovie(model: QueryMovieModel, in context: UIViewController) {
+        let viewController = MovieDetailViewController(
+            viewModel: MovieDetailViewModel(model: model),
+            cache: cacheService,
+            networkService: networkService
+        )
+        context.present(viewController, animated: true)
+    }
+
+    func didSelectMovie(model: SearchedMovieViewItem, in context: UIViewController) {
+        let viewController = MovieDetailViewController(
+            viewModel: MovieDetailViewModel(model: model),
+            cache: cacheService,
+            networkService: networkService
+        )
+        context.present(viewController, animated: true)
     }
 }

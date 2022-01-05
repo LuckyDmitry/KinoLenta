@@ -48,9 +48,13 @@ final class CacheService: Caching {
                 let movieItems = contentData.compactMap { data in
                     return try? decoder.decode(MovieDomainModel.self, from: data)
                 }
-                completion(.success(movieItems))
+                DispatchQueue.main.async {
+                    completion(.success(movieItems))
+                }
             } catch {
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
             }
         }
     }
@@ -75,8 +79,14 @@ final class CacheService: Caching {
                         try fileManager.removeItem(at: urlToRemove)
                     }
                 }
+
+                DispatchQueue.main.async {
+                    completion?(nil)
+                }
             } catch {
-                completion?(error)
+                DispatchQueue.main.async {
+                    completion?(error)
+                }
             }
         }
     }
@@ -107,8 +117,14 @@ final class CacheService: Caching {
                     let data = try encoder.encode(movie)
                     try data.write(to: fileUrl)
                 }
+
+                DispatchQueue.main.async {
+                    completion?(nil)
+                }
             } catch {
-                completion?(error)
+                DispatchQueue.main.async {
+                    completion?(error)
+                }
             }
         }
     }
@@ -128,7 +144,7 @@ extension SavedMovieOption {
         switch self {
         case .wishToWatch:
             return CacheService.PathConsts.wishesMovieDirectoryName
-        case .viewed:
+        case .watched:
             return CacheService.PathConsts.viewedMoviesDirectoryName
         }
     }
