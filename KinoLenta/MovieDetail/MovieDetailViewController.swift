@@ -65,7 +65,6 @@ final class MovieDetailViewController: UIViewController {
         _ = networkService.getById(viewModel.movieId) { [weak self] movie in
             self?.selectedMovie = movie
         }
-
     }
 
     required init?(coder: NSCoder) {
