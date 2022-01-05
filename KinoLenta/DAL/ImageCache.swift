@@ -3,29 +3,29 @@ import Foundation
 import UIKit
 
 final class ImageCache {
-    static let shared = ImageCache()
+    static let shared = ImageCache(
+        cacheDirectory: makeDefaultCacheDirectory(),
+        dispatchQueueLabel: "ImageCacheQueue"
+    )
 
-    private let fileManager = FileManager()
-    private let queue = DispatchQueue(label: "ImageCacheQueue", attributes: .concurrent)
+    private let cacheDirectory: URL
+    private let queue: DispatchQueue
+    private let fileManager: FileManager
     private let inMemoryCache = NSCache<NSString, UIImage>()
-    private lazy var directory: URL = {
-        let arrayPaths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-        var cacheDirectoryPath = arrayPaths[0]
-        cacheDirectoryPath.appendPathComponent("ImageCache/")
-        return cacheDirectoryPath
-    }()
 
     typealias DownloadedImageHandler = (traits: ImageSizeTraits, callback: (UIImage?) -> Void)
     private var networkRequests = [URL: [DownloadedImageHandler]]()
 
-    init() {
+    init(
+        cacheDirectory: URL,
+        dispatchQueueLabel: String,
+        fileManager: FileManager = .default
+    ) {
+        self.cacheDirectory = cacheDirectory
+        self.queue = DispatchQueue(label: dispatchQueueLabel, attributes: .concurrent)
+        self.fileManager = fileManager
         queue.async(flags: .barrier) { [weak self] in
-            guard let self = self else { return }
-            try? self.fileManager.createDirectory(
-                at: self.directory,
-                withIntermediateDirectories: false,
-                attributes: nil
-            )
+            self?.createDirectories()
         }
     }
 
@@ -103,7 +103,7 @@ final class ImageCache {
     }
 
     private func fileCachePath(for url: URL, traits: ImageSizeTraits) -> URL {
-        directory.appendingPathComponent(url.imageNameForCaching(traits: traits))
+        cacheDirectory.appendingPathComponent(url.imageNameForCaching(traits: traits))
     }
 
     private func downloadFromNetwork(imageUrl: URL, callback: @escaping (Data?, UIImage?) -> Void) {
@@ -129,6 +129,14 @@ final class ImageCache {
         for (traits, callback) in handlers {
             callback(traits == .normal ? original : thumbnail)
         }
+    }
+
+    private func createDirectories() {
+        try? fileManager.createDirectory(
+            at: cacheDirectory,
+            withIntermediateDirectories: true,
+            attributes: nil
+        )
     }
 }
 
@@ -157,4 +165,9 @@ extension UIImage {
             }
         }
     }
+}
+
+private func makeDefaultCacheDirectory() -> URL {
+    let cachesDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+    return cachesDirectory.appendingPathComponent("ImageCache/")
 }
