@@ -1,16 +1,24 @@
 //
-//  Extension+Array.swift
+//  SearchedmovieViewItem.swift
 //  KinoLenta
 //
-//  Created by user on 15.12.2021.
+//  Created by Dmitry Trifonov on 10.12.2021.
 //
 
-import Foundation
+import UIKit
 
+struct SearchedMovieViewItem {
+    let id: Int
+    let imageURL: URL?
+    let title: String
+    let genre: String?
+    let overview: String?
+    let rating: Double?
+}
 
 extension Collection where Element == QueryMovieModel {
     func toSearchedMovieViewItems(genreSeparator: String = ", ") -> [SearchedMovieViewItem] {
-        self.map {
+        map {
             SearchedMovieViewItem(
                 id: $0.id,
                 imageURL: $0.backdropURL ?? $0.posterURL,
@@ -21,14 +29,6 @@ extension Collection where Element == QueryMovieModel {
                 overview: $0.overview,
                 rating: $0.voteAverage
             )
-        }
-    }
-}
-
-extension Collection where Element == QueryMovieModel {
-    func toCarouselData(genreSeparator: String = ", ") -> [CarouselData] {
-        self.map {
-            CarouselData(id: $0.id, image: $0.backdropURL, rating: $0.voteAverage, name: $0.title)
         }
     }
 }

@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 
 extension URL {
-    func nameForCaching() -> String {
+    var hashString: String {
         let data = Data(self.absoluteString.utf8)
         var hash = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
         data.withUnsafeBytes {

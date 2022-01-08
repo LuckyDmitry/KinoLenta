@@ -96,3 +96,10 @@ extension MoviesSamplingViewController: UITableViewDelegate, UITableViewDataSour
     }
 }
 
+extension Collection where Element == QueryMovieModel {
+    func toCarouselData(genreSeparator: String = ", ") -> [CarouselData] {
+        map {
+            CarouselData(id: $0.id, image: $0.backdropURL, rating: $0.voteAverage, name: $0.title)
+        }
+    }
+}
