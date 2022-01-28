@@ -19,7 +19,8 @@ extension Collection where Element == QueryMovieModel {
                     GenreDecoderContainer.sharedMovieManager.getByID($0)
                 }.joined(separator: genreSeparator).firstUppercased,
                 overview: $0.overview,
-                rating: $0.voteAverage
+                rating: $0.voteAverage,
+                buttonTitle: "Watch later"
             )
         }
     }

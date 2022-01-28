@@ -98,7 +98,7 @@ extension MovieSampleTableCell: UICollectionViewDataSource {
 
 extension MovieSampleTableCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator.didSelectMovie(model: originalItems[indexPath.row], in: contextVC)
+        coordinator.didSelectMovie(model: originalItems[indexPath.row])
     }
 }
 

@@ -30,9 +30,12 @@ final class RatingView: UIView {
     }
 
     var image: UIImage? {
-        didSet {
+        set {
             imageView.image = UIImage.moviePlaceholder
             setBorder(isBorderActive: true)
+        }
+        get {
+            imageView.image
         }
     }
 
@@ -50,7 +53,7 @@ final class RatingView: UIView {
         ratingLabel.text = nil
     }
 
-    private lazy var imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill

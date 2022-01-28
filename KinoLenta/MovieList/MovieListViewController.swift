@@ -19,8 +19,6 @@ class MovieListViewController: UIViewController {
 
     @IBOutlet var watchButton: UIButton! {
         didSet {
-            watchButton.layer.cornerRadius = Constants.buttonCornerRadius
-            watchButton.clipsToBounds = true
             watchButton.setTitle(
                 NSLocalizedString(
                     "favorites_screen_wishlist_switcher_title",
@@ -33,8 +31,6 @@ class MovieListViewController: UIViewController {
 
     @IBOutlet var watchedButton: UIButton! {
         didSet {
-            watchedButton.layer.cornerRadius = Constants.buttonCornerRadius
-            watchedButton.clipsToBounds = true
             watchedButton.setTitle(
                 NSLocalizedString(
                     "favorites_screen_watched_list_switcher_title",
@@ -60,17 +56,17 @@ class MovieListViewController: UIViewController {
     }
 
     private func loadMovies() {
-        cacheService.getSavedMovies(option: movieOption) { [weak self] result in
-            assert(Thread.isMainThread)
-            switch result {
-            case .success(let movies):
-                self?.movieModels = movies
-                self?.collectionView.reloadData()
-            case let .failure(error):
-                print("Failed to load movie list: \(error)")
-                break
+        cacheService.getSavedMovies(option: movieOption, completion: { result in
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case .success(let movies):
+                    self?.movieModels = movies
+                    self?.collectionView.reloadData()
+                case .failure(_):
+                    break
+                }
             }
-        }
+        })
     }
 
     override func viewDidLoad() {
@@ -93,9 +89,14 @@ class MovieListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        watchButton.changeState(to: movieOption == .wishToWatch ? .selected : .notSelected)
-        watchedButton.changeState(to: movieOption == .watched ? .selected : .notSelected)
-
+        watchedButton.layer.cornerRadius = Constants.buttonCornerRadius
+        watchButton.layer.cornerRadius = Constants.buttonCornerRadius
+        watchButton.clipsToBounds = true
+        watchedButton.clipsToBounds = true
+        self.watchButton.tintColor = .pickerItemBackground
+        self.watchedButton.tintColor = .mainBackground
+        self.watchButton.setTitleColor(.buttonTextColor, for: .normal)
+        self.watchedButton.setTitleColor(.pickerItemBackground, for: .normal)
         loadMovies()
     }
 
@@ -160,7 +161,7 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.didSelectMovie(model: movieModels[indexPath.row], in: self)
+        coordinator?.didSelectMovie(model: movieModels[indexPath.row])
     }
 }
 

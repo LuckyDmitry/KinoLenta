@@ -31,7 +31,15 @@ func createDirectoryIfNeeded(at url: URL) throws {
 }
 
 final class CacheService: Caching {
+    var cacheMovies: [MovieDomainModel] = []
+    
+    private var readQueue: DispatchQueue
+    
     // TODO: Add caching
+    
+    init() {
+        readQueue = DispatchQueue(label: "CacheServiceQueue")
+    }
 
     func getSavedMovies(option: SavedMovieOption, completion: @escaping (Result<[MovieDomainModel], Error>) -> ()) {
         DispatchQueue.global().async {

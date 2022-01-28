@@ -8,7 +8,7 @@
 import UIKit
 
 final class MovieDetailViewController: UIViewController {
-    private enum MovieCellType {
+    enum MovieCellType {
         case title
         case poster
         case details
@@ -70,6 +70,12 @@ final class MovieDetailViewController: UIViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func getCellFor(section: MovieCellType) -> UICollectionViewCell? {
+        guard let sectionIndex = sections.firstIndex(where: { $0 == section}) else { return nil }
+        let cell = movieDetailCollectionView.cellForItem(at: IndexPath(row: 0, section: sectionIndex))
+        return cell
     }
 
     private func createCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
@@ -381,7 +387,11 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     }
 }
 
-extension MovieDetailViewController: UICollectionViewDelegate {}
+extension MovieDetailViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.dismiss(animated: true)
+    }
+}
 
 extension MovieDetailViewController {
     private enum Consts {

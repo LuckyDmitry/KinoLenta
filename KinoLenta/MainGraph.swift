@@ -43,28 +43,9 @@ final class MainGraph {
         return moviesSamplingViewController
     }()
 
-    private lazy var searchedMovieViewController: SearchedMoviesViewController = {
-        let searchedMoviesStoryboard = UIStoryboard(name: "SearchedMovies", bundle: nil)
-
-        let searchedMovieViewController =
-            searchedMoviesStoryboard
-                .instantiateViewController(withIdentifier: "SearchedMovies") as! SearchedMoviesViewController
-
-        searchedMovieViewController.coordinator = coordinator
-        searchedMovieViewController.cacheService = cacheService
-        searchedMovieViewController.networkService = networkService
-
-        searchedMovieViewController.filterItems = GenreDecoderContainer.sharedMovieManager.getGenreNames().map {
-            QuickItem(title: $0)
-        }
-
-        searchedMovieViewController.tabBarItem = UITabBarItem(
-            title: NSLocalizedString("search_tab_title", comment: "Tab title for movie search"),
-            image: .magnifyingGlass,
-            selectedImage: .magnifyingGlass
-        )
-        return searchedMovieViewController
-    }()
+    private lazy var searchedMoviesGraph = SearchedMoviesGraph(cacheService: self.cacheService,
+                                                               networkService: self.networkService,
+                                                               coordinator: self.coordinator)
 
     // MARK: Settings
 
@@ -73,12 +54,13 @@ final class MainGraph {
         coordinator = CoordinatorImpl(
             tabBarController: tabBarController,
             cacheService: cacheService,
-            networkService: networkService
+            networkService: networkService,
+            searchedMoviesPresenter: self.searchedMoviesGraph.presenter
         )
 
         tabBarController.viewControllers = [
             moviesSamplingViewController,
-            searchedMovieViewController,
+            searchedMoviesGraph.viewController,
             movieListViewController
         ]
     }
@@ -99,82 +81,83 @@ final class MainGraph {
 
 // TODO: Will be moved
 protocol Coordinator {
-    func openFilterWindow(context: UIViewController)
+    func openFilterWindow()
     func openSearchWindow()
     func openSearchWindow(context: UIViewController, movies: [QueryMovieModel]?)
 
-    func didSelectMovie(model: MovieDomainModel, in context: UIViewController)
-    func didSelectMovie(model: QueryMovieModel, in context: UIViewController)
-    func didSelectMovie(model: SearchedMovieViewItem, in context: UIViewController)
+    func didSelectMovie(model: MovieDomainModel)
+    func didSelectMovie(model: QueryMovieModel)
+    func didSelectMovie(model: SearchedMovieViewItem)
 }
 
 // TODO: Will be moved
-final class CoordinatorImpl: Coordinator {
+final class CoordinatorImpl: NSObject, Coordinator {
     private let tabBarController: UITabBarController
     private let cacheService: CacheService
     private let networkService: NetworkingService
     private var cancellation: CancellationHandle?
+    private let searchedMoviesPresenter: () -> SearchedMoviePresenter
 
     init(
         tabBarController: UITabBarController,
         cacheService: CacheService,
-        networkService: NetworkingService
+        networkService: NetworkingService,
+        searchedMoviesPresenter: @autoclosure @escaping (() -> SearchedMoviePresenter)
     ) {
         self.tabBarController = tabBarController
         self.cacheService = cacheService
         self.networkService = networkService
+        self.searchedMoviesPresenter = searchedMoviesPresenter
     }
 
     func openSearchWindow() {
         tabBarController.selectedIndex = 1
     }
 
-    func openFilterWindow(context: UIViewController) {
+    func openFilterWindow() {
         let filterVC = FilterScreenViewController()
-
-        context.present(filterVC, animated: true)
+        tabBarController.present(filterVC, animated: true)
     }
 
     func openSearchWindow(context: UIViewController, movies: [QueryMovieModel]? = nil) {
         cancellation?.cancel()
-        let controller = tabBarController.viewControllers![1] as! SearchedMoviesViewController
         if let movies = movies {
-            controller.setDisplayedItems(queryResults: movies.toSearchedMovieViewItems())
+            searchedMoviesPresenter().showMovies(movies)
         } else {
-            controller.setDisplayedItems(queryResults: [])
-            cancellation = networkService.search(query: "") { result in
+            searchedMoviesPresenter().showMovies([])
+            cancellation = networkService.search(query: "") { [weak self] result in
                 guard let movies = result else { return }
-                controller.setDisplayedItems(queryResults: movies.toSearchedMovieViewItems())
+                self?.searchedMoviesPresenter().showMovies(movies)
             }
         }
 
         tabBarController.selectedIndex = 1
     }
 
-    func didSelectMovie(model: MovieDomainModel, in context: UIViewController) {
+    func didSelectMovie(model: MovieDomainModel) {
         let viewController = MovieDetailViewController(
             viewModel: MovieDetailViewModel(model: model),
             cache: cacheService,
             networkService: networkService
         )
-        context.present(viewController, animated: true)
+        tabBarController.present(viewController, animated: true)
     }
 
-    func didSelectMovie(model: QueryMovieModel, in context: UIViewController) {
+    func didSelectMovie(model: QueryMovieModel) {
         let viewController = MovieDetailViewController(
             viewModel: MovieDetailViewModel(model: model),
             cache: cacheService,
             networkService: networkService
         )
-        context.present(viewController, animated: true)
+        tabBarController.present(viewController, animated: true)
     }
 
-    func didSelectMovie(model: SearchedMovieViewItem, in context: UIViewController) {
+    func didSelectMovie(model: SearchedMovieViewItem) {
         let viewController = MovieDetailViewController(
             viewModel: MovieDetailViewModel(model: model),
             cache: cacheService,
             networkService: networkService
         )
-        context.present(viewController, animated: true)
+        tabBarController.present(viewController, animated: true)
     }
 }
