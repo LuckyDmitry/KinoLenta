@@ -62,7 +62,7 @@ final class ImageCache {
                     return
                 }
 
-                image.downscaled(maxDimention: 256) { thumbnail, thumbnailData in
+                image.downscaled(maxDimension: 256) { thumbnail, thumbnailData in
                     if let imageData = thumbnailData {
                         self.addToFileCache(imageData, url: url, traits: .thumbnail)
                     }
@@ -156,9 +156,9 @@ extension URL {
 }
 
 extension UIImage {
-    func downscaled(maxDimention: CGFloat, callback: @escaping (UIImage, Data?) -> Void) {
+    func downscaled(maxDimension: CGFloat, callback: @escaping (UIImage, Data?) -> Void) {
         DispatchQueue.global().async {
-            let image = self.downscaled(maxDimention: maxDimention)
+            let image = self.downscaled(maxDimension: maxDimension)
             let data = image.toData()
             DispatchQueue.main.async {
                 callback(image, data)

@@ -1,10 +1,10 @@
 import UIKit
 
 extension UIImage {
-    func downscaled(maxDimention: CGFloat) -> UIImage {
-        guard size.width > maxDimention || size.height > maxDimention else { return self }
+    func downscaled(maxDimension: CGFloat) -> UIImage {
+        guard size.width > maxDimension || size.height > maxDimension else { return self }
 
-        let factor = maxDimention / max(size.width, size.height)
+        let factor = maxDimension / max(size.width, size.height)
         let scaledSize = CGSize(width: round(size.width * factor), height: round(size.height * factor))
 
         return UIGraphicsImageRenderer(size: scaledSize).image { _ in
